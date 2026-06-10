@@ -1,0 +1,126 @@
+@font-face {
+    font-family: 'Mluvka';
+    src: url('Mluvka-Bold.woff2') format('woff2'),
+        url('Mluvka-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mluvka';
+    src: url('Mluvka-BoldItalic.woff2') format('woff2'),
+        url('Mluvka-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mluvka';
+    src: url('Mluvka-LightItalic.woff2') format('woff2'),
+        url('Mluvka-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mluvka';
+    src: url('Mluvka-ExtraLight.woff2') format('woff2'),
+        url('Mluvka-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mluvka';
+    src: url('Mluvka-Italic.woff2') format('woff2'),
+        url('Mluvka-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mluvka';
+    src: url('Mluvka-Light.woff2') format('woff2'),
+        url('Mluvka-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mluvka';
+    src: url('Mluvka-ExtraBold.woff2') format('woff2'),
+        url('Mluvka-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mluvka';
+    src: url('Mluvka-ExtraBoldItalic.woff2') format('woff2'),
+        url('Mluvka-ExtraBoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mluvka';
+    src: url('Mluvka-ExtraLightItalic.woff2') format('woff2'),
+        url('Mluvka-ExtraLightItalic.woff') format('woff');
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mluvka';
+    src: url('Mluvka-MediumItalic.woff2') format('woff2'),
+        url('Mluvka-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mluvka';
+    src: url('Mluvka-SemiBoldItalic.woff2') format('woff2'),
+        url('Mluvka-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mluvka';
+    src: url('Mluvka-Medium.woff2') format('woff2'),
+        url('Mluvka-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mluvka';
+    src: url('Mluvka-Regular.woff2') format('woff2'),
+        url('Mluvka-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mluvka';
+    src: url('Mluvka-SemiBold.woff2') format('woff2'),
+        url('Mluvka-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+

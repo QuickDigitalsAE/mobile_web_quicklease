@@ -1,0 +1,14 @@
+// -----------------------Media----------------------------------
+.media {
+    @include flexCenter(row);
+    &__img {
+        width: 30%;
+        img {
+            width: 100%;
+        }
+    }
+    &__body {
+        width: 70%;
+    }
+}
+

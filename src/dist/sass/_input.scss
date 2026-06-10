@@ -1,0 +1,40 @@
+.inputBox  ::-moz-placeholder {
+    // color: #fff ;
+    // opacity: 0;
+    text-transform: capitalize;
+  }
+  .inputBox  ::placeholder {
+    // color: #fff ;
+    // opacity: 0;
+    text-transform: capitalize;
+  }
+
+
+//   .inputBox  {
+//     position: relative;
+//     label {
+//         position: absolute;
+//         top: 50%;
+//         transform: translateY(-50%);
+//         left: 4%;
+//         transition: 0.3s;
+//         font-weight: 500;
+//         color: #6C6C6C;
+//         text-transform: capitalize;
+//         z-index: -1;
+//     }
+//     input:not(:-moz-placeholder-shown) + label {
+//         top: 0%;
+//         font-size: 1.2rem;
+//         left: 0;
+//     }
+//   }
+
+
+//   .inputBox  input:focus + label, .inputBox  input:not(:placeholder-shown) + label {
+//     top: 0%;
+//     font-size: .7rem;
+//     left: 0;
+//   }
+
+  

@@ -1,0 +1,27 @@
+@media screen and (max-width: 1023px) {
+    html {
+      font-size: unset;
+    }
+    .MainDashboard {
+      &__left {
+        left: -200%;
+        &.active {
+          left: 0;
+        }
+      }
+    }
+    .bookingGrid  {
+        .swiper-slide {
+            width: 100%;
+        }
+    }
+    .galleryMain  {
+        .ant-upload-list {
+            grid-template-columns: repeat(2,1fr);
+        }
+        .ant-upload.ant-upload-select, .ant-upload-list-item-container {
+            width: 100% !important;
+            height: 11rem !important;
+        }
+    }
+    }

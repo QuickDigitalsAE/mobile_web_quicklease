@@ -1,0 +1,9 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+main {
+  overflow: hidden;
+  width: 100%;
+}

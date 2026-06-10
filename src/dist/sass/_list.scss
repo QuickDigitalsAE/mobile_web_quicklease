@@ -1,0 +1,16 @@
+.list {
+    $p: &;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    &__item {
+        line-height: 1.8;
+    }
+    &-inline {
+        display: flex;
+        #{$p}__item {
+            font-weight: weight(medium);
+            text-transform: uppercase;
+        }
+    }
+}

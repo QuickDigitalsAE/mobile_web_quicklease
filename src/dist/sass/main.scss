@@ -1,0 +1,118 @@
+@import "./reset";
+@import "./variable";
+@import "./function";
+@import "./mixin";
+@import "./typography";
+@import "./layout";
+@import "./list";
+@import "./btn";
+@import "./media";
+@import "./input";
+@import "./search";
+@import "./animation";
+@import "./header";
+
+
+.loginPage {
+    h2 {
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: .3rem;
+            height: 100%;
+            border-radius: 1rem;
+            background: $secondary-color;
+        }
+    }
+}
+
+.nav {
+    ul {
+        li {
+            a{
+                &::before{
+                    content: '';
+                    position: absolute;
+                    left: 1rem;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: transparent;
+                    width: .6rem;
+                    height: .6rem;
+                    border-radius: 50%;
+                    transition: .3s;
+                }
+                // &.active,&:hover {
+                //     border-color: $secondary-color;
+                //     &::before{
+                //         background: $secondary-color;
+                //     }
+                // }
+            }
+        }
+    }
+}
+.languages {
+    img {
+        position: absolute;
+        right: 1.2rem;
+        top: 1.1rem;
+        // transform: translateY(-50%);
+        width: 1.1rem;
+        z-index: -1;
+    }
+}
+
+
+.bookingSection{
+    &h {
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: .3rem;
+            height: 100%;
+            border-radius: 1rem;
+            background: $secondary-color;
+        }
+    }
+}
+
+.bookingGrid {
+    .swiper-slide {
+        width: 26%;
+    }
+}
+
+
+
+.mmonth {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  
+  .mmonth[type="month"]::-webkit-inner-spin-button,
+  .mmonth[type="month"]::-webkit-calendar-picker-indicator {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-appearance: none;
+  }
+
+  .inputBox input[type=number]::-webkit-inner-spin-button, 
+  .inputBox input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      margin: 0; 
+  }
+
+@import "./footer";
+@import "./innerPage";
+@import "./responsive";

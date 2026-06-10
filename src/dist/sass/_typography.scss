@@ -1,0 +1,452 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+
+
+@font-face {
+  font-family: 'Mluvka-Bold';
+  src: url('./fonts/Mluvka-Bold.woff2') format('woff2'),
+    url('./fonts/Mluvka-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mluvka-BoldItalic';
+  src: url('./fonts/Mluvka-BoldItalic.woff2') format('woff2'),
+    url('./fonts/Mluvka-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Mluvka-LightItalic';
+  src: url('./fonts/Mluvka-LightItalic.woff2') format('woff2'),
+    url('./fonts/Mluvka-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Mluvka-ExtraLight';
+  src: url('./fonts/Mluvka-ExtraLight.woff2') format('woff2'),
+    url('./fonts/Mluvka-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mluvka-Italic';
+  src: url('./fonts/Mluvka-Italic.woff2') format('woff2'),
+    url('./fonts/Mluvka-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Mluvka-Light';
+  src: url('./fonts/Mluvka-Light.woff2') format('woff2'),
+    url('./fonts/Mluvka-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mluvka-ExtraBold';
+  src: url('./fonts/Mluvka-ExtraBold.woff2') format('woff2'),
+    url('./fonts/Mluvka-ExtraBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mluvka-ExtraBoldItalic';
+  src: url('./fonts/Mluvka-ExtraBoldItalic.woff2') format('woff2'),
+    url('./fonts/Mluvka-ExtraBoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Mluvka-ExtraLightItalic';
+  src: url('./fonts/Mluvka-ExtraLightItalic.woff2') format('woff2'),
+    url('./fonts/Mluvka-ExtraLightItalic.woff') format('woff');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Mluvka-MediumItalic';
+  src: url('./fonts/Mluvka-MediumItalic.woff2') format('woff2'),
+    url('./fonts/Mluvka-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Mluvka-SemiBoldItalic';
+  src: url('./fonts/Mluvka-SemiBoldItalic.woff2') format('woff2'),
+    url('./fonts/Mluvka-SemiBoldItalic.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Mluvka-Medium';
+  src: url('./fonts/Mluvka-Medium.woff2') format('woff2'),
+    url('./fonts/Mluvka-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mluvka-Regular';
+  src: url('./fonts/Mluvka-Regular.woff2') format('woff2'),
+    url('./fonts/Mluvka-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mluvka-SemiBold';
+  src: url('./fonts/Mluvka-SemiBold.woff2') format('woff2'),
+    url('./fonts/Mluvka-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+  // font-size: 0.8vw;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  overflow-y: auto;
+  background: #fff;
+  font-size: 1rem;
+}
+
+.MainDashboard__RightBody {
+  overflow-y: auto;
+  height: calc(100vh - 112px);
+}
+
+.MainDashboard__RightBody::-webkit-scrollbar-thumb {
+  background: $primary-color;
+}
+
+.MainDashboard__RightBody::-webkit-scrollbar {
+  width: .4rem;
+  background-color: #ddd;
+}
+
+
+// .swal-button {
+//   transition: .3s;
+//   background-color: $primary-color;
+//   color: #fff;
+//   &--cancel {
+//     color: #555;
+//     background-color: #efefef;
+//   }
+//   &:hover,&:focus {
+//     background: $secondary-color !important;
+//   }
+// }
+.swal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+
+.inputBox textarea::-webkit-scrollbar-thumb {
+  background: $primary-color;
+}
+
+.inputBox textarea::-webkit-scrollbar {
+  width: 0;
+  background-color: #ddd;
+}
+
+.expertiseMain::-webkit-scrollbar-thumb {
+  background: $primary-color;
+}
+
+.expertiseMain::-webkit-scrollbar {
+  width: .4rem;
+  background-color: #ddd;
+}
+
+
+.ck.ck-content {
+
+  ol,
+  ul {
+    padding: 0 1rem !important;
+  }
+}
+
+.ck-powered-by {
+  display: none !important;
+}
+
+/* ckeditor-custom.css */
+.ck-editor__editable {
+  height: 10rem;
+}
+.header__Right {
+  .ck-editor__editable {
+    height: 5rem;
+  } 
+}
+
+
+.modelBox::-webkit-scrollbar-thumb {
+  background: $primary-color;
+}
+
+.modelBox::-webkit-scrollbar {
+  width: .4rem;
+  background-color: #ddd;
+}
+
+.lowyerlist::-webkit-scrollbar-thumb {
+  background: $primary-color;
+}
+
+.lowyerlist::-webkit-scrollbar {
+  width: .4rem;
+  background-color: #ddd;
+}
+.nav::-webkit-scrollbar-thumb {
+  background: $primary-color;
+  border-radius: 2rem;
+}
+
+.nav::-webkit-scrollbar {
+  width: .4rem;
+  background-color: #212121;
+  border-radius: 2rem;
+}
+
+.galleryMain {
+  .ant-upload-list {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+  }
+  .ant-upload {
+    background: #fff;
+  }
+  .ant-upload-list-item {
+    background: #fff;
+  }
+
+  .ant-upload.ant-upload-select,
+  .ant-upload-list-item-container {
+    width: 100% !important;
+    height: 20rem !important;
+  }
+}
+
+.ant-upload-list-item-error {
+  border: 1px solid #d9d9d9 !important;
+}
+
+
+.swal-content {
+  text-align: left;
+}
+
+
+.ql-picker-options {
+  background: #fff;
+}
+
+
+
+
+.p-editor-toolbar {
+  display: none;
+}
+
+.longhight {
+  .p-editor-content {
+    height: 50rem !important;
+  }
+}
+
+.CKEditorsHeight {
+  .p-editor-content {
+    height: 5rem !important;
+  }
+}
+
+
+
+.ar input, 
+.ar select, 
+.ar textarea {
+  direction: rtl;
+}
+
+
+
+.tableMain ul.ant-pagination {
+  display: none;
+}
+
+
+.dropwMenu ul {
+  overflow: hidden;
+  max-height: 0;
+  transition: .3s;
+  top: -0.1rem;
+  position: relative;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.dropwMenu.active ul{
+  max-height: max-content;
+}
+.dropwMenuI {
+  padding-right: 1rem;
+  border-radius: 2rem;
+  position: relative;
+  z-index: 2;
+}
+ 
+ .activesss .dropwMenuI, 
+ .active .dropwMenuI
+{
+  border:2px solid #401a89;
+}
+
+
+.ant-menu-title-content a {
+  display: block;
+}
+
+
+.headerMenuBobyHeader {
+  background: #401a89;
+  color: #fff;
+}
+
+
+// .TableBody_:nth-child(odd) .TableBody {
+//   background: #ddd;
+// }
+
+.TableBodyBox {
+  border: 1px solid #ddd;
+}
+
+
+
+.ant-table-row-level-1 {
+  .ant-table-cell {
+    padding-left: 1.8rem !important;
+  }
+}
+.ant-table-expanded-row-level-1 {
+  display: none;
+}
+
+
+.loginPage__leftBox::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #00000070;
+}
+
+
+.MainDashboard__left ul.ant-menu.ant-menu-root.ant-menu-inline.ant-menu-light {
+  background: #1C1C1C;
+  color: #fff;
+}
+
+.MainDashboard__left  .ant-menu-submenu .ant-menu-submenu-title ,
+.MainDashboard__left  .ant-menu-item {
+  color:  #fff !important;
+}
+
+.MainDashboard__left .ant-menu-item-selected  {
+  background: $secondary-color;
+  border-radius: 3rem;
+}
+
+.MainDashboard__left .ant-menu-submenu-title:active {
+  background-color: transparent !important;
+}
+
+
+[data-pc-section="toolbar"] {
+  display: none;
+}
+
+
+
+.mmonth {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.mmonth::-webkit-inner-spin-button,
+.mmonth::-webkit-calendar-picker-indicator {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-appearance: none;
+    opacity: 0;
+}
+
+.inputBox input[type=number]::-webkit-inner-spin-button, 
+.inputBox input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+
+
+.quill .ql-editor {
+  height: 20rem;
+}
+
+
+.smallValue .quill .ql-editor {
+  height: 6rem;
+}
+
+
+
+.antdheight .ant-select-selector  {
+  padding: 8px 5px !important;
+}
+
+
+.sec_oneHeading .ql-container {
+  height: 5rem !important;
+}
+
+
+button.btn.bg-secondary.text-white.px-12.ml-auto.uppercase.mb-3.py-3.rounded-full.w-100.block.mt-5.submit.hover\:bg-primary.transition-all.duration-300 {
+  position: fixed;
+  bottom: 0;
+  right: 2rem;
+  z-index: 999;
+}
+
+
+.bookingPagepagination .ant-pagination  {
+  display: none;
+}
+
+
+.ar .ql-editing input {
+  direction: ltr !important;
+}
