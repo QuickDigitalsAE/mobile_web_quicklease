@@ -1,24 +1,17 @@
 import React from 'react';
 import { Select } from 'antd';
-const onChange = (value) => {
-    console.log(`selected ${value}`);
-};
-const onSearch = (value) => {
-    console.log('search:', value);
-};
 const AntdSelect = ({data,label,placeholder}) => {
     return(
         <>
-        <div className="inputBox mt-3">
-        <label for="User Name" className="mb-1 block">{label}</label>
+        <div className="inputBox form-field">
+        <label htmlFor="antd-select-field" className="form-field__label">{label}</label>
     <Select
+        id="antd-select-field"
         showSearch
         placeholder={placeholder}
         optionFilterProp="label"
-        onChange={onChange}
-        onSearch={onSearch}
         options={data}
-        className='w-full'
+        className='w-full compact-ant-select'
         />
         </div>
         </>

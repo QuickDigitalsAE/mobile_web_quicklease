@@ -32,10 +32,10 @@ const HeaderProfile = () => {
     const menu = (
         <Menu>
             <Menu.Item key="2">
-               <Link className='px-6 font-Mluvka' to={"/profile"}>Profile</Link>
+               <Link className='dashboard-profileMenuLink' to={"/profile"}>Profile</Link>
             </Menu.Item>
             <Menu.Item key="1">
-                <button className="px-6 font-Mluvka" onClick={handleLogOut}>
+                <button className="dashboard-profileMenuLink" onClick={handleLogOut}>
                     Logout
                 </button>
             </Menu.Item>
@@ -44,15 +44,15 @@ const HeaderProfile = () => {
 
     return (
         <>
-          <div className="profile__left max-lg:hidden">
-                <h2 className='leading-[1] text-[1.2rem] font-MluvkaBold text-right'>{profileData?.name}</h2>
-                <p className='m-0 text-right text-secondary text-[.6rem] font-Mluvka'>{profileData?.email}</p>
+          <div className="profile__left dashboard-profileCard__text max-lg:hidden">
+                <h2>{profileData?.name}</h2>
+                <p>{profileData?.email}</p>
             </div>
         <Dropdown overlay={menu} trigger={['click']}>
             <a onClick={(e) => e.preventDefault()}>
-                <div className="profile__Box relative">
+                <div className="profile__Box dashboard-profileCard">
                     <div className="profile__Box__img cursor-pointer">
-                        <img src={profileData?.profile_image ?? profileImg} className="w-[4rem] h-[4rem] max-lg:w-[3rem] max-lg:h-[3rem] rounded-full p-2 object-cover border border-[#CFD5E2]" alt="Profile" />
+                        <img src={profileData?.profile_image ?? profileImg} className="dashboard-profileCard__image" alt="Profile" />
                     </div>
                 </div>
             </a>

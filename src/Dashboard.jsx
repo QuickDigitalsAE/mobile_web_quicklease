@@ -119,13 +119,13 @@ const Dashboard = () => {
           <MainLanguageProvider>
             <MainMenuActiveProvider>
               <MainEditValuesProvider>
-                <div className='MainDashboard flex  gap-[2rem]'>
+                <div className='MainDashboard dashboard-shell flex gap-6 max-lg:gap-0'>
                   <LeftSide permissions={data?.permissions} data={data?.data} />
-                  <div className="MainDashboard__Right w-[calc(100%-20rem)] max-lg:w-full max-lg:pl-6">
+                  <div className="MainDashboard__Right dashboard-shell__main w-[calc(100%-20rem)] max-lg:w-full max-lg:pl-0">
                     <Header />
-                    <div className="MainDashboard__RightBody">
+                    <div className="MainDashboard__RightBody dashboard-shell__body">
                       <Routes>
-                        <Route path={`/`} element={<MainDashboard />} />
+                        <Route path={`/`} element={<MainDashboard permission={permission} userdata={userdata} />} />
                         <Route path={`/profile`} element={<Profile />} />
                         {/* <Route path={`/setting`} element={<Setting />} /> */}
                         {(check("Booking", "Booking View") && check("Booking", "Booking Menu")) && (
@@ -291,7 +291,6 @@ const Dashboard = () => {
 }
 
 export default Dashboard
-
 
 
 

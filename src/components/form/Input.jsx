@@ -5,17 +5,13 @@ function Input({ name,required, label, ...rest }) {
   const { errors } = useFormikContext();
   const [field] = useField(name);
   return (
- <div className="inputBox mt-3">
-    {label && <label htmlFor={label} className="mb-1 block">{label}</label>}
-    <input  error={errors[name]}   id={label} {...field} {...rest} />
+ <div className="inputBox form-field">
+    {label && <label htmlFor={name} className="form-field__label">{label}{required ? " *" : ""}</label>}
+    <input error={errors[name]} id={name} {...field} {...rest} />
 
-    {  <div className='my-1'>
+    {  <div className='form-field__error'>
       <ErrorMessage name={name}>
-                  {(msg) => (
-                    <div style={{ color: "red", whiteSpace: "nowrap" }}>
-                      {msg}
-                    </div>
-                  )}
+                  {(msg) => <div>{msg}</div>}
         </ErrorMessage>
       </div>}
  </div>

@@ -5,20 +5,16 @@ function Textarea({ name,required, label, ...rest }) {
   const { errors } = useFormikContext();
   const [field] = useField(name);
   return (
-    <div className="inputBox mt-3">
+    <div className="inputBox form-field">
       {label && (
-        <div className="">
-          <label className="mb-1 block" htmlFor={name}>{label}</label>
-        </div>
+        <label className="form-field__label" htmlFor={name}>{label}{required ? " *" : ""}</label>
       )}
-      <div  className="" >
-        <textarea
-          id={name}
-          error={errors[name]}
-          {...field}
-          {...rest}
-        ></textarea>
-      </div>
+      <textarea
+        id={name}
+        error={errors[name]}
+        {...field}
+        {...rest}
+      ></textarea>
     </div>
   );
 }
