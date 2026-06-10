@@ -225,17 +225,11 @@ const LeftSide = ({ permissions, data }) => {
     ProductProperties,
     ProductCoverages,
     Catalogs,
-    Carwithdriver,
-    Blogs,
-    Blogssidebar,
     Promotions,
-    Promo,
     partners,
     testimonials,
-    WebContent,
     Activities,
     Review,
-    quote
   ];
 
 

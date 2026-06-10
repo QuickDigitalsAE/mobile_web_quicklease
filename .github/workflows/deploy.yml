@@ -1,0 +1,38 @@
+name: Deploy React Dashboard
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build React app
+        run: CI=false npm run build
+        env:
+          REACT_APP_API_URL: https://mobile-api.quicklease.ae/api/
+
+      - name: Deploy build to Droplet
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: ${{ secrets.DROPLET_USER }}
+          key: ${{ secrets.DROPLET_SSH_KEY }}
+          source: "build/*"
+          target: ${{ secrets.DROPLET_PATH }}
+          strip_components: 1
+          rm: true
