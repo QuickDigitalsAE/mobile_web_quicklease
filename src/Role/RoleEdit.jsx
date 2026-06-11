@@ -222,7 +222,7 @@ const RoleEdit = ({ permission }) => {
             </div>
           </div>
 
-          <div className='bg-[#EFF4FD] roleMain role-create-page__permissions p-6 rounded-3xl mb-3 max-lg:p-2'>
+          <div className='bg-[#EFF4FD] mt-4 roleMain role-create-page__permissions p-6 rounded-3xl mb-3 max-lg:p-2'>
             <div className="role-create-page__permissionsTop">
               <div>
                 <h3>Permission Matrix</h3>

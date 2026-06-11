@@ -4,6 +4,7 @@ import { Modal, Pagination, Table } from "antd";
 import { Link } from "react-router-dom";
 import { FiActivity, FiArrowUpRight, FiClock, FiEye, FiUser } from "react-icons/fi";
 import useGet from "../customHooks/useGet";
+import SkeletonActivitiesTable from "./SkeletonActivitiesTable";
 
 const ActivitiesLogs = () => {
   const { mainLanguage } = useContext(MainLanguageContext);
@@ -117,6 +118,10 @@ const ActivitiesLogs = () => {
     ],
     []
   );
+
+  if (resget.isLoading && !datas?.length) {
+    return <SkeletonActivitiesTable title="Activity Logs" columns={6} />;
+  }
 
   return (
     <section className="users-table-page roles-table-page">

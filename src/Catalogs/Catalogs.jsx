@@ -147,13 +147,7 @@ const Catalogs = ({ permission }) => {
   )
 
   if (resget.isLoading && !datas?.length) {
-    return (
-      <div className="BookingGrid grid grid-cols-3 max-[1350px]:grid-cols-2 mt-5 gap-4 max-[1000px]:grid-cols-1">
-        {Array.from({ length: 6 }).map((_, index) => (
-          <CatalogsSkeleton key={index} />
-        ))}
-      </div>
-    )
+    return <CatalogsSkeleton />
   }
 
   return (

@@ -147,13 +147,7 @@ const Testmonials = ({ permission }) => {
   )
 
   if (resget.isLoading && !datas?.length) {
-    return (
-      <div className="TeamPageGrid mt-4 bg-[#EFF4FD] rounded-3xl p-6 grid grid-cols-2 gap-3 max-lg:grid-cols-1 max-lg:p-2">
-        {Array.from({ length: 8 }).map((_, index) => (
-          <SkeletonTestimonailsCard key={index} />
-        ))}
-      </div>
-    )
+    return <SkeletonTestimonailsCard />
   }
 
   return (

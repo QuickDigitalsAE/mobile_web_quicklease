@@ -445,7 +445,7 @@ const handleParent = (e) => {
           <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Slug - {slugs.all_slugs}</div>
           <input value={slugs?.slugs ?? ""} onChange={handleSlugUpdate} name="slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[red]" control="input2" />
           </div>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-2 mt-4">
               <div>
                 <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> Catalog</div>
                    <select value={parent_id ?? ""}  onChange={handleParent} name="catalog_id" className="outline-none w-full h-[3rem] px-5 rounded-xl" >
@@ -724,7 +724,7 @@ const handleParent = (e) => {
                     <div className="h4 text-[#7D8CA7] text-[1.1rem] capitalize mb-4">
                       {category.replaceAll("_", " ")}
                     </div>
-                    <div className='grid grid-cols-2 gap-2'>
+                    <div className='grid grid-cols-2 gap-2 mt-4'>
                       {propertiesList[category].map((property) => {
                         // Get the existing value from propertiesList2
                         const existingValue = propertiesList2[category]?.find((item) => item.property_id === property.id)?.property_value || "";

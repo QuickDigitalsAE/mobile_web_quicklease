@@ -122,6 +122,10 @@ const Enquiries = () => {
     []
   );
 
+  if (resget.isLoading && !datas?.length) {
+    return <SkeletonEnquiries />;
+  }
+
   return (
     <section className='users-table-page enquiries-table-page'>
       <div className="users-table-page__top enquiries-table-page__top flex justify-between items-center">

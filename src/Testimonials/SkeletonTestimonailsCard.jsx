@@ -2,28 +2,79 @@ import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
+const statItems = [1, 2, 3];
+const rowItems = [1, 2, 3, 4, 5, 6];
+
 const SkeletonTestimonailsCard = () => {
   return (
-    <SkeletonTheme baseColor="#ddd" highlightColor="#eee">
-      <div className='lawyerCard relative bg-[#fff] border border-[#D4DEF1] rounded-3xl shadow-custom p-4'>
-        <div className='cursor-pointer relative'>
-          <div className="lawyerCard_ flex items-center gap-4">
-            <div className="lawyerCard__img">
-              <Skeleton width="3.5rem" height="3.5rem" className='rounded-sm' />
-            </div>
-            <div className="lawyerCard__txt">
-              <div className="h2 text-[1.25rem] font-Mluvka leading-[1]">
-                <Skeleton width={100} />
+    <SkeletonTheme baseColor="#e7eef7" highlightColor="#f8fbff">
+      <section className="TestmonialsPage users-table-page roles-table-page">
+        <div className="users-table-page__top bg-white rounded-3xl p-4 flex justify-between items-center gap-4">
+          <div className="flex-1">
+            <Skeleton height={24} width={168} />
+            <Skeleton height={16} width="64%" className="mt-3" />
+          </div>
+
+          <div className="flex w-full justify-end items-center gap-3">
+            <div className="users-table-page__search">
+              <Skeleton circle height={18} width={18} />
+              <div className="flex-1 ml-3">
+                <Skeleton height={16} width="42%" />
               </div>
-              <p className='leading-[1] mt-2 text-primary text-[.8rem]'>
-                <Skeleton width={150} />
-              </p>
+            </div>
+            <Skeleton height={44} width={158} borderRadius={999} />
+          </div>
+        </div>
+
+        <div className="users-table-page__panel">
+          <div className="users-table-page__stats">
+            {statItems.map((item) => (
+              <article key={item}>
+                <Skeleton height={12} width="52%" />
+                <Skeleton height={28} width="36%" className="mt-3" />
+              </article>
+            ))}
+          </div>
+
+          <div className="users-table-page__tableWrap">
+            <div className="users-table-page__tableShell">
+              <div className="grid grid-cols-[1.05fr_.62fr_1.35fr_.42fr_.7fr] gap-4 border-b border-[#e2e8f4] px-5 py-4 max-lg:hidden">
+                {['testimonial', 'phone', 'review', 'record', 'action'].map((key) => (
+                  <Skeleton key={key} height={14} width="58%" />
+                ))}
+              </div>
+
+              {rowItems.map((item) => (
+                <div
+                  key={item}
+                  className="grid grid-cols-1 gap-4 border-b border-[#edf2fa] px-5 py-5 lg:grid-cols-[1.05fr_.62fr_1.35fr_.42fr_.7fr]"
+                >
+                  <div className="flex items-center gap-3">
+                    <Skeleton height={42} width={42} borderRadius={14} />
+                    <div className="flex-1">
+                      <Skeleton height={14} width="48%" />
+                      <Skeleton height={12} width="62%" className="mt-2" />
+                    </div>
+                  </div>
+                  <Skeleton height={30} width={104} borderRadius={999} />
+                  <div>
+                    <Skeleton height={12} width="92%" />
+                    <Skeleton height={12} width="84%" className="mt-2" />
+                    <Skeleton height={12} width="68%" className="mt-2" />
+                  </div>
+                  <Skeleton height={14} width="42%" />
+                  <div className="flex items-center gap-2">
+                    <Skeleton height={34} width={74} borderRadius={999} />
+                    <Skeleton height={34} width={34} borderRadius={12} />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </SkeletonTheme>
-  )
-}
+  );
+};
 
-export default SkeletonTestimonailsCard
+export default SkeletonTestimonailsCard;

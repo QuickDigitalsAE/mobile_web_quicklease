@@ -147,13 +147,7 @@ const Promotions = ({ permission }) => {
   )
 
   if (resget.isLoading && !datas?.length) {
-    return (
-      <div className="NewsPageGrid mt-4 bg-[#EFF4FD] rounded-3xl p-6 grid grid-cols-2 gap-3 max-lg:grid-cols-1 max-lg:p-3">
-        {Array.from({ length: 6 }).map((_, index) => (
-          <SkeletonPromotionsCard key={index} />
-        ))}
-      </div>
-    )
+    return <SkeletonPromotionsCard />
   }
 
   return (

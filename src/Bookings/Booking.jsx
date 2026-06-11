@@ -4,6 +4,7 @@ import { BookingTab } from '../data/data';
 import BookingModel from './BookingModel';
 import calender2 from '../dist/webImages/calendar2.svg';
 import SkeletonBookingDate from './SkeletonBookingDate';
+import SkeletonBookingsCard from './SkeletonBookingsCard';
 import usePost from '../customHooks/usePost';
 import { MainLanguageContext } from '../context/MainLanguageContext';
 import { Pagination, Table } from 'antd';
@@ -164,7 +165,7 @@ const Booking = ({ permission }) => {
               <FiMail className="users-table__metaIcon" />
               <span>{record.client_email || record.email || 'No email'}</span>
             </div>
-            <div className="bookings-table__subMeta">{record.first_name || 'No first name'}</div>
+            {/* <div className="bookings-table__subMeta">{record.first_name || 'No first name'}</div> */}
           </div>
         ),
       },
@@ -178,9 +179,9 @@ const Booking = ({ permission }) => {
               <FiClock className="users-table__metaIcon" />
               <span>{dayjs(record.pickup_date_time).format('YYYY-MM-DD HH:mm')}</span>
             </div>
-            <div className="bookings-table__subMeta">
+            {/* <div className="bookings-table__subMeta">
               To {dayjs(record.return_date_time).format('YYYY-MM-DD HH:mm')}
-            </div>
+            </div> */}
           </div>
         ),
       },
@@ -203,7 +204,7 @@ const Booking = ({ permission }) => {
             <span className={`users-table__badge ${record.payment_status === 'paid' ? 'users-table__badge--active' : 'users-table__badge--inactive'}`}>
               {record.payment_status || 'unpaid'}
             </span>
-            <div className="bookings-table__subMeta">{record.payment_type || 'No payment type'}</div>
+            {/* <div className="bookings-table__subMeta">{record.payment_type || 'No payment type'}</div> */}
           </div>
         ),
       },
@@ -234,6 +235,10 @@ const Booking = ({ permission }) => {
     ],
     []
   )
+
+  if (resget.isLoading && !datas?.length) {
+    return <SkeletonBookingsCard />
+  }
 
   return (
     <section className='bookingPage users-table-page bookings-table-page'>

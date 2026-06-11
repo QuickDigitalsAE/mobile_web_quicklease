@@ -4,8 +4,8 @@ import { Table } from 'antd'
 import { FiArrowUpRight, FiEdit3, FiMail, FiPlus } from 'react-icons/fi'
 import plus from '../dist/webImages/plus.svg'
 import profileImg from '../dist/webImages/profile.png'
-import SkeletonHeading from '../components/SkeletonHeading'
 import useFetch from '../customHooks/useFetch'
+import SkeletonUserCard from './SkeletonUserCard'
 
 const User = ({ permission }) => {
   const { loading, data } = useFetch(`allUsers`)
@@ -92,22 +92,22 @@ const User = ({ permission }) => {
     [canEditUsers]
   )
 
+  if (loading) {
+    return <SkeletonUserCard />
+  }
+
   return (
     <section className='TeamPage users-table-page'>
       <div className="TeamPageTop users-table-page__top flex justify-between items-center">
         <div>
-          {loading ? (
-            <SkeletonHeading />
-          ) : (
-            <>
-              <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka'>
-                <span>{datas?.length ?? 0}</span> Users
-              </h6>
-              <p className="users-table-page__subtitle">
-                Review team accounts, status, and edit access from a cleaner table view.
-              </p>
-            </>
-          )}
+          <>
+            <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka'>
+              <span>{datas?.length ?? 0}</span> Users
+            </h6>
+            <p className="users-table-page__subtitle">
+              Review team accounts, status, and edit access from a cleaner table view.
+            </p>
+          </>
         </div>
         {canAddUsers && (
           <Link to={"/users/create"} className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer'>
