@@ -3,8 +3,7 @@ import { Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import swal from "sweetalert";
 import SubmitButton from '../components/SubmitButton';
-import back from "../dist/webImages/back.svg";
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import SkeletonCreateEdit from './SkeletonCreateEdit';
 import OneImageUpload from '../components/OneImageUpload';
 import usePost from '../customHooks/usePost';
@@ -30,9 +29,6 @@ const EditReviews = ({permission}) => {
                   "review_image" : resget.data?.data?.image})
               }
               }, [resget.data])
-
-
-
 
       const [res, apiMethod] = usePost();
   const requireFeild = ["rating","redirect_url"];
@@ -74,7 +70,6 @@ const EditReviews = ({permission}) => {
     };
   }
 
-
     useEffect(() => {
       if (res.data) {
         const { status, message } = res?.data
@@ -88,7 +83,6 @@ const EditReviews = ({permission}) => {
       }
     }, [res.data])
 
-
     if ( res.isLoading || !resget?.data?.data || !datas) return <SkeletonCreateEdit heading={"Edit Reviews"} />
 
         let initialValues = {
@@ -97,12 +91,8 @@ const EditReviews = ({permission}) => {
     }
 const check = (module, action) => permission?.[module]?.includes(action);
     return (
-        <div className='EditReviews pr-10 max-lg:pr-6'>
-            <Link to={"/reviews"} className="back flex items-center mb-6 gap-2">
-                <img src={back} className='w-[2rem]' alt="" />
-                <span className='text-[1.4rem] font-MluvkaBold'>Edit Reviews</span>
-            </Link>
-            <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
+        <div className='EditReviews  '>
+<div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
                 <div className={`ReviewsModel  transition-all duration-300  rounded-xl `}>
 
                     <div className=' overflow-auto modelBox'>

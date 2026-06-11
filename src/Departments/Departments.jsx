@@ -14,9 +14,9 @@ const Departments = () => {
       }, []);
     const dummy = ["1", "2", "3", "4", "3", "2", "4", "1"];
     return (
-        <div className='DepartmentsPage pr-10 max-lg:pr-6'>
+        <div className='DepartmentsPage  '>
             <div className="DepartmentsPageTop flex justify-between items-center">
-            {loading ? <SkeletonHeading /> : <h6 className='text-[1rem] mb-2 bookingSectionh relative px-3 font-Mluvka'><span>26</span> Departments</h6>}
+            {loading ? <SkeletonHeading /> : <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka'><span>26</span> Departments</h6>}
                 
                 <Link to={"/departments/create"} className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' >
                     <img src={plus} alt="plus" />

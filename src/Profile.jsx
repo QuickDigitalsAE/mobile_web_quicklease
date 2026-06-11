@@ -5,8 +5,7 @@ import swal from "sweetalert";
 import FormControl from "./components/form/FormControl";
 import {  Field, Form, Formik } from "formik";
 import SubmitButton from "./components/SubmitButton";
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import back from "./dist/webImages/back.svg";
+import { useNavigate, useParams } from 'react-router-dom';
 import { MainLanguageContext } from "./context/MainLanguageContext";
 import useFetch from "./customHooks/useFetch";
 import useGet from "./customHooks/useGet";
@@ -129,7 +128,6 @@ const Profile = () => {
         }
     }, [res.data])
 
-
     if (loading || !profileData) return <SkeletonCreateEdits heading={"Profile"} />;
     let user_enabled = []
     user_enabled.push(String(profileData?.user_enabled))
@@ -141,12 +139,8 @@ const Profile = () => {
         user_enabled: user_enabled,
     };
     return (
-        <div className='createTeam pr-10 max-lg:pr-6'>
-            <Link to={"/user"} className="back flex items-center mb-5 gap-2">
-                <img src={back} className='w-[2rem]' alt="" />
-                <span className='text-[1.4rem] font-MluvkaBold'>Edit Profile</span>
-            </Link>
-            <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-2'>
+        <div className='createTeam  '>
+<div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-2'>
                 <div className={`TeamModel  transition-all duration-300  bg-white rounded-xl`} >
                     <div className=" overflow-auto modelBox">
                         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit} validateOnChange>

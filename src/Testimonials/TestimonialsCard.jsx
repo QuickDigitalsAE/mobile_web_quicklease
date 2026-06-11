@@ -6,7 +6,6 @@ import useDelete from '../customHooks/useDelete';
 import { toast } from 'react-toastify';
 import { StringConvert } from '../components/StringConvert';
 
-
 const truncateText = (text, maxLength) => {
   if (text) {
     if (text.length <= maxLength) {
@@ -16,8 +15,6 @@ const truncateText = (text, maxLength) => {
   }
   return text;
 };
-
-
 
 const TestimonialsCard = ({ data, alldata, deleted, permission }) => {
 

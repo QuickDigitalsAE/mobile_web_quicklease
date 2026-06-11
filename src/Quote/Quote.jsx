@@ -16,7 +16,6 @@ const Quote = () => {
     }, []);
     const [currentPage, setCurrentPage] = useState(1)
 
-
     const onChange = (current, pageSize) => {
         setCurrentPage(current)
             apiMethodGet(`quicklease/form_list/10?page=${current}`);
@@ -30,8 +29,6 @@ const Quote = () => {
 
     }, [resget.data])
 
-
-
     useEffect(() => {
         if (!resget.isLoading) {
             const updatedData = resget?.data?.data?.map((item, index) => ({
@@ -41,7 +38,6 @@ const Quote = () => {
             setDatas(updatedData);
         }
     }, [resget.data]);
-
 
     const handleChange = (record,e) => {
       setDatas((prevDatas) =>
@@ -146,7 +142,6 @@ if(!datas) return '';
                     pageSize={10}
                 />
             </div>
-
 
     </div>
   )

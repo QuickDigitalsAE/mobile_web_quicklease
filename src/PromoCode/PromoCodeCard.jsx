@@ -4,10 +4,6 @@ import { Link } from 'react-router-dom';
 import useDelete from '../customHooks/useDelete';
 import { toast } from 'react-toastify';
 
-
-
-
-
 const PromoCodeCard = ({data,alldata,deleted,permission}) => {
     const {id,code_title} = data
     const handleDelete = () => {

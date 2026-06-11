@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
-import back from "../dist/webImages/back.svg";
 import { Field, Form, Formik } from "formik";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import FormControl from "../components/form/FormControl";
 import SkeletonCreateEdit from "./SkeletonCreateEdit";
 import CKEditors from "../components/form/CKEditors";
@@ -49,8 +48,6 @@ const EditCatalogs = ({ permission }) => {
         };
     }, [arrow]);
 
-
-
     useEffect(() => {
         apiMethodGet2(`catalogs/dropdownList/en`)
         apiMethodCar(`products/allCars/en`)
@@ -59,13 +56,10 @@ const EditCatalogs = ({ permission }) => {
         apiMethodGet(`catalogs/edit/${id}/${mainLanguage}`)
     }, [mainLanguage]);
 
-
-
     useEffect(() => {
         if (resget2.data) {
             const data = resget2.data.data;
             setCatlogsList(data);
-
 
             const options = data?.flatMap(item => {
                 const mainOption = {
@@ -74,7 +68,7 @@ const EditCatalogs = ({ permission }) => {
                 };
 
                 const subOptions = item.children?.map(subItem => ({
-                    label: `— ${subItem.catalog_title}`,
+                    label: `â€” ${subItem.catalog_title}`,
                     value: subItem.id,
                 })) || [];
 
@@ -116,7 +110,6 @@ const EditCatalogs = ({ permission }) => {
         }
     }, [resget.data]);
 
-
     const handleParent = (e) => {
 
         const value = e.target.value;
@@ -130,7 +123,6 @@ const EditCatalogs = ({ permission }) => {
             }));
             return;
         }
-
 
         const selectedId = parseInt(e.target.value);
         setParent_id(selectedId);
@@ -158,7 +150,6 @@ const EditCatalogs = ({ permission }) => {
             all_slugs = `${selectedItem.slug}`;
         }
 
-
         // Update state
         setSlugs((prev) => ({
             ...prev,
@@ -173,9 +164,6 @@ const EditCatalogs = ({ permission }) => {
         })
     }
 
-
-
-
     const [imageLoader, setImageLoader] = useState(false);
 
     const handletype = (e, type) => {
@@ -189,8 +177,6 @@ const EditCatalogs = ({ permission }) => {
         setSelectedCar(e);
     }
 
-
-
     const handleSectionAdd = (sectionKey, fields) => {
         const newEntry = Object.fromEntries(fields.map((field) => [field, ""]));
 
@@ -199,7 +185,6 @@ const EditCatalogs = ({ permission }) => {
             [sectionKey]: [...(prevState[sectionKey] || []), newEntry],
         }));
     };
-
 
     const handleDelete = (section, index) => {
         setDatas(prevService => ({
@@ -225,7 +210,6 @@ const EditCatalogs = ({ permission }) => {
             )
         }));
     }
-
 
     const [res, apiMethod] = usePost();
     const requireFeild = [
@@ -310,9 +294,6 @@ const EditCatalogs = ({ permission }) => {
                 formdata.append(`car_ids[]`, selectedCar[index]);
             }
 
-
-
-
             const appendSectionData = (sectionKey, dataArray) => {
                 if (Array.isArray(dataArray)) {
                     dataArray.forEach((item, index) => {
@@ -344,7 +325,6 @@ const EditCatalogs = ({ permission }) => {
         }
         }
     }
-
 
     useEffect(() => {
         if (res.data) {
@@ -382,12 +362,8 @@ const EditCatalogs = ({ permission }) => {
     const { banner, sec_one, sec_two, sec_three, sec_faqs, description, sec_one_description, sec_two_description, sec_three_description, sec_four_description, sec_testimonials,sec_four } = datas;
     const check = (module, action) => permission?.[module]?.includes(action);
     return (
-        <section className="PromotionCreate pr-10 max-lg:pr-6">
-            <Link to={"/catalogs"} className="back flex items-center mb-5 gap-2">
-                <img src={back} className="w-[2rem]" alt="" />
-                <span className="text-[1.4rem] font-MluvkaBold">Edit Catalogs</span>
-            </Link>
-            <div className="relative flex items-start gap-3">
+        <section className="PromotionCreate  ">
+<div className="relative flex items-start gap-3">
                 <div className=" bg-white rounded-xl w-full  mx-auto relative">
                     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
                         <Form name="myForm">
@@ -450,7 +426,7 @@ const EditCatalogs = ({ permission }) => {
                                                             {Array.isArray(children) &&
                                                                 children.map((item2,index2) => (
                                                                     <option key={index2} value={item2.id}>
-                                                                        — {item2.catalog_title}
+                                                                        â€” {item2.catalog_title}
                                                                     </option>
                                                                 ))}
                                                         </React.Fragment>
@@ -706,7 +682,6 @@ const EditCatalogs = ({ permission }) => {
                                     </div>
                                 </div>
 
-
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Testimonials</div>
@@ -749,13 +724,7 @@ const EditCatalogs = ({ permission }) => {
                                     </div>
                                 </div>
 
-
-
-
-
                                 {mainLanguage === "en" &&
-
-
 
                                     (addCar) && <div className='antdheight'>
                                         <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Product List</div>

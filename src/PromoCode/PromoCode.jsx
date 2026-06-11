@@ -17,7 +17,6 @@ const PromoCode = ({permission}) => {
     const [searchValue, setSearchValue] = useState("")
     const [res2, apiMethod2] = usePost()
 
-
     const onChange = (current, pageSize) => {
         setCurrentPage(current)
         let formdata = new FormData();
@@ -35,7 +34,6 @@ const PromoCode = ({permission}) => {
             apiMethodGet(`promo_codes/list/${mainLanguage}/6?page=1`);
         }
     }, [mainLanguage]);
-
 
     let debounceTimer;
     const debounce = (func, delay) => {
@@ -61,7 +59,6 @@ const PromoCode = ({permission}) => {
       };
       const handleChange = debounce(executeApiCall, 1000)
 
-
     useEffect(() => {
         if (!resget.isLoading) {
             setDatas(resget?.data?.data)
@@ -79,9 +76,9 @@ const PromoCode = ({permission}) => {
     }, [res2.data]);
      const check = (module, action) => permission?.[module]?.includes(action);
   return (
-    <div className='Promotions pr-10 max-lg:pr-6'>
+    <div className='Promotions  '>
     <div className="TeamPageTop flex justify-between items-center">
-                <h6 className='text-[1rem] mb-2 bookingSectionh relative px-3 font-Mluvka capitalize'>promo and updates</h6>
+                <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka capitalize'>promo and updates</h6>
                 <div className='flex gap-1'>
                     <div className="inputBox w-[16rem] max-lg:hidden">
                         <input type="text" onChange={handleChange} className='w-full border h-[2.8rem] rounded-full px-4 border-[#ddd] outline-none' placeholder='Search' />

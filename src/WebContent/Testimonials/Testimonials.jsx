@@ -56,7 +56,6 @@ const Testimonials = ({permission}) => {
             formdata.append(`translation[${item}]`, values[item] ?? "");
         }
 
-
         if (checkerRequried.length > 0) {
             swal({
                 title: "Required Fields are empty! Please fill and try again",
@@ -84,7 +83,6 @@ const Testimonials = ({permission}) => {
             }
         }
     }, [res.data])
-
 
     if (resget.isLoading || !resget.data) return <SkeletonTestimonials />
     const initialValues = {

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
-import back from "../dist/webImages/back.svg";
 import { Field, Form, Formik } from "formik";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import FormControl from "../components/form/FormControl";
 import SkeletonCreateEdit from "./SkeletonCreateEdit";
 import CKEditors from "../components/form/CKEditors";
@@ -89,15 +88,12 @@ const [parent_id, setParent_id] = useState("")
         };
     }, [arrow]);
 
-
-
     useEffect(() => {
         apiMethodGet2(`catalogs/dropdownList/en`)
     }, []);
     useEffect(() => {
         apiMethodGet(`catalogs/edit/${id}/${mainLanguage}`)
     }, [mainLanguage]);
-
 
     
           useEffect(() => {
@@ -113,7 +109,7 @@ const [parent_id, setParent_id] = useState("")
                 };
         
                 const subOptions = item.children?.map(subItem => ({
-                  label: `— ${subItem.catalog_title}`,
+                  label: `â€” ${subItem.catalog_title}`,
                   value: subItem.id,
                 })) || [];
         
@@ -150,10 +146,6 @@ const [parent_id, setParent_id] = useState("")
         }
     }, [resget.data,data]);
 
-
-
-
-
     const [imageLoader, setImageLoader] = useState(false);
 
     const handleCkChange = (e, type) => {
@@ -164,8 +156,6 @@ const [parent_id, setParent_id] = useState("")
         setSelectedCar(e);
       }
 
-
-
     const handleSectionAdd = (sectionKey, fields) => {
         const newEntry = Object.fromEntries(fields.map((field) => [field, ""]));
 
@@ -174,7 +164,6 @@ const [parent_id, setParent_id] = useState("")
             [sectionKey]: [...(prevState[sectionKey] || []), newEntry],
         }));
     };
-
 
     const handleDelete = (section, index) => {
         setDatas(prevService => ({
@@ -200,7 +189,6 @@ const [parent_id, setParent_id] = useState("")
             )
         }));
     }
-
 
     const [res, apiMethod] = usePost();
     const requireFeild = [
@@ -267,9 +255,6 @@ const [parent_id, setParent_id] = useState("")
                 formdata.append(`car_ids[]`, selectedCar[index]);  
             }
 
-
-
-
             const appendSectionData = (sectionKey, dataArray) => {
                 if (Array.isArray(dataArray)) {
                     dataArray.forEach((item, index) => {
@@ -302,7 +287,6 @@ const [parent_id, setParent_id] = useState("")
         }
     }
 
-
     useEffect(() => {
         if (res.data) {
             const { status, message } = res?.data;
@@ -333,16 +317,11 @@ const [parent_id, setParent_id] = useState("")
         catalog_status: resget?.data?.data?.catalog_status && [`${String(resget?.data?.data?.catalog_status)}`],
     };
 
-
     const { banner, sec_one, sec_two,sec_three, services, description, sec_one_description, sec_two_description,sec_three_description,sec_four_description } = datas;
      const check = (module, action) => permission?.[module]?.includes(action);
     return (
-        <section className="PromotionCreate pr-10 max-lg:pr-6">
-            <Link to={"/carwithdrivers"} className="back flex items-center mb-5 gap-2">
-                <img src={back} className="w-[2rem]" alt="" />
-                <span className="text-[1.4rem] font-MluvkaBold">Edit Car With Driver</span>
-            </Link>
-            <div className="relative flex items-start gap-3">
+        <section className="PromotionCreate  ">
+<div className="relative flex items-start gap-3">
                 <div className=" bg-white rounded-xl w-full  mx-auto relative">
                     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
                         <Form name="myForm">
@@ -461,7 +440,6 @@ const [parent_id, setParent_id] = useState("")
                                     <br />
                                     <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Section 1 Description</div>
                                     <CKEditors label={"Description"} data={sec_one_description} update={(text) => handleCkChange(text, "sec_one_description")} />
-
 
                                     <div className="section4Main grid grid-cols-3 gap-3 mt-4 max-lg:grid-cols-1">
                                         {

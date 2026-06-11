@@ -19,7 +19,6 @@ const Enquiries = () => {
     }, []);
     const [currentPage, setCurrentPage] = useState(1)
 
-
     const onChange = (current, pageSize) => {
         setCurrentPage(current)
             apiMethodGet(`enquiries/list/all/${mainLanguage}/10?page=${current}`);
@@ -32,8 +31,6 @@ const Enquiries = () => {
 
     }, [resget.data])
 
-
-
     useEffect(() => {
         if (resget.data) {
           console.log(resget?.data?.data)
@@ -44,7 +41,6 @@ const Enquiries = () => {
             setDatas(updatedData);
         }
     }, [resget.data]);
-
 
    const handleUpdate = (active) => {
     setCurrentPage(1)

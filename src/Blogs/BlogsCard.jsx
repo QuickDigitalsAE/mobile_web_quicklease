@@ -6,8 +6,6 @@ import { toast } from 'react-toastify';
 import dayjs from 'dayjs';
 import { StringConvert } from '../components/StringConvert';
 
-
-
 const truncateText = (text, maxLength) => {
     if(text) {
       if (text.length <= maxLength) {
@@ -17,7 +15,6 @@ const truncateText = (text, maxLength) => {
     }
     return text;
   };
-
 
 const BlogsCard = ({data,alldata,deleted,permission}) => {
     const {id,blog_image,blog_paragraph,blog_slug,blog_title,blog_schedule} = data

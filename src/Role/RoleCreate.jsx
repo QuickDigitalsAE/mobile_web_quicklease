@@ -1,15 +1,14 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import FormControl from "../components/form/FormControl";
 import { Form, Formik } from "formik";
 import SubmitButton from "../components/SubmitButton";
 import { Link, useNavigate } from 'react-router-dom';
-import back from "../dist/webImages/back.svg";
 import SkeletonCreateEdits from "./SkeletonCreateEdits";
 import usePost from "../customHooks/usePost";
 import useFetch from "../customHooks/useFetch";
 import swal from "sweetalert";
 import { toast } from "react-toastify";
-
+import { FiCheckSquare, FiLayers, FiShield, FiUsers } from "react-icons/fi";
 
 const RoleCreate = () => {
   const navigate = useNavigate();
@@ -39,10 +38,6 @@ const RoleCreate = () => {
   let initialValues = {
     role_name: "",
   };
-
-
-
-
 
   const handlePermissionAll = () => {
     const allSelect = !selectAll;
@@ -158,53 +153,94 @@ const RoleCreate = () => {
     }
   }, [res.data])
 
-
   if (loading) return <SkeletonCreateEdits heading={"Create Role"} />
-  console.log(datas,"Mu")
   return (
-    <div className='createTeam pr-10 max-lg:pr-6'>
-      <Link to={"/role"} className="back flex items-center mb-5 gap-2">
-        <img src={back} className='w-[2rem]' alt="" />
-        <span className='text-[1.4rem] font-MluvkaBold'>Create Role</span>
-      </Link>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit} >
+    <div className='createTeam role-create-page'>
+<Formik initialValues={initialValues} onSubmit={handleSubmit} >
         <Form name="myForm">
-          <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-8 max-lg:p-2'>
-            <div className={`RoleCreate transition-all duration-300  bg-white rounded-xl`} >
-              <div className="overflow-auto modelBox">
-                <div className="TeamBox p-5 rounded-xl">
-                  <div className="form mt-7">
-                    <FormControl
-                      name="role_name"
-                      label={"Role Name"}
-                      placeholder="Enter Role Name"
-                      className="outline-none w-full h-[2.7rem] border border-[#CFD5E2] px-5 rounded-lg"
-                      control="input"
-                      type="text"
-                    />
+          <div className='role-create-page__shell'>
+            <div className='RoleCreate role-create-page__hero transition-all duration-300 bg-white rounded-xl'>
+              <div className="role-create-page__heroGrid">
+                <aside className="role-create-page__aside">
+                  <span className="role-create-page__kicker">Access Control</span>
+                  <h2>Design a role with the right level of access</h2>
+                  <p>
+                    Name the role clearly, then choose the exact modules and actions this team member should control.
+                  </p>
+                  <div className="role-create-page__miniStats">
+                    <article>
+                      <FiShield />
+                      <div>
+                        <strong>{datas ? Object.keys(datas).length : 0}</strong>
+                        <span>Permission groups</span>
+                      </div>
+                    </article>
+                    <article>
+                      <FiLayers />
+                      <div>
+                        <strong>
+                          {datas
+                            ? Object.values(datas).reduce((total, group) => total + group.data.length, 0)
+                            : 0}
+                        </strong>
+                        <span>Available actions</span>
+                      </div>
+                    </article>
                   </div>
-                </div>
+                  <div className="role-create-page__asideNote">
+                    <strong>Quick Note</strong>
+                    <span>Use focused role names like `Content Editor`, `Operations Lead`, or `Support Agent` for easier team management.</span>
+                  </div>
+                </aside>
 
+                <section className='role-create-page__identity bg-[#EFF4FD] p-6 rounded-3xl mb-0 max-lg:p-2'>
+                  <div className="role-create-page__sectionHead">
+                    <h3>Role Details</h3>
+                    <p>Set the display name that will represent this permission bundle across the admin.</p>
+                  </div>
+                  <div className={`RoleCreate transition-all duration-300 bg-white rounded-xl`} >
+                    <div className="overflow-auto modelBox">
+                      <div className="TeamBox p-5 rounded-xl">
+                        <div className="form mt-7">
+                          <FormControl
+                            name="role_name"
+                            label={"Role Name"}
+                            placeholder="Enter role name"
+                            className="outline-none w-full h-[2.7rem] border border-[#CFD5E2] px-5 rounded-lg"
+                            control="input"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
               </div>
             </div>
           </div>
-          <div className='bg-[#EFF4FD] roleMain p-6 rounded-3xl mb-3 max-lg:p-2'>
-            <div className="btn w-fit bg-primary px-7 rounded-full flex items-center gap-3 py-3 text-white cursor-pointer ml-auto" onClick={handlePermissionAll}>
-              <svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path className={`${selectAll ? "" : "hidden"}`} d="M6 7.3L8.76923 10L18 1" stroke={`${selectAll ? "#fff" : "#fff"}`} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M16 8.5V14.3333C16 14.7754 15.8244 15.1993 15.5118 15.5118C15.1993 15.8244 14.7754 16 14.3333 16H2.66667C2.22464 16 1.80072 15.8244 1.48816 15.5118C1.17559 15.1993 1 14.7754 1 14.3333V2.66667C1 2.22464 1.17559 1.80072 1.48816 1.48816C1.80072 1.17559 2.22464 1 2.66667 1H11.8333" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg><span>Select All</span></div>
+          <div className='bg-[#EFF4FD] roleMain role-create-page__permissions p-6 rounded-3xl mb-3 max-lg:p-2'>
+            <div className="role-create-page__permissionsTop">
+              <div>
+                <h3>Permission Matrix</h3>
+                <p>Toggle full groups or choose individual actions for a more precise role setup.</p>
+              </div>
+              <button type="button" className="role-create-page__selectAll" onClick={handlePermissionAll}>
+                <FiCheckSquare />
+                <span>{selectAll ? "Clear Selection" : "Select All"}</span>
+              </button>
+            </div>
 
-            <div className="roleMainM grid grid-cols-3 gap-4 mt-4">
+            <div className="roleMainM role-create-page__permissionGrid grid grid-cols-3 gap-4 mt-4">
               {
                 datas && Object.keys(datas).map((item, index) => {
                   return (
-                    <div className="roleMainMBox py-5 px-5 bg-[#DEE5F2] rounded-3xl" key={index}>
-                      <div className="roleMainMBoxt flex justify-between items-center">
+                    <div className="roleMainMBox role-create-page__permissionCard py-5 px-5 bg-[#DEE5F2] rounded-3xl" key={index}>
+                      <div className="roleMainMBoxt role-create-page__permissionHead flex justify-between items-center">
                         <div className="roleMainMBoxl">
                           <span className="text-[#7D8CA7] uppercase">{item}</span>
+                          <p>{datas[item]?.data?.length ?? 0} actions</p>
                         </div>
-                        <div className={`roleMainMBoxr ${datas[item].active && "active"}`} onClick={() =>
+                        <div className={`roleMainMBoxr role-create-page__groupToggle ${datas[item].active && "active"}`} onClick={() =>
                           handlePermission({
                             name: datas[item].name,
                             id: datas[item].id,
@@ -228,7 +264,7 @@ const RoleCreate = () => {
                             datas[item]?.data.map((item2) => {
                               const { name, id, active } = item2
                               return (
-                                <li className={`bg-white cursor-pointer rounded-2xl py-4 px-6 flex items-center gap-2 my-3 roleMainMBoxbb ${active && "active"}`} key={id} onClick={() =>
+                                <li className={`bg-white cursor-pointer rounded-2xl py-4 px-6 flex items-center gap-2 my-3 roleMainMBoxbb role-create-page__permissionItem ${active && "active"}`} key={id} onClick={() =>
                                   handlePermission2({
                                     name: item2.name,
                                     id: item2.id,
@@ -254,14 +290,19 @@ const RoleCreate = () => {
 
             </div>
           </div>
-          <SubmitButton
-            props={{
-              class:
-                "btn bg-secondary text-white uppercase mt-6 ml-auto py-3 px-8 rounded-full w-fit block submit hover:bg-primary transition-all duration-300",
-              text: "Submit",
-            }}
-            buttonLoading={res.isLoading}
-          />
+          <div className="role-create-page__actions">
+            <Link to="/role" className="role-create-page__cancel">
+              Cancel
+            </Link>
+            <SubmitButton
+              props={{
+                class:
+                  "role-create-page__submit btn bg-secondary text-white uppercase py-3 px-8 rounded-full w-fit block submit hover:bg-primary transition-all duration-300",
+                text: "Create Role",
+              }}
+              buttonLoading={res.isLoading}
+            />
+          </div>
         </Form>
       </Formik>
     </div>

@@ -232,7 +232,6 @@ const Elements = () => {
                 <FormControl name="out-of-stock"  label={"Out Of Stock"} placeholder="Enter Out Of Stock" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
         
 
-
                 <div>
                 <div className="mb-1 block text-[#7D8CA7] text-[.8rem]">Subscribe</div>
                 <CKEditors label={"Subscribe"} data={datas?.["subscribe-details"]} update={(text) => handleCkChange(text, "subscribe-details")} />

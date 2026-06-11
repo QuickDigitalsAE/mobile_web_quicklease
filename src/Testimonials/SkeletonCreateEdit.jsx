@@ -1,12 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import back from "../dist/webImages/back.svg";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 const SkeletonCreateEdit = ({heading}) => {
     return (
      <SkeletonTheme baseColor="#fff" highlightColor="#f0f0f0">
-                <div className="aboutPage pr-10 max-lg:pr-6">
+                <div className="aboutPage  ">
                     {/* Meta Tags and Description */}
                     <div className="bg-[#EFF4FD] p-6 rounded-3xl mb-3">
                         <Skeleton height={24} width="50%" />

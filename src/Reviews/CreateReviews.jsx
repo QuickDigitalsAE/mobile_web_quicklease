@@ -3,8 +3,7 @@ import { Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import swal from "sweetalert";
 import SubmitButton from '../components/SubmitButton';
-import back from "../dist/webImages/back.svg";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import SkeletonCreateEdit from './SkeletonCreateEdit';
 import OneImageUpload from '../components/OneImageUpload';
 import usePost from '../customHooks/usePost';
@@ -25,9 +24,6 @@ const CreateReviews = () => {
         rating: "",
         redirect_url: "",
     }
-
-
-
 
       const [res, apiMethod] = usePost();
   const requireFeild = ["rating","redirect_url"];
@@ -69,7 +65,6 @@ const CreateReviews = () => {
     };
   }
 
-
     useEffect(() => {
       if (res.data) {
         const { status, message } = res?.data
@@ -83,15 +78,10 @@ const CreateReviews = () => {
       }
     }, [res.data])
 
-
     if(loading) return <SkeletonCreateEdit heading={"Create Reviews"} />
     return (
-        <div className='CreateReviews pr-10 max-lg:pr-6'>
-            <Link to={"/reviews"} className="back flex items-center mb-6 gap-2">
-                <img src={back} className='w-[2rem]' alt="" />
-                <span className='text-[1.4rem] font-MluvkaBold'>Create Reviews</span>
-            </Link>
-            <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
+        <div className='CreateReviews  '>
+<div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
                 <div className={`ReviewsModel  transition-all duration-300  rounded-xl `}>
 
                     <div className=' overflow-auto modelBox'>

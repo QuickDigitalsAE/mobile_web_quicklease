@@ -28,10 +28,6 @@ const AboutUs = ({ permission }) => {
         }
     }, [resget.data])
 
-
-
-
-
     const handleSectionAdd = (sectionKey, fields) => {
         const newEntry = Object.fromEntries(fields.map((field) => [field, ""]));
 
@@ -41,16 +37,12 @@ const AboutUs = ({ permission }) => {
         }));
     };
 
-
     const handleDelete = (section, index) => {
         setDatas(prevService => ({
             ...prevService,
             [section]: prevService[section].filter((item, index2) => index !== index2)
         }));
     }
-
-
-
 
     const handleInputChange2 = (e, section, index) => {
         const { name, value } = e.target;
@@ -71,8 +63,6 @@ const AboutUs = ({ permission }) => {
         }));
     }
 
-
-
     const [res, apiMethod] = usePost();
     const handleSubmit = async (values) => {
         if (imageLoader) {
@@ -87,7 +77,6 @@ const AboutUs = ({ permission }) => {
             for (const item in values) {
                 formdata.append(`translation[${item}]`, values[item]);
             }
-
 
             const appendSectionData = (sectionKey, dataArray) => {
                 if (Array.isArray(dataArray)) {
@@ -114,7 +103,6 @@ const AboutUs = ({ permission }) => {
                 { key: "sec_four", data: datas.sec_four },
                 { key: "sec_faqs", data: datas.sec_faqs },
             ].forEach(({ key, data }) => appendSectionData(key, data));
-
 
             formdata.append(`banner`, datas?.banner_value ?? "");
             apiMethod(`webContents/aboutus/${mainLanguage}`, formdata)
@@ -146,7 +134,7 @@ const AboutUs = ({ permission }) => {
     }
     const check = (module, action) => permission?.[module]?.includes(action);
     return (
-        <div className='aboutPage pr-10 max-lg:pr-6'>
+        <div className='aboutPage  '>
             <Formik initialValues={initialValues} onSubmit={handleSubmit}  >
                 <Form>
                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>

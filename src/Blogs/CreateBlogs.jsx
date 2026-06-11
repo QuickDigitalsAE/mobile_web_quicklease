@@ -1,10 +1,9 @@
 import React, {  useContext, useEffect, useState } from 'react';
-import back from "../dist/webImages/back.svg";
 import { Field, Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import SubmitButton from '../components/SubmitButton';
 import CKEditors from '../components/form/CKEditors';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import SkeletonCreateEdit from './SkeletonCreateEdit';
 import { toast } from 'react-toastify';
 import usePost from '../customHooks/usePost';
@@ -30,19 +29,11 @@ const CreateBlogs = ({permission}) => {
     ]
   })
 
-
-
-
-
-
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
   }, []);
-
-
-
 
   let initialValues = {
     meta_title: "",
@@ -54,7 +45,6 @@ const CreateBlogs = ({permission}) => {
     table_of_content: "",
     blog_schedule: dayjs().format("YYYY-MM-DDTHH:mm"),
   };
-
 
   const [res2, apiMethod2] = usePost();
   const [imageLoader, setImageLoader] = useState(false)
@@ -94,8 +84,6 @@ const CreateBlogs = ({permission}) => {
     setDatas(d => ({ ...d, [type]: e }));
   };
 
-
-
   const handleDrop = (e, type, value) => {
     e.preventDefault();
     let formdata = new FormData();
@@ -113,12 +101,6 @@ const CreateBlogs = ({permission}) => {
       swal("Only use Image", "", "warning");
     }
   };
-
-
-
-
-
-
 
   const [res, apiMethod] = usePost2();
   const requireFeild = ["meta_title", "meta_description", "blog_title", "blog_slug ", "blog_schedule"];
@@ -193,12 +175,8 @@ const CreateBlogs = ({permission}) => {
   const { blog_paragraph } = datas;
  const check = (module, action) => permission?.[module]?.includes(action);
   return (
-    <div className='newscreate pr-10 max-lg:pr-6'>
-      <Link to={"/blogs"} className="back flex items-center mb-6 gap-2">
-        <img src={back} className='w-[2rem]' alt="" />
-        <span className='text-[1.4rem] font-MluvkaBold'>Create Blogs</span>
-      </Link>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <div className='newscreate  '>
+<Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form name="myForm">
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
             <div className="grid grid-cols-2 gap-2">

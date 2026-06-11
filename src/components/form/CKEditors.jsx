@@ -127,7 +127,6 @@ const imageHandler = () => {
     table: true, // Enable table module
   };
 
-
   return (
       <div className="relative">
          {

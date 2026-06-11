@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
-import back from "../dist/webImages/back.svg";
 import { Field, Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import SubmitButton from '../components/SubmitButton';
 import CKEditors from '../components/form/CKEditors';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import SkeletonCreateEdit from './SkeletonCreateEdit';
 import { MainLanguageContext } from '../context/MainLanguageContext';
 import { toast } from 'react-toastify';
@@ -54,13 +53,6 @@ const CreateTestimonials = () => {
     "car_ids": []
   })
 
-
-
-
-
-
-
-
   let initialValues = {
     client_name: "",
     client_email: "",
@@ -68,20 +60,13 @@ const CreateTestimonials = () => {
     testimonial_status: ["1"],
   };
 
-
   const handleCkChange = (e, type) => {
     setDatas(d => ({ ...d, [type]: e }));
   };
 
-
-
   const handleCarsToggle = (item) => {
     setCar(item);
   }
-
-
-
-
 
   const [res, apiMethod] = usePost();
   const requireFeild = ["client_name"];
@@ -144,12 +129,8 @@ const CreateTestimonials = () => {
   const { client_review } = datas;
 
   return (
-    <div className='newscreate pr-10 max-lg:pr-6'>
-      <Link to={"/testimonials"} className="back flex items-center mb-6 gap-2">
-        <img src={back} className='w-[2rem]' alt="" />
-        <span className='text-[1.4rem] font-MluvkaBold'>Create Testimonials</span>
-      </Link>
-      <div className='relative flex items-start gap-3'>
+    <div className='newscreate  '>
+<div className='relative flex items-start gap-3'>
         <div className=' bg-white rounded-xl w-full  mx-auto relative'>
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             <Form name="myForm">
@@ -174,7 +155,6 @@ const CreateTestimonials = () => {
 
       <br />
       <br />
-
 
                 {addCar &&      <div className='antdheight'>
                 <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Product List</div>

@@ -28,7 +28,6 @@ const LogInPage = () => {
     password: yup.string().min(8, "Minimum 8 characters").max(20, "Maximum 20 characters").required("Required")
   });
 
-
   const handleSubmit = (values) => {
     let formdata = new FormData();
     for (const item in values) {

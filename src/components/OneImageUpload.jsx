@@ -9,8 +9,6 @@ const OneImageUpload = ({changeImage,Update,sec_image,sec_value,folder_name,page
     const [res2, apiMethod2] = usePost();
     const [imageLoader, setImageLoader] = useState(false)
 
-
-
   const handleFileUpload = (e) => {
     changeImage(true)
     setImageLoader(true)

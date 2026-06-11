@@ -8,7 +8,6 @@ import { MainLanguageContext } from '../context/MainLanguageContext';
 import { toast } from 'react-toastify';
 import SkeletonRoleList from './SkeletonRoleList';
 
-
 const RoleList = ({permission}) => {
     const { mainLanguage } = useContext(MainLanguageContext);  
     const [datas, setDatas] = useState()
@@ -25,7 +24,6 @@ const RoleList = ({permission}) => {
         }
        
        }, [resget.data])
-
 
     const [resDelete, apiMethodDelete] = useDelete();
     const [delateId, setDelateId] = useState("")
@@ -62,14 +60,13 @@ const RoleList = ({permission}) => {
       
       }, [resDelete.data])
 
-
     if (resget.isLoading) return <SkeletonRoleList />
 
      const check = (module, action) => permission?.[module]?.includes(action);
   return (
-    <div className='services pr-10 max-lg:pr-6'>
+    <div className='services  '>
     <div className="servicesTop flex justify-between items-center mb-4">
-        <h6 className='text-[1rem] mb-2 bookingSectionh relative px-3 font-Mluvka'> Role</h6>
+        <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka'> Role</h6>
         {/* {check("Roles", "Role Add") && <Link to={"/role/create"} className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' >
             <img src={plus} alt="plus" />
             <span className='font-MluvkaBold text-secondary capitalize'>Add Role</span>

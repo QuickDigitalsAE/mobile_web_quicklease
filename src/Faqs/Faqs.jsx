@@ -82,7 +82,7 @@ const Faqs = () => {
     }
     if (loading) return <SkeletonFaqs />
     return (
-        <div className='faqsPage pr-10 max-lg:pr-6'>
+        <div className='faqsPage  '>
             <Formik initialValues={initialValues}  >
                 <Form>
                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-4'>

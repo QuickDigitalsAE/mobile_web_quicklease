@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import http from "../services/httpServices";
 import config from "../services/config.json";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { getTokenSession, removeTokenSession } from "../utils/common";
 const useFetch = (url) => {
   const [data, setData] = useState();

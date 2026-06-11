@@ -1,17 +1,12 @@
 import React from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import { Link } from 'react-router-dom';
-import back from "../dist/webImages/back.svg";
+
 const SkeletonCreateEditServices = ({heading}) => {
   return (
     <SkeletonTheme baseColor="#fff" highlightColor="#f0f0f0">
-      <div className='services pr-10 max-lg:pr-6'>
-      <Link to={"/services"} className="back flex items-center mb-5 gap-2">
-            <img src={back} className='w-[2rem]' alt="" />
-            <span className='text-[1.4rem] font-MluvkaBold'>{heading}</span>
-            </Link>
-        <div className="servicesBottom">
+      <div className='services  '>
+<div className="servicesBottom">
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-8'>
             <Skeleton height={24}  />
             <div className='grid grid-cols-2 gap-3 mt-4 max-lg:grid-cols-1'>

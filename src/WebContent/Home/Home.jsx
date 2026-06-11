@@ -14,7 +14,6 @@ import OneImageUploadMultiple from '../../components/OneImageUploadMultiple';
 import swal from "sweetalert";
 import CKEditors from '../../components/form/CKEditors';
 
-
 const Home = ({permission}) => {
   const [imageLoader, setImageLoader] = useState(false)
   const [resget, apiMethodGet] = useGet()
@@ -32,10 +31,6 @@ const Home = ({permission}) => {
     }
   }, [resget.data])
 
-
-
-
-
   const handleSectionAdd = (sectionKey, fields) => {
     const newEntry = Object.fromEntries(fields.map((field) => [field, ""]));
 
@@ -45,17 +40,12 @@ const Home = ({permission}) => {
     }));
   };
 
-
   const handleDelete = (section, index) => {
     setDatas(prevService => ({
       ...prevService,
       [section]: prevService[section].filter((item, index2) => index !== index2)
     }));
   }
-
-
-
-
 
   const handleInputChange2 = (e, section, index) => {
     const { name, value } = e.target;
@@ -74,8 +64,6 @@ const Home = ({permission}) => {
       )
     }));
   }
-
-
 
   const [res, apiMethod] = usePost();
   const handleSubmit = async (values) => {
@@ -150,8 +138,6 @@ const Home = ({permission}) => {
     setDatas(d => ({ ...d, [type]: e }));
   };
 
-
-
   if (resget.isLoading || !datas) return <SkeletonHome />
   const { banner, sec_one, sec_two, sec_three, sec_four, sec_five, sec_seven, sec_eight,sec_nine,sec_one_paragrah,sec_three_paragrah } = datas
   const initialValues = {
@@ -178,8 +164,8 @@ const Home = ({permission}) => {
   }
   const check = (module, action) => permission?.[module]?.includes(action);
   return (
-    <div className='homePage pr-10 max-lg:pr-6'>
-         <h6 className='text-[1rem] mb-2 bookingSectionh relative px-3 font-Mluvka capitalize'>Home Page</h6>
+    <div className='homePage  '>
+         <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka capitalize'>Home Page</h6>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}  >
         <Form>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
@@ -235,7 +221,6 @@ const Home = ({permission}) => {
               }
             </div>
           </div>
-
 
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 1</div>

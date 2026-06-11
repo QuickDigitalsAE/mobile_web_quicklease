@@ -7,8 +7,7 @@ import camera from "../dist/webImages/camera.svg"
 import plus from '../dist/webImages/plus.svg'
 import SubmitButton from '../components/SubmitButton';
 import CKEditors from '../components/form/CKEditors';
-import { Link } from 'react-router-dom';
-import back from "../dist/webImages/back.svg";
+
 import SkeletonCreateEdit from './SkeletonCreateEdit';
 
 const EditDepartments = () => {
@@ -182,12 +181,8 @@ const EditDepartments = () => {
     }
     if(loading) return <SkeletonCreateEdit heading={"Edit Departments"} />
     return (
-        <div className='EditDepartments pr-10 max-lg:pr-6'>
-             <Link to={"/departments"} className="back flex items-center mb-5 gap-2">
-            <img src={back} className='w-[2rem]' alt="" />
-            <span className='text-[1.4rem] font-MluvkaBold'>Edit Department</span>
-            </Link>
-            <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
+        <div className='EditDepartments  '>
+<div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
                 <div className='relative flex'>
                     <div className=' bg-white rounded-xl w-full  mx-auto relative'>
                         <div className='overflow-auto modelBox'>

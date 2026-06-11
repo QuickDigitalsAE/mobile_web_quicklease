@@ -1,17 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import back from "../dist/webImages/back.svg";
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
 const SkeletonCreateEdit = ({heading}) => {
   return (
-    <div className='CreateReviews pr-10 max-lg:pr-6'>
-     <Link to={"/reviews"} className="back flex items-center mb-10 gap-2">
-            <img src={back} className='w-[2rem]' alt="" />
-            <span className='text-[1.4rem] font-MluvkaBold'>{heading}</span>
-            </Link>
-    <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
+    <div className='CreateReviews  '>
+<div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
         <div className='ReviewsModel transition-all duration-300 bg-white rounded-xl'>
             <div className='overflow-auto modelBox'>
                 <div className="ReviewsBox p-5 px-12 rounded-xl grid grid-cols-[auto,1fr] gap-10  max-lg:grid-cols-1 max-lg:gap-2 max-lg:px-5">

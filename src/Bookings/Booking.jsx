@@ -10,8 +10,6 @@ import usePost from '../customHooks/usePost';
 import { MainLanguageContext } from '../context/MainLanguageContext';
 import { Pagination } from 'antd';
 
-
-
 const Booking = ({permission}) => {
 const { mainLanguage } = useContext(MainLanguageContext); 
 const [loading, setLoading] = useState(true)
@@ -69,7 +67,6 @@ const debounce = (func, delay) => {
     };
   };
 
-
   const executeApiCall = (e) => {
           setSearchValue(e.target.value)
     let formdata = new FormData();
@@ -88,9 +85,6 @@ const debounce = (func, delay) => {
   };
 
   const handleChange = debounce(executeApiCall, 1000)
-
-
-
 
 const [modelData, setModelData] = useState(null);
 const [modelStatus, setModelStatus] = useState(false);
@@ -147,7 +141,7 @@ const handleForm = () => {
 }
 
 return (
-    <div className='bookingPage mb-6 pr-10 max-lg:pr-6'>
+    <div className='bookingPage mb-6  '>
         <div className="bookingPagetop">
         <div className="bookingPage-Right ml-auto justify-end mb-3 items-center flex gap-3">
             <div className="inputBox w-[16rem] max-lg:hidden">

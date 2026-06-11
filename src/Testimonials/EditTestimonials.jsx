@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
-import back from "../dist/webImages/back.svg";
 import { Field, Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import SubmitButton from '../components/SubmitButton';
 import CKEditors from '../components/form/CKEditors';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import SkeletonCreateEdit from './SkeletonCreateEdit';
 import { MainLanguageContext } from '../context/MainLanguageContext';
 import { toast } from 'react-toastify';
@@ -55,11 +54,9 @@ const EditTestimonials = ({permission}) => {
     "car_ids": []
   })
 
-
       useEffect(() => {
         apiMethodGet(`testimonials/edit/${id}/${mainLanguage}`)
       }, [mainLanguage]);
-
 
       useEffect(() => {
       if(resget.data) {
@@ -89,14 +86,9 @@ const EditTestimonials = ({permission}) => {
     setDatas(d => ({ ...d, [type]: e }));
   };
 
-
-
-
   const handleCarsToggle = (item) => {
     setCar(item);
   }
-
-
 
   const [res, apiMethod] = usePost();
   const requireFeild = ["client_name"];
@@ -159,7 +151,6 @@ const EditTestimonials = ({permission}) => {
   if (loading || res.isLoading || !resget?.data?.data || !datas) return <SkeletonCreateEdit heading={"Edit Testimonials"} />;
   const { client_review } = datas;
 
-
   let initialValues = {
     client_name: resget?.data?.data.client_name,
     client_email: resget?.data?.data.client_email,
@@ -168,12 +159,8 @@ const EditTestimonials = ({permission}) => {
   };
 const check = (module, action) => permission?.[module]?.includes(action);
   return (
-    <div className='newscreate pr-10 max-lg:pr-6'>
-      <Link to={"/testimonials"} className="back flex items-center mb-6 gap-2">
-        <img src={back} className='w-[2rem]' alt="" />
-        <span className='text-[1.4rem] font-MluvkaBold'>Edit Testimonials</span>
-      </Link>
-      <div className='relative flex items-start gap-3'>
+    <div className='newscreate  '>
+<div className='relative flex items-start gap-3'>
       <div className=' bg-white rounded-xl w-full  mx-auto relative'>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form name="myForm">

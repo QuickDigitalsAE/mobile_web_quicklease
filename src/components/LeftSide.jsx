@@ -16,7 +16,6 @@ import {
 } from "react-icons/fi";
 import { MainProfileContext } from '../context/MainProfileContext';
 
-
 const links = {
   "/": "sub1",
   "/users": "sub2",
@@ -95,7 +94,6 @@ const LeftSide = ({ permissions, data }) => {
   let Dashboard = getItem(<Link to={`/`}>Dashboard</Link>, 'sub1', <FiLayout />)
 
   const check = (module, action) => permissions?.[module]?.includes(action);
-
 
   if ((check("Users", "User View") && check("Users", "User Menu"))) {
     const children = [];
@@ -224,8 +222,6 @@ const LeftSide = ({ permissions, data }) => {
     ]
   );
 
-
-
   const { getActive, handleGetEditValue } = useContext(MainMenuActiveContext);
   return (
     <aside className={`MainDashboard__left dashboard-sidebar w-[18rem] max-lg:absolute max-lg:w-full max-lg:z-50 max-lg:h-svh transition-all duration-300 ${getActive ? "active" : ""}`}>
@@ -264,5 +260,4 @@ const LeftSide = ({ permissions, data }) => {
 }
 
 export default LeftSide
-
 

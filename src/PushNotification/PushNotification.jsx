@@ -40,9 +40,9 @@ const PushNotification = ({ permission }) => {
   const check = (module, action) => permission?.[module]?.includes(action);
 
   return (
-    <div className='Promotions pr-10 max-lg:pr-6'>
+    <div className='Promotions  '>
       <div className="TeamPageTop flex justify-between items-center">
-        <h6 className='text-[1rem] mb-2 bookingSectionh relative px-3 font-Mluvka capitalize'>
+        <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka capitalize'>
           Push Notifications
         </h6>
         {check('PushNotification', 'PushNotification Add') && (

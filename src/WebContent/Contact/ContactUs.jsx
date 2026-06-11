@@ -30,10 +30,6 @@ const ContactUs = ({permission}) => {
         }
     }, [resget.data])
 
-
-
-
-
     const handleSectionAdd = (sectionKey, fields) => {
         const newEntry = Object.fromEntries(fields.map((field) => [field, ""]));
 
@@ -43,16 +39,12 @@ const ContactUs = ({permission}) => {
         }));
     };
 
-
     const handleDelete = (section, index) => {
         setDatas(prevService => ({
             ...prevService,
             [section]: prevService[section].filter((item, index2) => index !== index2)
         }));
     }
-
-
-
 
     const handleInputChange2 = (e, section, index) => {
         const { name, value } = e.target;
@@ -64,11 +56,9 @@ const ContactUs = ({permission}) => {
         }));
     }
 
-
     const handleCkChange = (e, type) => {
         setDatas(d => ({ ...d, [type]: e }));
       };
-
 
     const [res, apiMethod] = usePost();
     const handleSubmit = async (values) => {
@@ -162,7 +152,7 @@ const ContactUs = ({permission}) => {
     }
     const check = (module, action) => permission?.[module]?.includes(action);
     return (
-        <div className='aboutPage pr-10 max-lg:pr-6'>
+        <div className='aboutPage  '>
             <Formik initialValues={initialValues} onSubmit={handleSubmit}  >
                 <Form>
                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
@@ -225,7 +215,6 @@ const ContactUs = ({permission}) => {
                           
                             </div>
                     </div>
-
 
                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                         <FormControl name="social_heading" label={"Heading"} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />

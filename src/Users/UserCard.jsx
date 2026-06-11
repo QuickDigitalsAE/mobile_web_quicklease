@@ -5,9 +5,6 @@ import useDelete from '../customHooks/useDelete';
 import { toast } from 'react-toastify';
 import profileImg from '../dist/webImages/profile.png'
 
-
-
-
 const UserCard = ({ data, alldata, deleted, permission }) => {
   const { id, name, username, email, profile_image } = data
   const [resDelete, apiMethodDelete] = useDelete()

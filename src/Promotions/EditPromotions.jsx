@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import back from "../dist/webImages/back.svg";
 import { Field, Form, Formik } from 'formik';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import FormControl from '../components/form/FormControl';
 import SkeletonCreateEdit from './SkeletonCreateEdit';
 import CKEditors from '../components/form/CKEditors';
@@ -22,12 +21,10 @@ const EditPromotions = ({permission}) => {
       const [addCar, setAddCar] = useState()
             const [selectedCar, setSelectedCar] = useState()
 
-
     const [resget, apiMethodGet] = useGet()
         useEffect(() => {
           apiMethodGet(`promotions/edit/${id}/${mainLanguage}`)
         }, [mainLanguage]);
-
 
     const [datas, setDatas] = useState({
         "promotion_image": "",
@@ -59,14 +56,6 @@ const EditPromotions = ({permission}) => {
           }
         }, [resget.data])
 
-
-
-
-
-
-
-
-
     const handleCkChange = (e, type) => {
         setDatas(d => ({ ...d, [type]: e }));
     };
@@ -74,8 +63,6 @@ const EditPromotions = ({permission}) => {
     const handleCarsToggle = (e) => {
       setSelectedCar(e);
     }
-
-
 
     const [imageLoader, setImageLoader] = useState(false)
     const [res, apiMethod] = usePost();
@@ -135,7 +122,6 @@ const EditPromotions = ({permission}) => {
         }
     }
 
-
     }
       useEffect(() => {
         if (res.data) {
@@ -149,7 +135,6 @@ const EditPromotions = ({permission}) => {
           }
         }
       }, [res.data])
-
 
     if (!datas || resget?.isLoading) return <SkeletonCreateEdit heading={"Edit Promotions"} />;
     let initialValues = {
@@ -165,12 +150,8 @@ const EditPromotions = ({permission}) => {
     const { promotion_paragraph,promotion_short_paragraph } = datas;
     const check = (module, action) => permission?.[module]?.includes(action);
     return (
-        <section className='PromotionCreate pr-10 max-lg:pr-6'>
-            <Link to={"/promotions"} className="back flex items-center mb-5 gap-2">
-                <img src={back} className='w-[2rem]' alt="" />
-                <span className='text-[1.4rem] font-MluvkaBold'>Edit Promotions</span>
-            </Link>
-            <div className='relative flex items-start gap-3'>
+        <section className='PromotionCreate  '>
+<div className='relative flex items-start gap-3'>
                 <div className=' bg-white rounded-xl w-full  mx-auto relative'>
                     <Formik initialValues={initialValues} onSubmit={handleSubmit} >
                         <Form name="myForm">
@@ -213,8 +194,6 @@ const EditPromotions = ({permission}) => {
 
                                 <div className="mt-4">
 
-
-
                   <div className='relative'>
               <FormControl name="schedule_date" label={"Schedule"} type={'datetime-local'} placeholder="Enter Schedule" className="outline-none mmonth w-full h-[3rem] px-5 rounded-xl" control="input2" />
             </div>
@@ -236,7 +215,6 @@ const EditPromotions = ({permission}) => {
                 />
               </div>}
                 </div>
-
 
                                 <div className="overflow-hidden relative pt-7 px-4">
                                     <label className="inline-flex items-center cursor-pointer">

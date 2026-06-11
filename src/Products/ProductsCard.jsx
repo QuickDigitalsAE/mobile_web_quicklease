@@ -6,9 +6,6 @@ import { toast } from 'react-toastify';
 import remove from "../dist/webImages/remove.png";
 import check from "../dist/webImages/check.png";
 
-
-
-
 const ProductsCard = ({ data, alldata, deleted, permission }) => {
     const { id, main_image, product_title, show_on_home, stock_status, promo_status, featured, vehicle_type,catalog_title } = data
 
@@ -65,7 +62,6 @@ const ProductsCard = ({ data, alldata, deleted, permission }) => {
                        
                     </div>
                 </div>
-
 
             </Link>
         </div>

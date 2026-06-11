@@ -6,11 +6,6 @@ import { toast } from 'react-toastify';
 import dayjs from 'dayjs';
 import { StringConvert } from '../components/StringConvert';
 
-
-
-
-
-
 const BlogsSidebarCard = ({data,alldata,deleted,permission}) => {
     const {id,banner_image,redirect_url,title} = data
     const handleDelete = () => {

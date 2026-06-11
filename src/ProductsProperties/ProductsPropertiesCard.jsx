@@ -4,10 +4,6 @@ import { Link } from 'react-router-dom';
 import useDelete from '../customHooks/useDelete';
 import { toast } from 'react-toastify';
 
-
-
-
-
 const ProductsPropertiesCard = ({data,alldata,deleted, permission}) => {
     const {id,property_image,property_title} = data
     const handleDelete = () => {

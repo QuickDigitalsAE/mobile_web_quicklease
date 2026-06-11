@@ -2,15 +2,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import usePost from '../customHooks/usePost';
 import swal from "sweetalert";
 import { MainLanguageContext } from '../context/MainLanguageContext';
-import { Link, useNavigate } from 'react-router-dom';
-import back from "../dist/webImages/back.svg";
+import { useNavigate } from 'react-router-dom';
 import { Field, Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import CKEditors from '../components/form/CKEditors';
 import SubmitButton from '../components/SubmitButton';
 import { toast } from 'react-toastify';
 import OneImageUpload from '../components/OneImageUpload';
-
 
 const CreatePartners = () => {
   const [imageLoader, setImageLoader] = useState(false)
@@ -29,8 +27,6 @@ const CreatePartners = () => {
     };
 
  
-
-
 
       const handleCkChange = (e, type) => {
         setDatas(d => ({ ...d, [type]: e }));
@@ -108,19 +104,13 @@ const CreatePartners = () => {
         }
       }, [res.data])
 
-
     if ("") return ""
 
     const { partner_paragraph } = datas;
 
     return (
-        <section className='CreatePartners  pr-10 max-lg:pr-6'>
-            <Link to={"/partners"} className="back flex items-center mb-6 gap-2">
-                <img src={back} className='w-[2rem]' alt="" />
-                <span className='text-[1.4rem] font-MluvkaBold'>Create Partners</span>
-            </Link>
-
-            <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        <section className='CreatePartners   '>
+<Formik initialValues={initialValues} onSubmit={handleSubmit}>
                 <Form name="myForm">
                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
                         <div className="grid grid-cols-2 gap-2">
@@ -137,7 +127,6 @@ const CreatePartners = () => {
                         <br />
                         <div className="mb-1 block text-[#7D8CA7] text-[.8rem]">Main Paragraph</div>
                         <CKEditors label={"Main Paragraph"}  folder_name={"paratners_images"} page_type={"paratners"} data={partner_paragraph} update={(text) => handleCkChange(text, "partner_paragraph")} />
-
 
                         <div>
                 <label className="mb-1  mt-3 block text-[#7D8CA7] text-[.8rem]"> Image </label>

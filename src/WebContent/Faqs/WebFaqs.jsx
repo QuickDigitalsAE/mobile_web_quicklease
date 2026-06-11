@@ -24,7 +24,6 @@ const WebFaqs = ({ permission }) => {
         }
     }, [mainLanguage]);
 
-
     const [datas, setDatas] = useState({
         faqs: []
     })
@@ -33,7 +32,6 @@ const WebFaqs = ({ permission }) => {
             setDatas(resget?.data?.data)
         }
     }, [resget.data])
-
 
     const handlePlus = () => {
         const newFaq = {
@@ -78,7 +76,6 @@ const WebFaqs = ({ permission }) => {
             return { ...prevState, faqs: updatedsec_two };
         });
     };
-
 
     const [res, apiMethod] = usePost()
     const requireFeild = ["heading"];
@@ -149,7 +146,7 @@ const WebFaqs = ({ permission }) => {
     }
     const check = (module, action) => permission?.[module]?.includes(action);
     return (
-        <div className='faqsPage pr-10 max-lg:pr-6'>
+        <div className='faqsPage  '>
             <Formik initialValues={initialValues} onSubmit={handleSubmit}>
                 <Form>
                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>

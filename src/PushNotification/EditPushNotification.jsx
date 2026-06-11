@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import back from '../dist/webImages/back.svg';
 import { Form, Formik } from 'formik';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import swal from 'sweetalert';
 import { toast } from 'react-toastify';
 import FormControl from '../components/form/FormControl';
@@ -175,14 +174,9 @@ const EditPushNotification = ({ permission }) => {
   }
 
   return (
-    <section className="PushNotificationCreate pr-10 max-lg:pr-6">
-      <Link to="/push-notification" className="back flex items-center mb-5 gap-2">
-        <img src={back} className="w-[2rem]" alt="" />
-        <span className="text-[1.4rem] font-MluvkaBold">Edit Push Notification</span>
-      </Link>
-
-      <div className="relative flex items-start gap-3">
-        <div className="bg-white rounded-xl w-full mx-auto relative">
+    <section className="PushNotificationCreate  ">
+<div className="relative flex items-start gap-3">
+        <div className="bg-white rounded-3xl w-full mx-auto relative">
           <Formik
             initialValues={initialValues}
             onSubmit={handleSubmit}

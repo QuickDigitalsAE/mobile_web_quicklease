@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import back from "../dist/webImages/back.svg";
 import { Field, Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import SubmitButton from '../components/SubmitButton';
@@ -32,14 +31,7 @@ const EditProductsProperties = ({ permission }) => {
     }
   }, [resget.data])
 
-
-
-
-
   const [imageLoader, setImageLoader] = useState(false)
-
-
-
 
   const handleSectionAdd = (sectionKey) => {
 
@@ -48,7 +40,6 @@ const EditProductsProperties = ({ permission }) => {
       [sectionKey]: [...(prevState[sectionKey] || []), ""],
     }));
   };
-
 
   const handleDelete = (section, index) => {
     setDatas(prevService => ({
@@ -65,11 +56,6 @@ const EditProductsProperties = ({ permission }) => {
       )
     }));
   }
-
-
-
-
-
 
   const [res, apiMethod] = usePost();
   const requireFeild = ["type", "property_title", "property_field_type",];
@@ -101,7 +87,6 @@ const EditProductsProperties = ({ permission }) => {
       formdata.append(`translation[property_title]`, values["property_title"]);
       formdata.append(`property_field_type`, values["property_field_type"]);
 
-
       if (checkerRequried.length > 0) {
         swal({
           title: "Required Fields are empty! Please fill and try again",
@@ -121,7 +106,6 @@ const EditProductsProperties = ({ permission }) => {
 
     }
 
-
   };
 
   useEffect(() => {
@@ -137,8 +121,6 @@ const EditProductsProperties = ({ permission }) => {
     }
   }, [res.data])
 
-
-
   if (!datas || resget?.isLoading) return <SkeletonCreateEdit heading={"Products Properties"} />;
 
   let initialValues = {
@@ -148,17 +130,11 @@ const EditProductsProperties = ({ permission }) => {
     property_status: resget?.data?.data?.property_status ?? 0,
   };
 
-
-
   const { property_values } = datas;
  const check = (module, action) => permission?.[module]?.includes(action);
   return (
-    <div className='newscreate pr-10 max-lg:pr-6'>
-      <Link to={"/products/properties"} className="back flex items-center mb-6 gap-2">
-        <img src={back} className='w-[2rem]' alt="" />
-        <span className='text-[1.4rem] font-MluvkaBold'>Edit Products Properties</span>
-      </Link>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <div className='newscreate  '>
+<Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form name="myForm">
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
             <div className="grid grid-cols-2  gap-2">
@@ -174,8 +150,6 @@ const EditProductsProperties = ({ permission }) => {
               <FormControl name="property_title" label={"Heading {h1}"} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
             </div>
           </div>
-
-
 
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Property</div>
@@ -221,7 +195,6 @@ const EditProductsProperties = ({ permission }) => {
                 <option value="checkbox">checkbox</option>
               </Field>
             </div>
-
 
             <div className="overflow-hidden relative pt-7 px-4">
               <label className="inline-flex items-center cursor-pointer">

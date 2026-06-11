@@ -9,7 +9,6 @@ const MainPermissionProvider = ({ children,data }) => {
   }, [data])
   
 
-
   return (
     <MainPermissionContext.Provider  value={{ permissionlist }}>
       {children}

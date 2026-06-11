@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { MainLanguageContext } from "../context/MainLanguageContext";
 import { Modal, Pagination, Space, Table } from "antd";
 import useGet from "../customHooks/useGet";
-import { Link } from "react-router-dom";
 
 const ActivitiesAuth = () => {
   const { mainLanguage } = useContext(MainLanguageContext);
@@ -33,7 +32,6 @@ const ActivitiesAuth = () => {
       setDatas(updatedData);
     }
   }, [resget.data]);
-
 
     const showModal = (item) => {
     setOpenRowData(item)

@@ -22,7 +22,6 @@ const BookingModel = ({ data, modelStatus, modelStatusUpdate, submitss, permissi
     "payment_status": payment_status,
   })
 
-
   const handleCloseModel = () => {
     modelStatusUpdate(false)
   }
@@ -192,10 +191,6 @@ const BookingModel = ({ data, modelStatus, modelStatusUpdate, submitss, permissi
           </div>
         </div>
 
-
-
-
-
         <div className='mt-3'>
           <div className='grid mb-3 gap-3 grid-cols-2'>
             <div>
@@ -227,10 +222,6 @@ const BookingModel = ({ data, modelStatus, modelStatusUpdate, submitss, permissi
         </div>
 
        {check("Booking", "Booking Edit") && <button onClick={handleComplete} className='bg-secondary text-white uppercase font-Mluvka rounded-full py-3 px-5 w-full'>{res.isLoading ? "loading" : "Completed"}</button>}
-
-
-
-
 
       </div>
     </>

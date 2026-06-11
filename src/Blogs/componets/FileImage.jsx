@@ -58,7 +58,6 @@ const FileImage = ({folder_name,page_type,typeValue,typeImage,updateData,allData
         }
       }, [res2.data])
 
-
   return (
    
     <div className='mt-4'>

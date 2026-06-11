@@ -39,7 +39,6 @@ const WebPromotions = ({permission}) => {
         }
     }, [resget.data])
 
-
       const handleCkChange = (e, type) => {
         setDatas(d => ({ ...d, [type]: e }));
       };
@@ -71,7 +70,6 @@ const WebPromotions = ({permission}) => {
             }
             formdata.append(`translation[${item}]`, values[item] ?? "");
         }
-
 
         if (checkerRequried.length > 0) {
             swal({
@@ -136,7 +134,6 @@ const WebPromotions = ({permission}) => {
             )
         }));
     }
-
 
     if (resget.isLoading || !resget.data) return <SkeletonPromotions />
     const initialValues = {

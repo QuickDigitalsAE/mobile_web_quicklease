@@ -5,8 +5,6 @@ import useDelete from '../customHooks/useDelete';
 import { toast } from 'react-toastify';
 import { StringConvert } from '../components/StringConvert';
 
-
-
 const truncateText = (text, maxLength) => {
     if(text) {
       if (text.length <= maxLength) {
@@ -16,7 +14,6 @@ const truncateText = (text, maxLength) => {
     }
     return text;
   };
-
 
 const CatalogsCard = ({data,alldata,deleted, permission}) => {
     const {id,banner_image,title,description,type,slug} = data

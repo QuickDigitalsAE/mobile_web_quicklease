@@ -17,7 +17,6 @@ import useFetch from '../../customHooks/useFetch';
 import noimg from '../../dist/webImages/nocar.jpg'
 import { Tooltip } from 'antd';
 
-
 const CorporateLease = ({ permission }) => {
   const { mainLanguage } = useContext(MainLanguageContext);
   const [imageLoader, setImageLoader] = useState(false)
@@ -62,7 +61,6 @@ const CorporateLease = ({ permission }) => {
     }
   }, [resget.data])
 
-
   const handleCarsToggle = (id) => {
     setCar((prevState) => {
       const isActive = prevState.some((item) => item.id === id);
@@ -90,7 +88,6 @@ const CorporateLease = ({ permission }) => {
     });
   };
 
-
   const handleSectionAdd = (sectionKey, fields) => {
     const newEntry = Object.fromEntries(fields.map((field) => [field, ""]));
 
@@ -99,7 +96,6 @@ const CorporateLease = ({ permission }) => {
       [sectionKey]: [...(prevState[sectionKey] || []), newEntry],
     }));
   };
-
 
   const handleDelete = (section, index) => {
     setDatas(prevService => ({
@@ -111,8 +107,6 @@ const CorporateLease = ({ permission }) => {
   const handleCkChange = (e, type) => {
     setDatas(d => ({ ...d, [type]: e }));
   };
-
-
 
   const handleInputChange2 = (e, section, index) => {
     const { name, value } = e.target;
@@ -131,8 +125,6 @@ const CorporateLease = ({ permission }) => {
       )
     }));
   }
-
-
 
   const [res, apiMethod] = usePost();
   const handleSubmit = async (values) => {
@@ -216,7 +208,7 @@ const CorporateLease = ({ permission }) => {
   }
   const check = (module, action) => permission?.[module]?.includes(action);
   return (
-    <div className='homePage pr-10 max-lg:pr-6'>
+    <div className='homePage  '>
       <div className='relative flex items-start gap-3'>
         <div className=" bg-white rounded-xl w-full  mx-auto relative">
           <Formik initialValues={initialValues} onSubmit={handleSubmit}  >
@@ -237,7 +229,6 @@ const CorporateLease = ({ permission }) => {
                   <OneImageUpload changeImage={setImageLoader} MainImage={banner} Update={setDatas} sec_value={"banner_value"} sec_image={"banner"} folder_name={"web_content_images"} page_type={"corporatelease"} />
                 </div>
               </div>
-
 
               <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                 <FormControl name="sec_one_heading" label={"sec one"} placeholder="Enter sec one" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
@@ -369,8 +360,6 @@ const CorporateLease = ({ permission }) => {
                 </div>
               </div>
 
-
-
               <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                 <div className="">
                   <ul className="list flex flex-wrap gap-2">
@@ -444,7 +433,6 @@ const CorporateLease = ({ permission }) => {
           )}
         </div>
       </div>
-
 
     </div>
   )

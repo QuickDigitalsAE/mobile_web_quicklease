@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import back from "../dist/webImages/back.svg";
 import { Field, Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import SubmitButton from '../components/SubmitButton';
 import CKEditors from '../components/form/CKEditors';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import SkeletonCreateEdit from './SkeletonCreateEdit';
 import { MainLanguageContext } from '../context/MainLanguageContext';
 import { toast } from 'react-toastify';
@@ -27,7 +26,6 @@ const EditBlogs = ({permission}) => {
     useEffect(() => {
       apiMethodGet(`blogs/edit/${slug}/${mainLanguage}`)
     }, [mainLanguage]);
-
 
     useEffect(() => {
       if(resget.data) {
@@ -90,11 +88,9 @@ const EditBlogs = ({permission}) => {
       }
     }, [res2.data])
 
-
   const handleCkChange = (e, type) => {
     setDatas(d => ({ ...d, [type]: e }));
   };
-
 
   const handleDrop = (e, type, value) => {
     e.preventDefault();
@@ -113,7 +109,6 @@ const EditBlogs = ({permission}) => {
       swal("Only use Image", "", "warning");
     }
   };
-
 
   const [res, apiMethod] = usePost2();
   const requireFeild = ["meta_title", "meta_description", "blog_title", "blog_slug ","blog_schedule"];
@@ -197,12 +192,8 @@ const EditBlogs = ({permission}) => {
   };
 const check = (module, action) => permission?.[module]?.includes(action);
   return (
-    <div className='newscreate pr-10 max-lg:pr-6'>
-      <Link to={"/blogs"} className="back flex items-center mb-6 gap-2">
-        <img src={back} className='w-[2rem]' alt="" />
-        <span className='text-[1.4rem] font-MluvkaBold'>Edit Blogs</span>
-      </Link>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <div className='newscreate  '>
+<Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form name="myForm">
         <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
             <div className="grid grid-cols-2 gap-2">
@@ -260,7 +251,6 @@ const check = (module, action) => permission?.[module]?.includes(action);
             <div className="mb-1 block text-[#7D8CA7] text-[.8rem]">Main Paragraph</div>
             <CKEditors label={"Main Paragraph"} folder_name={"blogs_images"} page_type={"blogs"}  data={blog_paragraph} update={(text) => handleCkChange(text, "blog_paragraph")} />
 
-
             <FormControl name="blog_image_alt" label={"Heading Image Alt"} placeholder="Enter Blog Image Alt" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
            
               <br />
@@ -289,7 +279,6 @@ const check = (module, action) => permission?.[module]?.includes(action);
                   <span className="ms-3 text-sm font-medium text-gray-900">Table of Content</span>
                 </label>
               </div>
-
 
           </div>
           {check("Blogs", "Blogs Edit") &&<SubmitButton

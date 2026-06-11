@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react'
-import back from "../dist/webImages/back.svg";
 import { Field, Form, Formik } from 'formik';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import FormControl from '../components/form/FormControl';
 import swal from "sweetalert";
 import SubmitButton from '../components/SubmitButton';
@@ -22,7 +21,6 @@ const EditPromoCode = ({permission}) => {
        useEffect(() => {
           apiMethodGet(`promo_codes/edit/${id}/${mainLanguage}`)
         }, [mainLanguage]);
-
 
     const [res, apiMethod] = usePost();
     const requireFeild = ["code_title"];
@@ -64,7 +62,6 @@ const EditPromoCode = ({permission}) => {
                 apiMethod(`promo_codes/update/${id}/${mainLanguage}`, formdata)
             }
 
-
     }
     useEffect(() => {
         if (res.data) {
@@ -79,7 +76,6 @@ const EditPromoCode = ({permission}) => {
         }
     }, [res.data])
 
-
     if (resget.isLoading || !resget?.data || loading || !data) return <SkeletonCreateEdit heading={"Edit Promo"} />;
     let initialValues = {
         target_type: resget?.data?.data?.target_type,
@@ -93,12 +89,8 @@ const EditPromoCode = ({permission}) => {
     };
      const check = (module, action) => permission?.[module]?.includes(action);
     return (
-        <section className='PromotionCreate pr-10 max-lg:pr-6'>
-            <Link to={"/promo"} className="back flex items-center mb-5 gap-2">
-                <img src={back} className='w-[2rem]' alt="" />
-                <span className='text-[1.4rem] font-MluvkaBold'>Edit Promo</span>
-            </Link>
-            <div className='relative flex items-start gap-3'>
+        <section className='PromotionCreate  '>
+<div className='relative flex items-start gap-3'>
                 <div className=' bg-white rounded-xl w-full  mx-auto relative'>
                     <Formik initialValues={initialValues} onSubmit={handleSubmit} >
                     {({ values }) => {

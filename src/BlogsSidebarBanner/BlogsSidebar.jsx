@@ -21,8 +21,6 @@ const BlogsSidebar = ({permission}) => {
         }
     }, [mainLanguage]);
 
-
-
     useEffect(() => {
         if (!resget.isLoading) {
             setDatas(resget?.data?.data)
@@ -30,12 +28,11 @@ const BlogsSidebar = ({permission}) => {
 
     }, [resget.data])
 
-
 const check = (module, action) => permission?.[module]?.includes(action);
     return (
-        <div className='NewsPage pr-10 max-lg:pr-6'>
+        <div className='NewsPage  '>
             <div className="TeamPageTop flex justify-between items-center">
-                <h6 className='text-[1rem] mb-2 bookingSectionh relative px-3 font-Mluvka capitalize'>Blogs sidebar and updates</h6>
+                <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka capitalize'>Blogs sidebar and updates</h6>
                 {check("SidebarBanners", "SidebarBanners Add") &&<div className='flex gap-1'>
                     <Link to={"/blogs/sidebar/create"} className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer'>
                         <img src={plus} alt="plus" />

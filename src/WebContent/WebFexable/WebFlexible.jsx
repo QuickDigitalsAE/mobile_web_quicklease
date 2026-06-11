@@ -32,8 +32,6 @@ const WebFlexible = ({ permission }) => {
         }
     }, [resget.data])
 
-
-
     const handleCkChange = (e, type) => {
         setDatas((d) => ({ ...d, [type]: e }));
     };
@@ -46,7 +44,6 @@ const WebFlexible = ({ permission }) => {
             [sectionKey]: [...(prevState[sectionKey] || []), newEntry],
         }));
     };
-
 
     const handleDelete = (section, index) => {
         setDatas(prevService => ({
@@ -73,7 +70,6 @@ const WebFlexible = ({ permission }) => {
         }));
 
     }
-
 
     const [res, apiMethod] = usePost();
     const requireFeild = [
@@ -207,7 +203,6 @@ const WebFlexible = ({ permission }) => {
                         </div>
                     </div>
 
-
                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                         <div className='flex justify-between'>
                             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 1</div>
@@ -220,7 +215,6 @@ const WebFlexible = ({ permission }) => {
                         <br />
                         <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Section 1 Description</div>
                         <CKEditors label={"Description"} data={sec_one_description} update={(text) => handleCkChange(text, "sec_one_description")} />
-
 
                         <div className="section4Main grid grid-cols-3 gap-3 mt-4 max-lg:grid-cols-1">
                             {
@@ -300,7 +294,6 @@ const WebFlexible = ({ permission }) => {
                         </div>
                     </div>
 
-
                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                         <div className='flex justify-between'>
                             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Faqs</div>
@@ -341,7 +334,6 @@ const WebFlexible = ({ permission }) => {
                             }
                         </div>
                     </div>
-
 
                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                         <div className='flex justify-between'>

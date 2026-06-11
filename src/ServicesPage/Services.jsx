@@ -91,9 +91,9 @@ const Services = () => {
     }
     if (loading) return <SkeletonServices />
     return (
-        <div className='services pr-10 max-lg:pr-6'>
+        <div className='services  '>
             <div className="servicesTop flex justify-between items-center mb-4">
-                <h6 className='text-[1rem] mb-2 bookingSectionh relative px-3 font-Mluvka'> Services</h6>
+                <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka'> Services</h6>
                 <Link to={"/services/create"} className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' >
                     <img src={plus} alt="plus" />
                     <span className='font-MluvkaBold text-secondary capitalize'>Add Services</span>

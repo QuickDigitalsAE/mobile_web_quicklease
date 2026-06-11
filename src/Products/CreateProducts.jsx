@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import back from "../dist/webImages/back.svg";
 import { Field, Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import SubmitButton from '../components/SubmitButton';
@@ -52,9 +51,6 @@ const CreateProducts = () => {
                     "slugs":"",
                     "all_slugs":"",
                   })
-
-
-
 
   useEffect(() => {
     apiMethodGet3(`properties/frontendList/en`)
@@ -124,7 +120,6 @@ const handleParent = (e) => {
     return;
   }
 
-
   const selectedId = parseInt(e.target.value);
   setParent_id(selectedId);
 
@@ -151,14 +146,12 @@ const handleParent = (e) => {
    all_slugs = `${selectedItem.slug}`;
     }
 
-
   // Update state
   setSlugs((prev) => ({
     ...prev,
     all_slugs,
   }));
 };
-
 
   const handleChange3 = (category, property_id, value) => {
     setPropertiesList2((prev) => ({
@@ -193,12 +186,10 @@ const handleParent = (e) => {
     setCoverages(prevService =>   prevService.map((item) => item?.coverage_id === coverage_id ? { ...item, [type]: value } : item));
   };
 
-
   useEffect(() => {
     if (resget2.data) {
       const data = resget2.data.data;
       setCatlogsList(data);
-
 
       const options = data?.flatMap(item => {
         const mainOption = {
@@ -207,7 +198,7 @@ const handleParent = (e) => {
         };
 
         const subOptions = item.children?.map(subItem => ({
-          label: `— ${subItem.catalog_title}`,
+          label: `â€” ${subItem.catalog_title}`,
           value: subItem.id,
         })) || [];
 
@@ -217,11 +208,6 @@ const handleParent = (e) => {
     }
   }, [resget2.data]);
 
-
-
-
-
-
   const handleCkChange = (e, type) => {
     setDatas(d => ({ ...d, [type]: e }));
   };
@@ -230,17 +216,13 @@ const handleParent = (e) => {
     setDatas((d) => ({ ...d, [type]: e }));
   };
 
-
   const handleExtraClick = () => {
     setDropDownState(!dropDownState)
   }
 
-
-
   const handleChange = (e, type) => {
     setDatas((d) => ({ ...d, [type]: e }));
   };
-
 
   const handleSectionAdd2 = (sectionKey, fields) => {
     setDatas((prevState) => ({
@@ -249,16 +231,12 @@ const handleParent = (e) => {
     }));
   };
 
-
   const handleDelete = (section, index) => {
     setDatas(prevService => ({
       ...prevService,
       [section]: prevService[section].filter((item, index2) => index !== index2)
     }));
   }
-
-
-
 
   let initialValues = {
     meta_title: "",
@@ -446,19 +424,12 @@ const handleParent = (e) => {
          }
      }, [res.data]);
 
-
   if (resget2.isLoading || resget3.isLoading || resget4.isLoading) return <SkeletonCreateEdit heading={"Create Products"} />;
   const { description, car_images,short_description } = datas;
 
-
-
   return (
-    <div className='newscreate pr-10 max-lg:pr-6'>
-      <Link to={"/products"} className="back flex items-center mb-6 gap-2">
-        <img src={back} className='w-[2rem]' alt="" />
-        <span className='text-[1.4rem] font-MluvkaBold'>Create Products</span>
-      </Link>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <div className='newscreate  '>
+<Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form name="myForm">
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
           <div className="">
@@ -479,7 +450,7 @@ const handleParent = (e) => {
                               {Array.isArray(children) &&
                                 children.map((item2) => (
                                   <option key={item2.id} value={item2.id}>
-                                     — {item2.catalog_title}
+                                     â€” {item2.catalog_title}
                                   </option>
                                   ))}
                                   </React.Fragment>
@@ -541,7 +512,6 @@ const handleParent = (e) => {
 
         
 
-
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                     
@@ -567,9 +537,6 @@ const handleParent = (e) => {
                 <OneImageUpload changeImage={setImageLoader} MainImage={datas?.main_image} Update={setDatas} sec_value={"main_image_value"} sec_image={"main_image"} folder_name={"products_images"} page_type={"products"} />
               </div>
             </div>
-
-
-
 
             <div className='mt-4'>
               <div>
@@ -663,7 +630,6 @@ const handleParent = (e) => {
               <FormControl name="security_deposit_waiver_monthly" label={"security deposit waiver monthly"} placeholder="Enter security deposit waiver monthly" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
             </div>
           </div>
-
 
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className='grid grid-cols-2 gap-4'>

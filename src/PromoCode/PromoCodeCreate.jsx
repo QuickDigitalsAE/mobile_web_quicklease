@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react'
-import back from "../dist/webImages/back.svg";
 import { Field, Form, Formik } from 'formik';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import FormControl from '../components/form/FormControl';
 import swal from "sweetalert";
 import SubmitButton from '../components/SubmitButton';
@@ -64,7 +63,6 @@ const PromoCodeCreate = () => {
                 apiMethod(`promo_codes/create/${mainLanguage}`, formdata)
             }
 
-
     }
     useEffect(() => {
         if (res.data) {
@@ -79,15 +77,10 @@ const PromoCodeCreate = () => {
         }
     }, [res.data])
 
-
     if (loading || !data) return <SkeletonCreateEdit heading={"Create Promo"} />;
     return (
-        <section className='PromotionCreate pr-10 max-lg:pr-6'>
-            <Link to={"/promo"} className="back flex items-center mb-5 gap-2">
-                <img src={back} className='w-[2rem]' alt="" />
-                <span className='text-[1.4rem] font-MluvkaBold'>Create Promo</span>
-            </Link>
-            <div className='relative flex items-start gap-3'>
+        <section className='PromotionCreate  '>
+<div className='relative flex items-start gap-3'>
                 <div className=' bg-white rounded-xl w-full  mx-auto relative'>
                     <Formik initialValues={initialValues} onSubmit={handleSubmit} >
                     {({ values }) => {

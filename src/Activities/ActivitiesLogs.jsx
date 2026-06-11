@@ -34,7 +34,6 @@ const ActivitiesLogs = () => {
     }
   }, [resget.data]);
 
-
     const showModal = (item) => {
     setOpenRowData(item)
     setIsModalOpen(true);

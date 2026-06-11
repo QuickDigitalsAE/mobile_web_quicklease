@@ -37,10 +37,6 @@ const ProductInner = ({permission}) => {
         }
     }, [resget.data])
 
-
-
-
-
     const handleSectionAdd = (sectionKey, fields) => {
         const newEntry = Object.fromEntries(fields.map((field) => [field, ""]));
 
@@ -62,9 +58,6 @@ const handleSectionAdd2 = (sectionKey, newEntry) => {
             [section]: prevService[section].filter((item, index2) => index !== index2)
         }));
     }
-
-
-
 
     const handleInputChange2 = (e, section, index) => {
         const { name, value } = e.target;
@@ -94,11 +87,6 @@ const handleSectionAdd2 = (sectionKey, newEntry) => {
             )
         }));
     }
-
-
-
-
-
 
     const [res, apiMethod] = usePost();
     const handleSubmit = async (values) => {
@@ -153,7 +141,7 @@ const handleSectionAdd2 = (sectionKey, newEntry) => {
     }
     const check = (module, action) => permission?.[module]?.includes(action);
     return (
-        <div className='aboutPage pr-10 max-lg:pr-6'>
+        <div className='aboutPage  '>
             <Formik initialValues={initialValues} onSubmit={handleSubmit}  >
                 <Form>
                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>

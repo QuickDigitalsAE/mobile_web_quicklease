@@ -29,12 +29,9 @@ const Finalize = ({permission}) => {
         }
     }, [resget.data])
 
-
-
     const handleCkChange = (e) => {
         setDatas(d => ({ ...d, "description": e }));
       };
-
 
     const [res, apiMethod] = usePost();
     const handleSubmit = async (values) => {

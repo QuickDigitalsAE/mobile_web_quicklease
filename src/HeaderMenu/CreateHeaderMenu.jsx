@@ -1,6 +1,5 @@
 import React from 'react'
-import back from "../dist/webImages/back.svg";
-import { Link } from 'react-router-dom';
+
 import AntdSelect from '../components/form/AntdSelect';
 import { Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
@@ -28,12 +27,8 @@ const CreateHeaderMenu = () => {
    <>
    
    
-   <div className='createTeam pr-10 max-lg:pr-6'>
-               <Link to={"/team"} className="back flex items-center mb-5 gap-2">
-            <img src={back} className='w-[2rem]' alt="" />
-            <span className='text-[1.4rem] font-MluvkaBold'>Create Header Menu</span>
-            </Link>
-            <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-2'>
+   <div className='createTeam  '>
+<div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-2'>
             <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             <Form name="myForm">
                 <div className="grid grid-cols-2 gap-2">    
@@ -56,7 +51,6 @@ const CreateHeaderMenu = () => {
     </div>
    
    </>
-
 
   )
 }

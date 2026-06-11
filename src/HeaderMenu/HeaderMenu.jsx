@@ -22,7 +22,6 @@ const HeaderMenu = () => {
         }
     }, [resget.data]);
 
-
     const columns = [
         {
           title: 'Id',
@@ -63,14 +62,11 @@ const HeaderMenu = () => {
         },
       ];
 
-
-
-
     if (resget.isLoading) return "";
   return (
-    <div className='headerMenu pr-10 max-lg:pr-6'>
+    <div className='headerMenu  '>
     <div className="servicesTop flex justify-between items-center mb-4">
-        <h6 className='text-[1rem] mb-2 bookingSectionh relative px-3 font-Mluvka'> Header Menu</h6>
+        <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka'> Header Menu</h6>
         <Link to={"/header/create"} className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' >
             <img src={plus} alt="plus" />
             <span className='font-MluvkaBold text-secondary capitalize'>Add Header Menu</span>

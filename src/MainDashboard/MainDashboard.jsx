@@ -44,15 +44,6 @@ const MainDashboard = ({ permission, userdata }) => {
             work focused without visual clutter.
           </p>
         </div>
-        <div className="dashboard-home__usercard">
-          <span className="dashboard-home__avatar">
-            {userdata?.name?.charAt?.(0) ?? "A"}
-          </span>
-          <div>
-            <strong>{userdata?.name}</strong>
-            <p>{userdata?.email}</p>
-          </div>
-        </div>
       </div>
 
       <div className="dashboard-home__stats">

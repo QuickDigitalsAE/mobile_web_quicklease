@@ -33,12 +33,9 @@ const VehicleBooking = ({permission}) => {
         }
     }, [resget.data])
 
-
-
     const handleCkChange = (e,type) => {
         setDatas(d => ({ ...d, [type]: e }));
       };
-
 
     const [res, apiMethod] = usePost();
     const handleSubmit = async (values) => {

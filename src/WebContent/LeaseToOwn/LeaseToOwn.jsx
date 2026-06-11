@@ -17,7 +17,6 @@ import { Tooltip } from 'antd';
 import SkeletonLeaseToOwn from './SkeletonLeaseToOwn';
 import OneImageUploadMultiple2 from '../../components/OneImageUploadMultiple2';
 
-
 const LeaseToOwn = ({permission}) => {
   const { mainLanguage } = useContext(MainLanguageContext);
   const [imageLoader, setImageLoader] = useState(false)
@@ -62,7 +61,6 @@ const LeaseToOwn = ({permission}) => {
     }
   }, [resget.data])
 
-
   const handleCarsToggle = (id) => {
     setCar((prevState) => {
         const isActive = prevState.some((item) => item.id === id);
@@ -90,7 +88,6 @@ const handleRemoveCars = (index) => {
     });
 };
 
-
   const handleDelete = (section, index) => {
     setDatas(prevService => ({
       ...prevService,
@@ -102,17 +99,12 @@ const handleRemoveCars = (index) => {
     setDatas(d => ({ ...d, [type]: e }));
   };
 
-
   const handleSectionAdd2 = (sectionKey, fields) => {
     setDatas((prevState) => ({
       ...prevState,
       [sectionKey]: [...(prevState[sectionKey] || []), ""],
     }));
   };
-
-
-
-
 
   const [res, apiMethod] = usePost();
   const handleSubmit = async (values) => {
@@ -188,7 +180,7 @@ const handleRemoveCars = (index) => {
   }
   const check = (module, action) => permission?.[module]?.includes(action);
   return (
-    <div className='homePage pr-10 max-lg:pr-6'>
+    <div className='homePage  '>
       <div className='relative flex items-start gap-3'>
       <div className=" bg-white rounded-xl w-full  mx-auto relative">
       <Formik initialValues={initialValues} onSubmit={handleSubmit}  >
@@ -242,7 +234,6 @@ const handleRemoveCars = (index) => {
                 </div>
               </div>
             </div>
-
 
            <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
            <FormControl name="sec_one_heading" label={"sec one"} placeholder="Enter sec one" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />

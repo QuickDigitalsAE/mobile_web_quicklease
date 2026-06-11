@@ -42,7 +42,6 @@ const ReviewsModel = ({ data, modelStatus, modelStatusUpdate }) => {
     }
   };
 
-
   const handleSubmit = async (values) => {
     console.log(values)
   }

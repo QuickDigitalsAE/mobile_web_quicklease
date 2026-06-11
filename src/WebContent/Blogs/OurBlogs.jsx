@@ -33,7 +33,6 @@ const OurBlogs = ({permission}) => {
         }
     }, [resget.data])
 
-
     
 
     const [res, apiMethod] = usePost()
@@ -62,7 +61,6 @@ const OurBlogs = ({permission}) => {
             formdata.append(`translation[${item}]`, values[item] ?? "");
         }
 
-
         if (checkerRequried.length > 0) {
             swal({
                 title: "Required Fields are empty! Please fill and try again",
@@ -90,7 +88,6 @@ const OurBlogs = ({permission}) => {
             }
         }
     }, [res.data])
-
 
     if (resget.isLoading || !resget.data) return <SkeletonBlogs />
     const initialValues = {

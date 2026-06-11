@@ -30,7 +30,6 @@ const OurPartners = ({permission}) => {
         }
     }, [resget.data])
 
-
     
     const handleSectionAdd = (sectionKey, fields) => {
         const newEntry = Object.fromEntries(fields.map((field) => [field, ""]));
@@ -82,8 +81,6 @@ const OurPartners = ({permission}) => {
             formdata.append(`translation[${item}]`, values[item] ?? "");
         }
 
-
-
         if (checkerRequried.length > 0) {
             swal({
                 title: "Required Fields are empty! Please fill and try again",
@@ -133,7 +130,6 @@ const OurPartners = ({permission}) => {
             }
         }
     }, [res.data])
-
 
     if (resget.isLoading || !datas) return <SkeletonPartners />
         const {  sec_faqs } = datas

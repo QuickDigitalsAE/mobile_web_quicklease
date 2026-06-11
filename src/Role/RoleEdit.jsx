@@ -2,14 +2,12 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import FormControl from "../components/form/FormControl";
 import { Form, Formik } from "formik";
 import SubmitButton from "../components/SubmitButton";
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import back from "../dist/webImages/back.svg";
+import { useNavigate, useParams } from 'react-router-dom';
 import SkeletonCreateEdits from "./SkeletonCreateEdits";
 import usePost from "../customHooks/usePost";
 import useFetch from "../customHooks/useFetch";
 import swal from "sweetalert";
 import { toast } from "react-toastify";
-
 
 const RoleEdit = ({permission}) => {
   const {id} = useParams()
@@ -41,10 +39,6 @@ const RoleEdit = ({permission}) => {
     }
 
   }, [data,data2])
-
-
-
-
 
   const handlePermissionAll = () => {
     const allSelect = !selectAll;
@@ -160,19 +154,14 @@ const RoleEdit = ({permission}) => {
     }
   }, [res.data])
 
-
   if (loading  || loading2) return <SkeletonCreateEdits heading={"Edit Role"} />
   let initialValues = {
     role_name: data2?.data?.role?.name,
   };
  const check = (module, action) => permission?.[module]?.includes(action);
   return (
-    <div className='createTeam pr-10 max-lg:pr-6'>
-      <Link to={"/role"} className="back flex items-center mb-5 gap-2">
-        <img src={back} className='w-[2rem]' alt="" />
-        <span className='text-[1.4rem] font-MluvkaBold'>Create Role</span>
-      </Link>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit} >
+    <div className='createTeam  '>
+<Formik initialValues={initialValues} onSubmit={handleSubmit} >
         <Form name="myForm">
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-8 max-lg:p-2'>
             <div className={`RoleCreate transition-all duration-300  bg-white rounded-xl`} >

@@ -8,8 +8,7 @@ import usePost from '../customHooks/usePost'
 import { toast } from 'react-toastify'
 import OneImageUpload from '../components/OneImageUpload'
 import swal from "sweetalert";
-import { Link, useNavigate } from 'react-router-dom'
-import back from "../dist/webImages/back.svg";
+import { useNavigate } from 'react-router-dom'
 
 const BlogsSidebarCreate = () => {
       const navigate = useNavigate();
@@ -18,7 +17,6 @@ const BlogsSidebarCreate = () => {
     const [datas, setDatas] = useState({
         "banner_image":"",
     })
-
 
     const initialValues = {
         title: "",
@@ -80,12 +78,8 @@ const BlogsSidebarCreate = () => {
     }, [res.data])
 
     return (
-       <div className='newscreate pr-10 max-lg:pr-6'>
-      <Link to={"/blogs/sidebar"} className="back flex items-center mb-6 gap-2">
-        <img src={back} className='w-[2rem]' alt="" />
-        <span className='text-[1.4rem] font-MluvkaBold'>Create Slider Blogs</span>
-      </Link>
-                 <Formik initialValues={initialValues} onSubmit={handleSubmit}  >
+       <div className='newscreate  '>
+<Formik initialValues={initialValues} onSubmit={handleSubmit}  >
                 <Form>
                         <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-8'>
                             <FormControl name="title" label={"Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />

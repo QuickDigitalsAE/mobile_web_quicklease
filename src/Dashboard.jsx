@@ -99,7 +99,6 @@ const Dashboard = () => {
     }
   }, [data])
 
-
   const navigate = useNavigate();
   useEffect(() => {
     if (!getTokenSession()) {
@@ -110,7 +109,6 @@ const Dashboard = () => {
 
   const check = (module, action) =>
     permission?.[module]?.includes(action);
-
 
   return (
     <MainPermissionProvider data={permission} >
@@ -291,7 +289,4 @@ const Dashboard = () => {
 }
 
 export default Dashboard
-
-
-
 

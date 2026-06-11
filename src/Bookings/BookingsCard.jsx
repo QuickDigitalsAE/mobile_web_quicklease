@@ -7,8 +7,6 @@ import dayjs from 'dayjs';
 import { BookingTab } from '../data/data'
 import currency from '../dist/webImages/currency.webp'
 
-
-
 const truncateText = (text, maxLength) => {
     if (text) {
         if (text.length <= maxLength) {

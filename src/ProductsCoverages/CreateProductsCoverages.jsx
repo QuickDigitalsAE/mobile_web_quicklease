@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import back from "../dist/webImages/back.svg";
 import { Field, Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import SubmitButton from '../components/SubmitButton';
 import CKEditors from '../components/form/CKEditors';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import SkeletonCreateEdit from './SkeletonCreateEdit';
 import { MainLanguageContext } from '../context/MainLanguageContext';
 import { toast } from 'react-toastify';
@@ -41,7 +40,6 @@ const a = Object.entries(locations).map(([key, value]) => ({
     
   
 
-
   let initialValues = {
     title: "",
     tooltip: "",
@@ -57,7 +55,6 @@ const a = Object.entries(locations).map(([key, value]) => ({
     vat_is_applicable: "",
   };
 
-
   const handleCkChange = (e, type) => {
     setDatas(d => ({ ...d, [type]: e }));
   };
@@ -71,11 +68,6 @@ const a = Object.entries(locations).map(([key, value]) => ({
         )
     }));
 }
-
-
-
-
-
 
   const [res, apiMethod] = usePost2();
   const requireFeild = ["title"];
@@ -118,8 +110,6 @@ const a = Object.entries(locations).map(([key, value]) => ({
         "prices_by_locations": a
       }
 
-
-
       if (checkerRequried.length > 0) {
         swal({
           title: "Required Fields are empty! Please fill and try again",
@@ -131,7 +121,6 @@ const a = Object.entries(locations).map(([key, value]) => ({
       else {
         apiMethod(`coverages/create/${mainLanguage}`, updateData)
       }
-
 
   };
 
@@ -148,21 +137,13 @@ const a = Object.entries(locations).map(([key, value]) => ({
     }
   }, [res.data])
 
-
   if (resget4.isLoading || !datas) return <SkeletonCreateEdit heading={"Create Products Coverages"} />;
-
-
-
 
   const { description,locations } = datas;
 
   return (
-    <div className='newscreate pr-10 max-lg:pr-6'>
-      <Link to={"/products/coverages"} className="back flex items-center mb-6 gap-2">
-        <img src={back} className='w-[2rem]' alt="" />
-        <span className='text-[1.4rem] font-MluvkaBold'>Create Products Coverages</span>
-      </Link>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <div className='newscreate  '>
+<Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form name="myForm">
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
             <div className="grid grid-cols-2  gap-2">
@@ -172,14 +153,11 @@ const a = Object.entries(locations).map(([key, value]) => ({
               <div className="mb-1 block text-[#7D8CA7] text-[.8rem]">Description</div>
             <CKEditors label={"description"} folder_name={"description"} page_type={"products"} data={description} update={(text) => handleCkChange(text, "description")} />
 
-
             <div className="grid grid-cols-2  gap-2">
             <FormControl name="less_30_days_price" label={"less 30 days price"} placeholder="Enter less 30 days price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#ddd]" control="input2" />
             <FormControl name="more_30_days_price" label={"more 30 days price"} placeholder="Enter more 30 days price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#ddd]" control="input2" />
               </div>
           </div>
-
-
 
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className='flex justify-between mt-5'>
@@ -206,9 +184,7 @@ const a = Object.entries(locations).map(([key, value]) => ({
               }
             </div>
 
-
 <div className='flex flex-wrap gap-3'>
-
 
             <div className="overflow-hidden relative pt-7 px-4">
               <label className="inline-flex items-center cursor-pointer">

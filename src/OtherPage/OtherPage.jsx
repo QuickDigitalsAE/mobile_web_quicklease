@@ -15,7 +15,7 @@ const OtherPage = () => {
         setTabIndex(label)
     }
   return (
-    <div className='OtherPage pr-10 max-lg:pr-6'>
+    <div className='OtherPage  '>
          <ul className='list flex gap-6 mb-4'>
                         {
                             OtherPageTab.map((item, index) => {

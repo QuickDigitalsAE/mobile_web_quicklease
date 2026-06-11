@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
-import back from "../dist/webImages/back.svg";
 import { Field, Form, Formik } from "formik";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import FormControl from "../components/form/FormControl";
 import useFetch from "../customHooks/useFetch";
 import SkeletonCreateEdit from "./SkeletonCreateEdit";
@@ -92,7 +91,6 @@ const CreateCatalogs = () => {
         };
     }, [arrow]);
 
-
     useEffect(() => {
         if (data) {
             let list = [];
@@ -110,12 +108,10 @@ const CreateCatalogs = () => {
         apiMethodGet2(`catalogs/dropdownList/en`)
     }, []);
 
-
     useEffect(() => {
         if (resget2.data) {
             const data = resget2.data.data;
             setCatlogsList(data);
-
 
             const options = data?.flatMap(item => {
                 const mainOption = {
@@ -124,7 +120,7 @@ const CreateCatalogs = () => {
                 };
 
                 const subOptions = item.children?.map(subItem => ({
-                    label: `— ${subItem.catalog_title}`,
+                    label: `â€” ${subItem.catalog_title}`,
                     value: subItem.id,
                 })) || [];
 
@@ -133,14 +129,10 @@ const CreateCatalogs = () => {
         }
     }, [resget2.data]);
 
-
-
-
     const [imageLoader, setImageLoader] = useState(false);
 
     const handletype = (e, type) => {
         setDatas((d) => ({ ...d, [type]: e }));
-
 
     };
     const handleCkChange = (e, type) => {
@@ -150,7 +142,6 @@ const CreateCatalogs = () => {
     const handleCarsToggle = (e) => {
         setSelectedCar(e);
     }
-
 
     const handleParent = (e) => {
         const value = e.target.value;
@@ -164,7 +155,6 @@ const CreateCatalogs = () => {
             }));
             return;
         }
-
 
         const selectedId = parseInt(e.target.value);
         setParent_id(selectedId);
@@ -192,7 +182,6 @@ const CreateCatalogs = () => {
             all_slugs = `${selectedItem.slug}`;
         }
 
-
         // Update state
         setSlugs((prev) => ({
             ...prev,
@@ -206,10 +195,6 @@ const CreateCatalogs = () => {
             "slugs": e.target.value,
         })
     }
-
-
-
-
 
     let initialValues = {
         slug: "",
@@ -231,7 +216,6 @@ const CreateCatalogs = () => {
         catalog_status: ["1"],
     };
 
-
     const handleSectionAdd = (sectionKey, fields) => {
         const newEntry = Object.fromEntries(fields.map((field) => [field, ""]));
 
@@ -240,7 +224,6 @@ const CreateCatalogs = () => {
             [sectionKey]: [...(prevState[sectionKey] || []), newEntry],
         }));
     };
-
 
     const handleDelete = (section, index) => {
         setDatas(prevService => ({
@@ -266,7 +249,6 @@ const CreateCatalogs = () => {
             )
         }));
     }
-
 
     const [res, apiMethod] = usePost();
     const requireFeild = [
@@ -307,7 +289,6 @@ const CreateCatalogs = () => {
             else {
                 checkerRequried.push("Type Required");
             }
-
 
             if (checkerRequried.length > 0) {
                 swal({
@@ -381,7 +362,6 @@ console.log(datas)
         }
     }
 
-
     useEffect(() => {
         if (res.data) {
             const { status, message } = res?.data;
@@ -398,12 +378,8 @@ console.log(datas)
     if (resget2.isLoading || !data) return <SkeletonCreateEdit heading={"Create Catalogs"} />;
     const { banner, sec_one, sec_two, sec_three,sec_four, sec_faqs, description, sec_one_description, sec_two_description, sec_three_description, sec_four_description, sec_testimonials } = datas;
     return (
-        <section className="PromotionCreate pr-10 max-lg:pr-6">
-            <Link to={"/catalogs"} className="back flex items-center mb-5 gap-2">
-                <img src={back} className="w-[2rem]" alt="" />
-                <span className="text-[1.4rem] font-MluvkaBold">Create Catalogs</span>
-            </Link>
-            {console.log(slugs?.all_slugs, slugs.slugs)}
+        <section className="PromotionCreate  ">
+{console.log(slugs?.all_slugs, slugs.slugs)}
             <div className="relative flex items-start gap-3">
                 <div className=" bg-white rounded-xl w-full  mx-auto relative">
                     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
@@ -458,7 +434,7 @@ console.log(datas)
                                                             {Array.isArray(children) &&
                                                                 children.map((item2) => (
                                                                     <option key={item2.id} value={item2.id}>
-                                                                        — {item2.catalog_title}
+                                                                        â€” {item2.catalog_title}
                                                                     </option>
                                                                 ))}
                                                         </React.Fragment>
@@ -673,7 +649,6 @@ console.log(datas)
                                     </div>
                                 </div>
 
-
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Faqs</div>
@@ -714,7 +689,6 @@ console.log(datas)
                                         }
                                     </div>
                                 </div>
-
 
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
@@ -758,7 +732,6 @@ console.log(datas)
                                     </div>
                                 </div>
 
-
                                 {addCar && <div className='antdheight'>
                                     <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Product List</div>
                                     <Select
@@ -775,10 +748,6 @@ console.log(datas)
                                         }
                                     />
                                 </div>}
-
-
-
-
 
                                 <div className="overflow-hidden relative pt-7 px-4">
                                     <label className="inline-flex items-center cursor-pointer">

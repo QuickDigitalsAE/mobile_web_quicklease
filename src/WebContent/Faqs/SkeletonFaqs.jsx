@@ -5,7 +5,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 const SkeletonFaqs = () => {
   return (
     <SkeletonTheme baseColor="#fff" highlightColor="#f0f0f0">
-      <div className='faqsPage pr-10 max-lg:pr-6'>
+      <div className='faqsPage  '>
         <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
           <div className="h4 text-[#7D8CA7] text-[1.1rem] mb-4">
             <Skeleton width="30%" />

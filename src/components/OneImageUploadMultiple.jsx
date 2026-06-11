@@ -9,8 +9,6 @@ const OneImageUploadMultiple = ({Update,changeImage,section,indexValue,sec_image
     const [res2, apiMethod2] = usePost();
     const [imageLoader, setImageLoader] = useState(false)
 
-
-
     const handleDrop2 = (e) => {
         changeImage(true)
         setImageLoader(true)

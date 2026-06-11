@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import plus from '../dist/webImages/plus.svg'
-import { Link } from 'react-router-dom';
+
 import { Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import swal from "sweetalert";
@@ -8,7 +8,6 @@ import profile from "../dist/webImages/profile.webp"
 import camera from "../dist/webImages/camera.svg"
 import SubmitButton from '../components/SubmitButton';
 import SkeletonCreateEditServices from './SkeletonCreateEditServices';
-import back from "../dist/webImages/back.svg";
 
 const EditServices = () => {
     const [loading, setLoading] = useState(true)
@@ -134,7 +133,6 @@ const EditServices = () => {
             swal("Only use Image", "", "warning");
         }
     };
-
 
     const handleInputChange = (e, section, id) => {
         const { name, value } = e.target;
@@ -269,12 +267,8 @@ const EditServices = () => {
     }
     if (loading) return <SkeletonCreateEditServices heading={"Edit Services"} />
     return (
-        <div className='services pr-10 max-lg:pr-6'>
-           <Link to={"/services"} className="back flex items-center mb-5 gap-2">
-            <img src={back} className='w-[2rem]' alt="" />
-            <span className='text-[1.4rem] font-MluvkaBold'>Edit Services</span>
-            </Link>
-            <div className="servicesBottom">
+        <div className='services  '>
+<div className="servicesBottom">
                 <Formik initialValues={initialValues}  >
                     <Form>
                         <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-8'>
@@ -351,7 +345,6 @@ const EditServices = () => {
                                         );
                                     })
                                 }
-
 
                             </div>
                             <div className='bg-[#d9dcf8] py-3 mt-4 w-fit px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={handlePlus}>

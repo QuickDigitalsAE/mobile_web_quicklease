@@ -8,8 +8,6 @@ useEffect(() => {
 setUserdata(data)
 }, [data])
 
-
-
   return (
     <MainUserDataContext.Provider value={{ userdata }}>
       {children}

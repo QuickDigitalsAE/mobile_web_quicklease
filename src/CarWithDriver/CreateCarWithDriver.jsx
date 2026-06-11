@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
-import back from "../dist/webImages/back.svg";
 import { Field, Form, Formik } from "formik";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import FormControl from "../components/form/FormControl";
 import useFetch from "../customHooks/useFetch";
 import SkeletonCreateEdit from "./SkeletonCreateEdit";
@@ -82,7 +81,6 @@ const CreateCarWithDriver = () => {
         };
     }, [arrow]);
 
-
   useEffect(() => {
             if (data) {
               let list = [];
@@ -100,7 +98,6 @@ const CreateCarWithDriver = () => {
         apiMethodGet2(`catalogs/dropdownList/en`)
     }, []);
 
-
       useEffect(() => {
         if (resget2.data) {
           const data = resget2.data.data;
@@ -114,7 +111,7 @@ const CreateCarWithDriver = () => {
             };
     
             const subOptions = item.children?.map(subItem => ({
-              label: `— ${subItem.catalog_title}`,
+              label: `â€” ${subItem.catalog_title}`,
               value: subItem.id,
             })) || [];
     
@@ -122,9 +119,6 @@ const CreateCarWithDriver = () => {
           });
         }
       }, [resget2.data]);
-
-
-
 
     const [imageLoader, setImageLoader] = useState(false);
 
@@ -198,8 +192,6 @@ const CreateCarWithDriver = () => {
 
       
 
-
-
     let initialValues = {
         slug: "",
         type: "",
@@ -218,7 +210,6 @@ const CreateCarWithDriver = () => {
         catalog_status: ["1"],
     };
 
-
     const handleSectionAdd = (sectionKey, fields) => {
         const newEntry = Object.fromEntries(fields.map((field) => [field, ""]));
 
@@ -227,7 +218,6 @@ const CreateCarWithDriver = () => {
             [sectionKey]: [...(prevState[sectionKey] || []), newEntry],
         }));
     };
-
 
     const handleDelete = (section, index) => {
         setDatas(prevService => ({
@@ -253,7 +243,6 @@ const CreateCarWithDriver = () => {
             )
         }));
     }
-
 
     const [res, apiMethod] = usePost();
     const requireFeild = [
@@ -349,7 +338,6 @@ const CreateCarWithDriver = () => {
         }
     }
 
-
     useEffect(() => {
         if (res.data) {
             const { status, message } = res?.data;
@@ -366,12 +354,8 @@ const CreateCarWithDriver = () => {
     if (resget2.isLoading || !data) return <SkeletonCreateEdit heading={"Create Catalogs"} />;
     const { banner, sec_one, sec_two,sec_three, sec_faqs, description, sec_one_description, sec_two_description,sec_three_description,sec_four_description, sec_testimonials } = datas;
     return (
-        <section className="PromotionCreate pr-10 max-lg:pr-6">
-            <Link to={"/catalogs"} className="back flex items-center mb-5 gap-2">
-                <img src={back} className="w-[2rem]" alt="" />
-                <span className="text-[1.4rem] font-MluvkaBold">Create Catalogs</span>
-            </Link>
-            {console.log(slugs?.all_slugs,slugs.slugs)}
+        <section className="PromotionCreate  ">
+{console.log(slugs?.all_slugs,slugs.slugs)}
             <div className="relative flex items-start gap-3">
                 <div className=" bg-white rounded-xl w-full  mx-auto relative">
                     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
@@ -416,7 +400,7 @@ const CreateCarWithDriver = () => {
                                                                                                                                                         {Array.isArray(children) &&
                                                                                                                                                           children.map((item2) => (
                                                                                                                                                             <option key={item2.id} value={item2.id}>
-                                                                                                                                                              — {item2.catalog_title}
+                                                                                                                                                              â€” {item2.catalog_title}
                                                                                                                                                             </option>
                                                                                                                                                           ))}
                                                                                                                                                       </React.Fragment>
@@ -492,7 +476,6 @@ const CreateCarWithDriver = () => {
                                     <br />
                                     <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Section 1 Description</div>
                                     <CKEditors label={"Description"} data={sec_one_description} update={(text) => handleCkChange(text, "sec_one_description")} />
-
 
                                     <div className="section4Main grid grid-cols-3 gap-3 mt-4 max-lg:grid-cols-1">
                                         {
@@ -658,7 +641,6 @@ const CreateCarWithDriver = () => {
                                     </div>
                                 </div>
 
-
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Faqs</div>
@@ -699,7 +681,6 @@ const CreateCarWithDriver = () => {
                                         }
                                     </div>
                                 </div>
-
 
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
@@ -743,7 +724,6 @@ const CreateCarWithDriver = () => {
                                     </div>
                                 </div>
 
-
                                 {addCar &&      <div className='antdheight'>
                 <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Product List</div>
                 <Select
@@ -760,10 +740,6 @@ const CreateCarWithDriver = () => {
                   }
                 />
               </div>}
-
-
-
-
 
                                 <div className="overflow-hidden relative pt-7 px-4">
                                     <label className="inline-flex items-center cursor-pointer">

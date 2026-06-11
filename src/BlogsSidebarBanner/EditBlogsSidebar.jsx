@@ -8,8 +8,7 @@ import usePost from '../customHooks/usePost'
 import { toast } from 'react-toastify'
 import OneImageUpload from '../components/OneImageUpload'
 import swal from "sweetalert";
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import back from "../dist/webImages/back.svg";
+import { useNavigate, useParams } from 'react-router-dom'
 import SkeletonCreateEdit from './SkeletonCreateEdit'
 
 const EditBlogsSidebar = ({ permission }) => {
@@ -26,14 +25,11 @@ const EditBlogsSidebar = ({ permission }) => {
     apiMethodGet(`sidebarBanner/${mainLanguage}/${id}`)
   }, [mainLanguage]);
 
-
   useEffect(() => {
     if (resget.data) {
       setDatas(resget.data?.data)
     }
   }, [resget.data])
-
-
 
   const [res, apiMethod] = usePost();
   const requireFeild = ["title", "redirect_url"];
@@ -92,7 +88,6 @@ const EditBlogsSidebar = ({ permission }) => {
 
   if (resget.isLoading || !datas) return <SkeletonCreateEdit />
 
-
   const initialValues = {
     title: resget?.data?.data.title,
     redirect_url: resget?.data?.data.redirect_url,
@@ -100,12 +95,8 @@ const EditBlogsSidebar = ({ permission }) => {
   }
   const check = (module, action) => permission?.[module]?.includes(action);
   return (
-    <div className='newscreate pr-10 max-lg:pr-6'>
-      <Link to={"/blogs/sidebar"} className="back flex items-center mb-6 gap-2">
-        <img src={back} className='w-[2rem]' alt="" />
-        <span className='text-[1.4rem] font-MluvkaBold'>Edit Slider Blogs</span>
-      </Link>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}  >
+    <div className='newscreate  '>
+<Formik initialValues={initialValues} onSubmit={handleSubmit}  >
         <Form>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-8'>
             <FormControl name="title" label={"Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />

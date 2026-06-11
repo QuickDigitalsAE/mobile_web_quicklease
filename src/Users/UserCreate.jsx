@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import profile from "../dist/webImages/profile.webp";
 import camera from "../dist/webImages/camera.svg";
 import swal from "sweetalert";
@@ -6,7 +6,6 @@ import FormControl from "../components/form/FormControl";
 import { Field, Form, Formik } from "formik";
 import SubmitButton from "../components/SubmitButton";
 import { Link, useNavigate } from 'react-router-dom';
-import back from "../dist/webImages/back.svg";
 import SkeletonCreateEdits from "./SkeletonCreateEdits";
 import * as yup from "yup";
 import usePost from "../customHooks/usePost";
@@ -66,7 +65,7 @@ const UserCreate = () => {
     user_enabled: ["1"],
   };
   // password_confirmation
-  const requireFeild = ["name", "email", "password","user_enabled"];
+  const requireFeild = ["name", "email", "password", "user_enabled"];
   const [res, apiMethod] = usePost();
 
   const validationSchema = yup.object({
@@ -127,104 +126,138 @@ const UserCreate = () => {
 
   if (loading) return <SkeletonCreateEdits heading={"Create User"} />
   return (
-    <div className='createTeam pr-10 max-lg:pr-6'>
-      <Link to={"/users"} className="back flex items-center mb-5 gap-2">
-        <img src={back} className='w-[2rem]' alt="" />
-        <span className='text-[1.4rem] font-MluvkaBold'>Create User</span>
-      </Link>
-      <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-2'>
-        <div className={`TeamModel  transition-all duration-300  bg-white rounded-xl`} >
+    <div className='createTeam user-create-page'>
+      <div className='user-create-page__shell'>
+        <div className={`TeamModel user-create-page__card transition-all duration-300 bg-white rounded-xl`} >
           <div className=" overflow-auto modelBox">
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit} validateOnChange>
               <Form name="myForm">
-                <div className="TeamBox p-5 rounded-xl">
-                  <div
-                    className="w-[5rem] h-[5rem] relative mt-4"
-                    onDrop={handleDrop}
-                  >
-                    <img
-                      src={imgPath || profile}
-                      className="w-full h-full rounded-3xl object-cover border-2 border-[#C0CCE2]"
-                      alt=""
-                    />
-                    <div className="TeamBoxinput w-[2rem] h-[2rem] bg-[#C0CCE2] grid place-items-center rounded-full absolute right-[-1rem] top-[-1rem] cursor-pointer z-1">
-                      <input
-                        type="file"
-                        onChange={handleFileUpload}
-                        className="absolute inset-0 opacity-0 cursor-pointer"
+                <div className="TeamBox user-create-page__content p-5 rounded-xl">
+                  <aside className="user-create-page__aside">
+                    <span className="user-create-page__kicker">Profile Setup</span>
+                    <h2>Create a fresh team profile</h2>
+                    <p>
+                      Start with the avatar, then set identity, role, and login details in one compact flow.
+                    </p>
+                    <div
+                      className="user-create-page__avatarWrap"
+                      onDrop={handleDrop}
+                    >
+                      <img
+                        src={imgPath || profile}
+                        className="user-create-page__avatar"
+                        alt=""
                       />
-                      <img src={camera} alt="camera" className="cursor-pointer" />
+                      <div className="TeamBoxinput user-create-page__avatarButton w-[2rem] h-[2rem] bg-[#C0CCE2] grid place-items-center rounded-full absolute right-[-1rem] top-[-1rem] cursor-pointer z-1">
+                        <input
+                          type="file"
+                          onChange={handleFileUpload}
+                          className="absolute inset-0 opacity-0 cursor-pointer"
+                        />
+                        <img src={camera} alt="camera" className="cursor-pointer" />
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="form mt-7">
-
-                    <FormControl
-                      name="name"
-                      label={"Name"}
-                      placeholder="Enter your Name"
-                      className="outline-none w-full h-[2.7rem] border border-[#CFD5E2] px-5 rounded-lg"
-                      control="input"
-                      type="text"
-                    />
-                    <FormControl
-                      name="email"
-                      label={"User Email"}
-                      placeholder="Enter your Email"
-                      className="outline-none w-full h-[2.7rem] border border-[#CFD5E2] px-5 rounded-lg"
-                      control="input"
-                      type="email"
-                    />
-                    <div className="inputBox mt-3">
-                      <label  className="mb-1 block">Role </label>
-                      <select onInput={(e) => setRole(e.target.value)} className="outline-none w-full h-[2.7rem] border border-[#CFD5E2] px-5 rounded-lg" name="role_id" id="">
-                        <option value="">Role</option>
-                        {Array.isArray(datas) && datas.map((item) => {
-                          const { id, name } = item
-                          return (
-                            <option value={id} key={id}>{name}</option>
-                          )
-                        })}
-                      </select>
+                    <div className="user-create-page__asideMeta">
+                      <span>Drop or upload a square image</span>
+                      <strong>Recommended: 512 x 512</strong>
                     </div>
-                    <FormControl
-                      name="password"
-                      label="Password"
-                      placeholder="Enter your Password"
-                      className="outline-none w-full h-[2.7rem] border border-[#CFD5E2] px-5 rounded-lg"
-                      control="password"
-                      type="password"
-                    />
-
-                    <FormControl
-                      name="password_confirmation"
-                      label="Confirm Password"
-                      placeholder="Confirm your Password"
-                      className="outline-none w-full h-[2.7rem] border border-[#CFD5E2] px-5 rounded-lg"
-                      control="password"
-                      type="password"
-                    />
-                    <div className="flex items-center mt-4">
-                      <Field name="user_enabled" id="default-checkbox" type="checkbox"  value="1" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                      <label htmlFor="default-checkbox" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Enable</label>
+                    <div className="user-create-page__asideNote">
+                      <strong>Quick Note</strong>
+                      <span>Pick the correct role before saving so access is ready immediately.</span>
                     </div>
+                  </aside>
 
+                  <div className="form user-create-page__form mt-7">
+                    <section className="user-create-page__section">
+                      <div className="user-create-page__sectionHead">
+                        <h3>Basic Information</h3>
+                        <p>Set the visible identity and access role for this account.</p>
+                      </div>
+                      <div className="grid grid-cols-3 gap-5 max-lg:grid-cols-1 w-full">
+                        <FormControl
+                          name="name"
+                          label={"Name"}
+                          placeholder="Enter full name"
+                          className="outline-none w-full h-[2.7rem] border border-[#CFD5E2] px-5 rounded-lg"
+                          control="input"
+                          type="text"
+                        />
+                        <FormControl
+                          name="email"
+                          label={"User Email"}
+                          placeholder="Enter email address"
+                          className="outline-none w-full h-[2.7rem] border border-[#CFD5E2] px-5 rounded-lg"
+                          control="input"
+                          type="email"
+                        />
+                        <div className="inputBox mt-3">
+                          <label className="mb-1 block">Role</label>
+                          <select onInput={(e) => setRole(e.target.value)} className="outline-none w-full h-[2.7rem] border border-[#CFD5E2] px-5 rounded-lg" name="role_id" id="role_id">
+                            <option value="">Select role</option>
+                            {Array.isArray(datas) && datas.map((item) => {
+                              const { id, name } = item
+                              return (
+                                <option value={id} key={id}>{name}</option>
+                              )
+                            })}
+                          </select>
+                        </div>
+                      </div>
+                    </section>
+
+                    <section className="user-create-page__section">
+                      <div className="user-create-page__sectionHead">
+                        <h3>Security</h3>
+                        <p>Choose a password pair for first-time sign in.</p>
+                      </div>
+                      <div className="grid grid-cols-2 gap-5 max-lg:grid-cols-1 w-full">
+                        <FormControl
+                          name="password"
+                          label="Password"
+                          placeholder="Enter password"
+                          className="outline-none w-full h-[2.7rem] border border-[#CFD5E2] px-5 rounded-lg"
+                          control="password"
+                          type="password"
+                        />
+                        <FormControl
+                          name="password_confirmation"
+                          label="Confirm Password"
+                          placeholder="Confirm password"
+                          className="outline-none w-full h-[2.7rem] border border-[#CFD5E2] px-5 rounded-lg"
+                          control="password"
+                          type="password"
+                        />
+                      </div>
+                    </section>
+
+                    <section className="user-create-page__section user-create-page__section--toggle">
+                      <div className="user-create-page__toggleRow">
+                        <div>
+                          <h3>Account Status</h3>
+                          <p>Keep this enabled if the user should be able to sign in right away.</p>
+                        </div>
+                        <label className="user-create-page__switch" htmlFor="default-checkbox">
+                          <Field name="user_enabled" id="default-checkbox" type="checkbox" value="1" className="sr-only peer" />
+                          <span className="user-create-page__switchTrack"></span>
+                          <span className="user-create-page__switchLabel">Enable</span>
+                        </label>
+                      </div>
+                    </section>
                   </div>
                 </div>
-                <ul className="list flex justify-end gap-4 items-center pb-6 px-5">
-                  <li className="">
-                    {(
-                      <SubmitButton
-                        props={{
-                          class:
-                            "btn bg-secondary text-white  uppercase   py-3 px-8 rounded-full w-full block submit hover:bg-primary transition-all duration-300",
-                          text: "Submit",
-                        }}
-                        buttonLoading={res.isLoading}
-                      />
-                    )}
-                  </li>
-                </ul>
+                <div className="user-create-page__actions">
+                  <Link to="/users" className="user-create-page__cancel">
+                    Cancel
+                  </Link>
+                  <SubmitButton
+                    props={{
+                      class:
+                        "user-create-page__submit btn bg-secondary text-white uppercase py-3 px-8 rounded-full block submit hover:bg-primary transition-all duration-300",
+                      text: "Create User",
+                    }}
+                    buttonLoading={res.isLoading}
+                  />
+                </div>
               </Form>
             </Formik>
           </div>

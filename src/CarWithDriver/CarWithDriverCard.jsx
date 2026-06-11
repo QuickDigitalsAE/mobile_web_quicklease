@@ -2,8 +2,6 @@
 import { Link } from 'react-router-dom';
 import { StringConvert } from '../components/StringConvert';
 
-
-
 const truncateText = (text, maxLength) => {
     if(text) {
       if (text.length <= maxLength) {
@@ -13,7 +11,6 @@ const truncateText = (text, maxLength) => {
     }
     return text;
   };
-
 
 const CarWithDriverCard = ({data}) => {
     const {id,banner_image,title,description,type,slug} = data

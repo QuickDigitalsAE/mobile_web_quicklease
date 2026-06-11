@@ -14,7 +14,6 @@ const CarWithDriver = () => {
     const [searchValue, setSearchValue] = useState("")
     const [res2, apiMethod2] = usePost()
 
-
     const onChange = (current, pageSize) => {
         setCurrentPage(current)
         let formdata = new FormData();
@@ -32,7 +31,6 @@ const CarWithDriver = () => {
             apiMethodGet(`catalogs/list/en/10/car_with_driver?page=1`);
         }
     }, [mainLanguage]);
-
 
     let debounceTimer;
     const debounce = (func, delay) => {
@@ -57,7 +55,6 @@ const CarWithDriver = () => {
       };
       const handleChange = debounce(executeApiCall, 1000)
 
-
     useEffect(() => {
         if (!resget.isLoading) {
             setDatas(resget?.data?.data)
@@ -73,12 +70,10 @@ const CarWithDriver = () => {
         }
     }, [res2.data]);
 
-
-
 return (
-    <div className='bookingPage mb-6 pr-10 max-lg:pr-6'>
+    <div className='bookingPage mb-6  '>
           <div className="TeamPageTop flex justify-between items-center">
-                <h6 className='text-[1rem] mb-2 bookingSectionh relative px-3 font-Mluvka capitalize'>Car With Driver</h6>
+                <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka capitalize'>Car With Driver</h6>
             </div>
         <div className="BookingGrid grid grid-cols-3 max-[1350px]:grid-cols-2 mt-5 gap-4 max-[1000px]:grid-cols-1">
         {resget.isLoading ? 

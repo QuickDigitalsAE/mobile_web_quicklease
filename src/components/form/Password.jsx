@@ -17,8 +17,8 @@ function Password({ name,required,mustrequried, label , ...rest}) {
   const [field] = useField(name);
   return (
     <>
-    <div className="inputfeild relative mt-3">
-       <label htmlFor={name}  className="mb-1 block">{label}</label>
+    <div className="inputBox form-field relative mt-3">
+       <label htmlFor={name} className="form-field__label">{label}{required ? " *" : ""}</label>
       <div className="password relative">
         <input
           id={name}
@@ -35,13 +35,9 @@ function Password({ name,required,mustrequried, label , ...rest}) {
       </div>
     </div>
     {mustrequried && <p className="mustrequried">Must be at least 8 characters.</p>}
-    {  <div className='my-1'>
+    {  <div className='form-field__error'>
       <ErrorMessage name={name}>
-                  {(msg) => (
-                    <div style={{ color: "red", whiteSpace: "nowrap" }}>
-                      {msg}
-                    </div>
-                  )}
+                  {(msg) => <div>{msg}</div>}
         </ErrorMessage>
       </div>}
           </>

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import back from "../dist/webImages/back.svg";
 import { Field, Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import SubmitButton from '../components/SubmitButton';
@@ -51,8 +50,6 @@ const EditProducts = ({ permission }) => {
     "slugs": "",
     "all_slugs": "",
   })
-
-
 
   useEffect(() => {
     apiMethodGet(`products/edit/${id}/${mainLanguage}`)
@@ -134,8 +131,6 @@ const EditProducts = ({ permission }) => {
     }
   }, [resget?.data]);
 
-
-
   useEffect(() => {
     apiMethodGet2(`catalogs/dropdownList/en`)
   }, []);
@@ -153,12 +148,10 @@ const EditProducts = ({ permission }) => {
     }));
   };
 
-
   useEffect(() => {
     if (resget2.data) {
       const data = resget2.data.data;
       setCatlogsList(data);
-
 
       const options = data?.flatMap(item => {
         const mainOption = {
@@ -167,7 +160,7 @@ const EditProducts = ({ permission }) => {
         };
 
         const subOptions = item.children?.map(subItem => ({
-          label: `— ${subItem.catalog_title}`,
+          label: `â€” ${subItem.catalog_title}`,
           value: subItem.id,
         })) || [];
 
@@ -176,7 +169,6 @@ const EditProducts = ({ permission }) => {
       setCatlogsList2(options)
     }
   }, [resget2.data]);
-
 
   const handleSlugUpdate = (e) => {
     setSlugs({
@@ -198,7 +190,6 @@ const EditProducts = ({ permission }) => {
       }));
       return;
     }
-
 
     const selectedId = parseInt(e.target.value);
     setParent_id(selectedId);
@@ -226,15 +217,12 @@ const EditProducts = ({ permission }) => {
       all_slugs = `${selectedItem.slug}`;
     }
 
-
     // Update state
     setSlugs((prev) => ({
       ...prev,
       all_slugs,
     }));
   };
-
-
 
   const handleCkChange = (e, type) => {
     setDatas(d => ({ ...d, [type]: e }));
@@ -264,15 +252,9 @@ const EditProducts = ({ permission }) => {
     setDropDownState(!dropDownState)
   }
 
-
-
   const handleChange = (e, type) => {
     setDatas((d) => ({ ...d, [type]: e }));
   };
-
-
-
-
 
   const handleSectionAdd2 = (sectionKey, fields) => {
     setDatas((prevState) => ({
@@ -280,7 +262,6 @@ const EditProducts = ({ permission }) => {
       [sectionKey]: [...(prevState[sectionKey] || []), ""],
     }));
   };
-
 
   const handleDelete = (section, index) => {
     setDatas(prevService => ({
@@ -311,9 +292,6 @@ const EditProducts = ({ permission }) => {
     }));
   }
 
-
-
-
   const [res, apiMethod] = usePost2();
   const requireFeild = ["meta_title", "meta_description", "slug", "model", "year"];
   const handleSubmit = async (values) => {
@@ -338,7 +316,6 @@ const EditProducts = ({ permission }) => {
           checkerRequried.push(requireFeildSwal[item]);
         }
       }
-
 
       if (!datas?.vehicle_type) {
         checkerRequried.push("vehicle_type");
@@ -488,12 +465,8 @@ const EditProducts = ({ permission }) => {
  const check = (module, action) => permission?.[module]?.includes(action);
 
   return (
-    <div className='newscreate pr-10 max-lg:pr-6'>
-      <Link to={"/products"} className="back flex items-center mb-6 gap-2">
-        <img src={back} className='w-[2rem]' alt="" />
-        <span className='text-[1.4rem] font-MluvkaBold'>Edit Products</span>
-      </Link>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <div className='newscreate  '>
+<Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form name="myForm">
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
             <div className="">
@@ -522,7 +495,7 @@ const EditProducts = ({ permission }) => {
                           {Array.isArray(children) &&
                             children.map((item2) => (
                               <option key={item2.id} value={item2.id}>
-                                — {item2.catalog_title}
+                                â€” {item2.catalog_title}
                               </option>
                             ))}
                         </React.Fragment>
@@ -583,7 +556,6 @@ const EditProducts = ({ permission }) => {
 
             <br />
 
-
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Products</div>
@@ -592,7 +564,6 @@ const EditProducts = ({ permission }) => {
             <FormControl name="heading_one" label={"Heading {h1}"} placeholder="Enter Heading One" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
 
             <br />
-
 
             <div className="mb-1 block text-[#7D8CA7] text-[.8rem]">Description</div>
             <CKEditors label={"Description"} folder_name={"products_images"} page_type={"products"} data={description} update={(text) => handleCkChange(text, "description")} />
@@ -607,9 +578,6 @@ const EditProducts = ({ permission }) => {
                   <OneImageUpload changeImage={setImageLoader} MainImage={datas?.main_image} Update={setDatas} sec_value={"main_image_value"} sec_image={"main_image"} folder_name={"products_images"} page_type={"products"} />
                 </div>
               </div>}
-
-
-
 
             {mainLanguage === "en" &&
               <div className='mt-4'>

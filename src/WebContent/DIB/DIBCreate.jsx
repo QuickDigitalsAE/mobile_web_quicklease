@@ -2,8 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import usePost from '../../customHooks/usePost';
 import swal from "sweetalert";
 import { MainLanguageContext } from '../../context/MainLanguageContext';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import back from "../../dist/webImages/back.svg";
+import { useNavigate, useParams } from 'react-router-dom';
 import { Form, Formik } from 'formik';
 import FormControl from '../../components/form/FormControl';
 import CKEditors from '../../components/form/CKEditors';
@@ -12,7 +11,6 @@ import { toast } from 'react-toastify';
 import useGet from '../../customHooks/useGet';
 import SkeletonCreateEdit from './SkeletonCreateEdit';
 import OneImageUpload from '../../components/OneImageUpload';
-
 
 const DIBCreate = () => {
      const {id} = useParams();
@@ -37,16 +35,11 @@ const DIBCreate = () => {
         }, [resget.data])
         
 
-
-
-
-
       const handleCkChange = (e, type) => {
         setDatas(d => ({ ...d, [type]: e }));
       };
     
     
-
 
     const [res, apiMethod] = usePost();
     const requireFeild = ["meta_title", "meta_description", "partner_title", "partner_paragraph"];
@@ -79,8 +72,6 @@ const DIBCreate = () => {
         formdata.append(`partner_status`, values["partner_status"].length > 0 ? values["partner_status"] : "0");
         formdata.append(`partner_slug`, values["partner_slug"]);
 
-
-
         if (checkerRequried.length > 0) {
             swal({
                 title: "Required Fields are empty! Please fill and try again",
@@ -112,7 +103,6 @@ const DIBCreate = () => {
         }
       }, [res.data])
 
-
     if (resget.isLoading) return <SkeletonCreateEdit heading={"Edit HSBC"} />
 
     let initialValues = {
@@ -125,13 +115,8 @@ const DIBCreate = () => {
     const { partner_paragraph } = datas;
 
     return (
-        <section className='EditPartners  pr-10 max-lg:pr-6'>
-            <Link to={"/webcontent"} className="back flex items-center mb-6 gap-2">
-                <img src={back} className='w-[2rem]' alt="" />
-                <span className='text-[1.4rem] font-MluvkaBold'>Edit DIB</span>
-            </Link>
-
-            <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        <section className='EditPartners   '>
+<Formik initialValues={initialValues} onSubmit={handleSubmit}>
                 <Form name="myForm">
                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
                         <div className="grid grid-cols-2 gap-2">
@@ -147,7 +132,6 @@ const DIBCreate = () => {
                         <br />
                         <div className="mb-1 block text-[#7D8CA7] text-[.8rem]">Main Paragraph</div>
                         <CKEditors label={"Main Paragraph"}  folder_name={"paratners_images"} page_type={"paratners"} data={partner_paragraph} update={(text) => handleCkChange(text, "partner_paragraph")} />
-
 
                         <div>
                 <label className="mb-1  mt-3 block text-[#7D8CA7] text-[.8rem]"> Image </label>

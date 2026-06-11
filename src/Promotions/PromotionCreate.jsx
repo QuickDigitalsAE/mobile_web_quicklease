@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react'
-import back from "../dist/webImages/back.svg";
 import { Field, Form, Formik } from 'formik';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import FormControl from '../components/form/FormControl';
 import useFetch from '../customHooks/useFetch';
 import SkeletonCreateEdit from './SkeletonCreateEdit';
@@ -55,11 +54,7 @@ const PromotionCreate = ({permission}) => {
         "car_ids": []
     })
 
-
-
     const [imageLoader, setImageLoader] = useState(false)
-
-
 
     const handleCkChange = (e, type) => {
         setDatas(d => ({ ...d, [type]: e }));
@@ -68,7 +63,6 @@ const PromotionCreate = ({permission}) => {
         const handleCarsToggle = (e) => {
           setSelectedCar(e);
         }
-
 
     let initialValues = {
         promotion_slug: "",
@@ -151,17 +145,12 @@ const PromotionCreate = ({permission}) => {
         }
       }, [res.data])
 
-
     if (loading || !data) return <SkeletonCreateEdit heading={"Create Promotions"} />;
     const { promotion_paragraph,promotion_short_paragraph } = datas;
     const check = (module, action) => permission?.[module]?.includes(action);
     return (
-        <section className='PromotionCreate pr-10 max-lg:pr-6'>
-            <Link to={"/promotions"} className="back flex items-center mb-5 gap-2">
-                <img src={back} className='w-[2rem]' alt="" />
-                <span className='text-[1.4rem] font-MluvkaBold'>Create Promotions</span>
-            </Link>
-            <div className='relative flex items-start gap-3'>
+        <section className='PromotionCreate  '>
+<div className='relative flex items-start gap-3'>
                 <div className=' bg-white rounded-xl w-full  mx-auto relative'>
                     <Formik initialValues={initialValues} onSubmit={handleSubmit} >
                         <Form name="myForm">
@@ -203,7 +192,6 @@ const PromotionCreate = ({permission}) => {
                                 </div>
 
                                 <div className="mt-4">
-
 
                   <div className='relative'>
               <FormControl name="schedule_date" label={"Schedule"} type={'datetime-local'} placeholder="Enter Schedule" className="outline-none mmonth w-full h-[3rem] px-5 rounded-xl" control="input2" />

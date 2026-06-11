@@ -43,8 +43,6 @@ const UploadProduct = ({ filelis, updatess,label }) => {
                 </div>
         </button>
 
-
-
     );
     return (
         <>

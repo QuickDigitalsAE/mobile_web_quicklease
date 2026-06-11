@@ -4,13 +4,12 @@ import plus from '../dist/webImages/plus.svg'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-
 const SkeletonRoleList = () => {
   return (
     <SkeletonTheme baseColor="#EFF4FD" highlightColor="#D4DEF1">
-    <div className='services pr-10 max-lg:pr-6'>
+    <div className='services  '>
     <div className="servicesTop flex justify-between items-center mb-4">
-                <h6 className='text-[1rem] mb-2 bookingSectionh relative px-3 font-Mluvka'> Role</h6>
+                <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka'> Role</h6>
                 <Link to={"/role/create"} className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' >
                     <img src={plus} alt="plus" />
                     <span className='font-MluvkaBold text-secondary capitalize'>Add Role</span>
