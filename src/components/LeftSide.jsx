@@ -21,11 +21,6 @@ const links = {
   "/users": "sub2",
   "/users/create": "sub3",
   "/users/edit": "sub4",
-  "/blogs": "sub11",
-  "/blogs/create": "sub11",
-  "/blogs/edit": "sub11",
-  "/elements": "sub16",
-  "/webcontent": "sub17",
   "/appcontent": "sub18",
   "/products/coverages": "sub36",
   "/products/coverages/create": "sub36",
@@ -82,12 +77,10 @@ const LeftSide = ({ permissions, data }) => {
   let partners = null
   let testimonials = null
   let Promotions = null
-  let WebContent = null
   let Catalogs = null
   let Products = null
   let ProductProperties = null
   let ProductCoverages = null
-  let Notification = null
   let Booking = null
   let Enquiry = null
   let Activities = null
@@ -130,10 +123,6 @@ const LeftSide = ({ permissions, data }) => {
     Promotions = getItem("Promotions", 'sub11', <FiBell />, children);
   }
 
-  if ((check("WebContents", "WebContents View") && check("WebContents", "WebContents Menu"))) {
-    WebContent = getItem(<Link to="/webcontent">Mobile Content</Link>, 'sub21', <FiBell />);
-  }
-
   if ((check("Catalogs", "Catalogs View") && check("Catalogs", "Catalogs Menu"))) {
     const children = [];
     if (check("Catalogs", "Catalogs Add")) children.push(getItem(<Link to="/catalogs/create">Create</Link>, 'sub28'));
@@ -162,13 +151,6 @@ const LeftSide = ({ permissions, data }) => {
     ProductCoverages = getItem("Product Coverage", 'sub36', <FiGrid />, children);
   }
 
-  if ((check("PushNotification", "PushNotification View") && check("PushNotification", "PushNotification Menu"))) {
-    const children = [];
-    if (check("PushNotification", "PushNotification Add")) children.push(getItem(<Link to="/push-notification/create">Create</Link>, 'sub60'));
-    if (check("PushNotification", "PushNotification View")) children.push(getItem(<Link to="/push-notification">Push Notification List</Link>, 'sub61'));
-    Notification = getItem("Notifications", 'sub62', <FiBell />, children);
-  }
-
   if ((check("Booking", "Booking View") && check("Booking", "Booking Menu"))) {
     Booking = getItem(<Link to="/booking">Bookings</Link>, 'sub42', <FiBookOpen />);
   }
@@ -181,7 +163,7 @@ const LeftSide = ({ permissions, data }) => {
     const children = [];
     if (check("Activities", "Activities View")) children.push(getItem(<Link to="/activities">Activities Logs</Link>, 'sub61'));
     if (check("Activities", "Activities View")) children.push(getItem(<Link to="/activities/auth">Activities Auth</Link>, 'sub62'));
-    Activities = getItem("Activities Reviews", 'sub60', <FiActivity />, children);
+    Activities = getItem("Activities", 'sub60', <FiActivity />, children);
   }
 
   const items = useMemo(
@@ -197,10 +179,8 @@ const LeftSide = ({ permissions, data }) => {
         ProductCoverages,
         Catalogs,
         Promotions,
-        Notification,
         partners,
         testimonials,
-        WebContent,
         Activities,
       ].filter(Boolean),
     [
@@ -214,10 +194,8 @@ const LeftSide = ({ permissions, data }) => {
       ProductCoverages,
       Catalogs,
       Promotions,
-      Notification,
       partners,
       testimonials,
-      WebContent,
       Activities,
     ]
   );

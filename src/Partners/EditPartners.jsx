@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import usePost from '../customHooks/usePost';
 import swal from "sweetalert";
 import { MainLanguageContext } from '../context/MainLanguageContext';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import CKEditors from '../components/form/CKEditors';
@@ -116,9 +116,14 @@ const EditPartners = ({permission}) => {
     const { partner_paragraph } = datas;
 const check = (module, action) => permission?.[module]?.includes(action);
     return (
-        <section className='EditPartners   '>
+        <section className='EditPartners product-create-page'>
+<div className="product-create-page__hero">
+                <span className="product-create-page__eyebrow">Partner management</span>
+                <h2>Edit Partner</h2>
+                <p>Update partner content in the same compact, modern layout used across the refreshed admin forms.</p>
+            </div>
 <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-                <Form name="myForm">
+                <Form name="myForm" className="product-create-page__form">
                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
                         <div className="grid grid-cols-2 gap-2">
                             <FormControl name="partner_slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[red]" control="input2" />
@@ -140,13 +145,18 @@ const check = (module, action) => permission?.[module]?.includes(action);
                 <OneImageUpload changeImage={setImageLoader} MainImage={datas?.partner_image} Update={setDatas} sec_value={"partner_value"} sec_image={"partner_image"} folder_name={"partner_images"} page_type={"partner"} />
               </div>
 
-                        {check("Partners", "Partner Edit") &&<SubmitButton
-                        props={{
-                            class: "btn bg-secondary text-white px-12 ml-auto uppercase mb-3   py-3 rounded-full w-100 block mt-5 submit hover:bg-primary transition-all duration-300",
-                            text: "Submit",
-                        }}
-                        buttonLoading={res.isLoading}
-                    />}
+                        {check("Partners", "Partner Edit") &&<div className="product-create-page__actions">
+                            <Link to="/partners" className="product-create-page__cancel">
+                                Cancel
+                            </Link>
+                            <SubmitButton
+                            props={{
+                                class: "product-create-page__submit btn bg-secondary text-white px-12 uppercase py-3 rounded-full w-100 block submit hover:bg-primary transition-all duration-300",
+                                text: "Update Partner",
+                            }}
+                            buttonLoading={res.isLoading}
+                        />
+                        </div>}
                     </div>
                    
                 </Form>

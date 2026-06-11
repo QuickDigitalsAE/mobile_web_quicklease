@@ -12,7 +12,7 @@ const HeaderProfileSkeleton = () => (
   );
 const SkeletonHeader = () => {
   return (
-    <div className='header py-6 pr-10 flex justify-between items-center'>
+    <div className='header py-6 flex justify-between items-center'>
     <SkeletonTheme  baseColor="#ddd" highlightColor="#eee">
       <div className="header__left">
         {/* <div className='font-Mluvka text-[1.938rem]'>

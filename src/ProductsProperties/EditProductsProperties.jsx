@@ -133,9 +133,18 @@ const EditProductsProperties = ({ permission }) => {
   const { property_values } = datas;
  const check = (module, action) => permission?.[module]?.includes(action);
   return (
-    <div className='newscreate  '>
+    <div className='newscreate product-create-page'>
+      <div className="product-create-page__hero">
+        <div>
+          <span className="product-create-page__eyebrow">Product Attributes</span>
+          <h2>Update this property with the same clean workflow</h2>
+          <p>
+            Refine the property type, value options, field behavior, and status using the same modern layout as property creation.
+          </p>
+        </div>
+      </div>
 <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        <Form name="myForm">
+        <Form name="myForm" className="product-create-page__form">
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
             <div className="grid grid-cols-2  gap-2">
               <div className='mt-3'>
@@ -159,7 +168,7 @@ const EditProductsProperties = ({ permission }) => {
             </div>
             <div className='flex justify-between mt-5'>
               <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Property Value List</div>
-              <Link className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("property_values")} >
+              <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("property_values")} >
                 <img src={plus} alt="plus" />
                 <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
               </Link>
@@ -204,13 +213,20 @@ const EditProductsProperties = ({ permission }) => {
               </label>
             </div>
           </div>
-          {check("ProductProperties", "ProductProperties Edit") && <SubmitButton
-            props={{
-              class: "btn bg-secondary text-white px-12 ml-auto uppercase mb-3   py-3 rounded-full w-100 block mt-5 submit hover:bg-primary transition-all duration-300",
-              text: "Submit",
-            }}
-            buttonLoading={res.isLoading}
-          />}
+          {check("ProductProperties", "ProductProperties Edit") && (
+            <div className="product-create-page__actions">
+              <Link to="/products/properties" className="product-create-page__cancel">
+                Cancel
+              </Link>
+              <SubmitButton
+                props={{
+                  class: "product-create-page__submit btn bg-secondary text-white px-12 uppercase py-3 rounded-full w-100 block submit hover:bg-primary transition-all duration-300",
+                  text: "Update Property",
+                }}
+                buttonLoading={res.isLoading}
+              />
+            </div>
+          )}
         </Form>
       </Formik>
     </div>

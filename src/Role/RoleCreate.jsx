@@ -222,23 +222,27 @@ const RoleCreate = () => {
             <div className="role-create-page__permissionsTop">
               <div>
                 <h3>Permission Matrix</h3>
-                <p>Toggle full groups or choose individual actions for a more precise role setup.</p>
+                <p>
+                  {Object.keys(datas || {}).length} groups,{" "}
+                  {Object.values(datas || {}).reduce((total, group) => total + (group?.data?.filter((entry) => entry.active).length || 0), 0)} selected actions
+                </p>
               </div>
               <button type="button" className="role-create-page__selectAll" onClick={handlePermissionAll}>
                 <FiCheckSquare />
-                <span>{selectAll ? "Clear Selection" : "Select All"}</span>
+                <span>{selectAll ? "Clear All" : "Select All"}</span>
               </button>
             </div>
 
             <div className="roleMainM role-create-page__permissionGrid grid grid-cols-3 gap-4 mt-4">
               {
                 datas && Object.keys(datas).map((item, index) => {
+                  const activeCount = datas[item]?.data?.filter((entry) => entry.active).length ?? 0
                   return (
                     <div className="roleMainMBox role-create-page__permissionCard py-5 px-5 bg-[#DEE5F2] rounded-3xl" key={index}>
                       <div className="roleMainMBoxt role-create-page__permissionHead flex justify-between items-center">
                         <div className="roleMainMBoxl">
                           <span className="text-[#7D8CA7] uppercase">{item}</span>
-                          <p>{datas[item]?.data?.length ?? 0} actions</p>
+                          <p>{activeCount}/{datas[item]?.data?.length ?? 0} selected</p>
                         </div>
                         <div className={`roleMainMBoxr role-create-page__groupToggle ${datas[item].active && "active"}`} onClick={() =>
                           handlePermission({
@@ -259,7 +263,7 @@ const RoleCreate = () => {
                         </div>
                       </div>
                       <div className="roleMainMBoxb">
-                        <ul className="list">
+                        <ul className="list role-create-page__permissionList">
                           {
                             datas[item]?.data.map((item2) => {
                               const { name, id, active } = item2
@@ -271,7 +275,7 @@ const RoleCreate = () => {
                                     active: !item2.active,
                                   })
                                 }>
-                                  <svg className="cursor-pointer" width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <svg className="cursor-pointer role-create-page__permissionIcon" width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path className={`${item2.active ? "" : "hidden"}`} d="M6 7.3L8.76923 10L18 1" stroke={`${item2.active ? "#401a89" : "#706767"}`} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                     <path d="M16 8.5V14.3333C16 14.7754 15.8244 15.1993 15.5118 15.5118C15.1993 15.8244 14.7754 16 14.3333 16H2.66667C2.22464 16 1.80072 15.8244 1.48816 15.5118C1.17559 15.1993 1 14.7754 1 14.3333V2.66667C1 2.22464 1.17559 1.80072 1.48816 1.48816C1.80072 1.17559 2.22464 1 2.66667 1H11.8333" stroke={`${item2.active ? "#401a89" : "#706767"}`} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                   </svg>

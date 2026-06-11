@@ -378,12 +378,17 @@ console.log(datas)
     if (resget2.isLoading || !data) return <SkeletonCreateEdit heading={"Create Catalogs"} />;
     const { banner, sec_one, sec_two, sec_three,sec_four, sec_faqs, description, sec_one_description, sec_two_description, sec_three_description, sec_four_description, sec_testimonials } = datas;
     return (
-        <section className="PromotionCreate  ">
+        <section className="PromotionCreate product-create-page">
 {console.log(slugs?.all_slugs, slugs.slugs)}
+            <div className="product-create-page__hero">
+                <span className="product-create-page__eyebrow">Catalog management</span>
+                <h2>Create Catalog</h2>
+                <p>Build a compact, modern catalog page with the same refreshed theme used across the product modules.</p>
+            </div>
             <div className="relative flex items-start gap-3">
-                <div className=" bg-white rounded-xl w-full  mx-auto relative">
+                <div className="bg-white rounded-3xl w-full p-4 mx-auto relative">
                     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-                        <Form name="myForm">
+                        <Form name="myForm" className="product-create-page__form">
                             <div className="bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3">
                                 <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Slug - {slugs.all_slugs}</div>
                                 <input value={slugs?.slugs ?? ""} onChange={handleSlugUpdate} name="slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[red]" control="input2" />
@@ -466,7 +471,7 @@ console.log(datas)
                                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                         <div className='flex justify-between'>
                                             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Banner</div>
-                                            <Link className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("banner", ["title", "slider_image"])} >
+                                        <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("banner", ["title", "slider_image"])} >
                                                 <img src={plus} alt="plus" />
                                                 <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                             </Link>
@@ -503,7 +508,7 @@ console.log(datas)
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 1</div>
-                                        <Link className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_one", ["title", "description", "image"])} >
+                                        <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_one", ["title", "description", "image"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
@@ -550,7 +555,7 @@ console.log(datas)
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 2</div>
-                                        <Link className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_two", ["title", "description", "image"])} >
+                                        <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_two", ["title", "description", "image"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
@@ -606,7 +611,7 @@ console.log(datas)
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 4</div>
-                                        <Link className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_four", ["title", "description", "image"])} >
+                                        <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_four", ["title", "description", "image"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
@@ -652,7 +657,7 @@ console.log(datas)
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Faqs</div>
-                                        <Link className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_faqs", ["question", "answer"])} >
+                                        <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_faqs", ["question", "answer"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
@@ -693,7 +698,7 @@ console.log(datas)
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Testimonials</div>
-                                        <Link className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_testimonials", ["question", "answer"])} >
+                                        <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_testimonials", ["question", "answer"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
@@ -758,11 +763,16 @@ console.log(datas)
                                 </div>
                             </div>
                             {(userdata?.role_id !== 12) ?
-                                <SubmitButton props={{
-                                    class: "btn bg-secondary text-white px-12 ml-auto uppercase mb-3   py-3 rounded-full w-100 block mt-5 submit hover:bg-primary transition-all duration-300",
-                                    text: "Submit",
-                                }} buttonLoading={res.isLoading}
-                                />
+                                <div className="product-create-page__actions">
+                                    <Link to="/catalogs" className="product-create-page__cancel">
+                                        Cancel
+                                    </Link>
+                                    <SubmitButton props={{
+                                        class: "role-create-page__submit btn bg-secondary text-white uppercase py-3 px-8 rounded-full w-fit block submit hover:bg-primary transition-all duration-300",
+                                        text: "Create Catalog",
+                                    }} buttonLoading={res.isLoading}
+                                    />
+                                </div>
                                 : ""
                             }
                         </Form>

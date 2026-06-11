@@ -362,11 +362,16 @@ const EditCatalogs = ({ permission }) => {
     const { banner, sec_one, sec_two, sec_three, sec_faqs, description, sec_one_description, sec_two_description, sec_three_description, sec_four_description, sec_testimonials,sec_four } = datas;
     const check = (module, action) => permission?.[module]?.includes(action);
     return (
-        <section className="PromotionCreate  ">
+        <section className="PromotionCreate product-create-page">
+<div className="product-create-page__hero">
+                <span className="product-create-page__eyebrow">Catalog management</span>
+                <h2>Edit Catalog</h2>
+                <p>Update catalog content in the same compact, modern layout used across the refreshed create and edit screens.</p>
+            </div>
 <div className="relative flex items-start gap-3">
-                <div className=" bg-white rounded-xl w-full  mx-auto relative">
+                <div className="bg-white rounded-3xl w-full p-4 mx-auto relative">
                     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-                        <Form name="myForm">
+                        <Form name="myForm" className="product-create-page__form">
                             <div className="bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3">
                                 <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Slug - {slugs.all_slugs}</div>
                                 {
@@ -457,7 +462,7 @@ const EditCatalogs = ({ permission }) => {
                                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                         <div className='flex justify-between'>
                                             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Banner</div>
-                                            {mainLanguage === "en" && <Link className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("banner", ["title", "slider_image"])} >
+                                            {mainLanguage === "en" && <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("banner", ["title", "slider_image"])} >
                                                 <img src={plus} alt="plus" />
                                                 <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                             </Link>}
@@ -494,7 +499,7 @@ const EditCatalogs = ({ permission }) => {
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 1</div>
-                                        {mainLanguage === "en" && <Link className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_one", ["title", "description", "image"])} >
+                                        {mainLanguage === "en" && <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_one", ["title", "description", "image"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>}
@@ -541,7 +546,7 @@ const EditCatalogs = ({ permission }) => {
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 2</div>
-                                        {mainLanguage === "en" && <Link className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_two", ["title", "description", "image"])} >
+                                        {mainLanguage === "en" && <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_two", ["title", "description", "image"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>}
@@ -598,7 +603,7 @@ const EditCatalogs = ({ permission }) => {
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 4</div>
-                                        <Link className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_four", ["title", "description", "image"])} >
+                                        <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_four", ["title", "description", "image"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
@@ -644,7 +649,7 @@ const EditCatalogs = ({ permission }) => {
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Faqs</div>
-                                        {mainLanguage === "en" && <Link className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_faqs", ["question", "answer"])} >
+                                        {mainLanguage === "en" && <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_faqs", ["question", "answer"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>}
@@ -685,7 +690,7 @@ const EditCatalogs = ({ permission }) => {
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Testimonials</div>
-                                        {mainLanguage === "en" && <Link className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_testimonials", ["question", "answer"])} >
+                                        {mainLanguage === "en" && <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_testimonials", ["question", "answer"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>}
@@ -752,11 +757,16 @@ const EditCatalogs = ({ permission }) => {
                                     </label>
                                 </div>}
                             </div>
-                            {check("Catalogs", "Catalogs Edit") && <SubmitButton props={{
-                                class: "btn bg-secondary text-white px-12 ml-auto uppercase mb-3   py-3 rounded-full w-100 block mt-5 submit hover:bg-primary transition-all duration-300",
-                                text: "Submit",
-                            }} buttonLoading={res.isLoading}
-                            />}
+                            {check("Catalogs", "Catalogs Edit") && <div className="product-create-page__actions">
+                                <Link to="/catalogs" className="product-create-page__cancel">
+                                    Cancel
+                                </Link>
+                                <SubmitButton props={{
+                                    class: "product-create-page__submit btn bg-secondary text-white px-12 uppercase py-3 rounded-full w-100 block submit hover:bg-primary transition-all duration-300",
+                                    text: "Update Catalog",
+                                }} buttonLoading={res.isLoading}
+                                />
+                            </div>}
                         </Form>
                     </Formik>
                 </div>

@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Table } from 'antd'
+import { FiArrowUpRight, FiEdit3, FiPlus, FiShield } from 'react-icons/fi'
 import plus from '../dist/webImages/plus.svg'
-import useDelete from '../customHooks/useDelete'
-import swal from 'sweetalert';
 import useGet from '../customHooks/useGet';
 import { MainLanguageContext } from '../context/MainLanguageContext';
-import { toast } from 'react-toastify';
 import SkeletonRoleList from './SkeletonRoleList';
+import SkeletonHeading from '../components/SkeletonHeading';
 
 const RoleList = ({permission}) => {
     const { mainLanguage } = useContext(MainLanguageContext);  
-    const [datas, setDatas] = useState()
+    const [datas, setDatas] = useState([])
     const [resget, apiMethodGet] = useGet()
 
     useEffect(() => {
@@ -25,77 +25,131 @@ const RoleList = ({permission}) => {
        
        }, [resget.data])
 
-    const [resDelete, apiMethodDelete] = useDelete();
-    const [delateId, setDelateId] = useState("")
-    const handleDelete = (id) => {
-        setDelateId(id)
-        swal({
-            title: "Are you sure?",
-            text: "Are you sure that you want to delete?",
-            buttons: true,
-            icon: "warning",
-            dangerMode: true,
-        })
-            .then(willDelete => {
-                if (willDelete) {
-                    // apiMethodDelete(`roles/remove/${id}`)
-                    
-                }
-                
-            });
-        }
-        useEffect(() => {
-            if (resDelete.data) {
-                const { status, message } = resDelete?.data
-                if (status === false) {
-                    toast.error(message);
-                }
-                else {
-                swal("Successfully Delete", "", "success");
-                const update = datas.filter((item) => item.id !== delateId)
-                setDatas(update)
-                toast.success(message);
-            }
-        }
-      
-      }, [resDelete.data])
+    const check = (module, action) => permission?.[module]?.includes(action);
+    const canAddRoles = check("Roles", "Role Add")
+    const canEditRoles = check("Roles", "Role Edit")
+
+    const columns = useMemo(
+      () => [
+        {
+          title: 'Role',
+          key: 'role',
+          width: 320,
+          render: (_, record) => (
+            <div className="roles-table__identity">
+              <span className="roles-table__icon">
+                <FiShield />
+              </span>
+              <div>
+                <div className="roles-table__primary">{record.name || 'Untitled role'}</div>
+                <div className="roles-table__secondary">Access group for admin actions</div>
+              </div>
+            </div>
+          ),
+        },
+        {
+          title: 'Permissions',
+          key: 'permissions',
+          width: 180,
+          render: (_, record) => {
+            const permissionsCount = Array.isArray(record.permissions)
+              ? record.permissions.length
+              : Array.isArray(record.role_permissions)
+                ? record.role_permissions.length
+                : 0
+
+            return (
+              <span className="roles-table__badge">
+                {permissionsCount} actions
+              </span>
+            )
+          },
+        },
+        {
+          title: 'Record',
+          key: 'record',
+          width: 120,
+          render: (_, record) => <span className="users-table__record">#{record.id}</span>,
+        },
+        {
+          title: 'Action',
+          key: 'action',
+          width: 190,
+          render: (_, record) => (
+            <div className="users-table__actions">
+              {canEditRoles && (
+                <Link to={`/role/edit/${record.id}`} className="users-table__actionLink">
+                  <FiEdit3 />
+                  <span>Edit</span>
+                </Link>
+              )}
+              <Link to={`/role/edit/${record.id}`} className="users-table__actionIcon" aria-label={`Open ${record.name || 'role'}`}>
+                <FiArrowUpRight />
+              </Link>
+            </div>
+          ),
+        },
+      ],
+      [canEditRoles]
+    )
 
     if (resget.isLoading) return <SkeletonRoleList />
 
-     const check = (module, action) => permission?.[module]?.includes(action);
   return (
-    <div className='services  '>
-    <div className="servicesTop flex justify-between items-center mb-4">
-        <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka'> Role</h6>
-        {/* {check("Roles", "Role Add") && <Link to={"/role/create"} className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' >
-            <img src={plus} alt="plus" />
+    <section className='TeamPage users-table-page roles-table-page'>
+      <div className="TeamPageTop users-table-page__top flex justify-between items-center">
+        <div>
+          {resget.isLoading ? (
+            <SkeletonHeading />
+          ) : (
+            <>
+              <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka'>
+                <span>{datas?.length ?? 0}</span> Roles
+              </h6>
+              <p className="users-table-page__subtitle">
+                Manage role definitions and permission groups from a cleaner table view.
+              </p>
+            </>
+          )}
+        </div>
+        {canAddRoles && (
+          <Link to={"/role/create"} className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer'>
+            <span className="users-table-page__addIcon">
+              <FiPlus />
+            </span>
+            <img src={plus} alt="plus" className="hidden" />
             <span className='font-MluvkaBold text-secondary capitalize'>Add Role</span>
-        </Link>} */}
-    </div>
-    <div className="servicesBottom grid grid-cols-4 gap-4 max-lg:grid-cols-1">
-        {
-           Array.isArray(datas) && datas.map((item) => {
-                const { name, id } = item
-                return (
-                    <div className=' border-2 border-[#ddd] py-3 px-6 rounded-2xl relative' key={id}>
-                        {check("Roles", "Role Delete") && <div className='closeButton cursor-pointer absolute bg-[#FFCEDA] w-[2rem] h-[2rem] p-[.6rem] top-[-1rem] right-[-1rem] grid place-items-center rounded-[.7rem] z-10' onClick={() => handleDelete(id)}>
-                            <svg className='w-full h-full' width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15.8612 1.34766L0.951172 16.2567M15.8612 16.2577L0.951172 1.34863" stroke="#ED2656" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </div>}
-                        <Link to={`/role/edit/${id}`} className="servicesCard relative" >
-                            <div className="servicesCard__Body">
-                                <div className="h4 font-MluvkaBold text-[1.4rem] mt-3">{name}</div>
-                            </div>
-                        </Link>
-                    </div>)
+          </Link>
+        )}
+      </div>
 
-                
-            })
-        } 
+      <div className="users-table-page__panel">
+        <div className="users-table-page__stats">
+          <article>
+            <span>Total roles</span>
+            <strong>{datas?.length ?? 0}</strong>
+          </article>
+          <article>
+            <span>Editable</span>
+            <strong>{canEditRoles ? datas?.length ?? 0 : 0}</strong>
+          </article>
+          <article>
+            <span>Access groups</span>
+            <strong>{Array.isArray(datas) ? new Set(datas.map((item) => item.name)).size : 0}</strong>
+          </article>
+        </div>
 
-    </div>
-</div>
+        <div className="users-table-page__tableWrap">
+          <Table
+            rowKey={(record) => record.id}
+            dataSource={Array.isArray(datas) ? datas : []}
+            columns={columns}
+            pagination={false}
+            scroll={{ x: 840 }}
+          />
+        </div>
+      </div>
+    </section>
   )
 }
 

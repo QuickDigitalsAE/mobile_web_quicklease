@@ -23,8 +23,7 @@ const moduleCards = [
   { key: "Promotions", title: "Promotions", hint: "Offers and campaigns", icon: <FiBell /> },
   { key: "Partners", title: "Partners", hint: "Partner profiles", icon: <FiUsers /> },
   { key: "Testimonials", title: "Testimonials", hint: "Social proof content", icon: <FiStar /> },
-  { key: "WebContents", title: "Mobile Content", hint: "App and web managed content", icon: <FiBell /> },
-  { key: "Activities", title: "Activities Reviews", hint: "Audit and activity logs", icon: <FiActivity /> },
+  { key: "Activities", title: "Activities", hint: "Audit and activity logs", icon: <FiActivity /> },
 ];
 
 const MainDashboard = ({ permission, userdata }) => {

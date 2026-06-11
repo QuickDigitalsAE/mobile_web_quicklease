@@ -1,119 +1,206 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { MainLanguageContext } from '../context/MainLanguageContext';
 import usePost from '../customHooks/usePost';
 import useGet from '../customHooks/useGet';
 import { Link } from 'react-router-dom';
+import { Pagination, Table } from 'antd';
+import { FiArrowUpRight, FiEdit3, FiPlus, FiSearch, FiShield } from 'react-icons/fi';
 import plus from '../dist/webImages/plus.svg'
-import { Pagination } from 'antd';
-import ProductsCoveragesCard from './ProductsCoveragesCard';
 
-const ProductsCoverages = ({permission}) => {
-    const { mainLanguage } = useContext(MainLanguageContext);
-    const [datas, setDatas] = useState()
-    const [resget, apiMethodGet] = useGet()
-    const [currentPage, setCurrentPage] = useState(1)
-    const [paginationn, setPaginationn] = useState(6);
-    const [searchValue, setSearchValue] = useState("")
-    const [res2, apiMethod2] = usePost()
+const ProductsCoverages = ({ permission }) => {
+  const { mainLanguage } = useContext(MainLanguageContext);
+  const [datas, setDatas] = useState([])
+  const [resget, apiMethodGet] = useGet()
+  const [currentPage, setCurrentPage] = useState(1)
+  const [paginationn, setPaginationn] = useState(6);
+  const [searchValue, setSearchValue] = useState("")
+  const [res2, apiMethod2] = usePost()
 
-    const onChange = (current, pageSize) => {
-        setCurrentPage(current)
-        let formdata = new FormData();
-        formdata.append('search_query', searchValue);
-        if ((searchValue).trim()) {
-            apiMethod2(`coverages/search_list/${mainLanguage}/6?page=${current}`, formdata);
-        } else {
-            apiMethodGet(`coverages/list/${mainLanguage}/6?page=${current}`, formdata);
-        }
+  const check = (module, action) => permission?.[module]?.includes(action);
+  const canAdd = check("ProductCoverages", "ProductCoverages Add")
+  const canEdit = check("ProductCoverages", "ProductCoverages Edit")
+
+  const onChange = (current) => {
+    setCurrentPage(current)
+    let formdata = new FormData();
+    formdata.append('search_query', searchValue);
+    if ((searchValue).trim()) {
+      apiMethod2(`coverages/search_list/${mainLanguage}/6?page=${current}`, formdata);
+    } else {
+      apiMethodGet(`coverages/list/${mainLanguage}/6?page=${current}`, formdata);
+    }
+  };
+
+  useEffect(() => {
+    if (mainLanguage) {
+      setCurrentPage(1)
+      apiMethodGet(`coverages/list/${mainLanguage}/6?page=1`);
+    }
+  }, [mainLanguage]);
+
+  let debounceTimer;
+  const debounce = (func, delay) => {
+    return (...args) => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        func(...args);
+      }, delay);
     };
+  };
 
-    useEffect(() => {
-        if (mainLanguage) {
-            setCurrentPage(1)
-            apiMethodGet(`coverages/list/${mainLanguage}/6?page=1`);
-        }
-    }, [mainLanguage]);
+  const executeApiCall = (e) => {
+    setSearchValue(e.target.value)
+    let formdata = new FormData();
+    formdata.append('search_query', e.target.value);
+    if ((e.target.value).trim()) {
+      apiMethod2(`coverages/search_list/${mainLanguage}/6?page=${currentPage}`, formdata);
+    } else {
+      apiMethodGet(`coverages/list/${mainLanguage}/6?page=${currentPage}`, formdata);
+    }
+  };
+  const handleChange = debounce(executeApiCall, 1000)
 
-    let debounceTimer;
-    const debounce = (func, delay) => {
-        return (...args) => {
-          clearTimeout(debounceTimer);
-          debounceTimer = setTimeout(() => {
-            func(...args);
-          }, delay);
-        };
-      };
-    
-    
-      const executeApiCall = (e) => {
-        console.log(e)
-        setSearchValue(e.target.value)
-        let formdata = new FormData();
-        formdata.append('search_query', e.target.value);
-        if ((e.target.value).trim()) {
-            apiMethod2(`coverages/search_list/${mainLanguage}/6?page=${currentPage}`, formdata);
-        } else {
-            apiMethodGet(`coverages/list/${mainLanguage}/6?page=${currentPage}`, formdata);
-        }
-      };
-      const handleChange = debounce(executeApiCall, 1000)
+  useEffect(() => {
+    if (!resget.isLoading) {
+      setDatas(resget?.data?.data || [])
+      setPaginationn(resget.data?.pagination)
+    }
+  }, [resget.data])
 
-    useEffect(() => {
-        if (!resget.isLoading) {
-            setDatas(resget?.data?.data)
-            setPaginationn(resget.data?.pagination)
-        }
+  useEffect(() => {
+    setDatas([])
+    if (res2.data) {
+      setDatas(res2?.data?.data || []);
+      setPaginationn(res2?.data?.pagination)
+    }
+  }, [res2.data]);
 
-    }, [resget.data])
+  const columns = useMemo(
+    () => [
+      {
+        title: 'Coverage',
+        key: 'coverage',
+        width: 280,
+        render: (_, record) => (
+          <div className="roles-table__identity">
+            <span className="roles-table__icon">
+              <FiShield />
+            </span>
+            <div>
+              <div className="roles-table__primary">{record.title || 'Untitled coverage'}</div>
+              <div className="roles-table__secondary">{record.tooltip || 'No tooltip provided'}</div>
+            </div>
+          </div>
+        ),
+      },
+      {
+        title: 'Less Than 30 Days',
+        dataIndex: 'less_30_days_price',
+        key: 'less_30_days_price',
+        width: 170,
+        render: (value) => <span className="bookings-table__amount">{value || '0'}</span>,
+      },
+      {
+        title: 'More Than 30 Days',
+        dataIndex: 'more_30_days_price',
+        key: 'more_30_days_price',
+        width: 170,
+        render: (value) => <span className="bookings-table__amount">{value || '0'}</span>,
+      },
+      {
+        title: 'Record',
+        key: 'record',
+        width: 120,
+        render: (_, record) => <span className="users-table__record">#{record.id}</span>,
+      },
+      {
+        title: 'Action',
+        key: 'action',
+        width: 190,
+        render: (_, record) => (
+          <div className="users-table__actions">
+            {canEdit && (
+              <Link to={`/products/coverages/edit/${record.id}`} className="users-table__actionLink">
+                <FiEdit3 />
+                <span>Edit</span>
+              </Link>
+            )}
+            <Link to={`/products/coverages/edit/${record.id}`} className="users-table__actionIcon" aria-label={`Open ${record.title || 'coverage'}`}>
+              <FiArrowUpRight />
+            </Link>
+          </div>
+        ),
+      },
+    ],
+    [canEdit]
+  )
 
-    useEffect(() => {
-        setDatas([])
-        if (res2.data) {
-            setDatas(res2?.data?.data);
-            setPaginationn(res2?.data?.pagination)
-        }
-    }, [res2.data]);
-     const check = (module, action) => permission?.[module]?.includes(action);
   return (
-    <div className='Promotions  '>
-    <div className="TeamPageTop flex justify-between items-center">
-                <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka capitalize'>Coverages and updates</h6>
-                <div className='flex gap-1'>
-                    <div className="inputBox w-[16rem] max-lg:hidden">
-                        <input type="text" onChange={handleChange} className='w-full border h-[2.8rem] rounded-full px-4 border-[#ddd] outline-none' placeholder='Search' />
-                    </div>
-                    {check("ProductCoverages", "ProductCoverages Add") && <Link to={"/products/coverages/create"} className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer'>
-                        <img src={plus} alt="plus" />
-                        <span className='font-MluvkaBold text-secondary capitalize'>Add Coverages</span>
-                    </Link>}
-                </div>
-            </div>
+    <section className='users-table-page roles-table-page'>
+      <div className="users-table-page__top flex justify-between items-center">
+        <div>
+          <h6 className='text-[1rem] mb-2 relative font-Mluvka capitalize'>
+            <span>{datas?.length ?? 0}</span> Coverages
+          </h6>
+          <p className="users-table-page__subtitle">
+            Review coverage titles, tooltip copy, and pricing tiers from a cleaner table view.
+          </p>
+        </div>
+        <div className='flex gap-3 max-lg:flex-col w-full justify-end'>
+          <div className="bookings-table-page__search">
+            <FiSearch className="bookings-table-page__searchIcon" />
+            <input type="text" onChange={handleChange} className='bookings-table-page__searchInput' placeholder='Search coverages' />
+          </div>
+          {canAdd && (
+            <Link to={"/products/coverages/create"} className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer'>
+              <span className="users-table-page__addIcon">
+                <FiPlus />
+              </span>
+              <img src={plus} alt="plus" className="hidden" />
+              <span className='font-MluvkaBold text-secondary capitalize'>Add Coverage</span>
+            </Link>
+          )}
+        </div>
+      </div>
 
-            <div className="NewsPageGrid mt-4 bg-[#EFF4FD] rounded-3xl p-6  max-lg:grid-cols-1 max-lg:p-3">
-            {resget.isLoading ? 
-                         Array.from({ length: 6 }).map((_, index) => (
-                            <React.Fragment key={index}>
-                            {/* <SkeletonPromotionsCard  /> */}
-                        </React.Fragment>
-                         ))
-                        :
-                        Array.isArray(datas) && datas.map((item, index) => {
-                            return (
-                                <React.Fragment key={index}>
-                                <ProductsCoveragesCard permission={permission} data={item} alldata={datas} deleted={setDatas}  />
-                                </React.Fragment>
-                            )
-                        })}
-            </div>
-            <div className='mt-4'>
-                <Pagination
-                    onChange={onChange}
-                    defaultCurrent={currentPage}
-                    total={paginationn?.total}
-                    pageSize={6}
-                />
-            </div>
-    </div>
+      <div className="users-table-page__panel">
+        <div className="users-table-page__stats">
+          <article>
+            <span>Total coverages</span>
+            <strong>{datas?.length ?? 0}</strong>
+          </article>
+          <article>
+            <span>With tooltip</span>
+            <strong>{Array.isArray(datas) ? datas.filter((item) => item.tooltip).length : 0}</strong>
+          </article>
+          <article>
+            <span>Editable</span>
+            <strong>{canEdit ? datas?.length ?? 0 : 0}</strong>
+          </article>
+        </div>
+
+        <div className="users-table-page__tableWrap">
+          <Table
+            loading={resget.isLoading}
+            rowKey={(record) => record.id}
+            dataSource={Array.isArray(datas) ? datas : []}
+            columns={columns}
+            pagination={false}
+            locale={{ emptyText: 'No coverages found' }}
+            scroll={{ x: 980 }}
+          />
+        </div>
+
+        <div className='mt-1'>
+          <Pagination
+            onChange={onChange}
+            current={currentPage}
+            total={paginationn?.total}
+            pageSize={6}
+          />
+        </div>
+      </div>
+    </section>
   )
 }
 

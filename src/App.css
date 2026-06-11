@@ -32,7 +32,7 @@ body {
 
 .dashboard-shell {
   min-height: 100vh;
-  padding: 16px;
+  padding: 0 16px;
 }
 
 .dashboard-shell__main {
@@ -43,7 +43,7 @@ body {
 }
 
 .dashboard-shell__body {
-  padding: 0 24px 24px 0;
+  padding: 0 24px 0 0;
 }
 
 .dashboard-sidebar {
@@ -122,7 +122,7 @@ body {
   justify-content: space-between;
   gap: 16px;
   margin: 0 24px 18px 0;
-  padding: 18px 22px;
+  padding: 8px 17px;
   border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 24px;
   background: var(--surface);
@@ -182,7 +182,7 @@ body {
 
 .dashboard-header h1 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
   line-height: 1.15;
 }
@@ -1111,9 +1111,397 @@ body {
   box-shadow: 0 10px 20px rgba(20, 39, 72, 0.08);
 }
 
+.roles-table__identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.roles-table__icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  place-items: center;
+  border: 1px solid rgba(194, 206, 227, 0.95);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(248, 251, 255, 0.98) 0%, rgba(236, 243, 252, 0.94) 100%);
+  color: var(--accent-strong);
+  font-size: 1rem;
+}
+
+.roles-table__primary {
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.roles-table__secondary {
+  margin-top: 4px;
+  color: var(--text-soft);
+  font-size: 0.78rem;
+}
+
+.roles-table__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 92px;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(194, 206, 227, 0.92);
+  border-radius: 999px;
+  background: rgba(245, 249, 255, 0.96);
+  color: #4a5872;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.bookings-table-page__top {
+  margin-bottom: 14px !important;
+}
+
+.bookings-table-page__filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.bookings-table-page__search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: min(100%, 360px);
+  padding: 10px 14px;
+  border: 1px solid rgba(214, 224, 239, 0.92);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.bookings-table-page__searchIcon {
+  color: #6a7891;
+  font-size: 0.95rem;
+}
+
+.bookings-table-page__searchInput {
+  width: 100%;
+  height: 42px;
+  border: 0;
+  background: transparent;
+  outline: none;
+  color: var(--text);
+  font-size: 0.86rem;
+}
+
+.bookings-table-page__dates {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.bookings-table-page__dateChip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 42px;
+    padding: 6px 16px;
+    border: 1px solid rgba(214, 224, 239, 0.92);
+    border-radius: 13px;
+    background: linear-gradient(180deg, rgba(248, 251, 255, 0.98) 0%, rgba(236, 243, 252, 0.94) 100%);
+}
+
+.bookings-table-page__tabs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.bookings-table-page__tab {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid rgba(214, 224, 239, 0.9);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #65748d;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.bookings-table-page__tab.active {
+  border-color: var(--booking-tab-color);
+  background: rgba(255, 255, 255, 0.98);
+  color: #273447;
+  box-shadow: 0 10px 18px rgba(19, 38, 71, 0.06);
+}
+
+.bookings-table__identity {
+  display: flex;
+  align-items: center;
+}
+
+.bookings-table__primary {
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.bookings-table__secondary,
+.bookings-table__subMeta {
+  margin-top: 4px;
+  color: var(--text-soft);
+  font-size: 0.78rem;
+}
+
+.bookings-table__schedule {
+  min-width: 220px;
+}
+
+.bookings-table__badge--pending {
+  background: #fff6e7;
+  color: #b7791f;
+}
+
+.bookings-table__amount {
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.enquiries-table-page__top {
+  margin-bottom: 14px !important;
+}
+
+.enquiries-table-page__tabs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.enquiries-table-page__tab {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid rgba(214, 224, 239, 0.9);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #65748d;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.enquiries-table-page__tab.active {
+  border-color: var(--enquiry-tab-color);
+  background: rgba(255, 255, 255, 0.98);
+  color: #273447;
+  box-shadow: 0 10px 18px rgba(19, 38, 71, 0.06);
+}
+
+.enquiries-table__identity {
+  display: flex;
+  align-items: center;
+}
+
+.enquiries-table__primary {
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.enquiries-table__secondary,
+.enquiries-table__sourceLine,
+.enquiries-table__text {
+  margin-top: 4px;
+  color: var(--text-soft);
+  font-size: 0.78rem;
+}
+
+.enquiries-table__contactRow {
+  margin-top: 6px;
+}
+
+.enquiries-table__comment {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #4e5d77;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.enquiries-table__commentIcon {
+  margin-top: 2px;
+  min-width: 14px;
+  color: var(--accent-strong);
+}
+
+.enquiries-table__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(194, 206, 227, 0.92);
+  border-radius: 999px;
+  background: rgba(245, 249, 255, 0.96);
+  color: #4a5872;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.product-create-page {
+  max-width: 1240px;
+}
+
+.product-create-page__hero {
+  margin-bottom: 16px;
+  padding: 20px 22px;
+  border: 1px solid rgba(214, 226, 242, 0.92);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(245, 249, 255, 0.94) 100%);
+  box-shadow: 0 22px 44px rgba(18, 38, 69, 0.06);
+}
+
+.product-create-page__eyebrow {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.product-create-page__hero h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.product-create-page__hero p {
+  max-width: 720px;
+  margin: 10px 0 0;
+  color: var(--text-soft);
+  font-size: 0.92rem;
+}
+
+.product-create-page__form > div:not(.product-create-page__actions) {
+  border: 1px solid rgba(214, 226, 242, 0.86);
+  border-radius: 24px !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(239, 244, 253, 0.94) 100%) !important;
+  box-shadow: 0 14px 28px rgba(18, 38, 69, 0.04);
+}
+
+.product-create-page__form > div:not(.product-create-page__actions) > .h4:first-child,
+.product-create-page__form > div:not(.product-create-page__actions) .h4.text-\[\#7D8CA7\].text-\[1\.1rem\]:first-child,
+.product-create-page__form > div:not(.product-create-page__actions) .h4.text-\[\#7D8CA7\].text-\[\.8rem\]:first-child {
+  color: #43536f !important;
+  font-size: 1rem !important;
+  font-weight: 800;
+}
+
+.product-create-page__addLink {
+  min-height: 40px;
+  padding-inline: 16px !important;
+  border: 1px solid rgba(31, 111, 235, 0.14);
+  border-radius: 999px !important;
+  background: linear-gradient(135deg, rgba(233, 241, 255, 0.96), rgba(246, 250, 255, 0.98)) !important;
+  box-shadow: 0 10px 18px rgba(31, 111, 235, 0.06);
+}
+
+.product-create-page__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 18px;
+  margin-bottom: 10px;
+}
+
+.product-create-page__cancel,
+.product-create-page__submit {
+  min-width: 156px;
+}
+
+.product-create-page__cancel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid rgba(193, 207, 227, 0.95);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #41516c;
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-create-page__cancel:hover {
+  border-color: rgba(31, 111, 235, 0.28);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(17, 36, 70, 0.08);
+}
+
+.product-create-page__submit {
+  min-height: 44px !important;
+  margin: 0 !important;
+  padding-inline: 24px !important;
+  background: linear-gradient(135deg, #1f6feb 0%, #4da9ff 100%) !important;
+}
+
 @media (max-width: 860px) {
   .users-table-page__stats {
     grid-template-columns: 1fr;
+  }
+
+  .bookings-table-page__filters {
+    align-items: stretch;
+  }
+
+  .bookings-table-page__search {
+    min-width: 100%;
+  }
+
+  .product-create-page__hero {
+    padding: 18px 16px;
+  }
+
+  .product-create-page__hero h2 {
+    font-size: 1.35rem;
+  }
+
+  .product-create-page__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .product-create-page__cancel,
+  .product-create-page__submit,
+  .product-create-page__addLink {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -1261,83 +1649,99 @@ body {
 .role-create-page__selectAll {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  min-height: 42px;
-  padding: 0 18px;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 14px;
   border: 1px solid rgba(31, 111, 235, 0.14);
   border-radius: 999px;
-  background: linear-gradient(135deg, #1f6feb 0%, #53b3ff 100%);
-  color: #fff;
-  font-size: 0.84rem;
+  background: #ffffff;
+  color: #27538f;
+  font-size: 0.78rem;
   font-weight: 700;
-  box-shadow: 0 14px 24px rgba(31, 111, 235, 0.18);
+  box-shadow: 0 8px 18px rgba(19, 38, 71, 0.06);
 }
 
 .role-create-page__permissionGrid {
-  gap: 14px !important;
+  gap: 12px !important;
 }
 
 .role-create-page__permissionCard {
-  padding: 16px !important;
-  border: 1px solid rgba(214, 225, 241, 0.9);
-  border-radius: 24px !important;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(238, 244, 253, 0.94) 100%) !important;
-  box-shadow: 0 12px 24px rgba(19, 38, 71, 0.05);
+  padding: 14px !important;
+  border: 1px solid rgba(214, 225, 241, 0.72);
+  border-radius: 20px !important;
+  background: rgba(255, 255, 255, 0.76) !important;
+  box-shadow: 0 8px 20px rgba(19, 38, 71, 0.04);
 }
 
 .role-create-page__permissionHead {
   gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(214, 225, 241, 0.72);
 }
 
 .role-create-page__permissionHead .roleMainMBoxl span {
   display: block;
-  color: #4c5c78 !important;
-  font-size: 0.78rem;
+  color: #3f506c !important;
+  font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
 }
 
 .role-create-page__permissionHead .roleMainMBoxl p {
-  margin: 5px 0 0;
+  margin: 4px 0 0;
   color: var(--text-soft);
-  font-size: 0.76rem;
+  font-size: 0.72rem;
 }
 
 .role-create-page__groupToggle {
   display: grid;
-  width: 38px;
-  height: 38px;
+  width: 34px;
+  height: 34px;
   place-items: center;
   border: 1px solid rgba(194, 206, 227, 0.95);
-  border-radius: 14px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.92);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .role-create-page__groupToggle.active {
-  background: rgba(233, 241, 255, 0.9);
-  box-shadow: 0 10px 18px rgba(31, 111, 235, 0.08);
+  background: rgba(233, 241, 255, 0.84);
+  box-shadow: 0 8px 16px rgba(31, 111, 235, 0.08);
+}
+
+.role-create-page__permissionList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
 }
 
 .role-create-page__permissionItem {
-  margin: 10px 0 !important;
-  padding: 12px 14px !important;
+  margin: 0 !important;
+  padding: 8px 10px !important;
   border: 1px solid rgba(214, 224, 239, 0.88);
-  border-radius: 18px !important;
+  border-radius: 999px !important;
   background: rgba(255, 255, 255, 0.96) !important;
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
+.role-create-page__permissionIcon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+
 .role-create-page__permissionItem span {
   color: #4a5872;
-  font-size: 0.84rem;
+  font-size: 0.76rem;
   font-weight: 600;
+  line-height: 1.1;
 }
 
 .role-create-page__permissionItem.active {
   border-color: rgba(31, 111, 235, 0.26) !important;
   background: rgba(233, 241, 255, 0.94) !important;
-  box-shadow: 0 10px 18px rgba(31, 111, 235, 0.08);
+  box-shadow: 0 8px 16px rgba(31, 111, 235, 0.08);
 }
 
 .role-create-page__permissionItem:hover,
@@ -1547,7 +1951,174 @@ body {
   background: rgba(255, 255, 255, 0.22);
 }
 
+.login-shell {
+  min-height: 100vh;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(28, 93, 153, 0.16), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(242, 157, 74, 0.14), transparent 28%),
+    linear-gradient(135deg, #f4f7fb 0%, #eef3f8 50%, #f8fafc 100%);
+}
+
+.login-shell__panel {
+  min-height: calc(100vh - 48px);
+  display: grid;
+  align-items: center;
+  grid-template-columns: minmax(320px, 1.1fr) minmax(340px, 0.9fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.login-shell__hero,
+.login-shell__formWrap {
+  position: relative;
+}
+
+.login-shell__heroGlow {
+  position: absolute;
+  inset: 32px auto auto 24px;
+  width: 280px;
+  height: 280px;
+  background: rgba(28, 93, 153, 0.18);
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+.login-shell__heroCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 36px;
+  height: 40rem;
+  box-shadow: 0 30px 80px rgba(18, 53, 91, 0.18);
+}
+
+.login-shell__heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.login-shell__heroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(12, 23, 37, 0.18) 0%, rgba(12, 23, 37, 0.72) 100%),
+    linear-gradient(135deg, rgba(28, 93, 153, 0.2) 0%, rgba(242, 157, 74, 0.1) 100%);
+}
+
+.login-shell__heroContent {
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  color: #fff;
+}
+
+.login-shell__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
+  color: #12355b;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.login-shell__heroContent .login-shell__eyebrow {
+  color: #fff;
+}
+
+.login-shell__heroContent h1 {
+  margin: 18px 0 14px;
+  font-size: clamp(2.6rem, 4vw, 4.8rem);
+  line-height: 0.95;
+  color: #fff;
+}
+
+.login-shell__heroContent p {
+  max-width: 35rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.login-shell__formWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-shell__formCard {
+  width: min(100%, 34rem);
+  padding: 40px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 24px 60px rgba(18, 53, 91, 0.12);
+}
+
+.login-shell__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-shell__title {
+  margin: 18px 0 10px;
+  font-size: clamp(2.2rem, 4vw, 3.25rem);
+  line-height: 1;
+  color: #12355b;
+  font-weight: 700;
+}
+
+.login-shell__subtitle {
+  margin: 0 0 24px;
+  color: #6b7b93;
+  line-height: 1.7;
+}
+
+.login-shell__input {
+  width: 100%;
+  height: 3.35rem;
+  padding: 0 1.1rem;
+  border-radius: 18px;
+  border: 1px solid #d8e2ee;
+  outline: none;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.login-shell__input:focus {
+  border-color: #1c5d99;
+  box-shadow: 0 0 0 4px rgba(28, 93, 153, 0.12);
+}
+
+.login-shell__submit {
+  min-height: 3.35rem;
+  margin-top: 16px;
+  border: none;
+  box-shadow: 0 18px 36px rgba(18, 53, 91, 0.2);
+}
+
 @media (max-width: 1024px) {
+  .login-shell__panel {
+    grid-template-columns: 1fr;
+  }
+
+  .login-shell__heroCard {
+    height: 340px;
+  }
+
+  .login-shell__formCard {
+    width: min(100%, 42rem);
+  }
+
   .dashboard-shell {
     padding: 0;
   }
@@ -1574,5 +2145,32 @@ body {
 
   .dashboard-home__hero {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .login-shell {
+    padding: 16px;
+  }
+
+  .login-shell__panel {
+    min-height: calc(100vh - 32px);
+    gap: 18px;
+  }
+
+  .login-shell__heroContent {
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+  }
+
+  .login-shell__formCard {
+    padding: 26px 20px;
+    border-radius: 24px;
+  }
+
+  .login-shell__heroCard {
+    border-radius: 24px;
+    height: 280px;
   }
 }

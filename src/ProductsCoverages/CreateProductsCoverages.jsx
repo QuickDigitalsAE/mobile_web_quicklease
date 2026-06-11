@@ -3,7 +3,7 @@ import { Field, Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import SubmitButton from '../components/SubmitButton';
 import CKEditors from '../components/form/CKEditors';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SkeletonCreateEdit from './SkeletonCreateEdit';
 import { MainLanguageContext } from '../context/MainLanguageContext';
 import { toast } from 'react-toastify';
@@ -142,9 +142,18 @@ const a = Object.entries(locations).map(([key, value]) => ({
   const { description,locations } = datas;
 
   return (
-    <div className='newscreate  '>
+    <div className='newscreate product-create-page'>
+      <div className="product-create-page__hero">
+        <div>
+          <span className="product-create-page__eyebrow">Coverage Setup</span>
+          <h2>Create a coverage item with cleaner pricing controls</h2>
+          <p>
+            Define titles, descriptions, default prices, location-based prices, and toggle behavior from one modern workspace.
+          </p>
+        </div>
+      </div>
 <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        <Form name="myForm">
+        <Form name="myForm" className="product-create-page__form">
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
             <div className="grid grid-cols-2  gap-2">
             <FormControl name="title" label={"title"} placeholder="Enter title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#ddd]" control="input2" />
@@ -244,13 +253,18 @@ const a = Object.entries(locations).map(([key, value]) => ({
             </div>
             </div>
           </div>
-          <SubmitButton
-            props={{
-              class: "btn bg-secondary text-white px-12 ml-auto uppercase mb-3   py-3 rounded-full w-100 block mt-5 submit hover:bg-primary transition-all duration-300",
-              text: "Submit",
-            }}
-            buttonLoading={res.isLoading}
-          />
+          <div className="product-create-page__actions">
+            <Link to="/products/coverages" className="product-create-page__cancel">
+              Cancel
+            </Link>
+            <SubmitButton
+              props={{
+                class: "product-create-page__submit btn bg-secondary text-white px-12 uppercase py-3 rounded-full w-100 block submit hover:bg-primary transition-all duration-300",
+                text: "Create Coverage",
+              }}
+              buttonLoading={res.isLoading}
+            />
+          </div>
         </Form>
       </Formik>
     </div>

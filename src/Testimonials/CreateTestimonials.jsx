@@ -3,7 +3,7 @@ import { Field, Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import SubmitButton from '../components/SubmitButton';
 import CKEditors from '../components/form/CKEditors';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SkeletonCreateEdit from './SkeletonCreateEdit';
 import { MainLanguageContext } from '../context/MainLanguageContext';
 import { toast } from 'react-toastify';
@@ -129,11 +129,16 @@ const CreateTestimonials = () => {
   const { client_review } = datas;
 
   return (
-    <div className='newscreate  '>
+    <div className='newscreate product-create-page'>
+<div className="product-create-page__hero">
+        <span className="product-create-page__eyebrow">Testimonials management</span>
+        <h2>Create Testimonial</h2>
+        <p>Add customer feedback in the same compact, modern layout used across the refreshed admin forms.</p>
+      </div>
 <div className='relative flex items-start gap-3'>
-        <div className=' bg-white rounded-xl w-full  mx-auto relative'>
+        <div className='bg-white rounded-3xl w-full p-4 mx-auto relative'>
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-            <Form name="myForm">
+            <Form name="myForm" className="product-create-page__form">
               <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
                 <div className="grid grid-cols-2 gap-2">
 
@@ -183,13 +188,18 @@ const CreateTestimonials = () => {
 
               </div>
 
-              <SubmitButton
-                props={{
-                  class: "btn bg-secondary text-white px-12 ml-auto uppercase mb-3   py-3 rounded-full w-100 block mt-5 submit hover:bg-primary transition-all duration-300",
-                  text: "Submit",
-                }}
-                buttonLoading={res.isLoading}
-              />
+              <div className="product-create-page__actions">
+                <Link to="/testimonials" className="product-create-page__cancel">
+                  Cancel
+                </Link>
+                <SubmitButton
+                  props={{
+                    class: "product-create-page__submit btn bg-secondary text-white px-12 uppercase py-3 rounded-full w-100 block submit hover:bg-primary transition-all duration-300",
+                    text: "Create Testimonial",
+                  }}
+                  buttonLoading={res.isLoading}
+                />
+              </div>
             </Form>
           </Formik>
         </div>

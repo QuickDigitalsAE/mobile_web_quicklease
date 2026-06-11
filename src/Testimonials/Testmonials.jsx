@@ -1,119 +1,229 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Pagination, Table } from 'antd'
+import { FiArrowUpRight, FiEdit3, FiMessageSquare, FiPlus, FiSearch } from 'react-icons/fi'
 import plus from '../dist/webImages/plus.svg'
-import { Link } from 'react-router-dom';
-import TestimonialsCard from './TestimonialsCard';
-import SkeletonTestimonailsCard from './SkeletonTestimonailsCard';
-import { MainLanguageContext } from '../context/MainLanguageContext';
-import useGet from '../customHooks/useGet';
-import usePost from '../customHooks/usePost';
-import { Pagination } from 'antd';
+import SkeletonTestimonailsCard from './SkeletonTestimonailsCard'
+import { MainLanguageContext } from '../context/MainLanguageContext'
+import useGet from '../customHooks/useGet'
+import usePost from '../customHooks/usePost'
 
-const Testmonials = ({permission}) => {
-    const { mainLanguage } = useContext(MainLanguageContext);
-    const [datas, setDatas] = useState()
-    const [resget, apiMethodGet] = useGet()
-    const [currentPage, setCurrentPage] = useState(1)
-    const [paginationn, setPaginationn] = useState(6);
-    const [searchValue, setSearchValue] = useState("")
-    const [res2, apiMethod2] = usePost()
+const Testmonials = ({ permission }) => {
+  const { mainLanguage } = useContext(MainLanguageContext)
+  const [datas, setDatas] = useState([])
+  const [resget, apiMethodGet] = useGet()
+  const [currentPage, setCurrentPage] = useState(1)
+  const [paginationn, setPaginationn] = useState(6)
+  const [searchValue, setSearchValue] = useState('')
+  const [res2, apiMethod2] = usePost()
 
-    const onChange = (current, pageSize) => {
-        setCurrentPage(current)
-        let formdata = new FormData();
-        formdata.append('search_query', searchValue);
-        if ((searchValue).trim()) {
-            apiMethod2(`testimonials/search_testimonials_list/${mainLanguage}/6?page=${current}`, formdata);
-        } else {
-            apiMethodGet(`testimonials/list/${mainLanguage}/6?page=${current}`, formdata);
-        }
-    };
-    
-    useEffect(() => {
-        if (mainLanguage) {
-            setCurrentPage(1)
-            apiMethodGet(`testimonials/list/${mainLanguage}/6?page=1`);
-        }
-    }, [mainLanguage]);
+  const check = (module, action) => permission?.[module]?.includes(action)
+  const canAddTestimonials = check('Testimonials', 'Testimonial Add')
+  const canEditTestimonials = check('Testimonials', 'Testimonial Edit')
 
-    let debounceTimer;
-    const debounce = (func, delay) => {
-        return (...args) => {
-          clearTimeout(debounceTimer);
-          debounceTimer = setTimeout(() => {
-            func(...args);
-          }, delay);
-        };
-      };
-    
-    
-      const executeApiCall = (e) => {
-        setSearchValue(e.target.value)
-        let formdata = new FormData();
-        formdata.append('search_query', e.target.value);
-        if ((e.target.value).trim()) {
-            apiMethod2(`testimonials/search_testimonials_list/${mainLanguage}/6?page=${currentPage}`, formdata);
-        } else {
-            apiMethodGet(`testimonials/list/${mainLanguage}/6?page=${currentPage}`, formdata);
-        }
-      };
-      const handleChange = debounce(executeApiCall, 1000)
+  const onChange = (current) => {
+    setCurrentPage(current)
+    const formdata = new FormData()
+    formdata.append('search_query', searchValue)
 
-    useEffect(() => {
-        if (!resget.isLoading) {
-            setDatas(resget?.data?.data)
-            setPaginationn(resget.data?.pagination)
-        }
+    if (searchValue.trim()) {
+      apiMethod2(`testimonials/search_testimonials_list/${mainLanguage}/6?page=${current}`, formdata)
+    } else {
+      apiMethodGet(`testimonials/list/${mainLanguage}/6?page=${current}`, formdata)
+    }
+  }
 
-    }, [resget.data])
+  useEffect(() => {
+    if (mainLanguage) {
+      setCurrentPage(1)
+      apiMethodGet(`testimonials/list/${mainLanguage}/6?page=1`)
+    }
+  }, [mainLanguage])
 
-    useEffect(() => {
-        setDatas([])
-        if (res2.data) {
-            setDatas(res2?.data?.data);
-            setPaginationn(res2?.data?.pagination)
-        }
-    }, [res2.data]);
-const check = (module, action) => permission?.[module]?.includes(action);
+  let debounceTimer
+  const debounce = (func, delay) => {
+    return (...args) => {
+      clearTimeout(debounceTimer)
+      debounceTimer = setTimeout(() => {
+        func(...args)
+      }, delay)
+    }
+  }
+
+  const executeApiCall = (e) => {
+    const value = e.target.value
+    setSearchValue(value)
+    setCurrentPage(1)
+
+    const formdata = new FormData()
+    formdata.append('search_query', value)
+
+    if (value.trim()) {
+      apiMethod2(`testimonials/search_testimonials_list/${mainLanguage}/6?page=1`, formdata)
+    } else {
+      apiMethodGet(`testimonials/list/${mainLanguage}/6?page=1`, formdata)
+    }
+  }
+
+  const handleChange = debounce(executeApiCall, 1000)
+
+  useEffect(() => {
+    if (!resget.isLoading) {
+      setDatas(resget?.data?.data || [])
+      setPaginationn(resget?.data?.pagination)
+    }
+  }, [resget.data])
+
+  useEffect(() => {
+    setDatas([])
+    if (res2.data) {
+      setDatas(res2?.data?.data || [])
+      setPaginationn(res2?.data?.pagination)
+    }
+  }, [res2.data])
+
+  const columns = useMemo(
+    () => [
+      {
+        title: 'Testimonial',
+        key: 'testimonial',
+        width: 300,
+        render: (_, record) => (
+          <div className="roles-table__identity">
+            <span className="roles-table__icon">
+              <FiMessageSquare />
+            </span>
+            <div>
+              <div className="roles-table__primary">{record.client_name || 'Unnamed client'}</div>
+              <div className="roles-table__secondary">{record.client_email || 'No email provided'}</div>
+            </div>
+          </div>
+        ),
+      },
+      {
+        title: 'Phone',
+        key: 'phone',
+        width: 170,
+        render: (_, record) => <span className="roles-table__badge">{record.client_phone || 'No phone'}</span>,
+      },
+      {
+        title: 'Review',
+        key: 'review',
+        width: 360,
+        render: (_, record) => (
+          <div className="users-table__email">
+            {record.client_review
+              ? String(record.client_review).replace(/<[^>]*>/g, '').slice(0, 120) + (String(record.client_review).replace(/<[^>]*>/g, '').length > 120 ? '...' : '')
+              : 'No review added'}
+          </div>
+        ),
+      },
+      {
+        title: 'Record',
+        key: 'record',
+        width: 120,
+        render: (_, record) => <span className="users-table__record">#{record.id}</span>,
+      },
+      {
+        title: 'Action',
+        key: 'action',
+        width: 190,
+        render: (_, record) => (
+          <div className="users-table__actions">
+            {canEditTestimonials && (
+              <Link to={`/testimonials/edit/${record.id}`} className="users-table__actionLink">
+                <FiEdit3 />
+                <span>Edit</span>
+              </Link>
+            )}
+            <Link to={`/testimonials/edit/${record.id}`} className="users-table__actionIcon" aria-label={`Open ${record.client_name || 'testimonial'}`}>
+              <FiArrowUpRight />
+            </Link>
+          </div>
+        ),
+      },
+    ],
+    [canEditTestimonials]
+  )
+
+  if (resget.isLoading && !datas?.length) {
     return (
-        <div className='TestmonialsPage  '>
-           <div className="TeamPageTop flex justify-between items-center">
-                <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka capitalize'>Testimonials and updates</h6>
-                <div className='flex gap-1'>
-                    <div className="inputBox w-[16rem] max-lg:hidden">
-                        <input type="text" onChange={handleChange} className='w-full border h-[2.8rem] rounded-full px-4 border-[#ddd] outline-none' placeholder='Search' />
-                    </div>
-                    {check("Testimonials", "Testimonial Add") &&<Link to={"/testimonials/create"} className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer'>
-                        <img src={plus} alt="plus" />
-                        <span className='font-MluvkaBold text-secondary capitalize'>Add Testimonials</span>
-                    </Link>}
-                </div>
-            </div>
-            <div className="TeamPageGrid mt-4 bg-[#EFF4FD] rounded-3xl p-6 grid grid-cols-2 gap-3 max-lg:grid-cols-1 max-lg:p-2 ">
-            {resget.isLoading  ? 
-                         Array.from({ length: 8 }).map((_, index) => (
-                            <React.Fragment key={index}>
-                            <SkeletonTestimonailsCard  />
-                        </React.Fragment>
-                         ))
-                        :
-                        Array.isArray(datas) && datas.map((item, index) => {
-                            return (
-                                <React.Fragment key={index}>
-                                    <TestimonialsCard permission={permission} data={item} alldata={datas} deleted={setDatas}  />
-                                </React.Fragment>
-                            )
-                        })}
-            </div>
-            <div className='mt-4'>
-                <Pagination
-                    onChange={onChange}
-                    defaultCurrent={currentPage}
-                    total={paginationn?.total}
-                    pageSize={6}
-                />
-            </div>
-        </div>
+      <div className="TeamPageGrid mt-4 bg-[#EFF4FD] rounded-3xl p-6 grid grid-cols-2 gap-3 max-lg:grid-cols-1 max-lg:p-2">
+        {Array.from({ length: 8 }).map((_, index) => (
+          <SkeletonTestimonailsCard key={index} />
+        ))}
+      </div>
     )
+  }
+
+  return (
+    <section className="TestmonialsPage users-table-page roles-table-page">
+      <div className="users-table-page__top bg-white rounded-3xl p-4 flex justify-between items-center gap-4">
+        <div>
+          <h6 className="text-[1rem] mb-2 relative font-Mluvka capitalize">
+            <span>{paginationn?.total ?? datas?.length ?? 0}</span> Testimonials
+          </h6>
+          <p className="users-table-page__subtitle">
+            Manage customer testimonials in a cleaner table view with faster search and editing access.
+          </p>
+        </div>
+
+        <div className="flex w-full justify-end items-center gap-3">
+          <label className="bookings-table-page__search">
+            <FiSearch />
+            <input type="text" onChange={handleChange} placeholder="Search testimonials" />
+          </label>
+
+          {canAddTestimonials && (
+            <Link to="/testimonials/create" className="users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer">
+              <span className="users-table-page__addIcon">
+                <FiPlus />
+              </span>
+              <img src={plus} alt="plus" className="hidden" />
+              <span className="font-MluvkaBold text-secondary capitalize">Add Testimonial</span>
+            </Link>
+          )}
+        </div>
+      </div>
+
+      <div className="users-table-page__panel">
+        <div className="users-table-page__stats">
+          <article>
+            <span>Total testimonials</span>
+            <strong>{paginationn?.total ?? datas?.length ?? 0}</strong>
+          </article>
+          <article>
+            <span>Visible on page</span>
+            <strong>{Array.isArray(datas) ? datas.length : 0}</strong>
+          </article>
+          <article>
+            <span>Editable</span>
+            <strong>{canEditTestimonials ? (Array.isArray(datas) ? datas.length : 0) : 0}</strong>
+          </article>
+        </div>
+
+        <div className="users-table-page__tableWrap">
+          <Table
+            rowKey={(record) => record.id}
+            dataSource={Array.isArray(datas) ? datas : []}
+            columns={columns}
+            pagination={false}
+            scroll={{ x: 1040 }}
+          />
+        </div>
+
+        <div className="mt-4">
+          <Pagination
+            current={currentPage}
+            onChange={onChange}
+            total={paginationn?.total}
+            pageSize={6}
+            showSizeChanger={false}
+          />
+        </div>
+      </div>
+    </section>
+  )
 }
 
 export default Testmonials
