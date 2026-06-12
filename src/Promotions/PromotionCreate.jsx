@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react'
-import { Field, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
 import FormControl from '../components/form/FormControl';
 import useFetch from '../customHooks/useFetch';
@@ -8,6 +8,7 @@ import CKEditors from '../components/form/CKEditors';
 import swal from "sweetalert";
 import SubmitButton from '../components/SubmitButton';
 import usePost from '../customHooks/usePost';
+import StatusToggle from '../components/form/StatusToggle';
 import { MainLanguageContext } from '../context/MainLanguageContext';
 import { toast } from 'react-toastify';
 import OneImageUpload from '../components/OneImageUpload';
@@ -230,13 +231,11 @@ const PromotionCreate = ({ permission }) => {
                                             />
                                         </div>}
                                     </div>
-                                    <div className="overflow-hidden relative pt-7 px-4">
-                                        <label className="inline-flex items-center cursor-pointer">
-                                            <Field value="1" type="checkbox" name="promotion_status" className="sr-only peer" />
-                                            <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                                            <span className="ms-3 text-sm font-medium text-gray-900">Promotion Status</span>
-                                        </label>
-                                    </div>
+                                    <StatusToggle
+                                      name="promotion_status"
+                                      label="Promotion Status"
+                                      checkedLabel="Enable"
+                                    />
 
                             </div>
 

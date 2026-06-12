@@ -395,6 +395,7 @@ body {
 .MainDashboard__RightBody {
   height: calc(100vh - 126px);
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .TeamPage,

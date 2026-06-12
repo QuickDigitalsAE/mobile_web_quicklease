@@ -3,10 +3,11 @@ import usePost from '../customHooks/usePost';
 import swal from "sweetalert";
 import { MainLanguageContext } from '../context/MainLanguageContext';
 import { Link, useNavigate } from 'react-router-dom';
-import { Field, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import CKEditors from '../components/form/CKEditors';
 import SubmitButton from '../components/SubmitButton';
+import StatusToggle from '../components/form/StatusToggle';
 import { toast } from 'react-toastify';
 import OneImageUpload from '../components/OneImageUpload';
 
@@ -137,13 +138,11 @@ const CreatePartners = () => {
                 <label className="mb-1  mt-3 block text-[#7D8CA7] text-[.8rem]"> Image </label>
                 <OneImageUpload changeImage={setImageLoader} MainImage={datas?.partner_image} Update={setDatas} sec_value={"partner_value"} sec_image={"partner_image"} folder_name={"partner_images"} page_type={"partner"} />
               </div>
-              <div className="overflow-hidden relative pt-7 px-4">
-                <label className="inline-flex items-center cursor-pointer">
-                  <Field  value="1" type="checkbox" name="partner_status"  className="sr-only peer"  />
-                  <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                  <span className="ms-3 text-sm font-medium text-gray-900">Partners Status</span>
-                </label>
-              </div>
+              <StatusToggle
+                name="partner_status"
+                label="Partners Status"
+                checkedLabel="Enable"
+              />
 
                         <div className="product-create-page__actions">
                             <Link to="/partners" className="product-create-page__cancel">

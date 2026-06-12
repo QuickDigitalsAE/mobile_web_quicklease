@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Field, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import SubmitButton from '../components/SubmitButton';
 import CKEditors from '../components/form/CKEditors';
 import { Link, useNavigate } from 'react-router-dom';
 import SkeletonCreateEdit from './SkeletonCreateEdit';
 import { MainLanguageContext } from '../context/MainLanguageContext';
+import StatusToggle from '../components/form/StatusToggle';
 import { toast } from 'react-toastify';
 import swal from "sweetalert";
 import useGet from '../customHooks/useGet';
@@ -195,62 +196,14 @@ const a = Object.entries(locations).map(([key, value]) => ({
 
 <div className='flex flex-wrap gap-3'>
 
-            <div className="overflow-hidden relative pt-7 px-4">
-              <label className="inline-flex items-center cursor-pointer">
-                <Field value="1" type="checkbox" name="coverage_status" className="sr-only peer" />
-                <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                <span className="ms-3 text-sm font-medium text-gray-900">Coverage Status</span>
-              </label>
-            </div>
-            <div className="overflow-hidden relative pt-7 px-4">
-              <label className="inline-flex items-center cursor-pointer">
-                <Field value="1" type="checkbox" name="field_required" className="sr-only peer" />
-                <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                <span className="ms-3 text-sm font-medium text-gray-900">Field Required</span>
-              </label>
-            </div>
-            <div className="overflow-hidden relative pt-7 px-4">
-              <label className="inline-flex items-center cursor-pointer">
-                <Field value="1" type="checkbox" name="checked_by_default" className="sr-only peer" />
-                <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                <span className="ms-3 text-sm font-medium text-gray-900">checked by default</span>
-              </label>
-            </div>
-            <div className="overflow-hidden relative pt-7 px-4">
-              <label className="inline-flex items-center cursor-pointer">
-                <Field value="1" type="checkbox" name="countable_value" className="sr-only peer" />
-                <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                <span className="ms-3 text-sm font-medium text-gray-900">Countable Value</span>
-              </label>
-            </div>
-            <div className="overflow-hidden relative pt-7 px-4">
-              <label className="inline-flex items-center cursor-pointer">
-                <Field value="1" type="checkbox" name="per_day_price" className="sr-only peer" />
-                <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                <span className="ms-3 text-sm font-medium text-gray-900">per day price</span>
-              </label>
-            </div>
-            <div className="overflow-hidden relative pt-7 px-4">
-              <label className="inline-flex items-center cursor-pointer">
-                <Field value="1" type="checkbox" name="address_is_required" className="sr-only peer" />
-                <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                <span className="ms-3 text-sm font-medium text-gray-900">address is required</span>
-              </label>
-            </div>
-            <div className="overflow-hidden relative pt-7 px-4">
-              <label className="inline-flex items-center cursor-pointer">
-                <Field value="1" type="checkbox" name="vat_is_applicable" className="sr-only peer" />
-                <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                <span className="ms-3 text-sm font-medium text-gray-900">vat is applicable</span>
-              </label>
-            </div>
-            <div className="overflow-hidden relative pt-7 px-4">
-              <label className="inline-flex items-center cursor-pointer">
-                <Field value="1" type="checkbox" name="recommended" className="sr-only peer" />
-                <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                <span className="ms-3 text-sm font-medium text-gray-900">Recommended</span>
-              </label>
-            </div>
+            <StatusToggle name="coverage_status" label="Coverage Status" checkedLabel="Enable" />
+            <StatusToggle name="field_required" label="Field Required" checkedLabel="Enable" />
+            <StatusToggle name="checked_by_default" label="Checked By Default" checkedLabel="Enable" />
+            <StatusToggle name="countable_value" label="Countable Value" checkedLabel="Enable" />
+            <StatusToggle name="per_day_price" label="Per Day Price" checkedLabel="Enable" />
+            <StatusToggle name="address_is_required" label="Address Is Required" checkedLabel="Enable" />
+            <StatusToggle name="vat_is_applicable" label="VAT Is Applicable" checkedLabel="Enable" />
+            <StatusToggle name="recommended" label="Recommended" checkedLabel="Enable" />
             </div>
           </div>
           <div className="product-create-page__actions">

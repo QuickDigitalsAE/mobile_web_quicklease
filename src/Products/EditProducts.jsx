@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Field, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import FormControl from '../components/form/FormControl';
 import SubmitButton from '../components/SubmitButton';
 import CKEditors from '../components/form/CKEditors';
@@ -17,6 +17,7 @@ import usePost2 from '../customHooks/usePost2';
 import DropDown from "../dist/webImages/dropdown.svg"
 import { MainUserDataContext } from '../context/MainUserDataContext';
 import './productTheme.css';
+import StatusToggle from '../components/form/StatusToggle';
 
 const EditProducts = ({ permission }) => {
   const { id } = useParams();
@@ -468,17 +469,34 @@ const EditProducts = ({ permission }) => {
   return (
     <div className='newscreate product-create-page'>
       <div className="product-create-page__hero">
-        <div>
+        <div className="product-create-page__heroContent">
           <span className="product-create-page__eyebrow">Inventory Update</span>
           <h2>Refine this product with the same clean workflow</h2>
           <p>
             Update product content, media, pricing, properties, and booking settings using the same modern layout as product creation.
           </p>
         </div>
+        <div className="product-create-page__heroActions">
+          <Link to="/products" className="product-create-page__heroSecondary">
+            Back
+          </Link>
+          <button type="submit" form="myForm" className="product-create-page__heroPrimary">
+            Update Product
+          </button>
+        </div>
+      </div>
+      <div className="product-create-page__tabs">
+        <a className="product-create-page__tab" href="#product-basic-info">Basic Info</a>
+        <a className="product-create-page__tab" href="#product-media">Media</a>
+        <a className="product-create-page__tab" href="#product-pricing">Pricing</a>
+        <a className="product-create-page__tab" href="#product-specifications">Specifications</a>
+        <a className="product-create-page__tab" href="#product-seo">SEO</a>
+        <a className="product-create-page__tab" href="#product-options">Publish</a>
       </div>
 <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form name="myForm" className="product-create-page__form product-create-page__form--compact">
-          <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
+          <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3' id="product-basic-info">
+            <h3 className="product-create-page__sectionTitle">Basic Information</h3>
             <div className="">
               <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Slug - {slugs.all_slugs}</div>
               {
@@ -567,8 +585,8 @@ const EditProducts = ({ permission }) => {
             <br />
 
           </div>
-          <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
-            <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Products</div>
+          <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3' id="product-media">
+            <h3 className="product-create-page__sectionTitle">Media & Content</h3>
             <FormControl name="product_title" label={"Product Title "} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
             <br />
             <FormControl name="heading_one" label={"Heading {h1}"} placeholder="Enter Heading One" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
@@ -624,7 +642,8 @@ const EditProducts = ({ permission }) => {
               </div>}
 
           </div>
-          {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
+          {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3' id="product-pricing">
+            <h3 className="product-create-page__sectionTitle">Pricing</h3>
             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Price Monthly</div>
             <div className='grid grid-cols-2 gap-4'>
               <FormControl name="monthly_price" label={"Price"} placeholder="Enter Price" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
@@ -758,7 +777,8 @@ const EditProducts = ({ permission }) => {
             </div>
           </div>
 
-          {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
+          {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3' id="product-seo">
+            <h3 className="product-create-page__sectionTitle">SEO & Properties</h3>
             <div className="h4 text-[#7D8CA7] text-[1.1rem] mb-4">Properties</div>
             <div className='grid  gap-4'>
 
@@ -852,7 +872,8 @@ const EditProducts = ({ permission }) => {
             </div>
           </div>
 
-          {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
+          {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3' id="product-specifications">
+            <h3 className="product-create-page__sectionTitle">Specifications</h3>
             <div>
               <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Specification Auto</div>
               <select value={datas?.specification_auto} onChange={(e) => handletype(e.target.value, "specification_auto")} name="specification_auto" className="outline-none w-full h-[3rem] px-5 rounded-xl"  >
@@ -864,57 +885,16 @@ const EditProducts = ({ permission }) => {
             </div>
             <br />
             <br />
+            <h3 className="product-create-page__sectionTitle">Publish</h3>
             <div className='flex flex-wrap gap-2 mt-4'>
-              <div className="overflow-hidden relative  px-4">
-                <label className="inline-flex items-center cursor-pointer">
-                  <Field value="1" type="checkbox" name="product_status" className="sr-only peer" />
-                  <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                  <span className="ms-3 text-sm font-medium text-gray-900">Product Status</span>
-                </label>
-              </div>
+              <StatusToggle name="product_status" label="Product Status" checkedLabel="Enable" />
 
-              <div className="overflow-hidden relative  px-4">
-                <label className="inline-flex items-center cursor-pointer">
-                  <Field value="1" type="checkbox" name="stock_status" className="sr-only peer" />
-                  <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                  <span className="ms-3 text-sm font-medium text-gray-900">Stock Status</span>
-                </label>
-              </div>
-              <div className="overflow-hidden relative  px-4">
-                <label className="inline-flex items-center cursor-pointer">
-                  <Field value="1" type="checkbox" name="show_documents" className="sr-only peer" />
-                  <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                  <span className="ms-3 text-sm font-medium text-gray-900">Show Documents</span>
-                </label>
-              </div>
-              <div className="overflow-hidden relative  px-4">
-                <label className="inline-flex items-center cursor-pointer">
-                  <Field value="1" type="checkbox" name="book_now_button" className="sr-only peer" />
-                  <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                  <span className="ms-3 text-sm font-medium text-gray-900">book Now Button</span>
-                </label>
-              </div>
-              <div className="overflow-hidden relative  px-4">
-                <label className="inline-flex items-center cursor-pointer">
-                  <Field value="1" type="checkbox" name="show_on_home" className="sr-only peer" />
-                  <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                  <span className="ms-3 text-sm font-medium text-gray-900">show on home</span>
-                </label>
-              </div>
-              <div className="overflow-hidden relative  px-4">
-                <label className="inline-flex items-center cursor-pointer">
-                  <Field value="1" type="checkbox" name="promo_status" className="sr-only peer" />
-                  <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                  <span className="ms-3 text-sm font-medium text-gray-900">promo status</span>
-                </label>
-              </div>
-              <div className="overflow-hidden relative  px-4">
-                <label className="inline-flex items-center cursor-pointer">
-                  <Field value="1" type="checkbox" name="featured" className="sr-only peer" />
-                  <div className="relative bg-[#1c1c1c] w-11 h-6 bg-gray-200 peer-focus:outline-none  rounded-full peer bg-gray-200 peer-checked:after:translate-x-full   after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#401a89]"></div>
-                  <span className="ms-3 text-sm font-medium text-gray-900">featured</span>
-                </label>
-              </div>
+              <StatusToggle name="stock_status" label="Stock Status" checkedLabel="Enable" />
+              <StatusToggle name="show_documents" label="Show Documents" checkedLabel="Enable" />
+              <StatusToggle name="book_now_button" label="Book Now Button" checkedLabel="Enable" />
+              <StatusToggle name="show_on_home" label="Show On Home" checkedLabel="Enable" />
+              <StatusToggle name="promo_status" label="Promo Status" checkedLabel="Enable" />
+              <StatusToggle name="featured" label="Featured" checkedLabel="Enable" />
             </div>
           </div>}
             {check("Products", "Products Edit") && (
