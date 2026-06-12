@@ -444,12 +444,12 @@ const CreateProducts = () => {
         <Form name="myForm" className="product-create-page__form product-create-page__form--compact">
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
             <div className="">
-              <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Slug - {slugs.all_slugs}</div>
+              <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Slug - {slugs.all_slugs}</div>
               <input value={slugs?.slugs ?? ""} onChange={handleSlugUpdate} name="slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3] border border-[red]" control="input2" />
             </div>
-            <div className="grid grid-cols-2 gap-2 mt-4">
+            <div className="grid grid-cols-2 gap-2 mt-4 mt-4">
               <div>
-                <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> Catalog</div>
+                <div className="mb-1 block text-[#7D8CA7] text-[.9rem]"> Catalog</div>
                 <select value={parent_id ?? ""} onChange={handleParent} name="catalog_id" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" >
                   <option value="">---select Parent ---</option>
                   {Array.isArray(catlogsList) &&
@@ -471,7 +471,7 @@ const CreateProducts = () => {
 
               </div>
               <div>
-                <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Class Auto</div>
+                <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Class Auto</div>
                 <select value={datas?.vehicle_type} onChange={(e) => handletype(e.target.value, "vehicle_type")} name="vehicle_type" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]"  >
                   <option value={""}>---select Class Auto ---</option>
                   <option value={"economy"}>Economy</option>
@@ -483,7 +483,7 @@ const CreateProducts = () => {
                 </select>
               </div>
               <div className='antdheight'>
-                <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Location</div>
+                <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Location</div>
                 <Select
                   mode="multiple"
                   placeholder="Please select"
@@ -498,7 +498,7 @@ const CreateProducts = () => {
                 />
               </div>
               <div className='antdheight'>
-                <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Additional Catalogs</div>
+                <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Additional Catalogs</div>
                 <Select
                   showSearch
                   mode="multiple"
@@ -526,7 +526,7 @@ const CreateProducts = () => {
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
 
-            <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Products</div>
+            <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Products</div>
             <div className='grid grid-cols-2 gap-3'>
               <FormControl name="product_title" label={"Product Title "} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
 
@@ -535,11 +535,11 @@ const CreateProducts = () => {
 
             <br />
 
-            <div className="mb-1 block text-[#7D8CA7] text-[.8rem]">Description</div>
+            <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Description</div>
             <CKEditors label={"Description"} folder_name={"products_images"} page_type={"products"} data={description} update={(text) => handleCkChange(text, "description")} />
             <br />
             <br />
-            <div className="mb-1 block text-[#7D8CA7] text-[.8rem]">Product Short Description</div>
+            <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Product Short Description</div>
             <CKEditors label={"Description"} folder_name={"products_images"} page_type={"products"} data={short_description} update={(text) => handleCkChange(text, "short_description")} />
 
             <div className='mt-4'>
@@ -552,7 +552,7 @@ const CreateProducts = () => {
             <div className='mt-4'>
               <div>
                 <div className='flex justify-between'>
-                  <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Car Images</div>
+                  <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Car Images</div>
                   <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd2("car_images", [])} >
                     <span className='users-table-page__addIcon'>
                       <FiPlus />
@@ -586,21 +586,21 @@ const CreateProducts = () => {
 
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
-            <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Price Monthly</div>
+            <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Price Monthly</div>
             <div className='grid grid-cols-2 gap-4'>
               <FormControl name="monthly_price" label={"Price"} placeholder="Enter Price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
               <FormControl name="old_monthly_price" label={"Old Price"} placeholder="Enter Old Price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
             </div>
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
-            <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Price Weekly</div>
+            <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Price Weekly</div>
             <div className='grid grid-cols-2 gap-4'>
               <FormControl name="weekly_price" label={"Price"} placeholder="Enter Price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
               <FormControl name="old_weekly_price" label={"Old Price"} placeholder="Enter Old Price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
             </div>
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
-            <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Price Daily</div>
+            <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Price Daily</div>
             <div className='grid grid-cols-2 gap-4'>
               <FormControl name="daily_price" label={"Price"} placeholder="Enter Price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
               <FormControl name="old_daily_price" label={"Old Price"} placeholder="Enter Old Price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
@@ -608,7 +608,7 @@ const CreateProducts = () => {
           </div>
 
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
-            <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> Flexible Rentals</div>
+            <div className="mb-1 block text-[#7D8CA7] text-[.9rem]"> Flexible Rentals</div>
             <div className='grid grid-cols-2 gap-4'>
               <FormControl name="cars_monthly_price" label={"Monthly Price"} placeholder="Enter Monthly Price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
               <FormControl name="cars_yearly_price" label={"Yearly Price"} placeholder="Enter Yearly Price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
@@ -630,14 +630,14 @@ const CreateProducts = () => {
             </div>
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
-            <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Security Deposit</div>
+            <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Security Deposit</div>
             <div className='grid grid-cols-2 gap-4'>
               <FormControl name="security_deposit" label={"Security Deposit"} placeholder="Enter Security Deposit" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
             </div>
           </div>
 
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
-            <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Security Deposit waiver</div>
+            <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Security Deposit waiver</div>
             <div className='grid grid-cols-2 gap-4'>
               <FormControl name="security_deposit_waiver_daily" label={"security deposit waiver daily"} placeholder="Enter security deposit waiver daily" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
               <FormControl name="security_deposit_waiver_monthly" label={"security deposit waiver monthly"} placeholder="Enter security deposit waiver monthly" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
@@ -651,7 +651,7 @@ const CreateProducts = () => {
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className='flex justify-between mt-5'>
-              <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Flexible</div>
+              <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Flexible</div>
               <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("flexible_cars_monthly_prices", ["months", "value"])} >
                 <span className='users-table-page__addIcon'>
                   <FiPlus />
@@ -687,7 +687,7 @@ const CreateProducts = () => {
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className='flex justify-between mt-5'>
-              <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Personal</div>
+              <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Personal</div>
               <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("personal_cars_monthly_prices", ["months", "value"])} >
                 <span className='users-table-page__addIcon'>
                   <FiPlus />
@@ -723,23 +723,23 @@ const CreateProducts = () => {
           </div>
 
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
-            <div className="h4 text-[#7D8CA7] text-[1.1rem] mb-4">Properties</div>
+            <div className="h4 text-[#7D8CA7] text-[1.5rem] mb-4">Properties</div>
             <div className='grid  gap-4'>
 
               {propertiesList &&
                 Object.keys(propertiesList).map((category) => (
                   <div className='' key={category}>
-                    <div className="h4 text-[#7D8CA7] text-[1.1rem] capitalize mb-4">
+                    <div className="h4 text-[#7D8CA7] text-[1.5rem] capitalize mb-4">
                       {category.replaceAll("_", " ")}
                     </div>
-                    <div className='grid grid-cols-2 gap-2 mt-4'>
+                    <div className='grid grid-cols-2 gap-2 mt-4 mt-4'>
                       {propertiesList[category].map((property) => {
                         // Get the existing value from propertiesList2
                         const existingValue = propertiesList2[category]?.find((item) => item.property_id === property.id)?.property_value || "";
 
                         return (
                           <div className='my-2' key={property.id}>
-                            <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> {property.property_title} </div>
+                            <div className="mb-1 block text-[#7D8CA7] text-[.9rem]"> {property.property_title} </div>
                             {property.property_field_type === "input" ? (
                               <input
                                 className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]"
@@ -786,7 +786,7 @@ const CreateProducts = () => {
 
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className={`flex justify-between items-center`}>
-              <div className="h4 text-[#7D8CA7] text-[1.1rem] mb-4">Extra Prices</div>
+              <div className="h4 text-[#7D8CA7] text-[1.5rem] mb-4">Extra Prices</div>
               <div className='cursor-pointer' onClick={handleExtraClick} >
                 <img src={DropDown} className={`transform ${dropDownState && `rotate-[180deg]`}  `} alt="Extra" />
               </div>
@@ -798,14 +798,14 @@ const CreateProducts = () => {
                   const { coverage_id, coverage_title, less_30_days_price, more_30_days_price } = item
                   return (
                     <div key={coverage_id}>
-                      <div className="h4 text-[#7D8CA7] text-[1.1rem] capitalize mt-4 mb-5"> {coverage_title} </div>
+                      <div className="h4 text-[#7D8CA7] text-[1.5rem] capitalize mt-4 mb-5"> {coverage_title} </div>
                       <div className='grid grid-cols-2 gap-3'>
                         <div>
-                          <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> Less 30 Days Price </div>
+                          <div className="mb-1 block text-[#7D8CA7] text-[.9rem]"> Less 30 Days Price </div>
                           <input className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" value={less_30_days_price} onChange={(e) => handleChangeCoverages(coverage_id, e.target.value, "less_30_days_price")} />
                         </div>
                         <div>
-                          <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> More 30 Days Price </div>
+                          <div className="mb-1 block text-[#7D8CA7] text-[.9rem]"> More 30 Days Price </div>
                           <input className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" value={more_30_days_price} onChange={(e) => handleChangeCoverages(coverage_id, e.target.value, "more_30_days_price")} />
                         </div>
                       </div>
@@ -817,7 +817,7 @@ const CreateProducts = () => {
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div>
-              <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Specification Auto</div>
+              <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Specification Auto</div>
               <select value={datas?.specification_auto} onChange={(e) => handletype(e.target.value, "specification_auto")} name="specification_auto" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]"  >
                 <option value={""}>---select specification Auto ---</option>
                 <option value={"1"}>Full Option (Roof hatch, Apple CarPlay / Android Auto, Cruise control )</option>

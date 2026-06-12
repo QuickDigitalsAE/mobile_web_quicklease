@@ -5,7 +5,7 @@ function Textarea2({ name,required, label, ...rest }) {
   const { errors } = useFormikContext();
   const [field] = useField(name);
   return (
- <div className="inputBox form-field w-full mt-3">
+ <div className="inputBox form-field w-full ">
     {label && <label htmlFor={name} className="form-field__label">{label}{required ? " *" : ""}</label>}
     <textarea
           id={name}

@@ -375,18 +375,18 @@ const EditCatalogs = ({ permission }) => {
                     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
                         <Form name="myForm" className="product-create-page__form">
                             <div className="bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3">
-                                <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Slug - {slugs.all_slugs}</div>
+                                <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Slug - {slugs.all_slugs}</div>
                                 {
                                     mainLanguage === "en" ?
                                         <input value={slugs?.slugs ?? ""} onChange={handleSlugUpdate} name="slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3] border border-[red]" control="input2" />
                                         :
                                         <div className='inputBox w-full mt-3'>
-                                            <label htmlFor="Schedule" className="mb-1 block text-[#7D8CA7] text-[.8rem]">Slug</label>
+                                            <label htmlFor="Schedule" className="mb-1 block text-[#7D8CA7] text-[.9rem]">Slug</label>
                                             <p className="outline-none bg-[#e7e7e7] w-full h-[3rem] px-5 rounded-xl py-3">{datas?.slug}</p>
                                         </div>
 
                                 }
-                                <div className="grid grid-cols-2 gap-2">
+                                <div className="grid grid-cols-2 gap-2 mt-4">
                                     <FormControl name="meta_title" label={"Meta Title"} placeholder="Enter Meta Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                 </div>
                                 <div className="grid  gap-2">
@@ -394,9 +394,9 @@ const EditCatalogs = ({ permission }) => {
                                 </div>
                             </div>
                             <div className="bg-[#EFF4FD] p-6 rounded-3xl mb-3">
-                                {mainLanguage === "en" && <div className="grid grid-cols-2 gap-2">
+                                {mainLanguage === "en" && <div className="grid grid-cols-2 gap-2 mt-4">
                                     <div>
-                                        <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">
+                                        <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">
                                             Type
                                         </div>
                                         <select value={datas?.type} onChange={(e) => handletype(e.target.value, "type")} name="type" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]"  >
@@ -409,7 +409,7 @@ const EditCatalogs = ({ permission }) => {
                                         </select>
                                     </div>
                                     <div>
-                                        <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">
+                                        <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">
                                             new style page type
                                         </div>
                                         <select value={datas?.new_style_page_type} onChange={(e) => handletype(e.target.value, "new_style_page_type")} name="new_style_page_type" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]"  >
@@ -419,7 +419,7 @@ const EditCatalogs = ({ permission }) => {
                                         </select>
                                     </div>
                                     <div>
-                                        <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">
+                                        <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">
                                             Parent
                                         </div>
                                         <select value={parent_id ?? ""} onChange={handleParent} name="parent_id" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" >
@@ -455,7 +455,7 @@ const EditCatalogs = ({ permission }) => {
 
                                 <FormControl name="product_heading" label={"product heading"} placeholder="Enter Product Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                 <br />
-                                <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Description</div>
+                                <div className="mb-1 block text-[#7D8CA7] text-[.9rem]"> Description</div>
                                 <CKEditors label={"Description"} data={description} update={(text) => handleCkChange(text, "description")} />
                                 <br />
 
@@ -463,7 +463,7 @@ const EditCatalogs = ({ permission }) => {
                                     datas?.type === "lease" &&
                                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                         <div className='flex justify-between'>
-                                            <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Banner</div>
+                                            <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Banner</div>
                                             {mainLanguage === "en" && <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("banner", ["title", "slider_image"])} >
                                                 <span className='users-table-page__addIcon'>
                                                     <FiPlus />
@@ -502,7 +502,7 @@ const EditCatalogs = ({ permission }) => {
 
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
-                                        <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 1</div>
+                                        <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Section 1</div>
                                         {mainLanguage === "en" && <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_one", ["title", "description", "image"])} >
                                             <span className='users-table-page__addIcon'>
                                                 <FiPlus />
@@ -512,7 +512,7 @@ const EditCatalogs = ({ permission }) => {
                                     </div>
                                     <FormControl name="sec_one_heading" label={"Section 1 Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                     <br />
-                                    <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Section 1 Description</div>
+                                    <div className="mb-1 block text-[#7D8CA7] text-[.9rem]"> Section 1 Description</div>
                                     <CKEditors label={"Description"} data={sec_one_description} update={(text) => handleCkChange(text, "sec_one_description")} />
                                     <><label className="mb-1  mt-3 block text-[#7D8CA7] text-[.8rem]">Sec One Image</label>
                                         <OneImageUpload changeImage={setImageLoader} MainImage={datas?.sec_one_image} Update={setDatas} sec_value={"sec_one_image_value"} sec_image={"sec_one_image"} folder_name={"catalog_banner_image"} page_type={"catalog"} /></>
@@ -534,7 +534,7 @@ const EditCatalogs = ({ permission }) => {
                                                             <CKEditors label={"title"} data={title} update={(text) => handleCkChange2(text, "sec_one", index, "title")} />
                                                         </div>
                                                         <div className="inputBox w-full mt-3">
-                                                            <label htmlFor="" className="mb-1 block text-[#7D8CA7] text-[.8rem]">Paragraph</label>
+                                                            <label htmlFor="" className="mb-1 block text-[#7D8CA7] text-[.9rem]">Paragraph</label>
                                                             <CKEditors label={"paragraph"} data={paragraph} update={(text) => handleCkChange2(text, "sec_one", index, "paragraph")} />
                                                         </div>
                                                         {mainLanguage === "en" && <div className='mb-2'>
@@ -551,7 +551,7 @@ const EditCatalogs = ({ permission }) => {
                                 </div>
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
-                                        <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 2</div>
+                                        <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Section 2</div>
                                         {mainLanguage === "en" && <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_two", ["title", "description", "image"])} >
                                             <span className='users-table-page__addIcon'>
                                                 <FiPlus />
@@ -561,7 +561,7 @@ const EditCatalogs = ({ permission }) => {
                                     </div>
                                     <FormControl name="sec_two_heading" label={"Section 2 Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                     <br />
-                                    <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Section 2 Description</div>
+                                    <div className="mb-1 block text-[#7D8CA7] text-[.9rem]"> Section 2 Description</div>
                                     <CKEditors label={"Description"} data={sec_two_description} update={(text) => handleCkChange(text, "sec_two_description")} />
 
                                     <div className="section4Main grid grid-cols-3 gap-3 mt-4 max-lg:grid-cols-1">
@@ -581,7 +581,7 @@ const EditCatalogs = ({ permission }) => {
                                                             <CKEditors label={"title"} data={title} update={(text) => handleCkChange2(text, "sec_two", index, "title")} />
                                                         </div>
                                                         <div className="inputBox w-full mt-3">
-                                                            <label htmlFor="" className="mb-1 block text-[#7D8CA7] text-[.8rem]">Paragraph</label>
+                                                            <label htmlFor="" className="mb-1 block text-[#7D8CA7] text-[.9rem]">Paragraph</label>
                                                             <CKEditors label={"paragraph"} data={paragraph} update={(text) => handleCkChange2(text, "sec_two", index, "paragraph")} />
                                                         </div>
                                                         {mainLanguage === "en" && <div className='mb-2'>
@@ -599,18 +599,18 @@ const EditCatalogs = ({ permission }) => {
 
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
-                                        <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 3</div>
+                                        <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Section 3</div>
                                     </div>
                                     <FormControl name="sec_three_heading" label={"Section 3 Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                     <br />
-                                    <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Section 3 Description</div>
+                                    <div className="mb-1 block text-[#7D8CA7] text-[.9rem]"> Section 3 Description</div>
                                     <CKEditors label={"Description"} data={sec_three_description} update={(text) => handleCkChange(text, "sec_three_description")} />
                                     <><label className="mb-1  mt-3 block text-[#7D8CA7] text-[.8rem]">Section 3 Image</label>
                                         <OneImageUpload changeImage={setImageLoader} MainImage={datas?.sec_three_image} Update={setDatas} sec_value={"sec_three_image_value"} sec_image={"sec_three_image"} folder_name={"catalog_banner_image"} page_type={"catalog"} /></>
                                 </div>
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
-                                        <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 4</div>
+                                        <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Section 4</div>
                                         <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_four", ["title", "description", "image"])} >
                                             <span className='users-table-page__addIcon'>
                                                 <FiPlus />
@@ -620,7 +620,7 @@ const EditCatalogs = ({ permission }) => {
                                     </div>
                                     <FormControl name="sec_four_heading" label={"Section 4 Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                     <br />
-                                    <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Section 4 Description</div>
+                                    <div className="mb-1 block text-[#7D8CA7] text-[.9rem]"> Section 4 Description</div>
                                     <CKEditors label={"Description"} data={sec_four_description} update={(text) => handleCkChange(text, "sec_four_description")} />
 
                                     <div className="section4Main grid grid-cols-3 gap-3 mt-4 max-lg:grid-cols-1">
@@ -640,7 +640,7 @@ const EditCatalogs = ({ permission }) => {
                                                             <input name="title" placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" value={title} onChange={(e) => handleInputChange2(e, "sec_four", index)} />
                                                         </div>
                                                         <div className="inputBox w-full mt-3">
-                                                            <label htmlFor="" className="mb-1 block text-[#7D8CA7] text-[.8rem]">Paragraph</label>
+                                                            <label htmlFor="" className="mb-1 block text-[#7D8CA7] text-[.9rem]">Paragraph</label>
                                                             <CKEditors label={"paragraph"} data={paragraph} update={(text) => handleCkChange2(text, "sec_four", index, "paragraph")} />
                                                         </div>
                                                         <div className='mb-2'>
@@ -658,7 +658,7 @@ const EditCatalogs = ({ permission }) => {
 
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
-                                        <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Faqs</div>
+                                        <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Faqs</div>
                                         {mainLanguage === "en" && <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_faqs", ["question", "answer"])} >
                                             <span className='users-table-page__addIcon'>
                                                 <FiPlus />
@@ -701,7 +701,7 @@ const EditCatalogs = ({ permission }) => {
 
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
-                                        <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Testimonials</div>
+                                        <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Testimonials</div>
                                         {mainLanguage === "en" && <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_testimonials", ["question", "answer"])} >
                                             <span className='users-table-page__addIcon'>
                                                 <FiPlus />
@@ -746,7 +746,7 @@ const EditCatalogs = ({ permission }) => {
                                 {mainLanguage === "en" &&
 
                                     (addCar) && <div className='antdheight'>
-                                        <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Product List</div>
+                                        <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Product List</div>
                                         <Select
                                             showSearch
                                             mode="multiple"

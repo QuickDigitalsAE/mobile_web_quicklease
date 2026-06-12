@@ -141,7 +141,7 @@ const CreateTestimonials = () => {
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             <Form name="myForm" className="product-create-page__form">
               <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 gap-2 mt-4">
 
                   <FormControl name="client_name" label={"Name"} placeholder="Enter Name" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                   <FormControl name="client_email" type="email" label={"Email"} placeholder="Enter Email" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
@@ -149,7 +149,7 @@ const CreateTestimonials = () => {
                 </div>
               </div>
               <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
-                <div className="mb-1 block text-[#7D8CA7] text-[.8rem]">Reviews</div>
+                <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Reviews</div>
                 <CKEditors label={"Reviews"} data={client_review} update={(text) => handleCkChange(text, "client_review")} />
 
                 <div className='mt-4'>
@@ -163,7 +163,7 @@ const CreateTestimonials = () => {
       <br />
 
                 {addCar &&      <div className='antdheight'>
-                <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Product List</div>
+                <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Product List</div>
                 <Select
                  showSearch
                   placeholder="Please select"

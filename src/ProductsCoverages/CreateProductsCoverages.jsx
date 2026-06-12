@@ -160,7 +160,7 @@ const a = Object.entries(locations).map(([key, value]) => ({
             <FormControl name="title" label={"title"} placeholder="Enter title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3] border border-[#ddd]" control="input2" />
             <FormControl name="tooltip" label={"tooltip"} placeholder="Enter tooltip" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3] border border-[#ddd]" control="input2" />
               </div>
-              <div className="mb-1 block text-[#7D8CA7] text-[.8rem]">Description</div>
+              <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Description</div>
             <CKEditors label={"description"} folder_name={"description"} page_type={"products"} data={description} update={(text) => handleCkChange(text, "description")} />
 
             <div className="grid grid-cols-2  gap-2">
@@ -171,7 +171,7 @@ const a = Object.entries(locations).map(([key, value]) => ({
 
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className='flex justify-between mt-5'>
-              <div className="h4 text-[#7D8CA7] text-[1.1rem] ">prices by locations</div>
+              <div className="h4 text-[#7D8CA7] text-[1.5rem] ">prices by locations</div>
             </div>
             <div className="section4Main grid grid-cols-3 gap-3 mt-4 max-lg:grid-cols-1">
               {

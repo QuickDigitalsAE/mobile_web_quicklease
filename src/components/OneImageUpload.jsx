@@ -79,7 +79,7 @@ const OneImageUpload = ({changeImage,Update,sec_image,sec_value,folder_name,page
                 </div>
                 :
                 <div>
-                    <div className=' h-[10rem] relative' onDrop={(e) => handleDrop(e)}>
+                    <div className=' h-[10rem] relative  w-[22.5rem]' onDrop={(e) => handleDrop(e)}>
                         {MainImage ?
                             <img src={MainImage || profile} className='w-full h-full rounded-3xl object-cover ' alt="" />
                             :

@@ -162,7 +162,7 @@ const EditPromotions = ({ permission }) => {
                     <Formik initialValues={initialValues} onSubmit={handleSubmit} >
                         <Form name="myForm" className="product-create-page__form">
                             <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
-                                <div className="grid grid-cols-2 gap-2">
+                                <div className="grid grid-cols-2 gap-2 mt-4">
                                     <FormControl name="promotion_slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3] border border-[red]" control="input2" />
                                     <FormControl name="meta_title" label={"Meta Title"} placeholder="Enter Meta Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                 </div>
@@ -171,7 +171,7 @@ const EditPromotions = ({ permission }) => {
                                 </div>
                             </div>
                             <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
-                                <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Promotion</div>
+                                <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Promotion</div>
                                 <div className="grid grid-cols-2 gap-4">
                                     <FormControl name="promotion_title" label={"Title {h1}"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                     <FormControl name="promotion_heading" label={"Heading"} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
@@ -179,11 +179,11 @@ const EditPromotions = ({ permission }) => {
                                 <br />
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="">
-                                        <div className="mb-1 block text-[#7D8CA7] text-[.8rem]">Short Paragraph</div>
+                                        <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Short Paragraph</div>
                                         <CKEditors label={"Short Paragraph"} data={promotion_short_paragraph} update={(text) => handleCkChange(text, "promotion_short_paragraph")} />
                                     </div>
                                     <div className="">
-                                        <div className="mb-1 block text-[#7D8CA7] text-[.8rem]">Main Paragraph</div>
+                                        <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Main Paragraph</div>
                                         <CKEditors label={"Main Paragraph"} data={promotion_paragraph} update={(text) => handleCkChange(text, "promotion_paragraph")} />
                                     </div>
                                 </div>
@@ -213,7 +213,7 @@ const EditPromotions = ({ permission }) => {
                                         <FormControl name="schedule_date" label={"Schedule"} type={'datetime-local'} placeholder="Enter Schedule" className="outline-none mmonth w-full h-[3rem] px-5 rounded-xl" control="input2" />
                                     </div>
                                     {addCar && <div className='antdheight'>
-                                        <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Product List</div>
+                                        <div className="mb-1 block text-[#7D8CA7] text-[.9rem]">Product List</div>
                                         <Select
                                             showSearch
                                             mode="multiple"

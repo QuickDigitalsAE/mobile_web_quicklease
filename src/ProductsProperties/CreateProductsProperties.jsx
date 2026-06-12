@@ -142,7 +142,7 @@ const CreateProductsProperties = () => {
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
             <div className="grid grid-cols-2  gap-2">
               <div className='mt-3'>
-                <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> Type </div>
+                <div className="mb-1 block text-[#7D8CA7] text-[.9rem]"> Type </div>
                 <Field as="select" name="type" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" >
                   <option value="">---select Type ---</option>
                   <option value="general_information">General Information</option>
@@ -155,13 +155,13 @@ const CreateProductsProperties = () => {
           </div>
 
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
-            <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Property</div>
+            <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Property</div>
             <div>
               <label className="mb-1  mt-3 block text-[#7D8CA7] text-[.8rem]">property image </label>
               <OneImageUpload changeImage={setImageLoader} MainImage={datas?.property_image} Update={setDatas} sec_value={"property_image_value"} sec_image={"property_image"} folder_name={"properties_images"} page_type={"properties"} />
             </div>
             <div className='flex justify-between mt-5'>
-              <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Property Value List</div>
+              <div className="h4 text-[#7D8CA7] text-[1.5rem] ">Property Value List</div>
               <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("property_values")} >
                 <span className='users-table-page__addIcon'>
                   <FiPlus />
@@ -191,7 +191,7 @@ const CreateProductsProperties = () => {
             </div>
 
             <div className='mt-3'>
-              <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> Field Type </div>
+              <div className="mb-1 block text-[#7D8CA7] text-[.9rem]"> Field Type </div>
               <Field as="select" name="property_field_type" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" >
                 <option value="">---select Field Type ---</option>
                 <option value="selector">selector</option>
