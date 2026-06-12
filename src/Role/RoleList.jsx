@@ -97,7 +97,7 @@ const RoleList = ({permission}) => {
 
   return (
     <section className='TeamPage users-table-page roles-table-page'>
-      <div className="TeamPageTop users-table-page__top flex justify-between items-center">
+      <div className="TeamPageTop users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center">
         <div>
           {resget.isLoading ? (
             <SkeletonHeading />

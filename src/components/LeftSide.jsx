@@ -211,7 +211,7 @@ const LeftSide = ({ permissions, data }) => {
 
       <div className="dashboard-sidebar__brand">
         <Link onClick={() => handleGetEditValue(false)} className="dashboard-sidebar__brandLink">
-          <span className="dashboard-sidebar__brandBadge">QL</span>
+          <span className="dashboard-sidebar__brandBadge"><img src={require("../dist/webImages/logo.png")} className='rounded-[1rem]' alt="Luxury car" /></span>
           <div>
             <strong>QuickLease</strong>
             <p>Admin workspace</p>

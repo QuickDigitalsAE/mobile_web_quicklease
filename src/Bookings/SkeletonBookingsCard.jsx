@@ -10,7 +10,7 @@ const SkeletonBookingsCard = () => {
   return (
     <SkeletonTheme baseColor="#e7eef7" highlightColor="#f8fbff">
       <section className="bookingPage users-table-page bookings-table-page">
-        <div className="users-table-page__top bookings-table-page__top flex justify-between items-center gap-4">
+        <div className="users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center">
           <div className="flex-1">
             <Skeleton height={22} width={140} />
             <Skeleton height={16} width="72%" className="mt-3" />

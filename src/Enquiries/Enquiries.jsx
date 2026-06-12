@@ -128,9 +128,9 @@ const Enquiries = () => {
 
   return (
     <section className='users-table-page enquiries-table-page'>
-      <div className="users-table-page__top enquiries-table-page__top flex justify-between items-center">
+      <div className="users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center">
         <div>
-          <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka'>
+          <h6 className='text-[1rem] mb-2 relative font-Mluvka'>
             <span>{datas?.length ?? 0}</span> Enquiries
           </h6>
           <p className="users-table-page__subtitle">

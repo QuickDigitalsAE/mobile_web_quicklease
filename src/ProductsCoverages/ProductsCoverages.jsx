@@ -137,7 +137,7 @@ const ProductsCoverages = ({ permission }) => {
 
   return (
     <section className='users-table-page roles-table-page'>
-      <div className="users-table-page__top flex justify-between items-center">
+      <div className="users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center">
         <div>
           <h6 className='text-[1rem] mb-2 relative font-Mluvka capitalize'>
             <span>{datas?.length ?? 0}</span> Coverages

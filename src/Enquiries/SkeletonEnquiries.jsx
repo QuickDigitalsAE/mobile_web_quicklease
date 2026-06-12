@@ -10,7 +10,7 @@ const SkeletonEnquiries = () => {
   return (
     <SkeletonTheme baseColor="#e7eef7" highlightColor="#f8fbff">
       <section className="users-table-page enquiries-table-page">
-        <div className="users-table-page__top enquiries-table-page__top flex justify-between items-center gap-4">
+        <div className="users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center">
           <div className="flex-1">
             <Skeleton height={22} width={150} />
             <Skeleton height={16} width="70%" className="mt-3" />

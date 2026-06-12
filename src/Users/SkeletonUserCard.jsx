@@ -6,7 +6,7 @@ const SkeletonUserCard = () => {
   return (
     <SkeletonTheme baseColor="#e7eef7" highlightColor="#f8fbff">
       <section className='TeamPage users-table-page'>
-        <div className="TeamPageTop users-table-page__top flex justify-between items-center">
+        <div className="TeamPageTop users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center">
           <div className="w-full max-w-[24rem]">
             <Skeleton height={28} width="42%" />
             <Skeleton height={14} width="92%" className="mt-3" />

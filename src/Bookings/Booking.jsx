@@ -242,9 +242,9 @@ const Booking = ({ permission }) => {
 
   return (
     <section className='bookingPage users-table-page bookings-table-page'>
-      <div className="users-table-page__top bookings-table-page__top flex justify-between items-center">
+      <div className="users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center">
         <div>
-          <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka'>
+          <h6 className='text-[1rem] mb-2 relative font-Mluvka'>
             <span>{Array.isArray(datas) ? datas.length : 0}</span> Bookings
           </h6>
           <p className="users-table-page__subtitle">

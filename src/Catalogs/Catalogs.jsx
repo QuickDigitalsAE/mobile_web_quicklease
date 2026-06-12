@@ -152,7 +152,7 @@ const Catalogs = ({ permission }) => {
 
   return (
     <section className="TeamPage users-table-page roles-table-page">
-      <div className="TeamPageTop users-table-page__top flex justify-between items-center gap-4">
+      <div className="TeamPageTop users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center gap-4">
         <div>
           <h6 className="text-[1rem] mb-2 relative font-Mluvka capitalize">
             <span>{paginationn?.total ?? datas?.length ?? 0}</span> Catalogs

@@ -4,7 +4,7 @@ import config from "../services/config.json";
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as yup from "yup";
 import SubmitButton from '../components/SubmitButton';
-import { IoEyeOutline } from 'react-icons/io5';
+import { IoCheckmarkCircle, IoEyeOutline, IoFlashOutline, IoShieldCheckmarkOutline, IoStatsChartOutline } from 'react-icons/io5';
 import usePost from '../customHooks/usePost';
 import { toast } from 'react-toastify';
 import { getTokenSession, setTokenSession } from '../utils/common';
@@ -14,7 +14,7 @@ const LogInPage = () => {
   const [res, apiMethod] = usePost()
 
   useEffect(() => {
-    if(getTokenSession()) {
+    if (getTokenSession()) {
       navigate(`/${config.demo}`)
     }
   }, [navigate])
@@ -31,14 +31,14 @@ const LogInPage = () => {
   const handleSubmit = (values) => {
     let formdata = new FormData();
     for (const item in values) {
-      formdata.append(item,values[item])
+      formdata.append(item, values[item])
     }
-    apiMethod("login",formdata)
+    apiMethod("login", formdata)
   };
   useEffect(() => {
-    if(res.data) {
-      const {status,message,data} = res?.data
-      if(status === false) {
+    if (res.data) {
+      const { status, message, data } = res?.data
+      if (status === false) {
         toast.error(message);
       }
       else {
@@ -47,8 +47,8 @@ const LogInPage = () => {
         navigate("/");
       }
     }
-  }, [res.data])
-  
+  }, [navigate, res.data])
+
 
   const ref = useRef(null);
   const [showPassword, setShowPassword] = useState(false);
@@ -68,33 +68,47 @@ const LogInPage = () => {
   };
 
   return (
-    <div className='login-shell'>
+    <div className='login-shell relative'>
+      <img src={require("../dist/webImages/login.jpg")} className='absolute inset-0 object-cover w-full h-full' alt="Luxury car" />
       <div className="login-shell__panel">
-        <div className="login-shell__hero">
-          <div className="login-shell__heroGlow" />
-          <div className="login-shell__heroCard">
-            <img src={require("../dist/webImages/loginImage.png")} className='login-shell__heroImage' alt="Luxury car" />
-            <div className="login-shell__heroOverlay" />
-            <div className="login-shell__heroContent">
-              <span className="login-shell__eyebrow">QuickLease dashboard</span>
-              <h1>Drive the admin experience with a cleaner, faster workspace.</h1>
-              <p>Sign in to manage bookings, products, users, and campaigns from one refreshed control panel.</p>
-            </div>
-          </div>
-        </div>
+
 
         <div className="login-shell__formWrap">
           <div className='login-shell__formCard'>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit} validateOnChange>
               <Form className="login-shell__form">
-                <div className='logo mb-6'>
-                  <Link to={`/${config.demo}`}>
-                    <img src={require("../dist/webImages/logo.webp")} className='w-[8rem]' alt="QuickLease logo" />
-                  </Link>
+                <div className="login-shell__formTop">
+                  <div className='logo'>
+                    <Link to={`/${config.demo}`}>
+                      <img src={require("../dist/webImages/logo.webp")} className='w-[8rem]' alt="QuickLease logo" />
+                    </Link>
+                  </div>
+                  <div className="login-shell__statusPill">
+                    <span className="login-shell__statusDot" />
+                    Secure access
+                  </div>
                 </div>
-                <span className="login-shell__eyebrow">Welcome back</span>
-                <h2 className='login-shell__title'>Login</h2>
-                <p className="login-shell__subtitle">Use your account credentials to continue to the admin dashboard.</p>
+
+                <div className="login-shell__intro">
+                  <span className="login-shell__eyebrow login-shell__eyebrow--solid">Welcome back</span>
+                  <h2 className='login-shell__title'>Sign in to your control center</h2>
+                  <p className="login-shell__subtitle">Use your account credentials to continue into the admin dashboard and keep operations moving.</p>
+                </div>
+
+                <div className="login-shell__featureRow">
+                  <div className="login-shell__featureChip">
+                    <IoFlashOutline />
+                    <span>Fast workflow</span>
+                  </div>
+                  <div className="login-shell__featureChip">
+                    <IoShieldCheckmarkOutline />
+                    <span>Protected sessions</span>
+                  </div>
+                  <div className="login-shell__featureChip">
+                    <IoStatsChartOutline />
+                    <span>Smart oversight</span>
+                  </div>
+                </div>
 
                 <div className='inputBox mb-4'>
                   <label htmlFor="" className='capitalize'>Email address</label>
@@ -134,6 +148,17 @@ const LogInPage = () => {
                   }}
                   buttonLoading={res.isLoading}
                 />
+
+                <div className="login-shell__trustRow">
+                  <div className="login-shell__trustItem">
+                    <IoCheckmarkCircle />
+                    <span>Encrypted credentials</span>
+                  </div>
+                  <div className="login-shell__trustItem">
+                    <IoCheckmarkCircle />
+                    <span>Admin-only workspace</span>
+                  </div>
+                </div>
               </Form>
             </Formik>
           </div>

@@ -184,9 +184,9 @@ const ProductsMain = ({ permission }) => {
 
   return (
     <section className="users-table-page products-table-page">
-      <div className="users-table-page__top products-table-page__top flex justify-between items-center gap-4">
+      <div className="users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center">
         <div>
-          <h6 className="text-[1rem] mb-2 relative px-3 font-Mluvka capitalize">
+          <h6 className="text-[1rem] mb-2 relative font-Mluvka capitalize">
             <span>{Array.isArray(datas) ? datas.length : 0}</span> Products
           </h6>
           <p className="users-table-page__subtitle">

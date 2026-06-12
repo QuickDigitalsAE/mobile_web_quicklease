@@ -9,7 +9,7 @@ const SkeletonPromotionsCard = () => {
   return (
     <SkeletonTheme baseColor="#e7eef7" highlightColor="#f8fbff">
       <section className="Promotions users-table-page roles-table-page">
-        <div className="TeamPageTop users-table-page__top flex justify-between items-center gap-4">
+        <div className="TeamPageTop users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center gap-4">
           <div className="flex-1">
             <Skeleton height={24} width={164} />
             <Skeleton height={16} width="64%" className="mt-3" />
