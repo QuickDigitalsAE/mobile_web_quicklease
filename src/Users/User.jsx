@@ -2,10 +2,10 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Table } from 'antd'
 import { FiArrowUpRight, FiEdit3, FiMail, FiPlus } from 'react-icons/fi'
-import plus from '../dist/webImages/plus.svg'
 import profileImg from '../dist/webImages/profile.png'
 import useFetch from '../customHooks/useFetch'
 import SkeletonUserCard from './SkeletonUserCard'
+import ListPageHero from '../components/ListPageHero'
 
 const User = ({ permission }) => {
   const { loading, data } = useFetch(`allUsers`)
@@ -98,43 +98,26 @@ const User = ({ permission }) => {
 
   return (
     <section className='TeamPage users-table-page'>
-      <div className="TeamPageTop users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center">
-        <div>
-          <>
-            <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka'>
-              <span>{datas?.length ?? 0}</span> Users
-            </h6>
-            <p className="users-table-page__subtitle">
-              Review team accounts, status, and edit access from a cleaner table view.
-            </p>
-          </>
-        </div>
-        {canAddUsers && (
+      <ListPageHero
+        title="Users"
+        count={datas?.length ?? 0}
+        subtitle="Review team accounts, status, and edit access from a cleaner table view."
+        action={canAddUsers ? (
           <Link to={"/users/create"} className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer'>
             <span className="users-table-page__addIcon">
               <FiPlus />
             </span>
             <span className='font-MluvkaBold text-secondary capitalize'>Add User</span>
           </Link>
-        )}
-      </div>
+        ) : null}
+        stats={[
+          { label: 'Total accounts', value: datas?.length ?? 0 },
+          { label: 'Enabled', value: Array.isArray(datas) ? datas.filter((item) => item.user_enabled === 1).length : 0 },
+          { label: 'Disabled', value: Array.isArray(datas) ? datas.filter((item) => item.user_enabled !== 1).length : 0 },
+        ]}
+      />
 
       <div className="users-table-page__panel">
-        <div className="users-table-page__stats">
-          <article>
-            <span>Total accounts</span>
-            <strong>{datas?.length ?? 0}</strong>
-          </article>
-          <article>
-            <span>Enabled</span>
-            <strong>{Array.isArray(datas) ? datas.filter((item) => item.user_enabled === 1).length : 0}</strong>
-          </article>
-          <article>
-            <span>Disabled</span>
-            <strong>{Array.isArray(datas) ? datas.filter((item) => item.user_enabled !== 1).length : 0}</strong>
-          </article>
-        </div>
-
         <div className="users-table-page__tableWrap">
           <Table
             rowKey={(record) => record.id}
