@@ -177,15 +177,15 @@ const a = Object.entries(locations).map(([key, value]) => ({
         <Form name="myForm">
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
             <div className="grid grid-cols-2  gap-2">
-            <FormControl name="title" label={"title"} placeholder="Enter title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#ddd]" control="input2" />
-            <FormControl name="tooltip" label={"tooltip"} placeholder="Enter tooltip" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#ddd]" control="input2" />
+            <FormControl name="title" label={"title"} placeholder="Enter title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3] border border-[#ddd]" control="input2" />
+            <FormControl name="tooltip" label={"tooltip"} placeholder="Enter tooltip" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3] border border-[#ddd]" control="input2" />
               </div>
               <div className="mb-1 block text-[#7D8CA7] text-[.8rem]">Description</div>
             <CKEditors label={"description"} folder_name={"description"} page_type={"products"} data={description} update={(text) => handleCkChange(text, "description")} />
 
             <div className="grid grid-cols-2  gap-2">
-            <FormControl name="less_30_days_price" label={"less 30 days price"} placeholder="Enter less 30 days price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#ddd]" control="input2" />
-            <FormControl name="more_30_days_price" label={"more 30 days price"} placeholder="Enter more 30 days price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#ddd]" control="input2" />
+            <FormControl name="less_30_days_price" label={"less 30 days price"} placeholder="Enter less 30 days price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3] border border-[#ddd]" control="input2" />
+            <FormControl name="more_30_days_price" label={"more 30 days price"} placeholder="Enter more 30 days price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3] border border-[#ddd]" control="input2" />
               </div>
           </div>
 
@@ -202,11 +202,11 @@ const a = Object.entries(locations).map(([key, value]) => ({
                         <div className="h2">{location}</div>
                       <div className="inputBox w-full mt-3">
                         <label htmlFor="" className="mb-1 text-[#7D8CA7] text-[.8rem] flex justify-between capitalize">Less 30 Days Price</label>
-                        <input name='less_30_days_price' placeholder={`Enter ${location.replaceAll("_"," ")}`} className="outline-none w-full h-[3rem] px-5 rounded-xl" value={less_30_days_price} onChange={(e) => handleInputChange2(e, "locations", index)} />
+                        <input name='less_30_days_price' placeholder={`Enter ${location.replaceAll("_"," ")}`} className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" value={less_30_days_price} onChange={(e) => handleInputChange2(e, "locations", index)} />
                       </div>
                       <div className="inputBox w-full mt-3">
                         <label htmlFor="" className="mb-1 text-[#7D8CA7] text-[.8rem] flex justify-between capitalize">More 30 Days Price</label>
-                        <input name='more_30_days_price' placeholder={`Enter ${location.replaceAll("_"," ")}`} className="outline-none w-full h-[3rem] px-5 rounded-xl" value={more_30_days_price} onChange={(e) => handleInputChange2(e, "locations", index)} />
+                        <input name='more_30_days_price' placeholder={`Enter ${location.replaceAll("_"," ")}`} className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" value={more_30_days_price} onChange={(e) => handleInputChange2(e, "locations", index)} />
                       </div>
                     </div>
                   )

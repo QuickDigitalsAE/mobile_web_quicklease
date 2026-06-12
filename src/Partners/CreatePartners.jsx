@@ -120,8 +120,8 @@ const CreatePartners = () => {
                 <Form name="myForm" className="product-create-page__form">
                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
                         <div className="grid grid-cols-2 gap-2">
-                            <FormControl name="partner_slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[red]" control="input2" />
-                            <FormControl name="meta_title" label={"Meta Title"} placeholder="Enter Meta Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+                            <FormControl name="partner_slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3] border border-[red]" control="input2" />
+                            <FormControl name="meta_title" label={"Meta Title"} placeholder="Enter Meta Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                         </div>
                         <div className="grid  gap-2">
                             <FormControl name="meta_description" label={"Meta Description"} placeholder="Enter Meta Description" className="outline-none w-full h-[10rem] px-5 py-3 rounded-xl resize-none" control="textarea2" />
@@ -129,7 +129,7 @@ const CreatePartners = () => {
                     </div>
                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Partners</div>
-                        <FormControl name="partner_title" label={"Heading {h1}"} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+                        <FormControl name="partner_title" label={"Heading {h1}"} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                         <br />
                         <div className="mb-1 block text-[#7D8CA7] text-[.8rem]">Main Paragraph</div>
                         <CKEditors label={"Main Paragraph"}  folder_name={"paratners_images"} page_type={"paratners"} data={partner_paragraph} update={(text) => handleCkChange(text, "partner_paragraph")} />

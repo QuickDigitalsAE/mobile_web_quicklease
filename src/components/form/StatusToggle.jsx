@@ -12,7 +12,7 @@ const StatusToggle = ({
   const inputId = id || `${name}-toggle`;
 
   return (
-    <section className="user-create-page__section user-create-page__section--toggle">
+    <section className="user-create-page__section user-create-page__section--toggle mt-4">
       <div className="user-create-page__toggleRow">
         <div>
           <h3>{label}</h3>

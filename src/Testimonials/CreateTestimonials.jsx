@@ -143,9 +143,9 @@ const CreateTestimonials = () => {
               <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
                 <div className="grid grid-cols-2 gap-2">
 
-                  <FormControl name="client_name" label={"Name"} placeholder="Enter Name" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
-                  <FormControl name="client_email" type="email" label={"Email"} placeholder="Enter Email" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
-                  <FormControl name="client_phone" label={"Phone"} placeholder="Enter Phone" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+                  <FormControl name="client_name" label={"Name"} placeholder="Enter Name" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
+                  <FormControl name="client_email" type="email" label={"Email"} placeholder="Enter Email" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
+                  <FormControl name="client_phone" label={"Phone"} placeholder="Enter Phone" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                 </div>
               </div>
               <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>

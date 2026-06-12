@@ -151,14 +151,14 @@ const EditProductsProperties = ({ permission }) => {
             <div className="grid grid-cols-2  gap-2">
               <div className='mt-3'>
                 <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> Type </div>
-                <Field as="select" name="type" className="outline-none w-full h-[3rem] px-5 rounded-xl" >
+                <Field as="select" name="type" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" >
                   <option value="">---select Type ---</option>
                   <option value="general_information">General Information</option>
                   <option value="car_options">Car Options</option>
                   <option value="car_services">Car Services</option>
                 </Field>
               </div>
-              <FormControl name="property_title" label={"Heading {h1}"} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+              <FormControl name="property_title" label={"Heading {h1}"} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
             </div>
           </div>
 
@@ -190,7 +190,7 @@ const EditProductsProperties = ({ permission }) => {
                       </div>
                       <div className="inputBox w-full mt-3">
                         <label htmlFor="" className="mb-1 text-[#7D8CA7] text-[.8rem] flex justify-between"><span>Values</span>  <span>{(index + 1) >= 10 ? (index + 1) : `0${(index + 1)}`}</span></label>
-                        <input name='title' placeholder="Enter Values" className="outline-none w-full h-[3rem] px-5 rounded-xl" value={item} onChange={(e) => handleInputChange2(e, "property_values", index)} />
+                        <input name='title' placeholder="Enter Values" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" value={item} onChange={(e) => handleInputChange2(e, "property_values", index)} />
                       </div>
                     </div>
                   )
@@ -200,7 +200,7 @@ const EditProductsProperties = ({ permission }) => {
 
             <div className='mt-3'>
               <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> Field Type </div>
-              <Field as="select" name="property_field_type" className="outline-none w-full h-[3rem] px-5 rounded-xl" >
+              <Field as="select" name="property_field_type" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" >
                 <option value="">---select Field Type ---</option>
                 <option value="selector">selector</option>
                 <option value="input">input</option>

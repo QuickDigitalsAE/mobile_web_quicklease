@@ -484,7 +484,7 @@ const EditProducts = ({ permission }) => {
               <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Slug - {slugs.all_slugs}</div>
               {
                 mainLanguage === "en" ?
-                  <input value={slugs?.slugs ?? ""} onChange={handleSlugUpdate} name="slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[red]" control="input2" />
+                  <input value={slugs?.slugs ?? ""} onChange={handleSlugUpdate} name="slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3] border border-[red]" control="input2" />
                   :
                   <div className='inputBox w-full mt-3'>
                     <p className="outline-none bg-[#e7e7e7] w-full h-[3rem] px-5 rounded-xl py-3">{datas?.slug}</p>
@@ -495,7 +495,7 @@ const EditProducts = ({ permission }) => {
             {mainLanguage === "en" && <div className="grid grid-cols-2 gap-2">
               <div>
                 <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> Catalog</div>
-                <select value={parent_id ?? ""} onChange={handleParent} name="catalog_id" className="outline-none w-full h-[3rem] px-5 rounded-xl" >
+                <select value={parent_id ?? ""} onChange={handleParent} name="catalog_id" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" >
                   <option value="">---select Parent ---</option>
                   {Array.isArray(catlogsList) &&
                     catlogsList.map((item) => {
@@ -516,7 +516,7 @@ const EditProducts = ({ permission }) => {
               </div>
               <div>
                 <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Class Auto</div>
-                <select value={datas?.vehicle_type} onChange={(e) => handletype(e.target.value, "vehicle_type")} name="vehicle_type" className="outline-none w-full h-[3rem] px-5 rounded-xl"  >
+                <select value={datas?.vehicle_type} onChange={(e) => handletype(e.target.value, "vehicle_type")} name="vehicle_type" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]"  >
                   <option value={""}>---select Class Auto ---</option>
                   <option value={"economy"}>Economy</option>
                   <option value={"suv"}>SUV</option>
@@ -559,7 +559,7 @@ const EditProducts = ({ permission }) => {
               </div>
             </div>}
 
-            <FormControl name="meta_title" label={"Meta Title"} placeholder="Enter Meta Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+            <FormControl name="meta_title" label={"Meta Title"} placeholder="Enter Meta Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
 
             <div className="grid  gap-2">
               <FormControl name="meta_description" label={"Meta Description"} placeholder="Enter Meta Description" className="outline-none w-full h-[10rem] px-5 py-3 rounded-xl resize-none" control="textarea2" />
@@ -570,9 +570,9 @@ const EditProducts = ({ permission }) => {
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Products</div>
-            <FormControl name="product_title" label={"Product Title "} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+            <FormControl name="product_title" label={"Product Title "} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
             <br />
-            <FormControl name="heading_one" label={"Heading {h1}"} placeholder="Enter Heading One" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+            <FormControl name="heading_one" label={"Heading {h1}"} placeholder="Enter Heading One" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
 
             <br />
 
@@ -631,65 +631,65 @@ const EditProducts = ({ permission }) => {
           {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Price Monthly</div>
             <div className='grid grid-cols-2 gap-4'>
-              <FormControl name="monthly_price" label={"Price"} placeholder="Enter Price" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
-              <FormControl name="old_monthly_price" label={"Old Price"} placeholder="Enter Old Price" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+              <FormControl name="monthly_price" label={"Price"} placeholder="Enter Price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
+              <FormControl name="old_monthly_price" label={"Old Price"} placeholder="Enter Old Price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
             </div>
           </div>}
           {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Price Weekly</div>
             <div className='grid grid-cols-2 gap-4'>
-              <FormControl name="weekly_price" label={"Price"} placeholder="Enter Price" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
-              <FormControl name="old_weekly_price" label={"Old Price"} placeholder="Enter Old Price" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+              <FormControl name="weekly_price" label={"Price"} placeholder="Enter Price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
+              <FormControl name="old_weekly_price" label={"Old Price"} placeholder="Enter Old Price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
             </div>
           </div>}
           {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Price Daily</div>
             <div className='grid grid-cols-2 gap-4'>
-              <FormControl name="daily_price" label={"Price"} placeholder="Enter Price" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
-              <FormControl name="old_daily_price" label={"Old Price"} placeholder="Enter Old Price" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+              <FormControl name="daily_price" label={"Price"} placeholder="Enter Price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
+              <FormControl name="old_daily_price" label={"Old Price"} placeholder="Enter Old Price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
             </div>
           </div>}
 
           {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> Flexible Rentals</div>
             <div className='grid grid-cols-2 gap-4'>
-              <FormControl name="cars_monthly_price" label={"Monthly Price"} placeholder="Enter Monthly Price" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
-              <FormControl name="cars_yearly_price" label={"Yearly Price"} placeholder="Enter Yearly Price" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+              <FormControl name="cars_monthly_price" label={"Monthly Price"} placeholder="Enter Monthly Price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
+              <FormControl name="cars_yearly_price" label={"Yearly Price"} placeholder="Enter Yearly Price" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
             </div>
           </div>}
 
           {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className='grid grid-cols-2 gap-4'>
-              <FormControl name="model" label={"Model"} placeholder="Enter Model" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
-              <FormControl name="year" label={"Yearly"} placeholder="Enter Yearly" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+              <FormControl name="model" label={"Model"} placeholder="Enter Model" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
+              <FormControl name="year" label={"Yearly"} placeholder="Enter Yearly" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
             </div>
           </div>}
 
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className='grid grid-cols-2 gap-4'>
-              <FormControl name="installment_per_month" label={"Installment Per Month"} placeholder="Enter Installment Per Month" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
-              <FormControl name="installment_per_month_with_down" label={"Installment Per Month With Down"} placeholder="Enter Installment Per Month With Down" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
-              <FormControl name="installment_per_month_final_term" label={"Installment Per Month Final Term"} placeholder="Enter Installment Per Month Final Term" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
-              <FormControl name="down_payment" label={"Down Payment"} placeholder="Enter Down Payment" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+              <FormControl name="installment_per_month" label={"Installment Per Month"} placeholder="Enter Installment Per Month" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
+              <FormControl name="installment_per_month_with_down" label={"Installment Per Month With Down"} placeholder="Enter Installment Per Month With Down" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
+              <FormControl name="installment_per_month_final_term" label={"Installment Per Month Final Term"} placeholder="Enter Installment Per Month Final Term" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
+              <FormControl name="down_payment" label={"Down Payment"} placeholder="Enter Down Payment" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
             </div>
           </div>
 
           {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Security Deposit</div>
             <div className='grid grid-cols-2 gap-4'>
-              <FormControl name="security_deposit" label={"Security Deposit"} placeholder="Enter Security Deposit" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+              <FormControl name="security_deposit" label={"Security Deposit"} placeholder="Enter Security Deposit" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
             </div>
           </div>}
           {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className='grid grid-cols-2 gap-4'>
-              <FormControl name="pay_now_discount" label={"Pay Now Discount"} placeholder="Enter Pay Now Discount" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+              <FormControl name="pay_now_discount" label={"Pay Now Discount"} placeholder="Enter Pay Now Discount" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
             </div>
           </div>}
           {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Security Deposit waiver</div>
             <div className='grid grid-cols-2 gap-4'>
-              <FormControl name="security_deposit_waiver_daily" label={"security deposit waiver daily"} placeholder="Enter security deposit waiver daily" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
-              <FormControl name="security_deposit_waiver_monthly" label={"security deposit waiver monthly"} placeholder="Enter security deposit waiver monthly" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+              <FormControl name="security_deposit_waiver_daily" label={"security deposit waiver daily"} placeholder="Enter security deposit waiver daily" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
+              <FormControl name="security_deposit_waiver_monthly" label={"security deposit waiver monthly"} placeholder="Enter security deposit waiver monthly" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
             </div>
           </div>}
 
@@ -717,11 +717,11 @@ const EditProducts = ({ permission }) => {
                       </div>
                       <div className="inputBox w-full mt-3">
                         <label htmlFor="" className="mb-1 text-[#7D8CA7] text-[.8rem] flex justify-between"><span>Months</span>  <span>{(index + 1) >= 10 ? (index + 1) : `0${(index + 1)}`}</span></label>
-                        <input name='months' placeholder="Enter Months" className="outline-none w-full h-[3rem] px-5 rounded-xl" value={months} onChange={(e) => handleInputChange2(e, "flexible_cars_monthly_prices", index)} />
+                        <input name='months' placeholder="Enter Months" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" value={months} onChange={(e) => handleInputChange2(e, "flexible_cars_monthly_prices", index)} />
                       </div>
                       <div className="inputBox w-full mt-3">
                         <label htmlFor="" className="mb-1 text-[#7D8CA7] text-[.8rem] flex justify-between"><span>Values</span>  <span>{(index + 1) >= 10 ? (index + 1) : `0${(index + 1)}`}</span></label>
-                        <input name='value' placeholder="Enter Value" className="outline-none w-full h-[3rem] px-5 rounded-xl" value={value} onChange={(e) => handleInputChange2(e, "flexible_cars_monthly_prices", index)} />
+                        <input name='value' placeholder="Enter Value" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" value={value} onChange={(e) => handleInputChange2(e, "flexible_cars_monthly_prices", index)} />
                       </div>
                     </div>
                   )
@@ -753,11 +753,11 @@ const EditProducts = ({ permission }) => {
                       </div>
                       <div className="inputBox w-full mt-3">
                         <label htmlFor="" className="mb-1 text-[#7D8CA7] text-[.8rem] flex justify-between"><span>Months</span>  <span>{(index + 1) >= 10 ? (index + 1) : `0${(index + 1)}`}</span></label>
-                        <input name='months' placeholder="Enter Months" className="outline-none w-full h-[3rem] px-5 rounded-xl" value={months} onChange={(e) => handleInputChange2(e, "personal_cars_monthly_prices", index)} />
+                        <input name='months' placeholder="Enter Months" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" value={months} onChange={(e) => handleInputChange2(e, "personal_cars_monthly_prices", index)} />
                       </div>
                       <div className="inputBox w-full mt-3">
                         <label htmlFor="" className="mb-1 text-[#7D8CA7] text-[.8rem] flex justify-between"><span>Values</span>  <span>{(index + 1) >= 10 ? (index + 1) : `0${(index + 1)}`}</span></label>
-                        <input name='value' placeholder="Enter Value" className="outline-none w-full h-[3rem] px-5 rounded-xl" value={value} onChange={(e) => handleInputChange2(e, "personal_cars_monthly_prices", index)} />
+                        <input name='value' placeholder="Enter Value" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" value={value} onChange={(e) => handleInputChange2(e, "personal_cars_monthly_prices", index)} />
                       </div>
                     </div>
                   )
@@ -785,7 +785,7 @@ const EditProducts = ({ permission }) => {
                             <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> {property.property_title} </div>
                             {property.property_field_type === "input" ? (
                               <input
-                                className="outline-none w-full h-[3rem] px-5 rounded-xl"
+                                className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]"
                                 value={existingValue}
                                 onChange={(e) =>
                                   handleChange3(category, property.property_id, e.target.value)
@@ -793,7 +793,7 @@ const EditProducts = ({ permission }) => {
                               />
                             ) : (property.property_field_type === "selector" || property.property_field_type === "radio") ? (
                               <select
-                                className="outline-none w-full h-[3rem] px-5 rounded-xl"
+                                className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]"
                                 value={existingValue}
                                 onChange={(e) =>
                                   handleChange3(category, property.property_id, e.target.value)
@@ -846,11 +846,11 @@ const EditProducts = ({ permission }) => {
                       <div className='grid grid-cols-2 gap-3'>
                         <div>
                           <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> Less 30 Days Price </div>
-                          <input className="outline-none w-full h-[3rem] px-5 rounded-xl" value={less_30_days_price} onChange={(e) => handleChangeCoverages(coverage_id, e.target.value, "less_30_days_price")} />
+                          <input className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" value={less_30_days_price} onChange={(e) => handleChangeCoverages(coverage_id, e.target.value, "less_30_days_price")} />
                         </div>
                         <div>
                           <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> More 30 Days Price </div>
-                          <input className="outline-none w-full h-[3rem] px-5 rounded-xl" value={more_30_days_price} onChange={(e) => handleChangeCoverages(coverage_id, e.target.value, "more_30_days_price")} />
+                          <input className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" value={more_30_days_price} onChange={(e) => handleChangeCoverages(coverage_id, e.target.value, "more_30_days_price")} />
                         </div>
                       </div>
                     </div>
@@ -863,7 +863,7 @@ const EditProducts = ({ permission }) => {
           {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div>
               <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Specification Auto</div>
-              <select value={datas?.specification_auto} onChange={(e) => handletype(e.target.value, "specification_auto")} name="specification_auto" className="outline-none w-full h-[3rem] px-5 rounded-xl"  >
+              <select value={datas?.specification_auto} onChange={(e) => handletype(e.target.value, "specification_auto")} name="specification_auto" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]"  >
                 <option value={""}>---select specification Auto ---</option>
                 <option value={"1"}>Full Option (Roof hatch, Apple CarPlay / Android Auto, Cruise control )</option>
                 <option value={"2"}>Medium Option ( Multimedia system, 4 power windows, Cruise control)</option>

@@ -260,6 +260,7 @@ body {
 }
 
 .dashboard-home {
+  padding: 16px;
   display: grid;
   gap: 18px;
 }

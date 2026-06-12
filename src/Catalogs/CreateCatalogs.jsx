@@ -392,10 +392,13 @@ const CreateCatalogs = () => {
                     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
                         <Form name="myForm" className="product-create-page__form">
                             <div className="bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3">
-                                <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Slug - {slugs.all_slugs}</div>
-                                <input value={slugs?.slugs ?? ""} onChange={handleSlugUpdate} name="slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[red]" control="input2" />
+                                
                                 <div className="grid grid-cols-2 gap-2">
-                                    <FormControl name="meta_title" label={"Meta Title"} placeholder="Enter Meta Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+                                    <div className="">
+                                        <div className="h4 text-[#7D8CA7] text-[.8rem] mt-[0.25rem] mb-1">Slug - {slugs.all_slugs}</div>
+                                        <input value={slugs?.slugs ?? ""} onChange={handleSlugUpdate} name="slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[2.5rem] px-5 rounded-xl border border-[#c4d0e3] border border-[red]" control="input2" />
+                                    </div>
+                                    <FormControl name="meta_title" label={"Meta Title"} placeholder="Enter Meta Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                 </div>
                                 <div className="grid  gap-2">
                                     <FormControl name="meta_description" label={"Meta Description"} placeholder="Enter Meta Description" className="outline-none w-full h-[10rem] px-5 py-3 rounded-xl resize-none" control="textarea2" />
@@ -407,7 +410,7 @@ const CreateCatalogs = () => {
                                         <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">
                                             Type
                                         </div>
-                                        <select value={datas?.type} onChange={(e) => handletype(e.target.value, "type")} name="type" className="outline-none w-full h-[3rem] px-5 rounded-xl"  >
+                                        <select value={datas?.type} onChange={(e) => handletype(e.target.value, "type")} name="type" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]"  >
                                             <option value={""}>---select Type ---</option>
                                             <option value={"lease"}>Lease</option>
                                             <option value={"our_locations"}>Our Locations</option>
@@ -420,7 +423,7 @@ const CreateCatalogs = () => {
                                         <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">
                                             new style page type
                                         </div>
-                                        <select value={datas?.new_style_page_type} onChange={(e) => handletype(e.target.value, "new_style_page_type")} name="new_style_page_type" className="outline-none w-full h-[3rem] px-5 rounded-xl"  >
+                                        <select value={datas?.new_style_page_type} onChange={(e) => handletype(e.target.value, "new_style_page_type")} name="new_style_page_type" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]"  >
                                             <option value={""}>---select new style page type ---</option>
                                             <option value={"our_fleet"}>Our Fleet</option>
                                             <option value={"car_brands"}>Car Brands</option>
@@ -430,7 +433,7 @@ const CreateCatalogs = () => {
                                         <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">
                                             Parent
                                         </div>
-                                        <select value={parent_id ?? ""} onChange={handleParent} name="parent_id" className="outline-none w-full h-[3rem] px-5 rounded-xl" >
+                                        <select value={parent_id ?? ""} onChange={handleParent} name="parent_id" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" >
                                             <option value="">---select Parent ---</option>
                                             {Array.isArray(catlogsList) &&
                                                 catlogsList.map((item) => {
@@ -457,12 +460,12 @@ const CreateCatalogs = () => {
                                 {datas?.type === "car_brands" && <><label className="mb-1  mt-3 block text-[#7D8CA7] text-[.8rem]">Brand logo</label>
                                     <OneImageUpload changeImage={setImageLoader} MainImage={datas?.brand_logo} Update={setDatas} sec_value={"brand_logo_value"} sec_image={"brand_logo"} folder_name={"catalog_banner_image"} page_type={"catalog"} /></>}
 
-                                <FormControl name="catalog_title" label={"catalog title "} placeholder="Enter catalog Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
-                                <FormControl name="title" label={"Heading {h1}"} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+                                <FormControl name="catalog_title" label={"catalog title "} placeholder="Enter catalog Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
+                                <FormControl name="title" label={"Heading {h1}"} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                 <br />
                                 <FormControl name="banner_paragraph" label={"Banner Paragraph"} placeholder="Enter Heading" className="outline-none pt-2 w-full h-[10rem] px-5 rounded-xl" control="textarea" />
                                 <br />
-                                <FormControl name="product_heading" label={"product heading"} placeholder="Enter Product Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+                                <FormControl name="product_heading" label={"product heading"} placeholder="Enter Product Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                 <br />
                                 <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Description</div>
                                 <CKEditors label={"Description"} data={description} update={(text) => handleCkChange(text, "description")} />
@@ -494,7 +497,7 @@ const CreateCatalogs = () => {
                                                             </div>
                                                             <div className="inputBox w-full mt-3">
                                                                 <label htmlFor="" className="mb-1 text-[#7D8CA7] text-[.8rem] flex justify-between"><span>Heading</span>  <span>{(index + 1) >= 10 ? (index + 1) : `0${(index + 1)}`}</span></label>
-                                                                <input name="title" placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" value={title} onChange={(e) => handleInputChange2(e, "banner", index)} />
+                                                                <input name="title" placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" value={title} onChange={(e) => handleInputChange2(e, "banner", index)} />
                                                             </div>
                                                             <div className='mb-2'>
                                                                 <label className="mb-1  mt-3 block text-[#7D8CA7] text-[.8rem]">banner Image</label>
@@ -519,7 +522,7 @@ const CreateCatalogs = () => {
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
                                     </div>
-                                    <FormControl name="sec_one_heading" label={"Section 1 Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+                                    <FormControl name="sec_one_heading" label={"Section 1 Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                     <br />
                                     <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Section 1 Description</div>
                                     <CKEditors label={"Description"} data={sec_one_description} update={(text) => handleCkChange(text, "sec_one_description")} />
@@ -568,7 +571,7 @@ const CreateCatalogs = () => {
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
                                     </div>
-                                    <FormControl name="sec_two_heading" label={"Section 2 Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+                                    <FormControl name="sec_two_heading" label={"Section 2 Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                     <br />
                                     <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Section 2 Description</div>
                                     <CKEditors label={"Description"} data={sec_two_description} update={(text) => handleCkChange(text, "sec_two_description")} />
@@ -587,7 +590,7 @@ const CreateCatalogs = () => {
                                                         </div>
                                                         <div className="inputBox w-full mt-3">
                                                             <label htmlFor="" className="mb-1 text-[#7D8CA7] text-[.8rem] flex justify-between"><span>Heading</span>  <span>{(index + 1) >= 10 ? (index + 1) : `0${(index + 1)}`}</span></label>
-                                                            <input name="title" placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" value={title} onChange={(e) => handleInputChange2(e, "sec_two", index)} />
+                                                            <input name="title" placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" value={title} onChange={(e) => handleInputChange2(e, "sec_two", index)} />
                                                         </div>
                                                         <div className="inputBox w-full mt-3">
                                                             <label htmlFor="" className="mb-1 block text-[#7D8CA7] text-[.8rem]">Paragraph</label>
@@ -609,7 +612,7 @@ const CreateCatalogs = () => {
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 3</div>
                                     </div>
-                                    <FormControl name="sec_three_heading" label={"Section 4 Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+                                    <FormControl name="sec_three_heading" label={"Section 4 Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                     <br />
                                     <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Section 3 Description</div>
                                     <CKEditors label={"Description"} data={sec_three_description} update={(text) => handleCkChange(text, "sec_three_description")} />
@@ -626,7 +629,7 @@ const CreateCatalogs = () => {
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
                                     </div>
-                                    <FormControl name="sec_four_heading" label={"Section 4 Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+                                    <FormControl name="sec_four_heading" label={"Section 4 Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                     <br />
                                     <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Section 4 Description</div>
                                     <CKEditors label={"Description"} data={sec_four_description} update={(text) => handleCkChange(text, "sec_four_description")} />
@@ -645,7 +648,7 @@ const CreateCatalogs = () => {
                                                         </div>
                                                         <div className="inputBox w-full mt-3">
                                                             <label htmlFor="" className="mb-1 text-[#7D8CA7] text-[.8rem] flex justify-between"><span>Heading</span>  <span>{(index + 1) >= 10 ? (index + 1) : `0${(index + 1)}`}</span></label>
-                                                            <input name="title" placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" value={title} onChange={(e) => handleInputChange2(e, "sec_four", index)} />
+                                                            <input name="title" placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" value={title} onChange={(e) => handleInputChange2(e, "sec_four", index)} />
                                                         </div>
                                                         <div className="inputBox w-full mt-3">
                                                             <label htmlFor="" className="mb-1 block text-[#7D8CA7] text-[.8rem]">Paragraph</label>
@@ -674,7 +677,7 @@ const CreateCatalogs = () => {
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
                                     </div>
-                                    <FormControl name="sec_faqs_heading" label={"Faqs Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+                                    <FormControl name="sec_faqs_heading" label={"Faqs Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
 
                                     <div className="section4Main grid grid-cols-2 gap-3 mt-4 max-lg:grid-cols-1">
                                         {
@@ -717,7 +720,7 @@ const CreateCatalogs = () => {
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
                                     </div>
-                                    <FormControl name="testimonials_title" label={"Testimonials Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+                                    <FormControl name="testimonials_title" label={"Testimonials Title"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
 
                                     <div className="section4Main grid grid-cols-2 gap-3 mt-4 max-lg:grid-cols-1">
                                         {
@@ -736,7 +739,7 @@ const CreateCatalogs = () => {
                                                             </label>
                                                             <div className="inputBox w-full mt-3">
                                                                 <label htmlFor="" className="mb-1 text-[#7D8CA7] text-[.8rem] flex justify-between"><span>Heading</span>  <span>{(index + 1) >= 10 ? (index + 1) : `0${(index + 1)}`}</span></label>
-                                                                <input name="name" placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" value={name} onChange={(e) => handleInputChange2(e, "sec_testimonials", index)} />
+                                                                <input name="name" placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" value={name} onChange={(e) => handleInputChange2(e, "sec_testimonials", index)} />
                                                             </div>
                                                         </div>
                                                         <div className=''>

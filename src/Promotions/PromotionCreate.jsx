@@ -162,8 +162,8 @@ const PromotionCreate = ({ permission }) => {
                         <Form name="myForm" className="product-create-page__form">
                             <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
                                 <div className="grid grid-cols-2 gap-2">
-                                    <FormControl name="promotion_slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[red]" control="input2" />
-                                    <FormControl name="meta_title" label={"Meta Title"} placeholder="Enter Meta Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+                                    <FormControl name="promotion_slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3] border border-[red]" control="input2" />
+                                    <FormControl name="meta_title" label={"Meta Title"} placeholder="Enter Meta Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                 </div>
                                 <div className="grid  gap-2">
                                     <FormControl name="meta_description" label={"Meta Description"} placeholder="Enter Meta Description" className="outline-none w-full h-[10rem] px-5 py-3 rounded-xl resize-none" control="textarea2" />
@@ -172,8 +172,8 @@ const PromotionCreate = ({ permission }) => {
                             <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                 <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Promotion</div>
                                 <div className="grid grid-cols-2 gap-4">
-                                    <FormControl name="promotion_title" label={"Title {h1}"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
-                                    <FormControl name="promotion_heading" label={"Heading"} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+                                    <FormControl name="promotion_title" label={"Title {h1}"} placeholder="Enter Title" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
+                                    <FormControl name="promotion_heading" label={"Heading"} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[#c4d0e3]" control="input2" />
                                 </div>
                                 <br />
                                 <div className="grid grid-cols-2 gap-4">

@@ -230,7 +230,7 @@ const UserCreate = () => {
                       </div>
                     </section>
 
-                    <section className="user-create-page__section user-create-page__section--toggle">
+                    <section className="user-create-page__section user-create-page__section--toggle mt-4">
                       <div className="user-create-page__toggleRow">
                         <div>
                           <h3>Account Status</h3>
