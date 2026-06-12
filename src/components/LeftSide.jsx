@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react'
+import React, { useContext, useEffect, useMemo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { MainMenuActiveContext } from '../context/MainMenuActiveContext';
 import { Menu } from 'antd';
@@ -19,17 +19,26 @@ import { MainProfileContext } from '../context/MainProfileContext';
 const links = {
   "/": "sub1",
   "/users": "sub2",
-  "/users/create": "sub3",
-  "/users/edit": "sub4",
-  "/appcontent": "sub18",
+  "/role": "sub5",
+  "/booking": "sub42",
+  "/lead": "sub43",
+  "/products": "sub30",
+  "/products/properties": "sub33",
   "/products/coverages": "sub36",
-  "/products/coverages/create": "sub36",
-  "/products/coverages/edit": "sub36",
+  "/catalogs": "sub27",
+  "/promotions": "sub11",
+  "/partners": "sub14",
+  "/testimonials": "sub26",
+  "/activities": "sub60",
 };
 
 function getItem(label, key, icon, children, type) {
   return { key, icon, children, label, type };
 
+}
+
+function getLinkItem(label, key, icon, to) {
+  return getItem(<Link to={to}>{label}</Link>, key, icon);
 }
 
 const LeftSide = ({ permissions, data }) => {
@@ -39,39 +48,10 @@ const LeftSide = ({ permissions, data }) => {
   }, [])
 
   const location = useLocation();
-  // let abc = []
-  // if(location.pathname.includes("case") || location.pathname.includes("case/update") || location.pathname.includes("case/inquires")) {
-  //     abc = ["sub3"]
-  // }
-  // else if(location.pathname.includes("services") || location.pathname.includes("service/category")) {
-  //     abc = ["sub19"]
-  // }
-  // else {
-  //     abc = []
-  // }
-  const [openKeys, setOpenKeys] = useState("");
   let a = location.pathname.split("/")
   a.pop()
   let pathsplit = location.pathname.includes("edit") ? a.join("/") : location.pathname;
-  const [selectedKey, setSelectedKey] = useState([links[pathsplit]])
-  const rootSubmenuKeys = [
-    'sub1', 'sub2', 'sub3', 'sub4', 'sub5', 'sub6', 'sub7', 'sub8', 'sub9',
-    'sub10', 'sub11', 'sub12', 'sub13', 'sub14', 'sub15', 'sub16', 'sub17',
-    'sub18', 'sub19', 'sub20', 'sub21', 'sub22', 'sub23', 'sub24', 'sub25',
-    'sub26', 'sub27', 'sub28', 'sub29', 'sub30', 'sub31', 'sub32', 'sub33',
-    'sub34', 'sub35', 'sub36',
-    'sub37', 'sub38', 'sub39', 'sub40', 'sub41'
-    , 'sub42', 'sub43', 'sub44'
-    , 'sub45', 'sub46', 'sub47', 'sub60', 'sub61', 'sub62', 'sub63', 'sub64', 'sub65', 'sub66', 'sub67', 'sub68'
-  ];
-  const onOpenChange = (keys) => {
-    const latestOpenKey = keys.find((key) => openKeys.indexOf(key) == -1);
-    if (rootSubmenuKeys.indexOf(latestOpenKey) == -1) {
-      setOpenKeys(keys);
-    } else {
-      setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
-    }
-  };
+  const selectedKey = [links[pathsplit]].filter(Boolean)
   let User = null
   let Role = null
   let partners = null
@@ -84,86 +64,56 @@ const LeftSide = ({ permissions, data }) => {
   let Booking = null
   let Enquiry = null
   let Activities = null
-  let Dashboard = getItem(<Link to={`/`}>Dashboard</Link>, 'sub1', <FiLayout />)
+  let Dashboard = getLinkItem("Dashboard", 'sub1', <FiLayout />, `/`)
 
   const check = (module, action) => permissions?.[module]?.includes(action);
 
   if ((check("Users", "User View") && check("Users", "User Menu"))) {
-    const children = [];
-    if (check("Users", "User Add")) children.push(getItem(<Link to="/users/create">Create</Link>, 'sub2-1'));
-    if (check("Users", "User View")) children.push(getItem(<Link to="/users">User List</Link>, 'sub2-2'));
-    User = getItem("Users", 'sub2', <FiUsers />, children);
+    User = getLinkItem("Users", 'sub2', <FiUsers />, `/users`);
   }
 
   if ((check("Roles", "Role View") && check("Roles", "Role Menu"))) {
-    const children = [];
-    if (check("Roles", "Role Add")) children.push(getItem(<Link to="/role/create">Create</Link>, 'sub5-1'));
-    if (check("Roles", "Role View")) children.push(getItem(<Link to="/role">Role List</Link>, 'sub5-2'));
-    Role = getItem("Roles", 'sub5', <FiShield />, children);
+    Role = getLinkItem("Roles", 'sub5', <FiShield />, `/role`);
   }
 
   if ((check("Partners", "Partner View") && check("Partners", "Partner Menu"))) {
-    const children = [];
-    if (check("Partners", "Partner Add")) children.push(getItem(<Link to="/partners/create">Create</Link>, 'sub14-1'));
-    if (check("Partners", "Partner View")) children.push(getItem(<Link to="/partners">Partners List</Link>, 'sub14-2'));
-    partners = getItem("Partners", 'sub14', <FiUsers />, children);
+    partners = getLinkItem("Partners", 'sub14', <FiUsers />, `/partners`);
   }
 
   if ((check("Testimonials", "Testimonial View") && check("Testimonials", "Testimonial Menu"))) {
-    const children = [];
-    if (check("Testimonials", "Testimonial Add")) children.push(getItem(<Link to="/Testimonials/create">Create</Link>, 'sub26-1'));
-    if (check("Testimonials", "Testimonial View")) children.push(getItem(<Link to="/Testimonials">Testimonials List</Link>, 'sub26-2'));
-    testimonials = getItem("Testimonials", 'sub26', <FiStar />, children);
+    testimonials = getLinkItem("Testimonials", 'sub26', <FiStar />, `/testimonials`);
   }
 
   if ((check("Promotions", "Promotion View") && check("Promotions", "Promotion Menu"))) {
-    const children = [];
-    if (check("Promotions", "Promotion Add")) children.push(getItem(<Link to="/promotions/create">Create</Link>, 'sub11-1'));
-    if (check("Promotions", "Promotion View")) children.push(getItem(<Link to="/promotions">Promotions List</Link>, 'sub11-2'));
-    Promotions = getItem("Promotions", 'sub11', <FiBell />, children);
+    Promotions = getLinkItem("Promotions", 'sub11', <FiBell />, `/promotions`);
   }
 
   if ((check("Catalogs", "Catalogs View") && check("Catalogs", "Catalogs Menu"))) {
-    const children = [];
-    if (check("Catalogs", "Catalogs Add")) children.push(getItem(<Link to="/catalogs/create">Create</Link>, 'sub28'));
-    if (check("Catalogs", "Catalogs View")) children.push(getItem(<Link to="/catalogs">Catalogs List</Link>, 'sub29'));
-    Catalogs = getItem("Catalog", 'sub27', <FiBookOpen />, children);
+    Catalogs = getLinkItem("Catalog", 'sub27', <FiBookOpen />, `/catalogs`);
   }
 
   if ((check("Products", "Products View") && check("Products", "Products Menu"))) {
-    const children = [];
-    if (check("Products", "Products Add")) children.push(getItem(<Link to="/products/create">Create</Link>, 'sub31'));
-    if (check("Products", "Products View")) children.push(getItem(<Link to="/products">Products List</Link>, 'sub32'));
-    Products = getItem("Products", 'sub30', <FiBox />, children);
+    Products = getLinkItem("Products", 'sub30', <FiBox />, `/products`);
   }
 
   if ((check("ProductProperties", "ProductProperties View") && check("ProductProperties", "ProductProperties Menu"))) {
-    const children = [];
-    if (check("ProductProperties", "ProductProperties Add")) children.push(getItem(<Link to="/products/properties/create">Create</Link>, 'sub34'));
-    if (check("ProductProperties", "ProductProperties View")) children.push(getItem(<Link to="/products/properties">Product Properties List</Link>, 'sub35'));
-    ProductProperties = getItem("Product Properties", 'sub33', <FiGrid />, children);
+    ProductProperties = getLinkItem("Product Properties", 'sub33', <FiGrid />, `/products/properties`);
   }
 
   if ((check("ProductCoverages", "ProductCoverages View") && check("ProductCoverages", "ProductCoverages Menu"))) {
-    const children = [];
-    if (check("ProductCoverages", "ProductCoverages Add")) children.push(getItem(<Link to="/products/coverages/create">Create</Link>, 'sub37'));
-    if (check("ProductCoverages", "ProductCoverages View")) children.push(getItem(<Link to="/products/coverages">Coverage List</Link>, 'sub38'));
-    ProductCoverages = getItem("Product Coverage", 'sub36', <FiGrid />, children);
+    ProductCoverages = getLinkItem("Product Coverage", 'sub36', <FiGrid />, `/products/coverages`);
   }
 
   if ((check("Booking", "Booking View") && check("Booking", "Booking Menu"))) {
-    Booking = getItem(<Link to="/booking">Bookings</Link>, 'sub42', <FiBookOpen />);
+    Booking = getLinkItem("Bookings", 'sub42', <FiBookOpen />, `/booking`);
   }
 
   if ((check("Enquiry", "Enquiry View") && check("Enquiry", "Enquiry Menu"))) {
-    Enquiry = getItem(<Link to="/lead">Inquiries</Link>, 'sub43', <FiMessageSquare />);
+    Enquiry = getLinkItem("Inquiries", 'sub43', <FiMessageSquare />, `/lead`);
   }
 
   if ((check("Activities", "Activities View") && check("Activities", "Activities Menu"))) {
-    const children = [];
-    if (check("Activities", "Activities View")) children.push(getItem(<Link to="/activities">Activities Logs</Link>, 'sub61'));
-    if (check("Activities", "Activities View")) children.push(getItem(<Link to="/activities/auth">Activities Auth</Link>, 'sub62'));
-    Activities = getItem("Activities", 'sub60', <FiActivity />, children);
+    Activities = getLinkItem("Activities", 'sub60', <FiActivity />, `/activities`);
   }
 
   const items = useMemo(
@@ -224,13 +174,10 @@ const LeftSide = ({ permissions, data }) => {
       </div>
       <nav className='nav dashboard-sidebar__nav'>
         <Menu
-          defaultSelectedKeys={selectedKey}
-          defaultOpenKeys={["sub19"]}
+          selectedKeys={selectedKey}
           mode="inline"
           theme="light"
           items={items}
-          openKeys={openKeys}
-          onOpenChange={onOpenChange}
         />
       </nav>
     </aside>
