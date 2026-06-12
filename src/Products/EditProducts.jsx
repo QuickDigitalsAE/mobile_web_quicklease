@@ -469,34 +469,17 @@ const EditProducts = ({ permission }) => {
   return (
     <div className='newscreate product-create-page'>
       <div className="product-create-page__hero">
-        <div className="product-create-page__heroContent">
+        <div>
           <span className="product-create-page__eyebrow">Inventory Update</span>
           <h2>Refine this product with the same clean workflow</h2>
           <p>
             Update product content, media, pricing, properties, and booking settings using the same modern layout as product creation.
           </p>
         </div>
-        <div className="product-create-page__heroActions">
-          <Link to="/products" className="product-create-page__heroSecondary">
-            Back
-          </Link>
-          <button type="submit" form="myForm" className="product-create-page__heroPrimary">
-            Update Product
-          </button>
-        </div>
-      </div>
-      <div className="product-create-page__tabs">
-        <a className="product-create-page__tab" href="#product-basic-info">Basic Info</a>
-        <a className="product-create-page__tab" href="#product-media">Media</a>
-        <a className="product-create-page__tab" href="#product-pricing">Pricing</a>
-        <a className="product-create-page__tab" href="#product-specifications">Specifications</a>
-        <a className="product-create-page__tab" href="#product-seo">SEO</a>
-        <a className="product-create-page__tab" href="#product-options">Publish</a>
       </div>
 <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form name="myForm" className="product-create-page__form product-create-page__form--compact">
-          <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3' id="product-basic-info">
-            <h3 className="product-create-page__sectionTitle">Basic Information</h3>
+          <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
             <div className="">
               <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Slug - {slugs.all_slugs}</div>
               {
@@ -585,8 +568,8 @@ const EditProducts = ({ permission }) => {
             <br />
 
           </div>
-          <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3' id="product-media">
-            <h3 className="product-create-page__sectionTitle">Media & Content</h3>
+          <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
+            <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Products</div>
             <FormControl name="product_title" label={"Product Title "} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
             <br />
             <FormControl name="heading_one" label={"Heading {h1}"} placeholder="Enter Heading One" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
@@ -642,8 +625,7 @@ const EditProducts = ({ permission }) => {
               </div>}
 
           </div>
-          {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3' id="product-pricing">
-            <h3 className="product-create-page__sectionTitle">Pricing</h3>
+          {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Price Monthly</div>
             <div className='grid grid-cols-2 gap-4'>
               <FormControl name="monthly_price" label={"Price"} placeholder="Enter Price" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
@@ -777,8 +759,7 @@ const EditProducts = ({ permission }) => {
             </div>
           </div>
 
-          {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3' id="product-seo">
-            <h3 className="product-create-page__sectionTitle">SEO & Properties</h3>
+          {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className="h4 text-[#7D8CA7] text-[1.1rem] mb-4">Properties</div>
             <div className='grid  gap-4'>
 
@@ -872,8 +853,7 @@ const EditProducts = ({ permission }) => {
             </div>
           </div>
 
-          {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3' id="product-specifications">
-            <h3 className="product-create-page__sectionTitle">Specifications</h3>
+          {mainLanguage === "en" && <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div>
               <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Specification Auto</div>
               <select value={datas?.specification_auto} onChange={(e) => handletype(e.target.value, "specification_auto")} name="specification_auto" className="outline-none w-full h-[3rem] px-5 rounded-xl"  >
@@ -885,7 +865,6 @@ const EditProducts = ({ permission }) => {
             </div>
             <br />
             <br />
-            <h3 className="product-create-page__sectionTitle">Publish</h3>
             <div className='flex flex-wrap gap-2 mt-4'>
               <StatusToggle name="product_status" label="Product Status" checkedLabel="Enable" />
 

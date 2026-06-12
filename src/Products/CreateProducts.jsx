@@ -432,34 +432,17 @@ const handleParent = (e) => {
   return (
     <div className='newscreate product-create-page'>
       <div className="product-create-page__hero">
-        <div className="product-create-page__heroContent">
+        <div>
           <span className="product-create-page__eyebrow">Inventory Setup</span>
           <h2>Create a product with cleaner structure and faster scanning</h2>
           <p>
             Add product details, media, pricing, properties, and booking settings from one modern workspace.
           </p>
         </div>
-        <div className="product-create-page__heroActions">
-          <Link to="/products" className="product-create-page__heroSecondary">
-            Back
-          </Link>
-          <button type="submit" form="myForm" className="product-create-page__heroPrimary">
-            Create Product
-          </button>
-        </div>
-      </div>
-      <div className="product-create-page__tabs">
-        <a className="product-create-page__tab" href="#product-basic-info">Basic Info</a>
-        <a className="product-create-page__tab" href="#product-media">Media</a>
-        <a className="product-create-page__tab" href="#product-pricing">Pricing</a>
-        <a className="product-create-page__tab" href="#product-specifications">Specifications</a>
-        <a className="product-create-page__tab" href="#product-seo">SEO</a>
-        <a className="product-create-page__tab" href="#product-options">Publish</a>
       </div>
 <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form name="myForm" className="product-create-page__form product-create-page__form--compact">
-          <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3' id="product-basic-info">
-          <h3 className="product-create-page__sectionTitle">Basic Information</h3>
+          <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
           <div className="">
           <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Slug - {slugs.all_slugs}</div>
           <input value={slugs?.slugs ?? ""} onChange={handleSlugUpdate} name="slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[red]" control="input2" />
@@ -541,9 +524,9 @@ const handleParent = (e) => {
         
 
           </div>
-          <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3' id="product-media">
+          <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                     
-            <h3 className="product-create-page__sectionTitle">Media & Content</h3>
+            <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Products</div>
             <div className='grid grid-cols-2 gap-3'>
             <FormControl name="product_title" label={"Product Title "} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
 
@@ -559,13 +542,15 @@ const handleParent = (e) => {
             <div className="mb-1 block text-[#7D8CA7] text-[.8rem]">Product Short Description</div>
             <CKEditors label={"Description"} folder_name={"products_images"} page_type={"products"} data={short_description} update={(text) => handleCkChange(text, "short_description")} />
 
-            <div className='product-create-page__mediaGrid mt-4'>
-              <div className="product-create-page__uploadCard">
+            <div className='mt-4'>
+              <div>
                 <label className="mb-1  mt-3 block text-[#7D8CA7] text-[.8rem]">Main Image </label>
                 <OneImageUpload changeImage={setImageLoader} MainImage={datas?.main_image} Update={setDatas} sec_value={"main_image_value"} sec_image={"main_image"} folder_name={"products_images"} page_type={"products"} />
               </div>
+            </div>
 
-              <div className="product-create-page__uploadStack">
+            <div className='mt-4'>
+              <div>
                 <div className='flex justify-between'>
                   <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Car Images</div>
                   <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd2("car_images", [])} >
@@ -599,7 +584,6 @@ const handleParent = (e) => {
 
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
-            <h3 className="product-create-page__sectionTitle" id="product-pricing">Pricing</h3>
             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Price Monthly</div>
             <div className='grid grid-cols-2 gap-4'>
               <FormControl name="monthly_price" label={"Price"} placeholder="Enter Price" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
@@ -733,7 +717,6 @@ const handleParent = (e) => {
           </div>
 
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
-            <h3 className="product-create-page__sectionTitle" id="product-seo">SEO & Properties</h3>
             <div className="h4 text-[#7D8CA7] text-[1.1rem] mb-4">Properties</div>
             <div className='grid  gap-4'>
 
@@ -828,7 +811,6 @@ const handleParent = (e) => {
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div>
-              <h3 className="product-create-page__sectionTitle" id="product-specifications">Specifications</h3>
               <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Specification Auto</div>
               <select value={datas?.specification_auto} onChange={(e) => handletype(e.target.value, "specification_auto")} name="specification_auto" className="outline-none w-full h-[3rem] px-5 rounded-xl"  >
                 <option value={""}>---select specification Auto ---</option>
@@ -839,7 +821,6 @@ const handleParent = (e) => {
             </div>
             <br />
             <br />
-            <h3 className="product-create-page__sectionTitle" id="product-options">Publish</h3>
             <div className='flex flex-wrap gap-2 mt-4'>
               <StatusToggle name="product_status" label="Product Status" checkedLabel="Enable" />
               <StatusToggle name="stock_status" label="Stock Status" checkedLabel="Enable" />
