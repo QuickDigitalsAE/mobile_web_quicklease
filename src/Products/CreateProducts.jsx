@@ -16,7 +16,6 @@ import OneImageUpload from '../components/OneImageUpload';
 import usePost2 from '../customHooks/usePost2';
 import DropDown from "../dist/webImages/dropdown.svg"
 import { MainUserDataContext } from '../context/MainUserDataContext';
-import './productTheme.css';
 import StatusToggle from '../components/form/StatusToggle';
 
 const CreateProducts = () => {

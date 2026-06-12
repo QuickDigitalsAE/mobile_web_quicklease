@@ -1,7 +1,6 @@
 import React from 'react'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import './productTheme.css'
 
 const setupFields = [1, 2, 3, 4]
 const galleryItems = [1, 2, 3]
