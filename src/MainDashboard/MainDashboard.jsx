@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { Link } from "react-router-dom";
 import {
   FiActivity,
   FiBell,
@@ -12,18 +13,18 @@ import {
 } from "react-icons/fi";
 
 const moduleCards = [
-  { key: "Users", title: "Users", hint: "Accounts and operators", icon: <FiUsers /> },
-  { key: "Roles", title: "Roles", hint: "Permissions and access", icon: <FiShield /> },
-  { key: "Booking", title: "Bookings", hint: "Reservations workflow", icon: <FiBookOpen /> },
-  { key: "Enquiry", title: "Inquiries", hint: "Leads and contact requests", icon: <FiMessageSquare /> },
-  { key: "Products", title: "Products", hint: "Inventory and listings", icon: <FiBox /> },
-  { key: "ProductProperties", title: "Product Properties", hint: "Specs and attributes", icon: <FiGrid /> },
-  { key: "ProductCoverages", title: "Product Coverage", hint: "Protection and plans", icon: <FiGrid /> },
-  { key: "Catalogs", title: "Catalog", hint: "Collections and categories", icon: <FiBookOpen /> },
-  { key: "Promotions", title: "Promotions", hint: "Offers and campaigns", icon: <FiBell /> },
-  { key: "Partners", title: "Partners", hint: "Partner profiles", icon: <FiUsers /> },
-  { key: "Testimonials", title: "Testimonials", hint: "Social proof content", icon: <FiStar /> },
-  { key: "Activities", title: "Activities", hint: "Audit and activity logs", icon: <FiActivity /> },
+  { key: "Users", title: "Users", hint: "Accounts and operators", icon: <FiUsers />, to: "/users" },
+  { key: "Roles", title: "Roles", hint: "Permissions and access", icon: <FiShield />, to: "/role" },
+  { key: "Booking", title: "Bookings", hint: "Reservations workflow", icon: <FiBookOpen />, to: "/booking" },
+  { key: "Enquiry", title: "Inquiries", hint: "Leads and contact requests", icon: <FiMessageSquare />, to: "/lead" },
+  { key: "Products", title: "Products", hint: "Inventory and listings", icon: <FiBox />, to: "/products" },
+  { key: "ProductProperties", title: "Product Properties", hint: "Specs and attributes", icon: <FiGrid />, to: "/products/properties" },
+  { key: "ProductCoverages", title: "Product Coverage", hint: "Protection and plans", icon: <FiGrid />, to: "/products/coverages" },
+  { key: "Catalogs", title: "Catalog", hint: "Collections and categories", icon: <FiBookOpen />, to: "/catalogs" },
+  { key: "Promotions", title: "Promotions", hint: "Offers and campaigns", icon: <FiBell />, to: "/promotions" },
+  { key: "Partners", title: "Partners", hint: "Partner profiles", icon: <FiUsers />, to: "/partners" },
+  { key: "Testimonials", title: "Testimonials", hint: "Social proof content", icon: <FiStar />, to: "/testimonials" },
+  { key: "Activities", title: "Activities", hint: "Audit and activity logs", icon: <FiActivity />, to: "/activities" },
 ];
 
 const MainDashboard = ({ permission, userdata }) => {
@@ -65,13 +66,13 @@ const MainDashboard = ({ permission, userdata }) => {
 
       <div className="dashboard-home__modules">
         {visibleModules.map((item) => (
-          <article key={item.key} className="dashboard-home__module">
+          <Link key={item.key} to={item.to} className="dashboard-home__module" aria-label={`Open ${item.title}`}>
             <div className="dashboard-home__moduleIcon">{item.icon}</div>
             <div>
               <h2>{item.title}</h2>
               <p>{item.hint}</p>
             </div>
-          </article>
+          </Link>
         ))}
       </div>
     </section>

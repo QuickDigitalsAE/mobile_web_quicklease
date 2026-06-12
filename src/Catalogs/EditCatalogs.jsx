@@ -463,7 +463,7 @@ const EditCatalogs = ({ permission }) => {
                                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                         <div className='flex justify-between'>
                                             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Banner</div>
-                                            {mainLanguage === "en" && <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("banner", ["title", "slider_image"])} >
+                                            {mainLanguage === "en" && <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("banner", ["title", "slider_image"])} >
                                                 <img src={plus} alt="plus" />
                                                 <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                             </Link>}
@@ -500,7 +500,7 @@ const EditCatalogs = ({ permission }) => {
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 1</div>
-                                        {mainLanguage === "en" && <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_one", ["title", "description", "image"])} >
+                                        {mainLanguage === "en" && <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_one", ["title", "description", "image"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>}
@@ -547,7 +547,7 @@ const EditCatalogs = ({ permission }) => {
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 2</div>
-                                        {mainLanguage === "en" && <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_two", ["title", "description", "image"])} >
+                                        {mainLanguage === "en" && <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_two", ["title", "description", "image"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>}
@@ -604,7 +604,7 @@ const EditCatalogs = ({ permission }) => {
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 4</div>
-                                        <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_four", ["title", "description", "image"])} >
+                                        <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_four", ["title", "description", "image"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
@@ -650,7 +650,7 @@ const EditCatalogs = ({ permission }) => {
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Faqs</div>
-                                        {mainLanguage === "en" && <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_faqs", ["question", "answer"])} >
+                                        {mainLanguage === "en" && <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_faqs", ["question", "answer"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>}
@@ -691,7 +691,7 @@ const EditCatalogs = ({ permission }) => {
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Testimonials</div>
-                                        {mainLanguage === "en" && <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_testimonials", ["question", "answer"])} >
+                                        {mainLanguage === "en" && <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_testimonials", ["question", "answer"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>}

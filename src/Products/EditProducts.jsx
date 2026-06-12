@@ -594,7 +594,7 @@ const EditProducts = ({ permission }) => {
                 <div>
                   <div className='flex justify-between'>
                     <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Car Images</div>
-                  <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd2("car_images", [])} >
+                  <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd2("car_images", [])} >
                       <img src={plus} alt="plus" />
                       <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                     </Link>
@@ -692,7 +692,7 @@ const EditProducts = ({ permission }) => {
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className='flex justify-between mt-5'>
               <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Flexible</div>
-              <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("flexible_cars_monthly_prices", ["months", "value"])} >
+              <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("flexible_cars_monthly_prices", ["months", "value"])} >
                 <img src={plus} alt="plus" />
                 <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
               </Link>
@@ -726,7 +726,7 @@ const EditProducts = ({ permission }) => {
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className='flex justify-between mt-5'>
               <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Personal</div>
-              <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("personal_cars_monthly_prices", ["months", "value"])} >
+              <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("personal_cars_monthly_prices", ["months", "value"])} >
                 <img src={plus} alt="plus" />
                 <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
               </Link>

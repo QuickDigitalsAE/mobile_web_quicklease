@@ -472,7 +472,7 @@ console.log(datas)
                                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                         <div className='flex justify-between'>
                                             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Banner</div>
-                                        <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("banner", ["title", "slider_image"])} >
+                                        <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("banner", ["title", "slider_image"])} >
                                                 <img src={plus} alt="plus" />
                                                 <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                             </Link>
@@ -509,7 +509,7 @@ console.log(datas)
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 1</div>
-                                        <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_one", ["title", "description", "image"])} >
+                                        <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_one", ["title", "description", "image"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
@@ -556,7 +556,7 @@ console.log(datas)
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 2</div>
-                                        <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_two", ["title", "description", "image"])} >
+                                        <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_two", ["title", "description", "image"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
@@ -612,7 +612,7 @@ console.log(datas)
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 4</div>
-                                        <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_four", ["title", "description", "image"])} >
+                                        <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_four", ["title", "description", "image"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
@@ -658,7 +658,7 @@ console.log(datas)
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Faqs</div>
-                                        <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_faqs", ["question", "answer"])} >
+                                        <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_faqs", ["question", "answer"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
@@ -699,7 +699,7 @@ console.log(datas)
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Testimonials</div>
-                                        <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_testimonials", ["question", "answer"])} >
+                                        <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_testimonials", ["question", "answer"])} >
                                             <img src={plus} alt="plus" />
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>

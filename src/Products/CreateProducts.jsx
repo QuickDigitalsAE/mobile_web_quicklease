@@ -17,6 +17,7 @@ import usePost2 from '../customHooks/usePost2';
 import DropDown from "../dist/webImages/dropdown.svg"
 import { MainUserDataContext } from '../context/MainUserDataContext';
 import StatusToggle from '../components/form/StatusToggle';
+import { FiPlus } from 'react-icons/fi';
 
 const CreateProducts = () => {
   const navigate = useNavigate();
@@ -38,20 +39,20 @@ const CreateProducts = () => {
       "image_path": "",
       "image_full_path": "",
     }],
-    "flexible_cars_monthly_prices":[{
-      months:"",
-      value:"",
+    "flexible_cars_monthly_prices": [{
+      months: "",
+      value: "",
     }],
-    "personal_cars_monthly_prices":[{
-      months:"",
-      value:"",
+    "personal_cars_monthly_prices": [{
+      months: "",
+      value: "",
     }],
   })
- const [parent_id, setParent_id] = useState("")
-   const [slugs, setSlugs] = useState({
-                    "slugs":"",
-                    "all_slugs":"",
-                  })
+  const [parent_id, setParent_id] = useState("")
+  const [slugs, setSlugs] = useState({
+    "slugs": "",
+    "all_slugs": "",
+  })
 
   useEffect(() => {
     apiMethodGet3(`properties/frontendList/en`)
@@ -66,12 +67,12 @@ const CreateProducts = () => {
     apiMethodGet5(`coverages/dropdownList/en`)
   }, []);
 
-  useEffect(() => {   
-if(resget5?.data) {
-  setCoverages(resget5?.data?.data)
-}
-   
-}, [resget5.data]);
+  useEffect(() => {
+    if (resget5?.data) {
+      setCoverages(resget5?.data?.data)
+    }
+
+  }, [resget5.data]);
 
   useEffect(() => {
     if (resget3.data) {
@@ -102,57 +103,57 @@ if(resget5?.data) {
 
   const handleSlugUpdate = (e) => {
     setSlugs({
-        ...slugs,
-        "slugs":e.target.value,
+      ...slugs,
+      "slugs": e.target.value,
     })
-}
-
-const handleParent = (e) => {
-
-  const value = e.target.value;
-    
-  // If no parent selected
-  if (value === "") {
-    setParent_id(null);
-    setSlugs((prev) => ({
-      ...prev,
-      all_slugs: ``,
-    }));
-    return;
   }
 
-  const selectedId = parseInt(e.target.value);
-  setParent_id(selectedId);
+  const handleParent = (e) => {
 
-  // Find the selected item (either parent or child)
-  let selectedItem = null;
-  let foundParent = catlogsList.find((parent) => {
-    if (parent.id === selectedId) {
-      selectedItem = parent;
-      return true;
+    const value = e.target.value;
+
+    // If no parent selected
+    if (value === "") {
+      setParent_id(null);
+      setSlugs((prev) => ({
+        ...prev,
+        all_slugs: ``,
+      }));
+      return;
     }
 
-    const child = parent.children?.find((c) => c.id === selectedId);
-    if (child) {
-      selectedItem = child;
-      return true;
+    const selectedId = parseInt(e.target.value);
+    setParent_id(selectedId);
+
+    // Find the selected item (either parent or child)
+    let selectedItem = null;
+    let foundParent = catlogsList.find((parent) => {
+      if (parent.id === selectedId) {
+        selectedItem = parent;
+        return true;
+      }
+
+      const child = parent.children?.find((c) => c.id === selectedId);
+      if (child) {
+        selectedItem = child;
+        return true;
+      }
+
+      return false;
+    });
+
+    // Determine the correct slug path
+    let all_slugs = '';
+    if (selectedItem) {
+      all_slugs = `${selectedItem.slug}`;
     }
 
-    return false;
-  });
-
-  // Determine the correct slug path
-  let all_slugs = '';
-  if (selectedItem) {
-   all_slugs = `${selectedItem.slug}`;
-    }
-
-  // Update state
-  setSlugs((prev) => ({
-    ...prev,
-    all_slugs,
-  }));
-};
+    // Update state
+    setSlugs((prev) => ({
+      ...prev,
+      all_slugs,
+    }));
+  };
 
   const handleChange3 = (category, property_id, value) => {
     setPropertiesList2((prev) => ({
@@ -184,7 +185,7 @@ const handleParent = (e) => {
     }));
   };
   const handleChangeCoverages = (coverage_id, value, type) => {
-    setCoverages(prevService =>   prevService.map((item) => item?.coverage_id === coverage_id ? { ...item, [type]: value } : item));
+    setCoverages(prevService => prevService.map((item) => item?.coverage_id === coverage_id ? { ...item, [type]: value } : item));
   };
 
   useEffect(() => {
@@ -261,9 +262,9 @@ const handleParent = (e) => {
     down_payment: "",
     promo_status: "",
     featured: "",
-    stock_status:  ["1"],
+    stock_status: ["1"],
     show_documents: ["1"],
-    book_now_button:["1"],
+    book_now_button: ["1"],
     product_status: ["1"],
     show_on_home: "",
     pay_now_discount: 0,
@@ -291,7 +292,7 @@ const handleParent = (e) => {
   }
 
   const [res, apiMethod] = usePost2();
-  const requireFeild = ["meta_title", "meta_description", "slug","model","year"];
+  const requireFeild = ["meta_title", "meta_description", "slug", "model", "year"];
   const handleSubmit = async (values) => {
     if (imageLoader) {
       swal({
@@ -313,22 +314,22 @@ const handleParent = (e) => {
           checkerRequried.push(requireFeildSwal[item]);
         }
       }
-      if(!datas?.main_image_value) {
+      if (!datas?.main_image_value) {
         checkerRequried.push("Main Image");
       }
-      if(!datas?.vehicle_type) {
+      if (!datas?.vehicle_type) {
         checkerRequried.push("vehicle_type");
       }
-      if(!parent_id) {
+      if (!parent_id) {
         checkerRequried.push("catalog_id");
       }
-      if(slugs.slugs) {
+      if (slugs.slugs) {
 
       }
       else {
-          checkerRequried.push("slug Required");
+        checkerRequried.push("slug Required");
       }
-            if (datas?.specification_auto) {
+      if (datas?.specification_auto) {
 
       }
       else {
@@ -341,7 +342,7 @@ const handleParent = (e) => {
 
       }
       let coveragesList = coverages.filter((item) => item?.less_30_days_price)
-      const formatMonthlyPrices = (prices) => 
+      const formatMonthlyPrices = (prices) =>
         prices.reduce((acc, item) => {
           if (item.value !== null && item.value !== undefined && item.value !== '') {
             acc[`${item.months}_months`] = item.value;
@@ -381,14 +382,14 @@ const handleParent = (e) => {
         "installment_per_month_final_term": values["installment_per_month_final_term"],
         "down_payment": values["down_payment"],
         "security_deposit": values["security_deposit"] ?? 0,
-          "security_deposit_waiver_daily": values["security_deposit_waiver_daily"] ?? 0,
-          "security_deposit_waiver_monthly": values["security_deposit_waiver_monthly"] ?? 0,
-          pay_now_discount: 0,
+        "security_deposit_waiver_daily": values["security_deposit_waiver_daily"] ?? 0,
+        "security_deposit_waiver_monthly": values["security_deposit_waiver_monthly"] ?? 0,
+        pay_now_discount: 0,
         car_images: carImage,
         properties: propertiesList2,
-         coverages: coveragesList,
-         flexible_cars_monthly_prices: flexible_cars_monthly,
-         personal_cars_monthly_prices: personal_cars_monthly,
+        coverages: coveragesList,
+        flexible_cars_monthly_prices: flexible_cars_monthly,
+        personal_cars_monthly_prices: personal_cars_monthly,
         "translation": {
           "meta_title": values["meta_title"],
           "meta_description": values["meta_description"],
@@ -413,20 +414,20 @@ const handleParent = (e) => {
     }
   };
 
-     useEffect(() => {
-         if (res.data) {
-             const { status, message } = res?.data;
-             if (status === "false") {
-                 toast.error(message);
-             } else {
-                 navigate(`/products/edit/${res?.data?.data?.product_id}`)
-                 toast.success(message);
-             }
-         }
-     }, [res.data]);
+  useEffect(() => {
+    if (res.data) {
+      const { status, message } = res?.data;
+      if (status === "false") {
+        toast.error(message);
+      } else {
+        navigate(`/products/edit/${res?.data?.data?.product_id}`)
+        toast.success(message);
+      }
+    }
+  }, [res.data]);
 
   if (resget2.isLoading || resget3.isLoading || resget4.isLoading) return <SkeletonCreateEdit heading={"Create Products"} />;
-  const { description, car_images,short_description } = datas;
+  const { description, car_images, short_description } = datas;
 
   return (
     <div className='newscreate product-create-page'>
@@ -439,35 +440,35 @@ const handleParent = (e) => {
           </p>
         </div>
       </div>
-<Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form name="myForm" className="product-create-page__form product-create-page__form--compact">
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
-          <div className="">
-          <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Slug - {slugs.all_slugs}</div>
-          <input value={slugs?.slugs ?? ""} onChange={handleSlugUpdate} name="slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[red]" control="input2" />
-          </div>
+            <div className="">
+              <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Slug - {slugs.all_slugs}</div>
+              <input value={slugs?.slugs ?? ""} onChange={handleSlugUpdate} name="slug" label={"Slug"} placeholder="Enter Slug" className="outline-none w-full h-[3rem] px-5 rounded-xl border border-[red]" control="input2" />
+            </div>
             <div className="grid grid-cols-2 gap-2 mt-4">
               <div>
                 <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> Catalog</div>
-                   <select value={parent_id ?? ""}  onChange={handleParent} name="catalog_id" className="outline-none w-full h-[3rem] px-5 rounded-xl" >
-                      <option value="">---select Parent ---</option>
-                      {Array.isArray(catlogsList) &&
-                        catlogsList.map((item) => {
-                         const { id, catalog_title, children } = item;
-                          return (
-                          <React.Fragment key={id}>
-                            <option value={id}>{catalog_title}</option>
-                              {Array.isArray(children) &&
-                                children.map((item2) => (
-                                  <option key={item2.id} value={item2.id}>
-                                     â€” {item2.catalog_title}
-                                  </option>
-                                  ))}
-                                  </React.Fragment>
-                                  );
-                                  })}
-                    </select>
-            
+                <select value={parent_id ?? ""} onChange={handleParent} name="catalog_id" className="outline-none w-full h-[3rem] px-5 rounded-xl" >
+                  <option value="">---select Parent ---</option>
+                  {Array.isArray(catlogsList) &&
+                    catlogsList.map((item) => {
+                      const { id, catalog_title, children } = item;
+                      return (
+                        <React.Fragment key={id}>
+                          <option value={id}>{catalog_title}</option>
+                          {Array.isArray(children) &&
+                            children.map((item2) => (
+                              <option key={item2.id} value={item2.id}>
+                                â€” {item2.catalog_title}
+                              </option>
+                            ))}
+                        </React.Fragment>
+                      );
+                    })}
+                </select>
+
               </div>
               <div>
                 <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Class Auto</div>
@@ -499,7 +500,7 @@ const handleParent = (e) => {
               <div className='antdheight'>
                 <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Additional Catalogs</div>
                 <Select
-                 showSearch
+                  showSearch
                   mode="multiple"
                   placeholder="Please select"
                   onChange={(e) => handleChange(e, "additional_catalog_ids")}
@@ -513,23 +514,23 @@ const handleParent = (e) => {
                 />
               </div>
             </div>
-           
-              <FormControl name="meta_title" label={"Meta Title"} placeholder="Enter Meta Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+
+            <FormControl name="meta_title" label={"Meta Title"} placeholder="Enter Meta Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
 
             <div className="grid  gap-2">
               <FormControl name="meta_description" label={"Meta Description"} placeholder="Enter Meta Description" className="outline-none w-full h-[10rem] px-5 py-3 rounded-xl resize-none" control="textarea2" />
             </div>
 
-        
+
 
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
-                    
+
             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Products</div>
             <div className='grid grid-cols-2 gap-3'>
-            <FormControl name="product_title" label={"Product Title "} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+              <FormControl name="product_title" label={"Product Title "} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
 
-            <FormControl name="heading_one" label={"Heading {h1}"} placeholder="Enter Heading One" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+              <FormControl name="heading_one" label={"Heading {h1}"} placeholder="Enter Heading One" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
             </div>
 
             <br />
@@ -552,8 +553,10 @@ const handleParent = (e) => {
               <div>
                 <div className='flex justify-between'>
                   <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Car Images</div>
-                  <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd2("car_images", [])} >
-                    <img src={plus} alt="plus" />
+                  <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd2("car_images", [])} >
+                    <span className='users-table-page__addIcon'>
+                      <FiPlus />
+                    </span>
                     <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                   </Link>
                 </div>
@@ -626,7 +629,7 @@ const handleParent = (e) => {
               <FormControl name="down_payment" label={"Down Payment"} placeholder="Enter Down Payment" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
             </div>
           </div>
-         <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
+          <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Security Deposit</div>
             <div className='grid grid-cols-2 gap-4'>
               <FormControl name="security_deposit" label={"Security Deposit"} placeholder="Enter Security Deposit" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
@@ -647,15 +650,17 @@ const handleParent = (e) => {
             </div>
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
-          <div className='flex justify-between mt-5'>
+            <div className='flex justify-between mt-5'>
               <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Flexible</div>
-              <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("flexible_cars_monthly_prices", ["months", "value"])} >
-                <img src={plus} alt="plus" />
+              <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("flexible_cars_monthly_prices", ["months", "value"])} >
+                <span className='users-table-page__addIcon'>
+                  <FiPlus />
+                </span>
                 <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
               </Link>
             </div>
             <div className='grid grid-cols-2 gap-4'>
-            {
+              {
                 Array.isArray(datas?.flexible_cars_monthly_prices) && datas?.flexible_cars_monthly_prices.map((item, index) => {
                   const { months, value } = item
                   return (
@@ -681,15 +686,17 @@ const handleParent = (e) => {
             </div>
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
-          <div className='flex justify-between mt-5'>
+            <div className='flex justify-between mt-5'>
               <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Personal</div>
-              <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("personal_cars_monthly_prices", ["months", "value"])} >
-                <img src={plus} alt="plus" />
+              <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("personal_cars_monthly_prices", ["months", "value"])} >
+                <span className='users-table-page__addIcon'>
+                  <FiPlus />
+                </span>
                 <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
               </Link>
             </div>
             <div className='grid grid-cols-2 gap-4'>
-            {
+              {
                 Array.isArray(datas?.personal_cars_monthly_prices) && datas?.personal_cars_monthly_prices.map((item, index) => {
                   const { months, value } = item
                   return (
@@ -779,34 +786,34 @@ const handleParent = (e) => {
 
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div className={`flex justify-between items-center`}>
-            <div className="h4 text-[#7D8CA7] text-[1.1rem] mb-4">Extra Prices</div>
-            <div className='cursor-pointer'  onClick={handleExtraClick} >
-            <img src={DropDown} className={`transform ${dropDownState && `rotate-[180deg]`}  `} alt="Extra" />
-            </div>
+              <div className="h4 text-[#7D8CA7] text-[1.1rem] mb-4">Extra Prices</div>
+              <div className='cursor-pointer' onClick={handleExtraClick} >
+                <img src={DropDown} className={`transform ${dropDownState && `rotate-[180deg]`}  `} alt="Extra" />
+              </div>
             </div>
             <div className={`${dropDownState ? "overflow-hidden h-0" : "min-h-0"}`}>
-            {
-              Array.isArray(coverages) &&
-              coverages.map((item) => {
-                const { coverage_id, coverage_title, less_30_days_price, more_30_days_price } = item
-                return (
-                  <div key={coverage_id}>
-                    <div className="h4 text-[#7D8CA7] text-[1.1rem] capitalize mt-4 mb-5"> {coverage_title} </div>
-                    <div className='grid grid-cols-2 gap-3'>
-                    <div>
-                      <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> Less 30 Days Price </div>
-                      <input className="outline-none w-full h-[3rem] px-5 rounded-xl" value={less_30_days_price} onChange={(e) => handleChangeCoverages(coverage_id, e.target.value,"less_30_days_price")} />
-                      </div>
-                      <div>
-                        <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> More 30 Days Price </div>
-                        <input className="outline-none w-full h-[3rem] px-5 rounded-xl" value={more_30_days_price} onChange={(e) => handleChangeCoverages(coverage_id, e.target.value,"more_30_days_price")} />
+              {
+                Array.isArray(coverages) &&
+                coverages.map((item) => {
+                  const { coverage_id, coverage_title, less_30_days_price, more_30_days_price } = item
+                  return (
+                    <div key={coverage_id}>
+                      <div className="h4 text-[#7D8CA7] text-[1.1rem] capitalize mt-4 mb-5"> {coverage_title} </div>
+                      <div className='grid grid-cols-2 gap-3'>
+                        <div>
+                          <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> Less 30 Days Price </div>
+                          <input className="outline-none w-full h-[3rem] px-5 rounded-xl" value={less_30_days_price} onChange={(e) => handleChangeCoverages(coverage_id, e.target.value, "less_30_days_price")} />
+                        </div>
+                        <div>
+                          <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> More 30 Days Price </div>
+                          <input className="outline-none w-full h-[3rem] px-5 rounded-xl" value={more_30_days_price} onChange={(e) => handleChangeCoverages(coverage_id, e.target.value, "more_30_days_price")} />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )
-              })
-            }
-            </div> 
+                  )
+                })
+              }
+            </div>
           </div>
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
             <div>
@@ -831,21 +838,21 @@ const handleParent = (e) => {
             </div>
           </div>
           {(userdata?.role_id !== 12) ?
-          <div className="product-create-page__actions">
-            <Link to="/products" className="product-create-page__cancel">
-              Cancel
-            </Link>
-            <SubmitButton
-              props={{
-                class: "product-create-page__submit btn bg-secondary text-white px-12 uppercase py-3 rounded-full w-100 block submit hover:bg-primary transition-all duration-300",
-                text: "Create Product",
-              }}
-              buttonLoading={res.isLoading}
-            />
-          </div>
-          : ""
-        }
-          
+            <div className="product-create-page__actions">
+              <Link to="/products" className="product-create-page__cancel">
+                Cancel
+              </Link>
+              <SubmitButton
+                props={{
+                  class: "product-create-page__submit btn bg-secondary text-white px-12 uppercase py-3 rounded-full w-100 block submit hover:bg-primary transition-all duration-300",
+                  text: "Create Product",
+                }}
+                buttonLoading={res.isLoading}
+              />
+            </div>
+            : ""
+          }
+
         </Form>
       </Formik>
     </div>

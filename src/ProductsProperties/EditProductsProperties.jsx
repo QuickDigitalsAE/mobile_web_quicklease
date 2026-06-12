@@ -169,7 +169,7 @@ const EditProductsProperties = ({ permission }) => {
             </div>
             <div className='flex justify-between mt-5'>
               <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Property Value List</div>
-              <Link className='product-create-page__addLink bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("property_values")} >
+              <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("property_values")} >
                 <img src={plus} alt="plus" />
                 <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
               </Link>
