@@ -192,9 +192,9 @@ const ProductsMain = ({ permission }) => {
         action={check('Products', 'Products Add') && (
           <Link to="/products/create" className="users-table-page__addButton">
             <span className='users-table-page__addIcon'>
-                                                <FiPlus />
-                                            </span>
-            <span>Add Product</span>
+              <FiPlus />
+            </span>
+            <div className='font-MluvkaBold text-secondary capitalize'>Add Product</div>
           </Link>
         )}
         stats={[
