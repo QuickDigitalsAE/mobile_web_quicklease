@@ -6,7 +6,7 @@ import plus from '../dist/webImages/plus.svg'
 import useGet from '../customHooks/useGet';
 import { MainLanguageContext } from '../context/MainLanguageContext';
 import SkeletonRoleList from './SkeletonRoleList';
-import SkeletonHeading from '../components/SkeletonHeading';
+import ListPageHero from '../components/ListPageHero';
 
 const RoleList = ({permission}) => {
     const { mainLanguage } = useContext(MainLanguageContext);  
@@ -97,22 +97,11 @@ const RoleList = ({permission}) => {
 
   return (
     <section className='TeamPage users-table-page roles-table-page'>
-      <div className="TeamPageTop users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center">
-        <div>
-          {resget.isLoading ? (
-            <SkeletonHeading />
-          ) : (
-            <>
-              <h6 className='text-[1rem] mb-2 relative px-3 font-Mluvka'>
-                <span>{datas?.length ?? 0}</span> Roles
-              </h6>
-              <p className="users-table-page__subtitle">
-                Manage role definitions and permission groups from a cleaner table view.
-              </p>
-            </>
-          )}
-        </div>
-        {canAddRoles && (
+      <ListPageHero
+        title="Roles"
+        count={datas?.length ?? 0}
+        subtitle="Manage role definitions and permission groups from a cleaner table view."
+        action={canAddRoles ? (
           <Link to={"/role/create"} className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer'>
             <span className="users-table-page__addIcon">
               <FiPlus />
@@ -120,25 +109,15 @@ const RoleList = ({permission}) => {
             <img src={plus} alt="plus" className="hidden" />
             <span className='font-MluvkaBold text-secondary capitalize'>Add Role</span>
           </Link>
-        )}
-      </div>
+        ) : null}
+        stats={[
+          { label: 'Total roles', value: datas?.length ?? 0 },
+          { label: 'Editable', value: canEditRoles ? datas?.length ?? 0 : 0 },
+          { label: 'Access groups', value: Array.isArray(datas) ? new Set(datas.map((item) => item.name)).size : 0 },
+        ]}
+      />
 
       <div className="users-table-page__panel">
-        <div className="users-table-page__stats">
-          <article>
-            <span>Total roles</span>
-            <strong>{datas?.length ?? 0}</strong>
-          </article>
-          <article>
-            <span>Editable</span>
-            <strong>{canEditRoles ? datas?.length ?? 0 : 0}</strong>
-          </article>
-          <article>
-            <span>Access groups</span>
-            <strong>{Array.isArray(datas) ? new Set(datas.map((item) => item.name)).size : 0}</strong>
-          </article>
-        </div>
-
         <div className="users-table-page__tableWrap">
           <Table
             rowKey={(record) => record.id}

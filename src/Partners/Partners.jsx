@@ -7,6 +7,7 @@ import useGet from '../customHooks/useGet'
 import { MainLanguageContext } from '../context/MainLanguageContext'
 import usePost from '../customHooks/usePost'
 import SkeletonPartnersCard from './SkeletonPartnersCard'
+import ListPageHero from '../components/ListPageHero'
 
 const Partners = ({ permission }) => {
   const { mainLanguage } = useContext(MainLanguageContext)
@@ -146,50 +147,36 @@ const Partners = ({ permission }) => {
 
   return (
     <section className="NewsPage users-table-page roles-table-page">
-      <div className="TeamPageTop bg-white rounded-3xl p-4 users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center gap-4">
-        <div>
-          <h6 className="text-[1rem] mb-2 relative font-Mluvka capitalize">
-            <span>{paginationn?.total ?? datas?.length ?? 0}</span> Partners
-          </h6>
-          <p className="users-table-page__subtitle">
-            Manage partner entries in a cleaner table view with faster search and editing access.
-          </p>
-        </div>
+      <ListPageHero
+        title="Partners"
+        count={paginationn?.total ?? datas?.length ?? 0}
+        subtitle="Manage partner entries in a cleaner table view with faster search and editing access."
+        action={
+          <div className="flex w-full justify-end items-center gap-3 ">
+            <label className="bookings-table-page__search">
+              <FiSearch />
+              <input type="text" onChange={handleChange} placeholder="Search partners" />
+            </label>
 
-        <div className="flex w-full justify-end items-center gap-3 ">
-          <label className="bookings-table-page__search">
-            <FiSearch />
-            <input type="text" onChange={handleChange} placeholder="Search partners" />
-          </label>
-
-          {canAddPartners && (
-            <Link to="/partners/create" className="users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer">
-              <span className="users-table-page__addIcon">
-                <FiPlus />
-              </span>
-              <img src={plus} alt="plus" className="hidden" />
-              <span className="font-MluvkaBold text-secondary capitalize">Add Partner</span>
-            </Link>
-          )}
-        </div>
-      </div>
+            {canAddPartners && (
+              <Link to="/partners/create" className="users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer">
+                <span className="users-table-page__addIcon">
+                  <FiPlus />
+                </span>
+                <img src={plus} alt="plus" className="hidden" />
+                <span className="font-MluvkaBold text-secondary capitalize">Add Partner</span>
+              </Link>
+            )}
+          </div>
+        }
+        stats={[
+          { label: 'Total partners', value: paginationn?.total ?? datas?.length ?? 0 },
+          { label: 'Visible on page', value: Array.isArray(datas) ? datas.length : 0 },
+          { label: 'Editable', value: canEditPartners ? (Array.isArray(datas) ? datas.length : 0) : 0 },
+        ]}
+      />
 
       <div className="users-table-page__panel">
-        <div className="users-table-page__stats">
-          <article>
-            <span>Total partners</span>
-            <strong>{paginationn?.total ?? datas?.length ?? 0}</strong>
-          </article>
-          <article>
-            <span>Visible on page</span>
-            <strong>{Array.isArray(datas) ? datas.length : 0}</strong>
-          </article>
-          <article>
-            <span>Editable</span>
-            <strong>{canEditPartners ? (Array.isArray(datas) ? datas.length : 0) : 0}</strong>
-          </article>
-        </div>
-
         <div className="users-table-page__tableWrap">
           <Table
             rowKey={(record) => record.id}

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { FiActivity, FiArrowUpRight, FiClock, FiEye, FiUser } from "react-icons/fi";
 import useGet from "../customHooks/useGet";
 import SkeletonActivitiesTable from "./SkeletonActivitiesTable";
+import ListPageHero from "../components/ListPageHero";
 
 const ActivitiesLogs = () => {
   const { mainLanguage } = useContext(MainLanguageContext);
@@ -125,33 +126,18 @@ const ActivitiesLogs = () => {
 
   return (
     <section className="users-table-page roles-table-page">
-      <div className="users-table-page__top bg-white rounded-3xl p-4 flex justify-between items-center gap-4">
-        <div>
-          <h6 className="text-[1rem] mb-2 relative font-Mluvka capitalize">
-            <span>{resget.data?.pagination?.total ?? datas?.length ?? 0}</span> Activity Logs
-          </h6>
-          <p className="users-table-page__subtitle">
-            Track admin-side updates in a cleaner table view with quick access to record-level changes.
-          </p>
-        </div>
-      </div>
+      <ListPageHero
+        title="Activity Logs"
+        count={resget.data?.pagination?.total ?? datas?.length ?? 0}
+        subtitle="Track admin-side updates in a cleaner table view with quick access to record-level changes."
+        stats={[
+          { label: 'Total logs', value: resget.data?.pagination?.total ?? datas?.length ?? 0 },
+          { label: 'Visible on page', value: Array.isArray(datas) ? datas.length : 0 },
+          { label: 'Tracked tables', value: Array.isArray(datas) ? new Set(datas.map((item) => item.table_name).filter(Boolean)).size : 0 },
+        ]}
+      />
 
       <div className="users-table-page__panel">
-        <div className="users-table-page__stats">
-          <article>
-            <span>Total logs</span>
-            <strong>{resget.data?.pagination?.total ?? datas?.length ?? 0}</strong>
-          </article>
-          <article>
-            <span>Visible on page</span>
-            <strong>{Array.isArray(datas) ? datas.length : 0}</strong>
-          </article>
-          <article>
-            <span>Tracked tables</span>
-            <strong>{Array.isArray(datas) ? new Set(datas.map((item) => item.table_name).filter(Boolean)).size : 0}</strong>
-          </article>
-        </div>
-
         <div className="users-table-page__tableWrap">
           <Table
             rowKey={(record) => record.key || record.id}

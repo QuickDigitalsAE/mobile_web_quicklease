@@ -1,6 +1,7 @@
 import React from 'react'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import './productTheme.css'
 
 const setupFields = [1, 2, 3, 4]
 const galleryItems = [1, 2, 3]
@@ -20,7 +21,7 @@ const SkeletonCreateEdit = ({ heading }) => {
           </div>
         </div>
 
-        <div className="product-create-page__form">
+        <div className="product-create-page__form product-create-page__form--compact">
           <div className="bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3">
             <Skeleton height={14} width="24%" />
             <Skeleton height={48} className="mt-3 rounded-xl" />

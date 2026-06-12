@@ -6,6 +6,7 @@ import { MainLanguageContext } from '../context/MainLanguageContext';
 import { InquriyData } from '../data/data';
 import SkeletonEnquiries from './SkeletonEnquiries';
 import dayjs from 'dayjs';
+import ListPageHero from '../components/ListPageHero';
 
 const Enquiries = () => {
   const { mainLanguage } = useContext(MainLanguageContext);
@@ -128,33 +129,18 @@ const Enquiries = () => {
 
   return (
     <section className='users-table-page enquiries-table-page'>
-      <div className="users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center">
-        <div>
-          <h6 className='text-[1rem] mb-2 relative font-Mluvka'>
-            <span>{datas?.length ?? 0}</span> Enquiries
-          </h6>
-          <p className="users-table-page__subtitle">
-            Review incoming leads, contact details, and source context from one compact table view.
-          </p>
-        </div>
-      </div>
+      <ListPageHero
+        title="Enquiries"
+        count={datas?.length ?? 0}
+        subtitle="Review incoming leads, contact details, and source context from one compact table view."
+        stats={[
+          { label: 'Total results', value: datas?.length ?? 0 },
+          { label: 'Current filter', value: tabIndex.replaceAll('_', ' ') },
+          { label: 'With company', value: Array.isArray(datas) ? datas.filter((item) => item.company_name).length : 0 },
+        ]}
+      />
 
       <div className="users-table-page__panel">
-        <div className="users-table-page__stats">
-          <article>
-            <span>Total results</span>
-            <strong>{datas?.length ?? 0}</strong>
-          </article>
-          <article>
-            <span>Current filter</span>
-            <strong>{tabIndex.replaceAll('_', ' ')}</strong>
-          </article>
-          <article>
-            <span>With company</span>
-            <strong>{Array.isArray(datas) ? datas.filter((item) => item.company_name).length : 0}</strong>
-          </article>
-        </div>
-
         <ul className='list enquiries-table-page__tabs'>
           {InquriyData.map((item, index) => {
             const { label, color, active } = item

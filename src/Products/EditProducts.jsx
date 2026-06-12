@@ -16,6 +16,7 @@ import OneImageUpload from '../components/OneImageUpload';
 import usePost2 from '../customHooks/usePost2';
 import DropDown from "../dist/webImages/dropdown.svg"
 import { MainUserDataContext } from '../context/MainUserDataContext';
+import './productTheme.css';
 
 const EditProducts = ({ permission }) => {
   const { id } = useParams();
@@ -476,7 +477,7 @@ const EditProducts = ({ permission }) => {
         </div>
       </div>
 <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        <Form name="myForm" className="product-create-page__form">
+        <Form name="myForm" className="product-create-page__form product-create-page__form--compact">
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
             <div className="">
               <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">Slug - {slugs.all_slugs}</div>

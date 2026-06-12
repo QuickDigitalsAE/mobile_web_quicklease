@@ -7,6 +7,7 @@ import usePost from '../customHooks/usePost'
 import { Pagination, Table } from 'antd'
 import SkeletonProductsCard from './SkeletonProductsCard'
 import { FiArrowUpRight, FiImage, FiSearch } from 'react-icons/fi'
+import ListPageHero from '../components/ListPageHero'
 
 const ProductsMain = ({ permission }) => {
   const { mainLanguage } = useContext(MainLanguageContext)
@@ -184,40 +185,24 @@ const ProductsMain = ({ permission }) => {
 
   return (
     <section className="users-table-page products-table-page">
-      <div className="users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center">
-        <div>
-          <h6 className="text-[1rem] mb-2 relative font-Mluvka capitalize">
-            <span>{Array.isArray(datas) ? datas.length : 0}</span> Products
-          </h6>
-          <p className="users-table-page__subtitle">
-            Browse products, preview images, and manage inventory from one cleaner table layout.
-          </p>
-        </div>
-
-        {check('Products', 'Products Add') && (
+      <ListPageHero
+        title="Products"
+        count={Array.isArray(datas) ? datas.length : 0}
+        subtitle="Browse products, preview images, and manage inventory from one cleaner table layout."
+        action={check('Products', 'Products Add') && (
           <Link to="/products/create" className="users-table-page__addButton">
             <img src={plus} alt="plus" />
             <span>Add Product</span>
           </Link>
         )}
-      </div>
+        stats={[
+          { label: 'Total results', value: Array.isArray(datas) ? datas.length : 0 },
+          { label: 'Featured', value: Array.isArray(datas) ? datas.filter((item) => item.featured).length : 0 },
+          { label: 'Visible on home', value: Array.isArray(datas) ? datas.filter((item) => item.show_on_home).length : 0 },
+        ]}
+      />
 
       <div className="users-table-page__panel">
-        <div className="users-table-page__stats">
-          <article>
-            <span>Total results</span>
-            <strong>{Array.isArray(datas) ? datas.length : 0}</strong>
-          </article>
-          <article>
-            <span>Featured</span>
-            <strong>{Array.isArray(datas) ? datas.filter((item) => item.featured).length : 0}</strong>
-          </article>
-          <article>
-            <span>Visible on home</span>
-            <strong>{Array.isArray(datas) ? datas.filter((item) => item.show_on_home).length : 0}</strong>
-          </article>
-        </div>
-
         <div className="users-table-page__toolbar">
           <div className="users-table-page__search">
             <FiSearch className="users-table-page__searchIcon" />

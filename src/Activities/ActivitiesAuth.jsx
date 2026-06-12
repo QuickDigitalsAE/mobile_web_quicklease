@@ -4,6 +4,7 @@ import { Pagination, Table } from "antd";
 import { FiClock, FiLogIn, FiUser } from "react-icons/fi";
 import useGet from "../customHooks/useGet";
 import SkeletonActivitiesTable from "./SkeletonActivitiesTable";
+import ListPageHero from "../components/ListPageHero";
 
 const ActivitiesAuth = () => {
   const { mainLanguage } = useContext(MainLanguageContext);
@@ -95,33 +96,18 @@ const ActivitiesAuth = () => {
 
   return (
     <section className="users-table-page roles-table-page">
-      <div className="users-table-page__top bg-white rounded-3xl p-4 flex justify-between items-center gap-4">
-        <div>
-          <h6 className="text-[1rem] mb-2 relative font-Mluvka capitalize">
-            <span>{resget.data?.pagination?.total ?? datas?.length ?? 0}</span> Auth Activities
-          </h6>
-          <p className="users-table-page__subtitle">
-            Review authentication history in the same cleaner table layout used across the refreshed admin pages.
-          </p>
-        </div>
-      </div>
+      <ListPageHero
+        title="Auth Activities"
+        count={resget.data?.pagination?.total ?? datas?.length ?? 0}
+        subtitle="Review authentication history in the same cleaner table layout used across the refreshed admin pages."
+        stats={[
+          { label: 'Total auth logs', value: resget.data?.pagination?.total ?? datas?.length ?? 0 },
+          { label: 'Visible on page', value: Array.isArray(datas) ? datas.length : 0 },
+          { label: 'Unique users', value: Array.isArray(datas) ? new Set(datas.map((item) => item.user_email).filter(Boolean)).size : 0 },
+        ]}
+      />
 
       <div className="users-table-page__panel">
-        <div className="users-table-page__stats">
-          <article>
-            <span>Total auth logs</span>
-            <strong>{resget.data?.pagination?.total ?? datas?.length ?? 0}</strong>
-          </article>
-          <article>
-            <span>Visible on page</span>
-            <strong>{Array.isArray(datas) ? datas.length : 0}</strong>
-          </article>
-          <article>
-            <span>Unique users</span>
-            <strong>{Array.isArray(datas) ? new Set(datas.map((item) => item.user_email).filter(Boolean)).size : 0}</strong>
-          </article>
-        </div>
-
         <div className="users-table-page__tableWrap">
           <Table
             rowKey={(record) => record.key || record.id}

@@ -9,6 +9,7 @@ import usePost from '../customHooks/usePost';
 import { MainLanguageContext } from '../context/MainLanguageContext';
 import { Pagination, Table } from 'antd';
 import { FiArrowUpRight, FiClock, FiMail, FiSearch } from 'react-icons/fi';
+import ListPageHero from '../components/ListPageHero';
 
 const Booking = ({ permission }) => {
   const { mainLanguage } = useContext(MainLanguageContext);
@@ -242,33 +243,18 @@ const Booking = ({ permission }) => {
 
   return (
     <section className='bookingPage users-table-page bookings-table-page'>
-      <div className="users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center">
-        <div>
-          <h6 className='text-[1rem] mb-2 relative font-Mluvka'>
-            <span>{Array.isArray(datas) ? datas.length : 0}</span> Bookings
-          </h6>
-          <p className="users-table-page__subtitle">
-            Review orders, payment state, and schedules from a cleaner booking table.
-          </p>
-        </div>
-      </div>
+      <ListPageHero
+        title="Bookings"
+        count={Array.isArray(datas) ? datas.length : 0}
+        subtitle="Review orders, payment state, and schedules from a cleaner booking table."
+        stats={[
+          { label: 'Total results', value: Array.isArray(datas) ? datas.length : 0 },
+          { label: 'Paid', value: Array.isArray(datas) ? datas.filter((item) => item.payment_status === 'paid').length : 0 },
+          { label: 'Status', value: tabIndex || 'all' },
+        ]}
+      />
 
       <div className="users-table-page__panel">
-        <div className="users-table-page__stats">
-          <article>
-            <span>Total results</span>
-            <strong>{Array.isArray(datas) ? datas.length : 0}</strong>
-          </article>
-          <article>
-            <span>Paid</span>
-            <strong>{Array.isArray(datas) ? datas.filter((item) => item.payment_status === 'paid').length : 0}</strong>
-          </article>
-          <article>
-            <span>Status</span>
-            <strong>{tabIndex || 'all'}</strong>
-          </article>
-        </div>
-
         <div className="bookings-table-page__filters">
           <div className="bookings-table-page__search">
             <FiSearch className="bookings-table-page__searchIcon" />

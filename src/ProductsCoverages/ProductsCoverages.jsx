@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Pagination, Table } from 'antd';
 import { FiArrowUpRight, FiEdit3, FiPlus, FiSearch, FiShield } from 'react-icons/fi';
 import plus from '../dist/webImages/plus.svg'
+import ListPageHero from '../components/ListPageHero';
 
 const ProductsCoverages = ({ permission }) => {
   const { mainLanguage } = useContext(MainLanguageContext);
@@ -137,48 +138,35 @@ const ProductsCoverages = ({ permission }) => {
 
   return (
     <section className='users-table-page roles-table-page'>
-      <div className="users-table-page__top bg-white rounded-3xl p-4 enquiries-table-page__top flex justify-between items-center">
-        <div>
-          <h6 className='text-[1rem] mb-2 relative font-Mluvka capitalize'>
-            <span>{datas?.length ?? 0}</span> Coverages
-          </h6>
-          <p className="users-table-page__subtitle">
-            Review coverage titles, tooltip copy, and pricing tiers from a cleaner table view.
-          </p>
-        </div>
-        <div className='flex gap-3 max-lg:flex-col w-full justify-end'>
-          <div className="bookings-table-page__search">
-            <FiSearch className="bookings-table-page__searchIcon" />
-            <input type="text" onChange={handleChange} className='bookings-table-page__searchInput' placeholder='Search coverages' />
+      <ListPageHero
+        title="Coverages"
+        count={datas?.length ?? 0}
+        subtitle="Review coverage titles, tooltip copy, and pricing tiers from a cleaner table view."
+        action={
+          <div className='flex gap-3 max-lg:flex-col w-full justify-end'>
+            <div className="bookings-table-page__search">
+              <FiSearch className="bookings-table-page__searchIcon" />
+              <input type="text" onChange={handleChange} className='bookings-table-page__searchInput' placeholder='Search coverages' />
+            </div>
+            {canAdd && (
+              <Link to={"/products/coverages/create"} className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer'>
+                <span className="users-table-page__addIcon">
+                  <FiPlus />
+                </span>
+                <img src={plus} alt="plus" className="hidden" />
+                <span className='font-MluvkaBold text-secondary capitalize'>Add Coverage</span>
+              </Link>
+            )}
           </div>
-          {canAdd && (
-            <Link to={"/products/coverages/create"} className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer'>
-              <span className="users-table-page__addIcon">
-                <FiPlus />
-              </span>
-              <img src={plus} alt="plus" className="hidden" />
-              <span className='font-MluvkaBold text-secondary capitalize'>Add Coverage</span>
-            </Link>
-          )}
-        </div>
-      </div>
+        }
+        stats={[
+          { label: 'Total coverages', value: datas?.length ?? 0 },
+          { label: 'With tooltip', value: Array.isArray(datas) ? datas.filter((item) => item.tooltip).length : 0 },
+          { label: 'Editable', value: canEdit ? datas?.length ?? 0 : 0 },
+        ]}
+      />
 
       <div className="users-table-page__panel">
-        <div className="users-table-page__stats">
-          <article>
-            <span>Total coverages</span>
-            <strong>{datas?.length ?? 0}</strong>
-          </article>
-          <article>
-            <span>With tooltip</span>
-            <strong>{Array.isArray(datas) ? datas.filter((item) => item.tooltip).length : 0}</strong>
-          </article>
-          <article>
-            <span>Editable</span>
-            <strong>{canEdit ? datas?.length ?? 0 : 0}</strong>
-          </article>
-        </div>
-
         <div className="users-table-page__tableWrap">
           <Table
             loading={resget.isLoading}
