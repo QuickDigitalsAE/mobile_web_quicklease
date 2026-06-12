@@ -106,7 +106,6 @@ const RoleList = ({permission}) => {
             <span className="users-table-page__addIcon">
               <FiPlus />
             </span>
-            <img src={plus} alt="plus" className="hidden" />
             <span className='font-MluvkaBold text-secondary capitalize'>Add Role</span>
           </Link>
         ) : null}

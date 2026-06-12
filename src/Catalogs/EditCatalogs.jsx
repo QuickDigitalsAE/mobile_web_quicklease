@@ -16,6 +16,7 @@ import OneImageUploadMultiple from "../components/OneImageUploadMultiple";
 import useGet from "../customHooks/useGet";
 import { Select, Tooltip } from "antd";
 import { MainUserDataContext } from "../context/MainUserDataContext";
+import { FiPlus } from "react-icons/fi";
 
 const EditCatalogs = ({ permission }) => {
     const navigate = useNavigate();
@@ -241,89 +242,89 @@ const EditCatalogs = ({ permission }) => {
                     checkerRequried.push(requireFeildSwal[item]);
                 }
             }
-             if(slugs.slugs) {
+            if (slugs.slugs) {
             }
-             else {
+            else {
                 checkerRequried.push("slug Required");
             }
-             if( datas["type"]) {
+            if (datas["type"]) {
             }
-             else {
+            else {
                 checkerRequried.push("Type Required");
             }
 
-             if (checkerRequried.length > 0) {
-            swal({
-                title: "Required Fields are empty! Please fill and try again",
-                text: checkerRequried.join(","),
-                icon: "error",
-                dangerMode: true,
-            });
-        }
+            if (checkerRequried.length > 0) {
+                swal({
+                    title: "Required Fields are empty! Please fill and try again",
+                    text: checkerRequried.join(","),
+                    icon: "error",
+                    dangerMode: true,
+                });
+            }
             else {
 
-            formdata.append(`translation[meta_title]`, values["meta_title"]);
-            formdata.append(`translation[meta_description]`, values["meta_description"]);
-            formdata.append(`translation[catalog_title]`, values["catalog_title"]);
-            formdata.append(`translation[title]`, values["title"]);
-            formdata.append(`translation[banner_paragraph]`, values["banner_paragraph"]);
-            formdata.append(`translation[product_heading]`, values["product_heading"]);
-            formdata.append(`translation[description]`, datas?.description ?? "");
-            formdata.append(`translation[sec_one_description]`, datas?.sec_one_description ?? "");
-            formdata.append(`translation[sec_two_description]`, datas?.sec_two_description ?? "");
-            formdata.append(`translation[sec_three_description]`, datas?.sec_three_description ?? "");
-            formdata.append(`translation[sec_four_description]`, datas?.sec_four_description ?? "");
-            formdata.append(`translation[sec_one_heading]`, values?.sec_one_heading ?? "");
-            formdata.append(`translation[sec_two_heading]`, values?.sec_two_heading ?? "");
-            formdata.append(`translation[sec_three_heading]`, values?.sec_three_heading ?? "");
-            formdata.append(`translation[sec_four_heading]`, values?.sec_four_heading ?? "");
-            formdata.append(`translation[sec_faqs_heading]`, values?.sec_faqs_heading ?? "");
-            formdata.append(`translation[testimonials_title]`, values?.testimonials_title ?? "");
-             formdata.append(`translation[sec_one_image]`, datas?.sec_one_image_value ?? "");
-            formdata.append(`translation[sec_three_image]`, datas?.sec_three_image_value ?? "");
-            // formdata.append(`sec_one_slider_status`, 1);
-            // formdata.append(`sec_two_slider_status`, 1);
-            // formdata.append(`sec_three_slider_status`, 1);
-            formdata.append(`type`, datas["type"]);
-            formdata.append(`new_style_page_type`, datas["new_style_page_type"]);
-            formdata.append(`banner_image`, datas?.banner_image_value ?? "");
-            formdata.append(`brand_logo`, datas?.brand_logo_value ?? "");
-            formdata.append(`slug`, slugs.all_slugs ? `${slugs.all_slugs}/${slugs.slugs}` : slugs.slugs);
-            formdata.append(`parent_id`, parent_id ?? "");
-            formdata.append(`catalog_status`, values["catalog_status"].length > 0 ? 1 : 0);
-            for (let index = 0; index < selectedCar.length; index++) {
-                formdata.append(`car_ids[]`, selectedCar[index]);
-            }
-
-            const appendSectionData = (sectionKey, dataArray) => {
-                if (Array.isArray(dataArray)) {
-                    dataArray.forEach((item, index) => {
-                        Object.entries(item).forEach(([key, value]) => {
-                            const fieldValue = key === "image" ? item?.imgValue ?? ""
-                                : key === "slider_image" ? item?.slider_image_value ?? "" : value;
-                            let aa = ["slider_image_value", "imgValue",""]
-                            if (aa.includes(key)) {
-
-                            }
-                            else {
-                                formdata.append(`translation[${sectionKey}][${index}][${key}]`, fieldValue ?? "");
-                            }
-                        });
-                    });
+                formdata.append(`translation[meta_title]`, values["meta_title"]);
+                formdata.append(`translation[meta_description]`, values["meta_description"]);
+                formdata.append(`translation[catalog_title]`, values["catalog_title"]);
+                formdata.append(`translation[title]`, values["title"]);
+                formdata.append(`translation[banner_paragraph]`, values["banner_paragraph"]);
+                formdata.append(`translation[product_heading]`, values["product_heading"]);
+                formdata.append(`translation[description]`, datas?.description ?? "");
+                formdata.append(`translation[sec_one_description]`, datas?.sec_one_description ?? "");
+                formdata.append(`translation[sec_two_description]`, datas?.sec_two_description ?? "");
+                formdata.append(`translation[sec_three_description]`, datas?.sec_three_description ?? "");
+                formdata.append(`translation[sec_four_description]`, datas?.sec_four_description ?? "");
+                formdata.append(`translation[sec_one_heading]`, values?.sec_one_heading ?? "");
+                formdata.append(`translation[sec_two_heading]`, values?.sec_two_heading ?? "");
+                formdata.append(`translation[sec_three_heading]`, values?.sec_three_heading ?? "");
+                formdata.append(`translation[sec_four_heading]`, values?.sec_four_heading ?? "");
+                formdata.append(`translation[sec_faqs_heading]`, values?.sec_faqs_heading ?? "");
+                formdata.append(`translation[testimonials_title]`, values?.testimonials_title ?? "");
+                formdata.append(`translation[sec_one_image]`, datas?.sec_one_image_value ?? "");
+                formdata.append(`translation[sec_three_image]`, datas?.sec_three_image_value ?? "");
+                // formdata.append(`sec_one_slider_status`, 1);
+                // formdata.append(`sec_two_slider_status`, 1);
+                // formdata.append(`sec_three_slider_status`, 1);
+                formdata.append(`type`, datas["type"]);
+                formdata.append(`new_style_page_type`, datas["new_style_page_type"]);
+                formdata.append(`banner_image`, datas?.banner_image_value ?? "");
+                formdata.append(`brand_logo`, datas?.brand_logo_value ?? "");
+                formdata.append(`slug`, slugs.all_slugs ? `${slugs.all_slugs}/${slugs.slugs}` : slugs.slugs);
+                formdata.append(`parent_id`, parent_id ?? "");
+                formdata.append(`catalog_status`, values["catalog_status"].length > 0 ? 1 : 0);
+                for (let index = 0; index < selectedCar.length; index++) {
+                    formdata.append(`car_ids[]`, selectedCar[index]);
                 }
-            };
 
-            // Shortened usage for all sections
-            [
-                { key: "sec_faqs", data: datas.sec_faqs },
-                { key: "sec_testimonials", data: datas.sec_testimonials },
-                { key: "sec_one", data: datas.sec_one },
-                { key: "sec_two", data: datas.sec_two },
-                { key: "sec_four", data: datas.sec_four },
-                { key: "banner", data: datas.banner },
-            ].forEach(({ key, data }) => appendSectionData(key, data));
-            apiMethod(`catalogs/update/${id}/${mainLanguage}`, formdata);
-        }
+                const appendSectionData = (sectionKey, dataArray) => {
+                    if (Array.isArray(dataArray)) {
+                        dataArray.forEach((item, index) => {
+                            Object.entries(item).forEach(([key, value]) => {
+                                const fieldValue = key === "image" ? item?.imgValue ?? ""
+                                    : key === "slider_image" ? item?.slider_image_value ?? "" : value;
+                                let aa = ["slider_image_value", "imgValue", ""]
+                                if (aa.includes(key)) {
+
+                                }
+                                else {
+                                    formdata.append(`translation[${sectionKey}][${index}][${key}]`, fieldValue ?? "");
+                                }
+                            });
+                        });
+                    }
+                };
+
+                // Shortened usage for all sections
+                [
+                    { key: "sec_faqs", data: datas.sec_faqs },
+                    { key: "sec_testimonials", data: datas.sec_testimonials },
+                    { key: "sec_one", data: datas.sec_one },
+                    { key: "sec_two", data: datas.sec_two },
+                    { key: "sec_four", data: datas.sec_four },
+                    { key: "banner", data: datas.banner },
+                ].forEach(({ key, data }) => appendSectionData(key, data));
+                apiMethod(`catalogs/update/${id}/${mainLanguage}`, formdata);
+            }
         }
     }
 
@@ -360,16 +361,16 @@ const EditCatalogs = ({ permission }) => {
         // catalog_status: 1,
     };
 
-    const { banner, sec_one, sec_two, sec_three, sec_faqs, description, sec_one_description, sec_two_description, sec_three_description, sec_four_description, sec_testimonials,sec_four } = datas;
+    const { banner, sec_one, sec_two, sec_three, sec_faqs, description, sec_one_description, sec_two_description, sec_three_description, sec_four_description, sec_testimonials, sec_four } = datas;
     const check = (module, action) => permission?.[module]?.includes(action);
     return (
         <section className="PromotionCreate product-create-page">
-<div className="product-create-page__hero">
+            <div className="product-create-page__hero">
                 <span className="product-create-page__eyebrow">Catalog management</span>
                 <h2>Edit Catalog</h2>
                 <p>Update catalog content in the same compact, modern layout used across the refreshed create and edit screens.</p>
             </div>
-<div className="relative flex items-start gap-3">
+            <div className="relative flex items-start gap-3">
                 <div className="bg-white rounded-3xl w-full p-4 mx-auto relative">
                     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
                         <Form name="myForm" className="product-create-page__form">
@@ -407,7 +408,7 @@ const EditCatalogs = ({ permission }) => {
                                             <option value={"new_fleet"}>New Fleet</option>
                                         </select>
                                     </div>
-                                      <div>
+                                    <div>
                                         <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1">
                                             new style page type
                                         </div>
@@ -430,7 +431,7 @@ const EditCatalogs = ({ permission }) => {
                                                         <React.Fragment key={index}>
                                                             <option value={id}>{catalog_title}</option>
                                                             {Array.isArray(children) &&
-                                                                children.map((item2,index2) => (
+                                                                children.map((item2, index2) => (
                                                                     <option key={index2} value={item2.id}>
                                                                         â€” {item2.catalog_title}
                                                                     </option>
@@ -444,14 +445,14 @@ const EditCatalogs = ({ permission }) => {
                             </div>
 
                             <div className="bg-[#EFF4FD] p-6 rounded-3xl mb-3">
-                               {datas?.type === "car_brands" && <> <label className="mb-1  mt-3 block text-[#7D8CA7] text-[.8rem]">Brand logo</label>
-                                {mainLanguage === "en" && <OneImageUpload changeImage={setImageLoader} MainImage={datas?.brand_logo} Update={setDatas} sec_value={"brand_logo_value"} sec_image={"brand_logo"} folder_name={"catalog_banner_image"} page_type={"catalog"} />}</>}
+                                {datas?.type === "car_brands" && <> <label className="mb-1  mt-3 block text-[#7D8CA7] text-[.8rem]">Brand logo</label>
+                                    {mainLanguage === "en" && <OneImageUpload changeImage={setImageLoader} MainImage={datas?.brand_logo} Update={setDatas} sec_value={"brand_logo_value"} sec_image={"brand_logo"} folder_name={"catalog_banner_image"} page_type={"catalog"} />}</>}
 
                                 <FormControl name="catalog_title" label={"catalog title"} placeholder="Enter catalog Title" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
                                 <FormControl name="title" label={"Heading {h1}"} placeholder="Enter Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
                                 <br />
-                                 <FormControl name="banner_paragraph" label={"Banner Paragraph"} placeholder="Enter Heading" className="outline-none pt-2 w-full h-[10rem] px-5 rounded-xl" control="textarea" />
-                        
+                                <FormControl name="banner_paragraph" label={"Banner Paragraph"} placeholder="Enter Heading" className="outline-none pt-2 w-full h-[10rem] px-5 rounded-xl" control="textarea" />
+
                                 <FormControl name="product_heading" label={"product heading"} placeholder="Enter Product Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
                                 <br />
                                 <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Description</div>
@@ -464,7 +465,9 @@ const EditCatalogs = ({ permission }) => {
                                         <div className='flex justify-between'>
                                             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Banner</div>
                                             {mainLanguage === "en" && <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("banner", ["title", "slider_image"])} >
-                                                <img src={plus} alt="plus" />
+                                                <span className='users-table-page__addIcon'>
+                                                    <FiPlus />
+                                                </span>
                                                 <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                             </Link>}
                                         </div>
@@ -501,7 +504,9 @@ const EditCatalogs = ({ permission }) => {
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 1</div>
                                         {mainLanguage === "en" && <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_one", ["title", "description", "image"])} >
-                                            <img src={plus} alt="plus" />
+                                            <span className='users-table-page__addIcon'>
+                                                <FiPlus />
+                                            </span>
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>}
                                     </div>
@@ -509,8 +514,8 @@ const EditCatalogs = ({ permission }) => {
                                     <br />
                                     <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Section 1 Description</div>
                                     <CKEditors label={"Description"} data={sec_one_description} update={(text) => handleCkChange(text, "sec_one_description")} />
-                                     <><label className="mb-1  mt-3 block text-[#7D8CA7] text-[.8rem]">Sec One Image</label>
-                                    <OneImageUpload changeImage={setImageLoader} MainImage={datas?.sec_one_image} Update={setDatas} sec_value={"sec_one_image_value"} sec_image={"sec_one_image"} folder_name={"catalog_banner_image"} page_type={"catalog"} /></>
+                                    <><label className="mb-1  mt-3 block text-[#7D8CA7] text-[.8rem]">Sec One Image</label>
+                                        <OneImageUpload changeImage={setImageLoader} MainImage={datas?.sec_one_image} Update={setDatas} sec_value={"sec_one_image_value"} sec_image={"sec_one_image"} folder_name={"catalog_banner_image"} page_type={"catalog"} /></>
 
                                     <div className="section4Main grid grid-cols-3 gap-3 mt-4 max-lg:grid-cols-1">
                                         {
@@ -548,7 +553,9 @@ const EditCatalogs = ({ permission }) => {
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 2</div>
                                         {mainLanguage === "en" && <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_two", ["title", "description", "image"])} >
-                                            <img src={plus} alt="plus" />
+                                            <span className='users-table-page__addIcon'>
+                                                <FiPlus />
+                                            </span>
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>}
                                     </div>
@@ -590,7 +597,7 @@ const EditCatalogs = ({ permission }) => {
                                     </div>
                                 </div>
 
-                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
+                                <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 3</div>
                                     </div>
@@ -599,13 +606,15 @@ const EditCatalogs = ({ permission }) => {
                                     <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Section 3 Description</div>
                                     <CKEditors label={"Description"} data={sec_three_description} update={(text) => handleCkChange(text, "sec_three_description")} />
                                     <><label className="mb-1  mt-3 block text-[#7D8CA7] text-[.8rem]">Section 3 Image</label>
-                                    <OneImageUpload changeImage={setImageLoader} MainImage={datas?.sec_three_image} Update={setDatas} sec_value={"sec_three_image_value"} sec_image={"sec_three_image"} folder_name={"catalog_banner_image"} page_type={"catalog"} /></>
+                                        <OneImageUpload changeImage={setImageLoader} MainImage={datas?.sec_three_image} Update={setDatas} sec_value={"sec_three_image_value"} sec_image={"sec_three_image"} folder_name={"catalog_banner_image"} page_type={"catalog"} /></>
                                 </div>
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 4</div>
                                         <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_four", ["title", "description", "image"])} >
-                                            <img src={plus} alt="plus" />
+                                            <span className='users-table-page__addIcon'>
+                                                <FiPlus />
+                                            </span>
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
                                     </div>
@@ -651,7 +660,9 @@ const EditCatalogs = ({ permission }) => {
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Faqs</div>
                                         {mainLanguage === "en" && <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_faqs", ["question", "answer"])} >
-                                            <img src={plus} alt="plus" />
+                                            <span className='users-table-page__addIcon'>
+                                                <FiPlus />
+                                            </span>
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>}
                                     </div>
@@ -692,7 +703,9 @@ const EditCatalogs = ({ permission }) => {
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Testimonials</div>
                                         {mainLanguage === "en" && <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_testimonials", ["question", "answer"])} >
-                                            <img src={plus} alt="plus" />
+                                            <span className='users-table-page__addIcon'>
+                                                <FiPlus />
+                                            </span>
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>}
                                     </div>
@@ -751,9 +764,9 @@ const EditCatalogs = ({ permission }) => {
                                     </div>}
 
                                 {mainLanguage === "en" && <StatusToggle
-                                  name="catalog_status"
-                                  label="Catalog Status"
-                                  checkedLabel="Enable"
+                                    name="catalog_status"
+                                    label="Catalog Status"
+                                    checkedLabel="Enable"
                                 />}
                             </div>
                             {check("Catalogs", "Catalogs Edit") && <div className="product-create-page__actions">

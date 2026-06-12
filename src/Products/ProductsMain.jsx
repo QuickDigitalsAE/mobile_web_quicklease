@@ -6,7 +6,7 @@ import { MainLanguageContext } from '../context/MainLanguageContext'
 import usePost from '../customHooks/usePost'
 import { Pagination, Table } from 'antd'
 import SkeletonProductsCard from './SkeletonProductsCard'
-import { FiArrowUpRight, FiImage, FiSearch } from 'react-icons/fi'
+import { FiArrowUpRight, FiImage, FiPlus, FiSearch } from 'react-icons/fi'
 import ListPageHero from '../components/ListPageHero'
 
 const ProductsMain = ({ permission }) => {
@@ -191,7 +191,9 @@ const ProductsMain = ({ permission }) => {
         subtitle="Browse products, preview images, and manage inventory from one cleaner table layout."
         action={check('Products', 'Products Add') && (
           <Link to="/products/create" className="users-table-page__addButton">
-            <img src={plus} alt="plus" />
+            <span className='users-table-page__addIcon'>
+                                                <FiPlus />
+                                            </span>
             <span>Add Product</span>
           </Link>
         )}

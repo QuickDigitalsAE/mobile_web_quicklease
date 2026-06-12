@@ -18,6 +18,7 @@ import OneImageUploadMultiple from "../components/OneImageUploadMultiple";
 import useGet from "../customHooks/useGet";
 import { Select, Tooltip } from "antd";
 import { MainUserDataContext } from "../context/MainUserDataContext";
+import { FiPlus } from "react-icons/fi";
 
 const CreateCatalogs = () => {
     const navigate = useNavigate();
@@ -321,15 +322,15 @@ const CreateCatalogs = () => {
                 formdata.append(`translation[sec_one_image]`, datas?.sec_one_image_value ?? "");
                 formdata.append(`translation[sec_three_image]`, datas?.sec_three_image_value ?? "");
                 formdata.append(`sec_one_slider_status`, 1);
-            formdata.append(`sec_two_slider_status`, 1);
-            formdata.append(`sec_three_slider_status`, 1);
+                formdata.append(`sec_two_slider_status`, 1);
+                formdata.append(`sec_three_slider_status`, 1);
                 formdata.append(`type`, datas["type"]);
                 formdata.append(`banner_image`, datas?.banner_image_value ?? "");
                 formdata.append(`brand_logo`, datas?.brand_logo_value ?? "");
                 formdata.append(`slug`, slugs.all_slugs ? `${slugs.all_slugs}/${slugs.slugs}` : slugs.slugs);
                 formdata.append(`parent_id`, parent_id ?? "");
                 formdata.append(`catalog_status`, values["catalog_status"].length > 0 ? 1 : 0);
-console.log(datas)
+                console.log(datas)
                 for (let index = 0; index < selectedCar?.length; index++) {
                     formdata.append(`car_ids[]`, selectedCar[index]);
                 }
@@ -377,10 +378,10 @@ console.log(datas)
     }, [res.data]);
 
     if (resget2.isLoading || !data) return <SkeletonCreateEdit heading={"Create Catalogs"} />;
-    const { banner, sec_one, sec_two, sec_three,sec_four, sec_faqs, description, sec_one_description, sec_two_description, sec_three_description, sec_four_description, sec_testimonials } = datas;
+    const { banner, sec_one, sec_two, sec_three, sec_four, sec_faqs, description, sec_one_description, sec_two_description, sec_three_description, sec_four_description, sec_testimonials } = datas;
     return (
         <section className="PromotionCreate product-create-page">
-{console.log(slugs?.all_slugs, slugs.slugs)}
+            {console.log(slugs?.all_slugs, slugs.slugs)}
             <div className="product-create-page__hero">
                 <span className="product-create-page__eyebrow">Catalog management</span>
                 <h2>Create Catalog</h2>
@@ -461,7 +462,7 @@ console.log(datas)
                                 <br />
                                 <FormControl name="banner_paragraph" label={"Banner Paragraph"} placeholder="Enter Heading" className="outline-none pt-2 w-full h-[10rem] px-5 rounded-xl" control="textarea" />
                                 <br />
-                               <FormControl name="product_heading" label={"product heading"} placeholder="Enter Product Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+                                <FormControl name="product_heading" label={"product heading"} placeholder="Enter Product Heading" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
                                 <br />
                                 <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Description</div>
                                 <CKEditors label={"Description"} data={description} update={(text) => handleCkChange(text, "description")} />
@@ -472,8 +473,10 @@ console.log(datas)
                                     <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                         <div className='flex justify-between'>
                                             <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Banner</div>
-                                        <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("banner", ["title", "slider_image"])} >
-                                                <img src={plus} alt="plus" />
+                                            <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("banner", ["title", "slider_image"])} >
+                                                <span className='users-table-page__addIcon'>
+                                                    <FiPlus />
+                                                </span>
                                                 <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                             </Link>
                                         </div>
@@ -510,7 +513,9 @@ console.log(datas)
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 1</div>
                                         <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_one", ["title", "description", "image"])} >
-                                            <img src={plus} alt="plus" />
+                                            <span className='users-table-page__addIcon'>
+                                                <FiPlus />
+                                            </span>
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
                                     </div>
@@ -519,8 +524,8 @@ console.log(datas)
                                     <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Section 1 Description</div>
                                     <CKEditors label={"Description"} data={sec_one_description} update={(text) => handleCkChange(text, "sec_one_description")} />
                                     <><label className="mb-1  mt-3 block text-[#7D8CA7] text-[.8rem]">Sec One Image</label>
-                                    <OneImageUpload changeImage={setImageLoader} MainImage={datas?.sec_one_image} Update={setDatas} sec_value={"sec_one_image_value"} sec_image={"sec_one_image"} folder_name={"catalog_banner_image"} page_type={"catalog"} /></>
-                                                        
+                                        <OneImageUpload changeImage={setImageLoader} MainImage={datas?.sec_one_image} Update={setDatas} sec_value={"sec_one_image_value"} sec_image={"sec_one_image"} folder_name={"catalog_banner_image"} page_type={"catalog"} /></>
+
                                     <div className="section4Main grid grid-cols-3 gap-3 mt-4 max-lg:grid-cols-1">
                                         {
                                             Array.isArray(sec_one) && sec_one.map((item, index) => {
@@ -557,7 +562,9 @@ console.log(datas)
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 2</div>
                                         <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_two", ["title", "description", "image"])} >
-                                            <img src={plus} alt="plus" />
+                                            <span className='users-table-page__addIcon'>
+                                                <FiPlus />
+                                            </span>
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
                                     </div>
@@ -607,13 +614,15 @@ console.log(datas)
                                     <div className="mb-1 block text-[#7D8CA7] text-[.8rem]"> Section 3 Description</div>
                                     <CKEditors label={"Description"} data={sec_three_description} update={(text) => handleCkChange(text, "sec_three_description")} />
                                     <><label className="mb-1  mt-3 block text-[#7D8CA7] text-[.8rem]">Section 3 Image</label>
-                                    <OneImageUpload changeImage={setImageLoader} MainImage={datas?.sec_three_image} Update={setDatas} sec_value={"sec_three_image_value"} sec_image={"sec_three_image"} folder_name={"catalog_banner_image"} page_type={"catalog"} /></>
+                                        <OneImageUpload changeImage={setImageLoader} MainImage={datas?.sec_three_image} Update={setDatas} sec_value={"sec_three_image_value"} sec_image={"sec_three_image"} folder_name={"catalog_banner_image"} page_type={"catalog"} /></>
                                 </div>
                                 <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3'>
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Section 4</div>
                                         <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_four", ["title", "description", "image"])} >
-                                            <img src={plus} alt="plus" />
+                                            <span className='users-table-page__addIcon'>
+                                                <FiPlus />
+                                            </span>
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
                                     </div>
@@ -659,7 +668,9 @@ console.log(datas)
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Faqs</div>
                                         <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_faqs", ["question", "answer"])} >
-                                            <img src={plus} alt="plus" />
+                                            <span className='users-table-page__addIcon'>
+                                                <FiPlus />
+                                            </span>
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
                                     </div>
@@ -700,7 +711,9 @@ console.log(datas)
                                     <div className='flex justify-between'>
                                         <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Testimonials</div>
                                         <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("sec_testimonials", ["question", "answer"])} >
-                                            <img src={plus} alt="plus" />
+                                            <span className='users-table-page__addIcon'>
+                                                <FiPlus />
+                                            </span>
                                             <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                                         </Link>
                                     </div>
@@ -756,9 +769,9 @@ console.log(datas)
                                 </div>}
 
                                 <StatusToggle
-                                  name="catalog_status"
-                                  label="Catalog Status"
-                                  checkedLabel="Enable"
+                                    name="catalog_status"
+                                    label="Catalog Status"
+                                    checkedLabel="Enable"
                                 />
                             </div>
                             {(userdata?.role_id !== 12) ?

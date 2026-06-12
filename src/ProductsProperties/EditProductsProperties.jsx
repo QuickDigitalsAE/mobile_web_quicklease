@@ -12,6 +12,7 @@ import swal from "sweetalert";
 import OneImageUpload from '../components/OneImageUpload';
 import plus from '../dist/webImages/plus.svg'
 import useGet from '../customHooks/useGet';
+import { FiPlus } from 'react-icons/fi';
 
 const EditProductsProperties = ({ permission }) => {
   const { id } = useParams();
@@ -170,7 +171,9 @@ const EditProductsProperties = ({ permission }) => {
             <div className='flex justify-between mt-5'>
               <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Property Value List</div>
               <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("property_values")} >
-                <img src={plus} alt="plus" />
+                <span className='users-table-page__addIcon'>
+                                                <FiPlus />
+                                            </span>
                 <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
               </Link>
             </div>

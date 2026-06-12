@@ -169,7 +169,6 @@ const Catalogs = ({ permission }) => {
                 <span className="users-table-page__addIcon">
                   <FiPlus />
                 </span>
-                <img src={plus} alt="plus" className="hidden" />
                 <span className="font-MluvkaBold text-secondary capitalize">Add Catalog</span>
               </Link>
             )}

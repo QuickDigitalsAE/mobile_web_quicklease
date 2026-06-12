@@ -44,7 +44,7 @@ const SkeletonCreateEdit = ({ heading }) => {
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-3 mt-6">
+            <div className="flex flex-wrap gap-3 mt-4 mt-6">
               {toggleItems.map((item) => (
                 <div key={item} className="flex items-center gap-3 px-4 py-3 rounded-full bg-white/70">
                   <Skeleton height={24} width={42} borderRadius={999} />

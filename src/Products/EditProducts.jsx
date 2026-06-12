@@ -17,6 +17,7 @@ import usePost2 from '../customHooks/usePost2';
 import DropDown from "../dist/webImages/dropdown.svg"
 import { MainUserDataContext } from '../context/MainUserDataContext';
 import StatusToggle from '../components/form/StatusToggle';
+import { FiPlus } from 'react-icons/fi';
 
 const EditProducts = ({ permission }) => {
   const { id } = useParams();
@@ -463,7 +464,7 @@ const EditProducts = ({ permission }) => {
     promo_status: resget?.data?.data?.promo_status && [`${String(resget?.data?.data?.promo_status)}`],
     featured: resget?.data?.data?.featured && [`${String(resget?.data?.data?.featured)}`],
   };
- const check = (module, action) => permission?.[module]?.includes(action);
+  const check = (module, action) => permission?.[module]?.includes(action);
 
   return (
     <div className='newscreate product-create-page'>
@@ -476,7 +477,7 @@ const EditProducts = ({ permission }) => {
           </p>
         </div>
       </div>
-<Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form name="myForm" className="product-create-page__form product-create-page__form--compact">
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
             <div className="">
@@ -594,8 +595,11 @@ const EditProducts = ({ permission }) => {
                 <div>
                   <div className='flex justify-between'>
                     <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Car Images</div>
-                  <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd2("car_images", [])} >
-                      <img src={plus} alt="plus" />
+                    <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd2("car_images", [])} >
+                      <span className='users-table-page__addIcon'>
+                        <FiPlus />
+                      </span>
+
                       <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
                     </Link>
                   </div>
@@ -665,7 +669,7 @@ const EditProducts = ({ permission }) => {
             <div className='grid grid-cols-2 gap-4'>
               <FormControl name="installment_per_month" label={"Installment Per Month"} placeholder="Enter Installment Per Month" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
               <FormControl name="installment_per_month_with_down" label={"Installment Per Month With Down"} placeholder="Enter Installment Per Month With Down" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
-               <FormControl name="installment_per_month_final_term" label={"Installment Per Month Final Term"} placeholder="Enter Installment Per Month Final Term" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
+              <FormControl name="installment_per_month_final_term" label={"Installment Per Month Final Term"} placeholder="Enter Installment Per Month Final Term" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
               <FormControl name="down_payment" label={"Down Payment"} placeholder="Enter Down Payment" className="outline-none w-full h-[3rem] px-5 rounded-xl" control="input2" />
             </div>
           </div>
@@ -693,7 +697,9 @@ const EditProducts = ({ permission }) => {
             <div className='flex justify-between mt-5'>
               <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Flexible</div>
               <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("flexible_cars_monthly_prices", ["months", "value"])} >
-                <img src={plus} alt="plus" />
+                <span className='users-table-page__addIcon'>
+                  <FiPlus />
+                </span>
                 <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
               </Link>
             </div>
@@ -727,7 +733,9 @@ const EditProducts = ({ permission }) => {
             <div className='flex justify-between mt-5'>
               <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Personal</div>
               <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("personal_cars_monthly_prices", ["months", "value"])} >
-                <img src={plus} alt="plus" />
+                <span className='users-table-page__addIcon'>
+                  <FiPlus />
+                </span>
                 <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
               </Link>
             </div>
@@ -875,20 +883,20 @@ const EditProducts = ({ permission }) => {
               <StatusToggle name="featured" label="Featured" checkedLabel="Enable" />
             </div>
           </div>}
-            {check("Products", "Products Edit") && (
-              <div className="product-create-page__actions">
-                <Link to="/products" className="product-create-page__cancel">
-                  Cancel
-                </Link>
-                <SubmitButton
-                  props={{
-                    class: "product-create-page__submit btn bg-secondary text-white px-12 uppercase py-3 rounded-full w-100 block submit hover:bg-primary transition-all duration-300",
-                    text: "Update Product",
-                  }}
-                  buttonLoading={res.isLoading}
-                />
-              </div>
-            )}
+          {check("Products", "Products Edit") && (
+            <div className="product-create-page__actions">
+              <Link to="/products" className="product-create-page__cancel">
+                Cancel
+              </Link>
+              <SubmitButton
+                props={{
+                  class: "product-create-page__submit btn bg-secondary text-white px-12 uppercase py-3 rounded-full w-100 block submit hover:bg-primary transition-all duration-300",
+                  text: "Update Product",
+                }}
+                buttonLoading={res.isLoading}
+              />
+            </div>
+          )}
         </Form>
       </Formik>
     </div>

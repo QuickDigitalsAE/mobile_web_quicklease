@@ -194,7 +194,7 @@ const a = Object.entries(locations).map(([key, value]) => ({
               }
             </div>
 
-<div className='flex flex-wrap gap-3'>
+<div className='flex flex-wrap gap-3 mt-4'>
 
             <StatusToggle name="coverage_status" label="Coverage Status" checkedLabel="Enable" />
             <StatusToggle name="field_required" label="Field Required" checkedLabel="Enable" />

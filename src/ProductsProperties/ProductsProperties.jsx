@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import plus from '../dist/webImages/plus.svg'
 import { Pagination } from 'antd';
 import ProductsPropertiesCard from './ProductsPropertiesCard';
+import { FiPlus } from 'react-icons/fi';
 
 const ProductsProperties = ({permission}) => {
     const { mainLanguage } = useContext(MainLanguageContext);
@@ -83,7 +84,9 @@ const ProductsProperties = ({permission}) => {
                         <input type="text" onChange={handleChange} className='w-full border h-[2.8rem] rounded-full px-4 border-[#ddd] outline-none' placeholder='Search' />
                     </div>
                    {check("ProductProperties", "ProductProperties Add") &&  <Link to={"/products/properties/create"} className='bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer'>
-                        <img src={plus} alt="plus" />
+                        <span className='users-table-page__addIcon'>
+                                                <FiPlus />
+                                            </span>
                         <span className='font-MluvkaBold text-secondary capitalize'>Add Properties</span>
                     </Link>}
                 </div>

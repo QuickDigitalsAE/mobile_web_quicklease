@@ -14,6 +14,7 @@ import profile from "../dist/webImages/profile.webp"
 import camera from "../dist/webImages/camera.svg"
 import OneImageUpload from '../components/OneImageUpload';
 import plus from '../dist/webImages/plus.svg'
+import { FiPlus } from 'react-icons/fi';
 
 const CreateProductsProperties = () => {
   const navigate = useNavigate();
@@ -98,7 +99,7 @@ const CreateProductsProperties = () => {
       else {
         for (let index = 0; index < property_values.length; index++) {
           formdata.append(`translation[property_values][]`, datas?.property_values[index] ?? "");
-          
+
         }
         formdata.append(`property_image`, datas?.property_image_value ?? "");
         apiMethod(`properties/create/${mainLanguage}`, formdata)
@@ -136,7 +137,7 @@ const CreateProductsProperties = () => {
           </p>
         </div>
       </div>
-<Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form name="myForm" className="product-create-page__form">
           <div className='bg-[#EFF4FD] p-6 rounded-3xl mb-3 max-lg:p-3'>
             <div className="grid grid-cols-2  gap-2">
@@ -162,7 +163,9 @@ const CreateProductsProperties = () => {
             <div className='flex justify-between mt-5'>
               <div className="h4 text-[#7D8CA7] text-[1.1rem] ">Property Value List</div>
               <Link className='users-table-page__add bg-[#d9dcf8] py-3 px-6 rounded-full flex items-center gap-2 cursor-pointer' onClick={() => handleSectionAdd("property_values")} >
-                <img src={plus} alt="plus" />
+                <span className='users-table-page__addIcon'>
+                  <FiPlus />
+                </span>
                 <span className='font-MluvkaBold text-secondary capitalize'>Add new</span>
               </Link>
             </div>
@@ -188,15 +191,15 @@ const CreateProductsProperties = () => {
             </div>
 
             <div className='mt-3'>
-                <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> Field Type </div>
-                <Field as="select" name="property_field_type" className="outline-none w-full h-[3rem] px-5 rounded-xl" >
-                  <option value="">---select Field Type ---</option>
-                  <option value="selector">selector</option>
-                  <option value="input">input</option>
-                  <option value="radio">radio</option>
-                  <option value="checkbox">checkbox</option>
-                </Field>
-              </div>
+              <div className="h4 text-[#7D8CA7] text-[.8rem] mb-1"> Field Type </div>
+              <Field as="select" name="property_field_type" className="outline-none w-full h-[3rem] px-5 rounded-xl" >
+                <option value="">---select Field Type ---</option>
+                <option value="selector">selector</option>
+                <option value="input">input</option>
+                <option value="radio">radio</option>
+                <option value="checkbox">checkbox</option>
+              </Field>
+            </div>
 
             <StatusToggle
               name="property_status"
