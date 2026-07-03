@@ -20,6 +20,7 @@ const links = {
   "/": "sub1",
   "/users": "sub2",
   "/customers": "sub3",
+  "/guidance": "sub4",
   "/role": "sub5",
   "/booking": "sub42",
   "/lead": "sub43",
@@ -56,6 +57,7 @@ const LeftSide = ({ permissions, data }) => {
   let User = null
   let Role = null
   let Customer = null
+  let Guidance = null
   let partners = null
   let testimonials = null
   let Promotions = null
@@ -75,6 +77,7 @@ const LeftSide = ({ permissions, data }) => {
   }
 
   Customer = getLinkItem("Customers", 'sub3', <FiUsers />, `/customers`);
+  Guidance = getLinkItem("Guidance", 'sub4', <FiBookOpen />, `/guidance`);
 
   if ((check("Roles", "Role View") && check("Roles", "Role Menu"))) {
     Role = getLinkItem("Roles", 'sub5', <FiShield />, `/role`);
@@ -126,6 +129,7 @@ const LeftSide = ({ permissions, data }) => {
         Dashboard,
         User,
         Customer,
+        Guidance,
         Role,
         Booking,
         Enquiry,
@@ -142,6 +146,7 @@ const LeftSide = ({ permissions, data }) => {
       Dashboard,
       User,
       Customer,
+      Guidance,
       Role,
       Booking,
       Enquiry,
