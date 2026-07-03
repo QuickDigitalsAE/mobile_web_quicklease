@@ -19,6 +19,7 @@ import { MainProfileContext } from '../context/MainProfileContext';
 const links = {
   "/": "sub1",
   "/users": "sub2",
+  "/customers": "sub3",
   "/role": "sub5",
   "/booking": "sub42",
   "/lead": "sub43",
@@ -54,6 +55,7 @@ const LeftSide = ({ permissions, data }) => {
   const selectedKey = [links[pathsplit]].filter(Boolean)
   let User = null
   let Role = null
+  let Customer = null
   let partners = null
   let testimonials = null
   let Promotions = null
@@ -71,6 +73,8 @@ const LeftSide = ({ permissions, data }) => {
   if ((check("Users", "User View") && check("Users", "User Menu"))) {
     User = getLinkItem("Users", 'sub2', <FiUsers />, `/users`);
   }
+
+  Customer = getLinkItem("Customers", 'sub3', <FiUsers />, `/customers`);
 
   if ((check("Roles", "Role View") && check("Roles", "Role Menu"))) {
     Role = getLinkItem("Roles", 'sub5', <FiShield />, `/role`);
@@ -121,6 +125,7 @@ const LeftSide = ({ permissions, data }) => {
       [
         Dashboard,
         User,
+        Customer,
         Role,
         Booking,
         Enquiry,
@@ -136,6 +141,7 @@ const LeftSide = ({ permissions, data }) => {
     [
       Dashboard,
       User,
+      Customer,
       Role,
       Booking,
       Enquiry,

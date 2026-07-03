@@ -14,6 +14,9 @@ import UserCreate from './Users/UserCreate'
 import MainLanguageProvider from './context/MainLanguageContext'
 import User from './Users/User'
 import UserEdit from './Users/UserEdit'
+import Customers from './Customers/Customers'
+import CustomerCreate from './Customers/CustomerCreate'
+import CustomerEdit from './Customers/CustomerEdit'
 import RoleCreate from './Role/RoleCreate'
 import RoleEdit from './Role/RoleEdit'
 import RoleList from './Role/RoleList'
@@ -99,6 +102,11 @@ const Dashboard = () => {
                             </>
                           )
                         }
+                        <>
+                          <Route path={`/customers`} element={<Customers permission={permission} />} />
+                          <Route path={`/customers/create`} element={<CustomerCreate permission={permission} />} />
+                          <Route path={`/customers/edit/:id`} element={<CustomerEdit permission={permission} />} />
+                        </>
 
                         {(check("Roles", "Role View") && check("Roles", "Role Menu")) && (
                           <>
