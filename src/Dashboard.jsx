@@ -17,6 +17,9 @@ import UserEdit from './Users/UserEdit'
 import Customers from './Customers/Customers'
 import CustomerCreate from './Customers/CustomerCreate'
 import CustomerEdit from './Customers/CustomerEdit'
+import Guidance from './Guidance/Guidance'
+import GuidanceCreate from './Guidance/GuidanceCreate'
+import GuidanceEdit from './Guidance/GuidanceEdit'
 import RoleCreate from './Role/RoleCreate'
 import RoleEdit from './Role/RoleEdit'
 import RoleList from './Role/RoleList'
@@ -106,6 +109,11 @@ const Dashboard = () => {
                           <Route path={`/customers`} element={<Customers permission={permission} />} />
                           <Route path={`/customers/create`} element={<CustomerCreate permission={permission} />} />
                           <Route path={`/customers/edit/:id`} element={<CustomerEdit permission={permission} />} />
+                        </>
+                        <>
+                          <Route path={`/guidance`} element={<Guidance permission={permission} />} />
+                          <Route path={`/guidance/create`} element={<GuidanceCreate permission={permission} />} />
+                          <Route path={`/guidance/edit/:id`} element={<GuidanceEdit permission={permission} />} />
                         </>
 
                         {(check("Roles", "Role View") && check("Roles", "Role Menu")) && (
